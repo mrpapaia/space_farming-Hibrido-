@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1021346266495-q9mdmsssq47p7vsof80m42dl0fm8ider.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1021346266495-q9mdmsssq47p7vsof80m42dl0fm8ider</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCWpyPBVyS8rezSbJDxMiMt5M66VcuHRaU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1021346266495</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.spaceFarmingModular</string>
+	<key>PROJECT_ID</key>
+	<string>space-farming</string>
+	<key>STORAGE_BUCKET</key>
+	<string>space-farming.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1021346266495:ios:3200ddc71c64a87164ae4a</string>
+	<key>DATABASE_URL</key>
+	<string>https://space-farming.firebaseio.com</string>
+</dict>
+</plist>

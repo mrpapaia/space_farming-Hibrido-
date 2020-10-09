@@ -1,0 +1,83 @@
+{
+  "project_info": {
+    "project_number": "1021346266495",
+    "firebase_url": "https://space-farming.firebaseio.com",
+    "project_id": "space-farming",
+    "storage_bucket": "space-farming.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1021346266495:android:5bf90c25b067e76564ae4a",
+        "android_client_info": {
+          "package_name": "com.example.space_farming"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1021346266495-qd4pf0munio5vt29kbbmku2qi7molcjk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8GUYv-jrPKCKY_og1Bn1mDsuBPs19bKc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1021346266495-qd4pf0munio5vt29kbbmku2qi7molcjk.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1021346266495-0bbh0olfouqf1mcp8i4l8c2718jev02v.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.spaceFarming"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1021346266495:android:c5b5cc99ccb8f7da64ae4a",
+        "android_client_info": {
+          "package_name": "com.example.space_farming_modular"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1021346266495-qd4pf0munio5vt29kbbmku2qi7molcjk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8GUYv-jrPKCKY_og1Bn1mDsuBPs19bKc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1021346266495-qd4pf0munio5vt29kbbmku2qi7molcjk.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1021346266495-0bbh0olfouqf1mcp8i4l8c2718jev02v.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.spaceFarming"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
