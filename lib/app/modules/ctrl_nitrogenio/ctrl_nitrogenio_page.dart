@@ -29,7 +29,7 @@ class _CtrlNitrogenioPageState
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width - 30;
-    print(widget.botijao);
+
     return Scaffold(
       appBar: PreferredSize(
           preferredSize: Size(
@@ -95,7 +95,8 @@ class _CtrlNitrogenioPageState
               ButtonCustom(
                 text: "Hístorico do botijão",
                 onclick: () {
-                  Modular.to.pushNamed('/ctrl/historico');
+                  Modular.to
+                      .pushNamed('/ctrl/historico', arguments: widget.botijao);
                 },
                 width: 309.0,
               ),

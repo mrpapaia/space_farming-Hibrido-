@@ -49,6 +49,36 @@ mixin _$LoginController on _LoginControllerBase, Store {
     });
   }
 
+  final _$emailAtom = Atom(name: '_LoginControllerBase.email');
+
+  @override
+  String get email {
+    _$emailAtom.reportRead();
+    return super.email;
+  }
+
+  @override
+  set email(String value) {
+    _$emailAtom.reportWrite(value, super.email, () {
+      super.email = value;
+    });
+  }
+
+  final _$passwdAtom = Atom(name: '_LoginControllerBase.passwd');
+
+  @override
+  String get passwd {
+    _$passwdAtom.reportRead();
+    return super.passwd;
+  }
+
+  @override
+  set passwd(String value) {
+    _$passwdAtom.reportWrite(value, super.passwd, () {
+      super.passwd = value;
+    });
+  }
+
   final _$_LoginControllerBaseActionController =
       ActionController(name: '_LoginControllerBase');
 
@@ -75,10 +105,56 @@ mixin _$LoginController on _LoginControllerBase, Store {
   }
 
   @override
+  void getEmail(String email) {
+    final _$actionInfo = _$_LoginControllerBaseActionController.startAction(
+        name: '_LoginControllerBase.getEmail');
+    try {
+      return super.getEmail(email);
+    } finally {
+      _$_LoginControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void getPasswd(String passwd) {
+    final _$actionInfo = _$_LoginControllerBaseActionController.startAction(
+        name: '_LoginControllerBase.getPasswd');
+    try {
+      return super.getPasswd(passwd);
+    } finally {
+      _$_LoginControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  String valideteEmail(String email) {
+    final _$actionInfo = _$_LoginControllerBaseActionController.startAction(
+        name: '_LoginControllerBase.valideteEmail');
+    try {
+      return super.valideteEmail(email);
+    } finally {
+      _$_LoginControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  String validetePasswd() {
+    final _$actionInfo = _$_LoginControllerBaseActionController.startAction(
+        name: '_LoginControllerBase.validetePasswd');
+    try {
+      return super.validetePasswd();
+    } finally {
+      _$_LoginControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 farm: ${farm},
-user: ${user}
+user: ${user},
+email: ${email},
+passwd: ${passwd}
     ''';
   }
 }

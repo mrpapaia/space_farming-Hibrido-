@@ -25,12 +25,6 @@ class HomeInfoBotPage extends StatefulWidget {
 class _HomeInfoBotPageState
     extends ModularState<HomeInfoBotPage, HomeInfoBotController> {
   //use 'controller' variable to access controller
-  @override
-  void initState() {
-    print(widget.botijao.ref);
-    controller.getCanecas(widget.botijao.ref);
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +60,6 @@ class _HomeInfoBotPageState
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Observer(builder: (BuildContext context) {
-            print(controller.listCanecas.data);
             return Center(
               child: Container(
                 child: Center(

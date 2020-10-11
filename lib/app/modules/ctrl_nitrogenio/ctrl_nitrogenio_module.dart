@@ -1,6 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:space_farming_modular/app/modules/ctrl_nitrogenio/pages/abastecer/abastecer_page.dart';
 import 'package:space_farming_modular/app/modules/ctrl_nitrogenio/pages/historico/historico_page.dart';
 import 'package:space_farming_modular/app/modules/ctrl_nitrogenio/pages/medir_nivel/medir_nivel_page.dart';
+import 'package:space_farming_modular/app/shared/repositories/histabastecimentorepository.dart';
+import 'package:space_farming_modular/app/shared/repositories/histnivelrepository.dart';
+import 'package:space_farming_modular/app/shared/repositories/interfaces/irepositoryhistabastecimento.dart';
+import 'package:space_farming_modular/app/shared/repositories/interfaces/irepositoryhistnivel.dart';
 
 import 'pages/historico/historico_controller.dart';
 import 'pages/abastecer/abastecer_controller.dart';
@@ -16,7 +21,15 @@ class CtrlNitrogenioModule extends ChildModule {
     return [
       Bind((i) => MedirNivelController()),
       Bind((i) => AbastecerController()),
-      Bind((i) => HistoricoController()),
+      Bind((i) => HistoricoController(i.get(), i.get())),
+      Bind<IRepositoryHistoricoNivel>(
+        (i) => HistoricoNivelRepository(
+            FirebaseFirestore.instance, i.args.data.ref),
+      ),
+      Bind<IRepositoryHistoricoAbastecimento>(
+        (i) => HistoricoAbastecimentoRepository(
+            FirebaseFirestore.instance, i.args.data.ref),
+      ),
       $CtrlNitrogenioController,
     ];
   }
@@ -29,7 +42,15 @@ class CtrlNitrogenioModule extends ChildModule {
                 )),
         ModularRouter("/medirNivel", child: (_, args) => MedirNivelPage()),
         ModularRouter("/abastecer", child: (_, args) => AbastecerPage()),
-        ModularRouter("/historico", child: (_, args) => HistoricoPage()),
+        ModularRouter("/historico",
+            child: (
+              _,
+              args,
+            ) =>
+                HistoricoPage(
+                  doc: args.data.ref,
+                  bot: args.data,
+                )),
       ];
 
   static Inject get to => Inject<CtrlNitrogenioModule>.of();

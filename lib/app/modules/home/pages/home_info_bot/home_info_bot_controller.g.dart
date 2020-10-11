@@ -39,11 +39,11 @@ mixin _$HomeInfoBotController on _HomeInfoBotControllerBase, Store {
       ActionController(name: '_HomeInfoBotControllerBase');
 
   @override
-  dynamic getCanecas(DocumentReference doc) {
+  dynamic getCanecas() {
     final _$actionInfo = _$_HomeInfoBotControllerBaseActionController
         .startAction(name: '_HomeInfoBotControllerBase.getCanecas');
     try {
-      return super.getCanecas(doc);
+      return super.getCanecas();
     } finally {
       _$_HomeInfoBotControllerBaseActionController.endAction(_$actionInfo);
     }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CardComboBox extends StatefulWidget {
-  CardComboBox({text, value, itens, width, marginTop})
+  CardComboBox({text, value, itens, width, marginTop, drop})
       : _text = text,
         _value = value,
         _itens = itens,
@@ -12,6 +12,7 @@ class CardComboBox extends StatefulWidget {
   List<String> _itens;
   double _width;
   double _marginTop;
+  Widget drop;
 
   @override
   _CardComboBoxState createState() => _CardComboBoxState();

@@ -12,7 +12,7 @@ class Botijao {
   double volTotal;
   int numcanecas;
   DocumentReference ref;
-  List<Caneca> canecas;
+
   Botijao({
     this.idBot,
     this.qtdDose,
@@ -20,7 +20,6 @@ class Botijao {
     this.volTotal,
     this.numcanecas,
     this.ref,
-    this.canecas,
   });
 
   Botijao copyWith({
@@ -30,7 +29,6 @@ class Botijao {
     double volTotal,
     int numcanecas,
     DocumentReference ref,
-    List<Caneca> canecas,
   }) {
     return Botijao(
       idBot: idBot ?? this.idBot,
@@ -39,7 +37,6 @@ class Botijao {
       volTotal: volTotal ?? this.volTotal,
       numcanecas: numcanecas ?? this.numcanecas,
       ref: ref ?? this.ref,
-      canecas: canecas ?? this.canecas,
     );
   }
 
@@ -50,8 +47,6 @@ class Botijao {
       'volAtual': volAtual,
       'volTotal': volTotal,
       'numcanecas': numcanecas,
-      'ref': ref,
-      'canecas': canecas?.map((x) => x?.toMap())?.toList(),
     };
   }
 
@@ -63,8 +58,6 @@ class Botijao {
         volTotal: doc.data()['volTotal'],
         numcanecas: doc.data()['numcanecas'],
         ref: doc.reference);
-    // this.canecas =
-    //    List<Caneca>.from(map['canecas']?.map((x) => Caneca.fromMap(x)));
   }
   String toJson() => json.encode(toMap());
 
@@ -73,7 +66,7 @@ class Botijao {
 
   @override
   String toString() {
-    return 'Botijao(idBot: $idBot, qtdDose: $qtdDose, volAtual: $volAtual, volTotal: $volTotal, numcanecas: $numcanecas, ref: $ref, canecas: $canecas)';
+    return 'Botijao(idBot: $idBot, qtdDose: $qtdDose, volAtual: $volAtual, volTotal: $volTotal, numcanecas: $numcanecas, ref: $ref)';
   }
 
   @override
@@ -86,8 +79,7 @@ class Botijao {
         o.volAtual == volAtual &&
         o.volTotal == volTotal &&
         o.numcanecas == numcanecas &&
-        o.ref == ref &&
-        listEquals(o.canecas, canecas);
+        o.ref == ref;
   }
 
   @override
@@ -97,7 +89,6 @@ class Botijao {
         volAtual.hashCode ^
         volTotal.hashCode ^
         numcanecas.hashCode ^
-        ref.hashCode ^
-        canecas.hashCode;
+        ref.hashCode;
   }
 }

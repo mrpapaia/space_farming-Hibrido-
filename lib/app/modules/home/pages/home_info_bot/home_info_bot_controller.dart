@@ -15,10 +15,12 @@ abstract class _HomeInfoBotControllerBase with Store {
   @observable
   ObservableStream<List<Caneca>> listCanecas;
 
-  _HomeInfoBotControllerBase(this.canecas);
+  _HomeInfoBotControllerBase(this.canecas) {
+    getCanecas();
+  }
 
   @action
-  getCanecas(DocumentReference doc) {
-    listCanecas = canecas.list(doc).asObservable();
+  getCanecas() {
+    listCanecas = canecas.list().asObservable();
   }
 }

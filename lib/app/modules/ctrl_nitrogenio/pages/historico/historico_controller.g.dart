@@ -7,7 +7,8 @@ part of 'historico_controller.dart';
 // **************************************************************************
 
 final $HistoricoController = BindInject(
-  (i) => HistoricoController(),
+  (i) => HistoricoController(
+      i<IRepositoryHistoricoNivel>(), i<IRepositoryHistoricoAbastecimento>()),
   singleton: true,
   lazy: true,
 );
@@ -19,18 +20,37 @@ final $HistoricoController = BindInject(
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$HistoricoController on _HistoricoControllerBase, Store {
-  final _$valueAtom = Atom(name: '_HistoricoControllerBase.value');
+  final _$listHistNivelAtom =
+      Atom(name: '_HistoricoControllerBase.listHistNivel');
 
   @override
-  int get value {
-    _$valueAtom.reportRead();
-    return super.value;
+  ObservableStream<List<HistoricoNivel>> get listHistNivel {
+    _$listHistNivelAtom.reportRead();
+    return super.listHistNivel;
   }
 
   @override
-  set value(int value) {
-    _$valueAtom.reportWrite(value, super.value, () {
-      super.value = value;
+  set listHistNivel(ObservableStream<List<HistoricoNivel>> value) {
+    _$listHistNivelAtom.reportWrite(value, super.listHistNivel, () {
+      super.listHistNivel = value;
+    });
+  }
+
+  final _$listHistAbastecimentoAtom =
+      Atom(name: '_HistoricoControllerBase.listHistAbastecimento');
+
+  @override
+  ObservableStream<List<HistoricoAbastecimento>> get listHistAbastecimento {
+    _$listHistAbastecimentoAtom.reportRead();
+    return super.listHistAbastecimento;
+  }
+
+  @override
+  set listHistAbastecimento(
+      ObservableStream<List<HistoricoAbastecimento>> value) {
+    _$listHistAbastecimentoAtom.reportWrite(value, super.listHistAbastecimento,
+        () {
+      super.listHistAbastecimento = value;
     });
   }
 
@@ -38,11 +58,22 @@ mixin _$HistoricoController on _HistoricoControllerBase, Store {
       ActionController(name: '_HistoricoControllerBase');
 
   @override
-  void increment() {
+  dynamic getHistoricoNivel() {
     final _$actionInfo = _$_HistoricoControllerBaseActionController.startAction(
-        name: '_HistoricoControllerBase.increment');
+        name: '_HistoricoControllerBase.getHistoricoNivel');
     try {
-      return super.increment();
+      return super.getHistoricoNivel();
+    } finally {
+      _$_HistoricoControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic getHistoricoAbastecimento() {
+    final _$actionInfo = _$_HistoricoControllerBaseActionController.startAction(
+        name: '_HistoricoControllerBase.getHistoricoAbastecimento');
+    try {
+      return super.getHistoricoAbastecimento();
     } finally {
       _$_HistoricoControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -51,7 +82,8 @@ mixin _$HistoricoController on _HistoricoControllerBase, Store {
   @override
   String toString() {
     return '''
-value: ${value}
+listHistNivel: ${listHistNivel},
+listHistAbastecimento: ${listHistAbastecimento}
     ''';
   }
 }

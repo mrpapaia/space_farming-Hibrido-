@@ -19,12 +19,12 @@ class HomeModule extends ChildModule {
   List<Bind> get binds {
     return [
       Bind((i) => HomeController(i.get())),
-      Bind<IRepositoryBotijao>(
-          (i) => BotijaoRepository(FirebaseFirestore.instance)),
-      Bind<IRepositoryCanecas>(
-          (i) => CanecasRepository(FirebaseFirestore.instance)),
       Bind((i) => HomeInfoBotController(i.get())),
-      Bind((i) => HomeBotCreateController()),
+      Bind<IRepositoryBotijao>(
+          (i) => BotijaoRepository(FirebaseFirestore.instance, i.args.data)),
+      Bind<IRepositoryCanecas>((i) =>
+          CanecasRepository(FirebaseFirestore.instance, i.args.data.ref)),
+      Bind((i) => HomeBotCreateController(i.get())),
     ];
   }
 

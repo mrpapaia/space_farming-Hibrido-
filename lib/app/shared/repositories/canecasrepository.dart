@@ -4,7 +4,8 @@ import 'package:space_farming_modular/app/shared/repositories/interfaces/ireposi
 
 class CanecasRepository implements IRepositoryCanecas {
   FirebaseFirestore firestore;
-  CanecasRepository(this.firestore);
+  DocumentReference doc;
+  CanecasRepository(this.firestore, this.doc);
   @override
   Future<bool> add(Caneca farm) {
     // TODO: implement add
@@ -12,10 +13,9 @@ class CanecasRepository implements IRepositoryCanecas {
   }
 
   @override
-  Stream<List<Caneca>> list(DocumentReference doc) {
-    print(doc);
+  Stream<List<Caneca>> list() {
     return firestore
-        .doc(doc.path)
+        .doc(this.doc.path)
         .collection("canecas")
         .snapshots()
         .map((query) {

@@ -1,15 +1,22 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+
 import 'package:space_farming_modular/app/modules/ctrl_nitrogenio/pages/historico/components/historicoAbastecimento.dart';
 import 'package:space_farming_modular/app/modules/ctrl_nitrogenio/pages/historico/components/historicoNivel.dart';
 import 'package:space_farming_modular/app/modules/home/components/secondaryAppBar.dart';
 import 'package:space_farming_modular/app/shared/components/nav_draw.dart';
 import 'package:space_farming_modular/app/shared/components/titleOfScreen.dart';
+import 'package:space_farming_modular/app/shared/models/botijao.dart';
+
 import 'historico_controller.dart';
 
 class HistoricoPage extends StatefulWidget {
   final String title;
-  const HistoricoPage({Key key, this.title = "Historico"}) : super(key: key);
+  DocumentReference doc;
+  Botijao bot;
+  HistoricoPage({Key key, this.title, this.doc, this.bot}) : super(key: key);
 
   @override
   _HistoricoPageState createState() => _HistoricoPageState();
@@ -43,8 +50,24 @@ class _HistoricoPageState
                 height: MediaQuery.of(context).size.height - 200,
                 child: TabBarView(
                   children: [
-                    HistoricoNivel(),
-                    SingleChildScrollView(child: HistoricoAbastecimento()),
+                    Observer(builder: (BuildContext context) {
+                      if (controller.listHistNivel.data == null) {
+                        return CircularProgressIndicator();
+                      }
+                      return HistoricoNivelComponent(
+                        list: controller.listHistNivel.data,
+                        botijao: widget.bot,
+                      );
+                    }),
+                    Observer(builder: (BuildContext context) {
+                      if (controller.listHistAbastecimento.data == null) {
+                        return CircularProgressIndicator();
+                      }
+                      return HistoricoAbastecimentoComponent(
+                        list: controller.listHistAbastecimento.data,
+                        botijao: widget.bot,
+                      );
+                    }),
                   ],
                 ),
               ),

@@ -1,26 +1,34 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 
 import 'package:space_farming_modular/app/shared/models/botijao.dart';
-import 'package:space_farming_modular/app/shared/models/caneca.dart';
-import 'package:space_farming_modular/app/shared/models/farm.dart';
-import 'package:space_farming_modular/app/shared/models/rack.dart';
+
 import 'package:space_farming_modular/app/shared/repositories/interfaces/irepositorybotijao.dart';
 
 class BotijaoRepository implements IRepositoryBotijao {
   String _colecao = "botijoes";
 
   FirebaseFirestore firestore;
-  BotijaoRepository(this.firestore);
+  DocumentReference doc;
+  BotijaoRepository(this.firestore, this.doc);
 
   @override
-  Future<bool> add(Botijao botijao) {
-    throw UnimplementedError();
+  Future<void> add(Botijao botijao) {
+    return doc
+        .collection('botijoes')
+        .doc(botijao.idBot)
+        .set(botijao.toMap())
+        .then((value) => print("Botijão adicionado com suecsso"))
+        .catchError((error) => print("Failed to add botijao: $error"));
   }
 
   @override
-  Future<bool> remove(String id) {
-    throw UnimplementedError();
+  Future<void> remove(String id) {
+    print(doc.path + "botijoes" + id);
+    return firestore
+        .doc(doc.path + "/botijoes/" + id)
+        .delete()
+        .then((value) => print("botijao deletado"))
+        .catchError((error) => print("Failed to delete botijao: $error"));
   }
 
   @override
@@ -33,32 +41,10 @@ class BotijaoRepository implements IRepositoryBotijao {
     throw UnimplementedError();
   }
 
-  List<Rack> getRacks(CollectionReference collection) {
-    List<Rack> listRacks = new List<Rack>();
-    collection.get().then((QuerySnapshot querySnapshot) => {
-          querySnapshot.docs.forEach((doc) {
-            listRacks.add(Rack.fromMap(doc.data()));
-          }),
-        });
-    return listRacks;
-  }
-
-  Stream<List<Farm>> lista(String farmName) {
-    return FirebaseFirestore.instance
-        .collection('farms')
-        .where('nome', isEqualTo: farmName)
-        .snapshots()
-        .map((query) {
-      return query.docs.map((doc) {
-        return Farm.fromMap(doc);
-      }).toList();
-    });
-  }
-
   @override
-  Stream<List<Botijao>> list(DocumentReference farm) {
+  Stream<List<Botijao>> list() {
     return firestore
-        .doc(farm.path)
+        .doc(this.doc.path)
         .collection("botijoes")
         .snapshots()
         .map((query) {
