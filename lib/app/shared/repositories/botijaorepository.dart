@@ -23,7 +23,6 @@ class BotijaoRepository implements IRepositoryBotijao {
 
   @override
   Future<void> remove(String id) {
-    print(doc.path + "botijoes" + id);
     return firestore
         .doc(doc.path + "/botijoes/" + id)
         .delete()
@@ -37,8 +36,12 @@ class BotijaoRepository implements IRepositoryBotijao {
   }
 
   @override
-  Future<bool> update(Botijao obj) {
-    throw UnimplementedError();
+  Future<void> update(Botijao obj) {
+    return firestore
+        .doc(doc.path + "/botijoes/" + obj.idBot)
+        .update({'volAtual': obj.volAtual})
+        .then((value) => print("Volume atualizado"))
+        .catchError((error) => print("Failed to delete botijao: $error"));
   }
 
   @override

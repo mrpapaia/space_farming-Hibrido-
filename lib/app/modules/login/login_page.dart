@@ -29,8 +29,9 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
       Duration(seconds: 1),
       (Timer timer) => setState(
         () {
-          if (controller.farm.data != null) {
-            controller.isSuccefull(controller.farm.data[0].ref);
+          if (controller.farm.data != null && controller.user.data != null) {
+            controller.isSuccefull(
+                controller.farm.data[0].ref, controller.user.data[0]);
             timer.cancel();
           }
         },
@@ -42,6 +43,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width - 30;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Color.fromRGBO(229, 231, 236, 1.0),
       body: Column(
         children: <Widget>[
@@ -57,6 +59,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
             builder: (BuildContext context) {
               try {
                 controller.farm.data;
+                controller.user.data;
 
                 return Center(child: CircularProgressIndicator());
               } catch (NoSuchMethodError) {
@@ -66,12 +69,12 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                       child: ContainerBase(
                         height: 180,
                         componets: [
-                          TextFormField(
+                          TextField(
                             onChanged: controller.getEmail,
                             obscureText: false,
-                            keyboardType: TextInputType.text,
+                            keyboardType: TextInputType.emailAddress,
                             cursorColor: Colors.red,
-                            validator: controller.valideteEmail,
+                            //validator: controller.valideteEmail,
                             style: TextStyle(
                               fontFamily: 'Robot',
                               fontSize: 18,

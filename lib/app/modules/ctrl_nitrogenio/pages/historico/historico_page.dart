@@ -60,13 +60,18 @@ class _HistoricoPageState
                       );
                     }),
                     Observer(builder: (BuildContext context) {
-                      if (controller.listHistAbastecimento.data == null) {
+                      try {
+                        if (controller.listHistAbastecimento.data != null) {
+                          return HistoricoAbastecimentoComponent(
+                            list: controller.listHistAbastecimento.data,
+                            botijao: widget.bot,
+                          );
+                        } else {
+                          return CircularProgressIndicator();
+                        }
+                      } catch (NoSuchMethodError) {
                         return CircularProgressIndicator();
                       }
-                      return HistoricoAbastecimentoComponent(
-                        list: controller.listHistAbastecimento.data,
-                        botijao: widget.bot,
-                      );
                     }),
                   ],
                 ),

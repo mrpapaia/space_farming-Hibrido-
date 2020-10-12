@@ -28,7 +28,7 @@ class HistoricoNivel {
     return {
       'respon': respon,
       'qtdAtual': qtdAtual,
-      'data': data?.millisecondsSinceEpoch,
+      'data': Timestamp.fromDate(data),
     };
   }
 

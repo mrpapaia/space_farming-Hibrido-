@@ -6,17 +6,16 @@ import 'package:space_farming_modular/app/modules/home/components/secondaryAppBa
 import 'package:space_farming_modular/app/shared/components/nav_draw.dart';
 import 'package:space_farming_modular/app/shared/components/titleOfScreen.dart';
 import 'package:space_farming_modular/app/shared/models/botijao.dart';
+import 'package:space_farming_modular/app/shared/models/user.dart';
 
 import 'home_info_bot_controller.dart';
 
 class HomeInfoBotPage extends StatefulWidget {
   final String title;
   Botijao botijao;
-  HomeInfoBotPage({
-    Key key,
-    this.title,
-    this.botijao,
-  }) : super(key: key);
+  User user;
+  HomeInfoBotPage({Key key, this.title, this.botijao, this.user})
+      : super(key: key);
 
   @override
   _HomeInfoBotPageState createState() => _HomeInfoBotPageState();
@@ -59,54 +58,74 @@ class _HomeInfoBotPageState
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          Observer(builder: (BuildContext context) {
-            return Center(
-              child: Container(
-                child: Center(
-                  child: Text(
-                    "Botijão ${widget.botijao.idBot}",
-                    style: TextStyle(
-                      fontFamily: "Robot",
-                      fontSize: 35,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.red,
-                    ),
+          Center(
+            child: Container(
+              child: Center(
+                child: Text(
+                  "Botijão ${widget.botijao.idBot}",
+                  style: TextStyle(
+                    fontFamily: "Robot",
+                    fontSize: 35,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.red,
                   ),
                 ),
-                width: _width - 100,
-                padding: EdgeInsets.all(5.0),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  color: Colors.white,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.2),
-                      spreadRadius: 0,
-                      offset: Offset(5, 5),
-                    )
-                  ],
-                ),
               ),
-            );
-          }),
-          Container(
-            child: Image(
-              image: AssetImage(imgSrc),
-            ),
-            width: _width - 30,
-            padding: EdgeInsets.all(5.0),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.2),
-                  spreadRadius: 0,
-                  offset: Offset(5, 5),
-                )
-              ],
+              width: _width - 100,
+              padding: EdgeInsets.all(5.0),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.2),
+                    spreadRadius: 0,
+                    offset: Offset(5, 5),
+                  )
+                ],
+              ),
             ),
           ),
+          Observer(builder: (_) {
+            try {
+              if (controller.listCanecas.data != null) {
+                return InkWell(
+                  child: Container(
+                    child: Image(
+                      image: AssetImage(imgSrc),
+                    ),
+                    width: _width - 30,
+                    padding: EdgeInsets.all(5.0),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.2),
+                          spreadRadius: 0,
+                          offset: Offset(5, 5),
+                        )
+                      ],
+                    ),
+                  ),
+                  onTap: () {
+                    Modular.to.pushNamed('/rack', arguments: [
+                      controller.listCanecas.data[0],
+                      widget.user
+                    ]);
+                  },
+                );
+              } else {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+            } catch (NoSuchMethodError) {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+          }),
           TitleOfScreen(
             title: "Régua",
             font: "Revalia",
@@ -121,26 +140,26 @@ class _HomeInfoBotPageState
                       image: AssetImage("lib/app/shared/graphics/regua.png"),
                     ),
                     onTap: () {
-                      Modular.to.pushNamed('/ctrl', arguments: widget.botijao);
+                      Modular.to.pushNamed('/ctrl',
+                          arguments: [widget.botijao, widget.user]);
                     },
                   ),
                   SliderTheme(
                     data: SliderTheme.of(context).copyWith(
                       activeTrackColor: Colors.transparent,
                       inactiveTrackColor: Colors.transparent,
-                      trackShape: RectangularSliderTrackShape(),
-                      trackHeight: 5.0,
                       thumbColor: Colors.black,
                       thumbShape: RoundSliderThumbShape(
-                        enabledThumbRadius: 5,
+                        enabledThumbRadius: 10,
                       ),
                       overlayColor: Colors.red.withAlpha(0),
-                      overlayShape: RoundSliderOverlayShape(overlayRadius: 3.0),
+                      overlayShape:
+                          RoundSliderOverlayShape(overlayRadius: 25.0),
                     ),
                     child: Slider(
-                      value: 0,
+                      value: widget.botijao.volAtual,
                       min: 0,
-                      max: 100,
+                      max: 45,
                       onChanged: (value) {
                         value = value;
                       },

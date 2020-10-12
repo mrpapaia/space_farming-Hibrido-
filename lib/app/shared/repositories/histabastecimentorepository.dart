@@ -8,14 +8,17 @@ class HistoricoAbastecimentoRepository
   DocumentReference doc;
   HistoricoAbastecimentoRepository(this.firestore, this.doc);
   @override
-  Future<bool> add(HistoricoAbastecimento histNivel) {
-    // TODO: implement add
-    throw UnimplementedError();
+  Future<void> add(HistoricoAbastecimento histNivel) {
+    return firestore
+        .doc(this.doc.path)
+        .collection("recarga")
+        .add(histNivel.toMap())
+        .then((value) => print("SUcesso"))
+        .catchError((error) => print("Failed to delete botijao: $error"));
   }
 
   @override
   Stream<List<HistoricoAbastecimento>> list() {
-    print("Abastecimento" + this.doc.toString());
     return firestore
         .doc(this.doc.path)
         .collection("recarga")
@@ -28,13 +31,13 @@ class HistoricoAbastecimentoRepository
   }
 
   @override
-  Future<bool> remove(String id) {
+  Future<void> remove(String id) {
     // TODO: implement remove
     throw UnimplementedError();
   }
 
   @override
-  Future<bool> update(HistoricoAbastecimento obj) {
+  Future<void> update(HistoricoAbastecimento obj) {
     // TODO: implement update
     throw UnimplementedError();
   }

@@ -24,8 +24,8 @@ abstract class _HistoricoControllerBase with Store {
 
   _HistoricoControllerBase(
       this.repositoryHistNivel, this.repositoryHistAbastecimento) {
-    getHistoricoNivel();
     getHistoricoAbastecimento();
+    getHistoricoNivel();
   }
 
   @action

@@ -30,6 +30,7 @@ class _HomeBotCreatePageState
     List<String> items = ["1", "2", "3", "4", "5", "6"];
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Color.fromRGBO(229, 231, 236, 1.0),
       appBar: PreferredSize(
         preferredSize: Size(double.infinity, 100),
@@ -218,7 +219,7 @@ class _HomeBotCreatePageState
                 ButtonCustom(
                   text: "Confirmar",
                   onclick: () {
-                    controller.remove("10");
+                    //controller.update();
                     Navigator.pop(context);
                   },
                   width: 148.0,

@@ -9,17 +9,15 @@ import 'package:space_farming_modular/app/modules/home/components/gridViewList.d
 import 'package:space_farming_modular/app/shared/components/nav_draw.dart';
 import 'package:space_farming_modular/app/shared/components/titleOfScreen.dart';
 import 'package:space_farming_modular/app/shared/models/botijao.dart';
+import 'package:space_farming_modular/app/shared/models/user.dart';
 
 import 'home_controller.dart';
 
 class HomePage extends StatefulWidget {
   final String title;
   DocumentReference doc;
-  HomePage({
-    Key key,
-    this.title,
-    this.doc,
-  }) : super(key: key);
+  User user;
+  HomePage({Key key, this.title, this.doc, this.user}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -30,7 +28,9 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromRGBO(229, 231, 236, 1.0),
-      drawer: NavigationDrawer(),
+      drawer: NavigationDrawer(
+        user: widget.user,
+      ),
       appBar: PreferredSize(
         preferredSize: Size(double.infinity, 100),
         child: HomeAppBar(),
@@ -47,16 +47,22 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
             child: Observer(
               builder: (BuildContext context) {
                 try {
-                  var length = controller.listBot.data.length;
+                  if (controller.listBot.data.length != null) {
+                    List<Botijao> botijoes = controller.listBot.data;
+                    return GridViewList(
+                      listBotijao: botijoes,
+                      user: widget.user,
+                    );
+                  } else {
+                    return Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
                 } catch (NoSuchMethodError) {
                   return Center(
                     child: CircularProgressIndicator(),
                   );
                 }
-                List<Botijao> botijoes = controller.listBot.data;
-                return GridViewList(
-                  listBotijao: botijoes,
-                );
               },
             ),
           ),

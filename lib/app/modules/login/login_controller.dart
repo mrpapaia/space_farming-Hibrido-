@@ -36,8 +36,8 @@ abstract class _LoginControllerBase with Store {
   }
 
   @action
-  isSuccefull(DocumentReference doc) {
-    Modular.to.pushNamed('/home', arguments: doc);
+  isSuccefull(DocumentReference doc, User user) {
+    Modular.to.pushNamed('/home', arguments: [doc, user]);
   }
 
   @action

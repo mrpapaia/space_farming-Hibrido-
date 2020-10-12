@@ -29,6 +29,9 @@ class _HistoricoAbastecimentoComponentState
       itemBuilder: (context, index) {
         return Column(
           children: [
+            SizedBox(
+              height: 20,
+            ),
             ContainerBase(componets: [
               Center(
                 child: Text(
@@ -43,7 +46,7 @@ class _HistoricoAbastecimentoComponentState
               ),
             ]),
             SizedBox(
-              height: 20,
+              height: 10,
             ),
             ContainerBase(componets: [
               Row(
@@ -129,7 +132,8 @@ class _HistoricoAbastecimentoComponentState
                 height: 5,
               ),
               TextCustom(
-                text: "${widget.list[index].data}",
+                text:
+                    "${widget.list[index].data.day}/${widget.list[index].data.month}/${widget.list[index].data.year}",
                 fontSize: 14,
               ),
               SizedBox(

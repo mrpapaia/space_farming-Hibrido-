@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:space_farming_modular/app/modules/home/components/secondaryAppBar.dart';
 import 'package:space_farming_modular/app/shared/components/button.dart';
 import 'package:space_farming_modular/app/shared/components/nav_draw.dart';
 import 'package:space_farming_modular/app/shared/components/titleOfScreen.dart';
 import 'package:space_farming_modular/app/shared/models/botijao.dart';
+import 'package:space_farming_modular/app/shared/models/user.dart';
 
 import 'ctrl_nitrogenio_controller.dart';
 
 class CtrlNitrogenioPage extends StatefulWidget {
   final String title;
   Botijao botijao;
+  User user;
 
-  CtrlNitrogenioPage({
-    Key key,
-    this.title,
-    this.botijao,
-  }) : super(key: key);
+  CtrlNitrogenioPage({Key key, this.title, this.botijao, this.user})
+      : super(key: key);
 
   @override
   _CtrlNitrogenioPageState createState() => _CtrlNitrogenioPageState();
@@ -50,15 +50,17 @@ class _CtrlNitrogenioPageState
           Center(
             child: Container(
               child: Center(
-                child: Text(
-                  "${widget.botijao.volAtual}",
-                  style: TextStyle(
-                    fontFamily: 'Robot',
-                    fontSize: 96,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.red,
-                  ),
-                ),
+                child: Observer(builder: (_) {
+                  return Text(
+                    "${widget.botijao.volAtual}",
+                    style: TextStyle(
+                      fontFamily: 'Robot',
+                      fontSize: 96,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.red,
+                    ),
+                  );
+                }),
               ),
               width: _width - 30,
               padding: EdgeInsets.all(5.0),
@@ -81,22 +83,24 @@ class _CtrlNitrogenioPageState
               ButtonCustom(
                 text: "Medir Nivel",
                 onclick: () {
-                  Modular.to.pushNamed('/ctrl/medirNivel');
+                  Modular.to.pushNamed('/ctrl/medirNivel',
+                      arguments: [widget.botijao, widget.user]);
                 },
                 width: 309.0,
               ),
               ButtonCustom(
                 text: "Abastecer",
                 onclick: () {
-                  Modular.to.pushNamed('/ctrl/abastecer');
+                  Modular.to.pushNamed('/ctrl/abastecer',
+                      arguments: [widget.botijao, widget.user]);
                 },
                 width: 309.0,
               ),
               ButtonCustom(
                 text: "Hístorico do botijão",
                 onclick: () {
-                  Modular.to
-                      .pushNamed('/ctrl/historico', arguments: widget.botijao);
+                  Modular.to.pushNamed('/ctrl/historico',
+                      arguments: [widget.botijao, null]);
                 },
                 width: 309.0,
               ),

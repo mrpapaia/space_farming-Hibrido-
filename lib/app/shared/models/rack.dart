@@ -1,17 +1,19 @@
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class Rack {
   String idTouro;
   String tipo;
   double volume;
-  int doseUP;
+  int doseUp;
   int doseDown;
 
   Rack({
     this.idTouro,
     this.tipo,
     this.volume,
-    this.doseUP,
+    this.doseUp,
     this.doseDown,
   });
 
@@ -20,17 +22,19 @@ class Rack {
       'idTouro': idTouro,
       'tipo': tipo,
       'volume': volume,
-      'doseUP': doseUP,
+      'doseUP': doseUp,
       'doseDown': doseDown,
     };
   }
 
-  Rack.fromMap(Map<String, dynamic> map) {
-    this.idTouro = map['idTouro'];
-    this.tipo = map['tipo'];
-    this.volume = map['volume'];
-    this.doseUP = map['doseUP'];
-    this.doseDown = map['doseDown'];
+  factory Rack.fromMap(DocumentSnapshot doc) {
+    return Rack(
+      idTouro: doc.data()['idTouro'],
+      tipo: doc.data()['tipo'],
+      volume: doc.data()['volume'],
+      doseUp: doc.data()['doseUp'],
+      doseDown: doc.data()['doseDown'],
+    );
   }
 
   String toJson() => json.encode(toMap());
@@ -39,6 +43,6 @@ class Rack {
 
   @override
   String toString() {
-    return 'Rack(idTouro: $idTouro, tipo: $tipo, volume: $volume, doseUP: $doseUP, doseDown: $doseDown)';
+    return 'Rack(idTouro: $idTouro, tipo: $tipo, volume: $volume, doseUp: $doseUp, doseDown: $doseDown)';
   }
 }

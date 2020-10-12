@@ -6,12 +6,16 @@ import 'package:space_farming_modular/app/shared/components/containerBase.dart';
 import 'package:space_farming_modular/app/shared/components/editText.dart';
 import 'package:space_farming_modular/app/shared/components/nav_draw.dart';
 import 'package:space_farming_modular/app/shared/components/titleOfScreen.dart';
+import 'package:space_farming_modular/app/shared/models/botijao.dart';
+import 'package:space_farming_modular/app/shared/models/user.dart';
 import 'abastecer_controller.dart';
 
 class AbastecerPage extends StatefulWidget {
   final String title;
-  const AbastecerPage({Key key, this.title = "Abastecer"}) : super(key: key);
-
+  AbastecerPage({Key key, this.title = "Abastecer", this.user, this.botijao})
+      : super(key: key);
+  User user;
+  Botijao botijao;
   @override
   _AbastecerPageState createState() => _AbastecerPageState();
 }
@@ -23,6 +27,7 @@ class _AbastecerPageState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: PreferredSize(
           preferredSize: Size(
             double.infinity,
@@ -40,31 +45,10 @@ class _AbastecerPageState
               font: "Revalia",
               fontSize: 32,
             ),
-            TitleOfScreen(
-              title: "Responsavel",
-              font: "Robot",
-              fontSize: 32,
-            ),
             SizedBox(
               height: 10,
             ),
-            ContainerBase(
-              componets: <Widget>[
-                EditText(
-                    hint: "Nome", icon: Icon(Icons.person, color: Colors.red)),
-                EditText(
-                    hint: "E-mail", icon: Icon(Icons.email, color: Colors.red)),
-                EditText(
-                    hint: "Telefone",
-                    icon: Icon(Icons.phone, color: Colors.red)),
-                SizedBox(
-                  height: 10,
-                )
-              ],
-            ),
-            SizedBox(
-              height: 10,
-            ),
+            /*
             TitleOfScreen(
               title: "Fornecedor",
               font: "Robot",
@@ -88,7 +72,7 @@ class _AbastecerPageState
             ]),
             SizedBox(
               height: 10,
-            ),
+            ),*/
             TitleOfScreen(
               title: "Nitrogênio",
               font: "Robot",
@@ -99,14 +83,70 @@ class _AbastecerPageState
             ),
             ContainerBase(
               componets: <Widget>[
-                EditText(
-                    hint: "Nível", icon: Icon(Icons.poll, color: Colors.red)),
-                EditText(
-                    hint: "Data",
-                    icon: Icon(Icons.calendar_today, color: Colors.red)),
-                EditText(
-                    hint: "Preço",
-                    icon: Icon(Icons.attach_money, color: Colors.red)),
+                TextField(
+                  onChanged: controller.getVol,
+                  obscureText: false,
+                  keyboardType: TextInputType.number,
+                  cursorColor: Colors.red,
+                  style: TextStyle(
+                    fontFamily: 'Robot',
+                    fontSize: 18,
+                    color: Color.fromRGBO(113, 111, 137, 1.0),
+                  ),
+                  decoration: InputDecoration(
+                    icon: Icon(Icons.poll, color: Colors.red),
+                    hintStyle: TextStyle(
+                      fontFamily: 'Robot',
+                      fontSize: 18,
+                      color: Color.fromRGBO(113, 111, 137, 1.0),
+                    ),
+                    labelText: "Nível",
+                    labelStyle: TextStyle(),
+                  ),
+                ),
+                TextField(
+                  controller: controller.txt,
+                  onChanged: controller.getData,
+                  obscureText: false,
+                  keyboardType: TextInputType.datetime,
+                  cursorColor: Colors.red,
+                  style: TextStyle(
+                    fontFamily: 'Robot',
+                    fontSize: 18,
+                    color: Color.fromRGBO(113, 111, 137, 1.0),
+                  ),
+                  decoration: InputDecoration(
+                    icon: Icon(Icons.calendar_today, color: Colors.red),
+                    hintStyle: TextStyle(
+                      fontFamily: 'Robot',
+                      fontSize: 18,
+                      color: Color.fromRGBO(113, 111, 137, 1.0),
+                    ),
+                    labelText: "Data",
+                    labelStyle: TextStyle(),
+                  ),
+                ),
+                TextField(
+                  onChanged: controller.getPreco,
+                  obscureText: false,
+                  keyboardType: TextInputType.number,
+                  cursorColor: Colors.red,
+                  style: TextStyle(
+                    fontFamily: 'Robot',
+                    fontSize: 18,
+                    color: Color.fromRGBO(113, 111, 137, 1.0),
+                  ),
+                  decoration: InputDecoration(
+                    icon: Icon(Icons.attach_money, color: Colors.red),
+                    hintStyle: TextStyle(
+                      fontFamily: 'Robot',
+                      fontSize: 18,
+                      color: Color.fromRGBO(113, 111, 137, 1.0),
+                    ),
+                    labelText: "Preço",
+                    labelStyle: TextStyle(),
+                  ),
+                ),
                 SizedBox(
                   height: 10,
                 )
@@ -123,6 +163,8 @@ class _AbastecerPageState
                   ButtonCustom(
                     text: "Confirmar",
                     onclick: () {
+                      controller.update(widget.botijao.idBot,
+                          widget.botijao.volAtual, widget.user);
                       Navigator.pop(context);
                     },
                     width: 148.0,

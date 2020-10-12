@@ -22,19 +22,23 @@ class HistoricoNivelRepository implements IRepositoryHistoricoNivel {
   }
 
   @override
-  Future<bool> add(HistoricoNivel histNivel) {
-    // TODO: implement add
-    throw UnimplementedError();
+  Future<void> add(HistoricoNivel histNivel) {
+    return firestore
+        .doc(this.doc.path)
+        .collection("existente")
+        .add(histNivel.toMap())
+        .then((value) => print("SUcesso"))
+        .catchError((error) => print("Failed to delete botijao: $error"));
   }
 
   @override
-  Future<bool> remove(String id) {
+  Future<void> remove(String id) {
     // TODO: implement remove
     throw UnimplementedError();
   }
 
   @override
-  Future<bool> update(HistoricoNivel obj) {
+  Future<void> update(HistoricoNivel obj) {
     // TODO: implement update
     throw UnimplementedError();
   }

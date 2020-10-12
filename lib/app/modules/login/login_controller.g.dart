@@ -94,11 +94,11 @@ mixin _$LoginController on _LoginControllerBase, Store {
   }
 
   @override
-  dynamic isSuccefull(DocumentReference doc) {
+  dynamic isSuccefull(DocumentReference doc, User user) {
     final _$actionInfo = _$_LoginControllerBaseActionController.startAction(
         name: '_LoginControllerBase.isSuccefull');
     try {
-      return super.isSuccefull(doc);
+      return super.isSuccefull(doc, user);
     } finally {
       _$_LoginControllerBaseActionController.endAction(_$actionInfo);
     }

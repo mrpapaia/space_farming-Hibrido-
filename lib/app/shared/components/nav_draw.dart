@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
 
+import 'package:space_farming_modular/app/shared/models/user.dart';
+
 import 'my_icons_icons.dart';
 
 class NavigationDrawer extends StatelessWidget {
+  final User user;
+  const NavigationDrawer({
+    Key key,
+    this.user,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -11,8 +19,8 @@ class NavigationDrawer extends StatelessWidget {
         child: ListView(
           children: [
             UserAccountsDrawerHeader(
-              accountName: Text("User"),
-              accountEmail: Text("user@mail.com"),
+              accountName: Text(user.nome),
+              accountEmail: Text(user.email),
               currentAccountPicture: CircleAvatar(
                 backgroundColor: Colors.white,
                 child: Text(

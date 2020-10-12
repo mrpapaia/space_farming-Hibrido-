@@ -8,6 +8,8 @@ import 'package:space_farming_modular/app/shared/repositories/botijaorepository.
 import 'package:space_farming_modular/app/shared/repositories/canecasrepository.dart';
 import 'package:space_farming_modular/app/shared/repositories/interfaces/irepositorybotijao.dart';
 import 'package:space_farming_modular/app/shared/repositories/interfaces/irepositorycanecas.dart';
+import 'package:space_farming_modular/app/shared/repositories/interfaces/irepositoryrack.dart';
+import 'package:space_farming_modular/app/shared/repositories/rackrepository.dart';
 
 import 'home_controller.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -21,9 +23,9 @@ class HomeModule extends ChildModule {
       Bind((i) => HomeController(i.get())),
       Bind((i) => HomeInfoBotController(i.get())),
       Bind<IRepositoryBotijao>(
-          (i) => BotijaoRepository(FirebaseFirestore.instance, i.args.data)),
+          (i) => BotijaoRepository(FirebaseFirestore.instance, i.args.data[0])),
       Bind<IRepositoryCanecas>((i) =>
-          CanecasRepository(FirebaseFirestore.instance, i.args.data.ref)),
+          CanecasRepository(FirebaseFirestore.instance, i.args.data[0].ref)),
       Bind((i) => HomeBotCreateController(i.get())),
     ];
   }
@@ -32,12 +34,12 @@ class HomeModule extends ChildModule {
   List<ModularRouter> get routers => [
         ModularRouter(Modular.initialRoute,
             child: (_, args) => HomePage(
-                  doc: args.data,
+                  doc: args.data[0],
+                  user: args.data[1],
                 )),
         ModularRouter("/info",
-            child: (_, args) => HomeInfoBotPage(
-                  botijao: args.data,
-                )),
+            child: (_, args) =>
+                HomeInfoBotPage(botijao: args.data[0], user: args.data[1])),
         ModularRouter("/add", child: (_, args) => HomeBotCreatePage()),
       ];
 

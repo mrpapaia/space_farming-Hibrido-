@@ -3,13 +3,12 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/src/api/async.dart';
 import 'package:space_farming_modular/app/shared/models/botijao.dart';
 import 'package:space_farming_modular/app/shared/models/farm.dart';
+import 'package:space_farming_modular/app/shared/models/user.dart';
 
 class GridViewList extends StatefulWidget {
   List<Botijao> listBotijao;
-  GridViewList({
-    Key key,
-    this.listBotijao,
-  }) : super(key: key);
+  User user;
+  GridViewList({Key key, this.listBotijao, this.user}) : super(key: key);
 
   @override
   _GridViewListState createState() => _GridViewListState();
@@ -86,7 +85,7 @@ class _GridViewListState extends State<GridViewList> {
             ),
             onTap: () {
               Modular.to.pushNamed('/home/info',
-                  arguments: widget.listBotijao[index]);
+                  arguments: [widget.listBotijao[index], widget.user]);
             },
           );
         },

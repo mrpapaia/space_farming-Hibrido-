@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:space_farming_modular/app/modules/ctrl_nitrogenio/ctrl_nitrogenio_module.dart';
+import 'package:space_farming_modular/app/modules/ctrl_racks/ctrl_racks_module.dart';
 
 import 'package:space_farming_modular/app/modules/login/login_module.dart';
 
@@ -22,6 +23,7 @@ class AppModule extends MainModule {
         ModularRouter(Modular.initialRoute, module: LoginModule()),
         ModularRouter("/home", module: HomeModule()),
         ModularRouter("/ctrl", module: CtrlNitrogenioModule()),
+        ModularRouter("/rack", module: CtrlRacksModule()),
       ];
 
   @override

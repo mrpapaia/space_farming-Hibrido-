@@ -1,8 +1,8 @@
 import 'package:space_farming_modular/app/shared/models/user.dart';
 
 abstract class IRepositoryUser {
-  Future<bool> add(User farm);
-  Future<bool> remove(User id);
-  Future<bool> update(User obj);
+  Future<void> add(User farm);
+  Future<void> remove(User id);
+  Future<void> update(User obj);
   Stream<List<User>> list(String email);
 }

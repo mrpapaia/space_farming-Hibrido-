@@ -35,10 +35,10 @@ class HistoricoAbastecimento {
   Map<String, dynamic> toMap() {
     return {
       'respon': respon,
-      'qtdAtual': qtdAtual,
+      'qtdAnt': qtdAtual,
       'qtdAdd': qtdAdd,
       'preco': preco,
-      'data': data?.millisecondsSinceEpoch,
+      'data': Timestamp.fromDate(data),
     };
   }
 

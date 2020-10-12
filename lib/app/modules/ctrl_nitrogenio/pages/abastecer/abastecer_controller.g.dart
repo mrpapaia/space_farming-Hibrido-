@@ -7,7 +7,8 @@ part of 'abastecer_controller.dart';
 // **************************************************************************
 
 final $AbastecerController = BindInject(
-  (i) => AbastecerController(),
+  (i) => AbastecerController(
+      i<IRepositoryHistoricoAbastecimento>(), i<IRepositoryBotijao>()),
   singleton: true,
   lazy: true,
 );
@@ -19,18 +20,48 @@ final $AbastecerController = BindInject(
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$AbastecerController on _AbastecerControllerBase, Store {
-  final _$valueAtom = Atom(name: '_AbastecerControllerBase.value');
+  final _$volAtualAtom = Atom(name: '_AbastecerControllerBase.volAtual');
 
   @override
-  int get value {
-    _$valueAtom.reportRead();
-    return super.value;
+  double get volAtual {
+    _$volAtualAtom.reportRead();
+    return super.volAtual;
   }
 
   @override
-  set value(int value) {
-    _$valueAtom.reportWrite(value, super.value, () {
-      super.value = value;
+  set volAtual(double value) {
+    _$volAtualAtom.reportWrite(value, super.volAtual, () {
+      super.volAtual = value;
+    });
+  }
+
+  final _$precoAtom = Atom(name: '_AbastecerControllerBase.preco');
+
+  @override
+  double get preco {
+    _$precoAtom.reportRead();
+    return super.preco;
+  }
+
+  @override
+  set preco(double value) {
+    _$precoAtom.reportWrite(value, super.preco, () {
+      super.preco = value;
+    });
+  }
+
+  final _$dataAtom = Atom(name: '_AbastecerControllerBase.data');
+
+  @override
+  DateTime get data {
+    _$dataAtom.reportRead();
+    return super.data;
+  }
+
+  @override
+  set data(DateTime value) {
+    _$dataAtom.reportWrite(value, super.data, () {
+      super.data = value;
     });
   }
 
@@ -38,11 +69,44 @@ mixin _$AbastecerController on _AbastecerControllerBase, Store {
       ActionController(name: '_AbastecerControllerBase');
 
   @override
-  void increment() {
+  dynamic getVol(String vol) {
     final _$actionInfo = _$_AbastecerControllerBaseActionController.startAction(
-        name: '_AbastecerControllerBase.increment');
+        name: '_AbastecerControllerBase.getVol');
     try {
-      return super.increment();
+      return super.getVol(vol);
+    } finally {
+      _$_AbastecerControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic getData(String data) {
+    final _$actionInfo = _$_AbastecerControllerBaseActionController.startAction(
+        name: '_AbastecerControllerBase.getData');
+    try {
+      return super.getData(data);
+    } finally {
+      _$_AbastecerControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic getPreco(String preco) {
+    final _$actionInfo = _$_AbastecerControllerBaseActionController.startAction(
+        name: '_AbastecerControllerBase.getPreco');
+    try {
+      return super.getPreco(preco);
+    } finally {
+      _$_AbastecerControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic update(String id, double vol, User user) {
+    final _$actionInfo = _$_AbastecerControllerBaseActionController.startAction(
+        name: '_AbastecerControllerBase.update');
+    try {
+      return super.update(id, vol, user);
     } finally {
       _$_AbastecerControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -51,7 +115,9 @@ mixin _$AbastecerController on _AbastecerControllerBase, Store {
   @override
   String toString() {
     return '''
-value: ${value}
+volAtual: ${volAtual},
+preco: ${preco},
+data: ${data}
     ''';
   }
 }
