@@ -76,7 +76,7 @@ mixin _$MedirNivelController on _MedirNivelControllerBase, Store {
   }
 
   @override
-  dynamic update(String id, User user) {
+  dynamic update(String id, UserP user) {
     final _$actionInfo = _$_MedirNivelControllerBaseActionController
         .startAction(name: '_MedirNivelControllerBase.update');
     try {

@@ -35,7 +35,7 @@ class HomeModule extends ChildModule {
         ModularRouter(Modular.initialRoute,
             child: (_, args) => HomePage(
                   doc: args.data[0],
-                  user: args.data[1],
+                  userP: args.data[1],
                 )),
         ModularRouter("/info",
             child: (_, args) =>

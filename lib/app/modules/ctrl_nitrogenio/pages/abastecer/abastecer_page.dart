@@ -14,7 +14,7 @@ class AbastecerPage extends StatefulWidget {
   final String title;
   AbastecerPage({Key key, this.title = "Abastecer", this.user, this.botijao})
       : super(key: key);
-  User user;
+  UserP user;
   Botijao botijao;
   @override
   _AbastecerPageState createState() => _AbastecerPageState();

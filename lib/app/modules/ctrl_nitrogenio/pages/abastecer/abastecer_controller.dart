@@ -44,7 +44,7 @@ abstract class _AbastecerControllerBase with Store {
   @action
   getPreco(String preco) => this.preco = double.parse(preco);
   @action
-  update(String id, double vol, User user) {
+  update(String id, double vol, UserP user) {
     repositoryBotijao.update(new Botijao(idBot: id, volAtual: vol + volAtual));
     repositoryHist.add(new HistoricoAbastecimento(
         respon: user.nome,

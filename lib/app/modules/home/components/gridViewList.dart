@@ -7,7 +7,7 @@ import 'package:space_farming_modular/app/shared/models/user.dart';
 
 class GridViewList extends StatefulWidget {
   List<Botijao> listBotijao;
-  User user;
+  UserP user;
   GridViewList({Key key, this.listBotijao, this.user}) : super(key: key);
 
   @override

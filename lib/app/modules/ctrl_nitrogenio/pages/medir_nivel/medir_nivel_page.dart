@@ -14,7 +14,7 @@ class MedirNivelPage extends StatefulWidget {
   final String title;
   MedirNivelPage({Key key, this.title = "MedirNivel", this.user, this.botijao})
       : super(key: key);
-  User user;
+  UserP user;
   Botijao botijao;
 
   @override

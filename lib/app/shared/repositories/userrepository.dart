@@ -2,36 +2,37 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:space_farming_modular/app/shared/models/user.dart';
 import 'package:space_farming_modular/app/shared/repositories/interfaces/irepositoryuser.dart';
 
-class UserRepository implements IRepositoryUser {
+class UserPRepository implements IRepositoryUserP {
   FirebaseFirestore firestore;
-  UserRepository(this.firestore);
+  UserPRepository(this.firestore);
   @override
-  Future<bool> add(User farm) {
+  Future<bool> add(UserP farm) {
     // TODO: implement add
     throw UnimplementedError();
   }
 
   @override
-  Stream<List<User>> list(String email) {
+  Stream<List<UserP>> list(String email) {
     return firestore
         .collection('users')
         .where('email', isEqualTo: email)
         .snapshots()
         .map((query) {
       return query.docs.map((doc) {
-        return User.fromMap(doc);
+        print("doc:" + doc.data().toString());
+        return UserP.fromMap(doc);
       }).toList();
     });
   }
 
   @override
-  Future<bool> remove(User id) {
+  Future<bool> remove(UserP id) {
     // TODO: implement remove
     throw UnimplementedError();
   }
 
   @override
-  Future<bool> update(User obj) {
+  Future<bool> update(UserP obj) {
     // TODO: implement update
     throw UnimplementedError();
   }

@@ -14,7 +14,7 @@ class CtrlRacksPage extends StatefulWidget {
   CtrlRacksPage({Key key, this.title = "CtrlRacks", this.doc, this.user})
       : super(key: key);
   DocumentReference doc;
-  User user;
+  UserP user;
 
   @override
   _CtrlRacksPageState createState() => _CtrlRacksPageState();

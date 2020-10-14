@@ -16,8 +16,8 @@ import 'home_controller.dart';
 class HomePage extends StatefulWidget {
   final String title;
   DocumentReference doc;
-  User user;
-  HomePage({Key key, this.title, this.doc, this.user}) : super(key: key);
+  UserP userP;
+  HomePage({Key key, this.title, this.doc, this.userP}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -29,7 +29,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
     return Scaffold(
       backgroundColor: Color.fromRGBO(229, 231, 236, 1.0),
       drawer: NavigationDrawer(
-        user: widget.user,
+        user: widget.userP,
       ),
       appBar: PreferredSize(
         preferredSize: Size(double.infinity, 100),
@@ -51,7 +51,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                     List<Botijao> botijoes = controller.listBot.data;
                     return GridViewList(
                       listBotijao: botijoes,
-                      user: widget.user,
+                      user: widget.userP,
                     );
                   } else {
                     return Center(

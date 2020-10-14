@@ -13,7 +13,7 @@ import 'home_info_bot_controller.dart';
 class HomeInfoBotPage extends StatefulWidget {
   final String title;
   Botijao botijao;
-  User user;
+  UserP user;
   HomeInfoBotPage({Key key, this.title, this.botijao, this.user})
       : super(key: key);
 
@@ -46,6 +46,7 @@ class _HomeInfoBotPageState
         imgSrc = 'lib/app/shared/graphics/botijao10.png';
         break;
     }
+
     return Scaffold(
       appBar: PreferredSize(
           preferredSize: Size(
@@ -153,8 +154,7 @@ class _HomeInfoBotPageState
                         enabledThumbRadius: 10,
                       ),
                       overlayColor: Colors.red.withAlpha(0),
-                      overlayShape:
-                          RoundSliderOverlayShape(overlayRadius: 25.0),
+                      overlayShape: RoundSliderOverlayShape(overlayRadius: 3.0),
                     ),
                     child: Slider(
                       value: widget.botijao.volAtual,

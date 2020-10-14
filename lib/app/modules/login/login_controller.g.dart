@@ -7,7 +7,7 @@ part of 'login_controller.dart';
 // **************************************************************************
 
 final $LoginController = BindInject(
-  (i) => LoginController(i<IRepositoryFarm>(), i<IRepositoryUser>()),
+  (i) => LoginController(i<IRepositoryFarm>(), i<IRepositoryUserP>()),
   singleton: true,
   lazy: true,
 );
@@ -37,13 +37,13 @@ mixin _$LoginController on _LoginControllerBase, Store {
   final _$userAtom = Atom(name: '_LoginControllerBase.user');
 
   @override
-  ObservableStream<List<User>> get user {
+  ObservableStream<List<UserP>> get user {
     _$userAtom.reportRead();
     return super.user;
   }
 
   @override
-  set user(ObservableStream<List<User>> value) {
+  set user(ObservableStream<List<UserP>> value) {
     _$userAtom.reportWrite(value, super.user, () {
       super.user = value;
     });
@@ -79,22 +79,18 @@ mixin _$LoginController on _LoginControllerBase, Store {
     });
   }
 
+  final _$getUserAsyncAction = AsyncAction('_LoginControllerBase.getUser');
+
+  @override
+  Future<void> getUser(String email) {
+    return _$getUserAsyncAction.run(() => super.getUser(email));
+  }
+
   final _$_LoginControllerBaseActionController =
       ActionController(name: '_LoginControllerBase');
 
   @override
-  dynamic getUser(String email) {
-    final _$actionInfo = _$_LoginControllerBaseActionController.startAction(
-        name: '_LoginControllerBase.getUser');
-    try {
-      return super.getUser(email);
-    } finally {
-      _$_LoginControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  dynamic isSuccefull(DocumentReference doc, User user) {
+  dynamic isSuccefull(DocumentReference doc, UserP user) {
     final _$actionInfo = _$_LoginControllerBaseActionController.startAction(
         name: '_LoginControllerBase.isSuccefull');
     try {

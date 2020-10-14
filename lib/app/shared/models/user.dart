@@ -2,13 +2,13 @@ import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class User {
+class UserP {
   String nome;
   String cpf;
   String tel;
   String email;
   List<String> fazenda;
-  User({
+  UserP({
     this.nome,
     this.cpf,
     this.tel,
@@ -26,8 +26,8 @@ class User {
     };
   }
 
-  factory User.fromMap(DocumentSnapshot doc) {
-    return User(
+  factory UserP.fromMap(DocumentSnapshot doc) {
+    return UserP(
       nome: doc.data()['nome'],
       cpf: doc.data()['cpf'],
       tel: doc.data()['tel'],
@@ -38,10 +38,10 @@ class User {
 
   String toJson() => json.encode(toMap());
 
-  factory User.fromJson(String source) => User.fromMap(json.decode(source));
+  factory UserP.fromJson(String source) => UserP.fromMap(json.decode(source));
 
   @override
   String toString() {
-    return 'User(nome: $nome, cpf: $cpf, tel: $tel, email: $email, fazenda: $fazenda)';
+    return 'UserP(nome: $nome, cpf: $cpf, tel: $tel, email: $email, fazenda: $fazenda)';
   }
 }

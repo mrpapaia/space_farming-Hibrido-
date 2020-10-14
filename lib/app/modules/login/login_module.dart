@@ -15,7 +15,8 @@ class LoginModule extends ChildModule {
     return [
       Bind((i) => LoginController(i.get(), i.get())),
       Bind<IRepositoryFarm>((i) => FarmRepository(FirebaseFirestore.instance)),
-      Bind<IRepositoryUser>((i) => UserRepository(FirebaseFirestore.instance)),
+      Bind<IRepositoryUserP>(
+          (i) => UserPRepository(FirebaseFirestore.instance)),
     ];
   }
 

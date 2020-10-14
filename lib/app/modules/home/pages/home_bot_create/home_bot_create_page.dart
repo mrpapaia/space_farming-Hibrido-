@@ -82,7 +82,7 @@ class _HomeBotCreatePageState
               Observer(builder: (_) {
                 return TextField(
                   onChanged: controller.getVolTotal,
-                  obscureText: true,
+                  obscureText: false,
                   keyboardType: TextInputType.text,
                   cursorColor: Colors.red,
                   style: TextStyle(
@@ -219,7 +219,7 @@ class _HomeBotCreatePageState
                 ButtonCustom(
                   text: "Confirmar",
                   onclick: () {
-                    //controller.update();
+                    controller.addBot();
                     Navigator.pop(context);
                   },
                   width: 148.0,

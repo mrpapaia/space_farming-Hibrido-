@@ -8,7 +8,7 @@ import 'package:space_farming_modular/app/shared/models/user.dart';
 
 class GridViewRacks extends StatefulWidget {
   List<Rack> listRack;
-  User user;
+  UserP user;
   GridViewRacks({Key key, this.listRack, this.user}) : super(key: key);
 
   @override

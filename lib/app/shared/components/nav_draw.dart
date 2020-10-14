@@ -1,11 +1,13 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 import 'package:space_farming_modular/app/shared/models/user.dart';
 
 import 'my_icons_icons.dart';
 
 class NavigationDrawer extends StatelessWidget {
-  final User user;
+  final UserP user;
   const NavigationDrawer({
     Key key,
     this.user,
@@ -24,7 +26,7 @@ class NavigationDrawer extends StatelessWidget {
               currentAccountPicture: CircleAvatar(
                 backgroundColor: Colors.white,
                 child: Text(
-                  "U",
+                  user.email[0].toUpperCase(),
                   style: TextStyle(
                     fontSize: 40,
                   ),
@@ -53,7 +55,10 @@ class NavigationDrawer extends StatelessWidget {
                 color: Colors.red,
               ),
               title: Text("Sair"),
-              onTap: () {},
+              onTap: () {
+                FirebaseAuth.instance.signOut();
+                Modular.to.pushNamed('/');
+              },
             ),
           ],
         ),

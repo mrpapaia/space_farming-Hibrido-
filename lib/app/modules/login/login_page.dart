@@ -1,14 +1,11 @@
 import 'dart:async';
 
-import 'package:flutter/gestures.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:mobx/mobx.dart';
-import 'package:space_farming_modular/app/shared/components/cardEditText.dart';
+import 'package:space_farming_modular/app/shared/components/button.dart';
 import 'package:space_farming_modular/app/shared/components/containerBase.dart';
-import 'package:space_farming_modular/app/shared/components/editText.dart';
-import 'package:space_farming_modular/app/shared/models/user.dart';
 import 'login_controller.dart';
 
 class LoginPage extends StatefulWidget {
@@ -32,6 +29,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
           if (controller.farm.data != null && controller.user.data != null) {
             controller.isSuccefull(
                 controller.farm.data[0].ref, controller.user.data[0]);
+
             timer.cancel();
           }
         },
@@ -60,7 +58,6 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
               try {
                 controller.farm.data;
                 controller.user.data;
-
                 return Center(child: CircularProgressIndicator());
               } catch (NoSuchMethodError) {
                 return Column(
@@ -126,11 +123,33 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
               }
             },
           ),
-          RaisedButton(onPressed: () {
-            controller.getUser(controller.email);
-
-            startTimer();
-          }),
+          SizedBox(
+            height: 10,
+          ),
+          ButtonCustom(
+            text: "Login",
+            width: 309.0,
+            onclick: () async {
+              print(controller.email);
+              print(controller.passwd);
+              try {
+                UserCredential userCredential = await FirebaseAuth.instance
+                    .signInWithEmailAndPassword(
+                        email: controller.email, password: controller.passwd);
+                if (userCredential.user != null) {
+                  print("aqui");
+                  controller.getUser(controller.email);
+                  startTimer();
+                }
+              } on FirebaseAuthException catch (e) {
+                if (e.code == 'user-not-found') {
+                  print('No user found for that email.');
+                } else if (e.code == 'wrong-password') {
+                  print('Wrong password provided for that user.');
+                }
+              }
+            },
+          )
         ],
       ),
     );

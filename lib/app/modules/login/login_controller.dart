@@ -1,5 +1,7 @@
+import 'dart:wasm';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
+
 import 'package:mobx/mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:space_farming_modular/app/shared/models/farm.dart';
@@ -14,12 +16,12 @@ class LoginController = _LoginControllerBase with _$LoginController;
 
 abstract class _LoginControllerBase with Store {
   final IRepositoryFarm farmRepository;
-  final IRepositoryUser userRepository;
+  final IRepositoryUserP userRepository;
 
   @observable
   ObservableStream<List<Farm>> farm;
   @observable
-  ObservableStream<List<User>> user;
+  ObservableStream<List<UserP>> user;
 
   @observable
   String email;
@@ -30,13 +32,13 @@ abstract class _LoginControllerBase with Store {
   _LoginControllerBase(this.farmRepository, this.userRepository);
 
   @action
-  getUser(String email) {
+  Future<void> getUser(String email) async {
     user = userRepository.list(email).asObservable();
     farm = farmRepository.list(email).asObservable();
   }
 
   @action
-  isSuccefull(DocumentReference doc, User user) {
+  isSuccefull(DocumentReference doc, UserP user) {
     Modular.to.pushNamed('/home', arguments: [doc, user]);
   }
 

@@ -102,7 +102,7 @@ mixin _$AbastecerController on _AbastecerControllerBase, Store {
   }
 
   @override
-  dynamic update(String id, double vol, User user) {
+  dynamic update(String id, double vol, UserP user) {
     final _$actionInfo = _$_AbastecerControllerBaseActionController.startAction(
         name: '_AbastecerControllerBase.update');
     try {

@@ -38,7 +38,7 @@ abstract class _MedirNivelControllerBase with Store {
   @action
   getData(String data) => data = this.data.toString();
   @action
-  update(String id, User user) {
+  update(String id, UserP user) {
     repositoryBotijao.update(new Botijao(idBot: id, volAtual: volAtual));
     repositoryHist.add(
         new HistoricoNivel(respon: user.nome, qtdAtual: volAtual, data: data));

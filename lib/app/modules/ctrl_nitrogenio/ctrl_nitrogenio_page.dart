@@ -13,7 +13,7 @@ import 'ctrl_nitrogenio_controller.dart';
 class CtrlNitrogenioPage extends StatefulWidget {
   final String title;
   Botijao botijao;
-  User user;
+  UserP user;
 
   CtrlNitrogenioPage({Key key, this.title, this.botijao, this.user})
       : super(key: key);
