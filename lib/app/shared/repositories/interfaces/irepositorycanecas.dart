@@ -5,5 +5,5 @@ abstract class IRepositoryCanecas {
   Future<bool> add(Caneca farm);
   Future<bool> remove(Caneca id);
   Future<bool> update(Caneca obj);
-  Stream<List<Caneca>> list();
+  Stream<List<Caneca>> list(DocumentReference doc);
 }

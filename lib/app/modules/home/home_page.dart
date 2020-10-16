@@ -9,6 +9,7 @@ import 'package:space_farming_modular/app/modules/home/components/gridViewList.d
 import 'package:space_farming_modular/app/shared/components/nav_draw.dart';
 import 'package:space_farming_modular/app/shared/components/titleOfScreen.dart';
 import 'package:space_farming_modular/app/shared/models/botijao.dart';
+import 'package:space_farming_modular/app/shared/models/caneca.dart';
 import 'package:space_farming_modular/app/shared/models/user.dart';
 
 import 'home_controller.dart';
@@ -47,8 +48,9 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
             child: Observer(
               builder: (BuildContext context) {
                 try {
-                  if (controller.listBot.data.length != null) {
+                  if (controller.listBot.data != null) {
                     List<Botijao> botijoes = controller.listBot.data;
+                    print(botijoes);
                     return GridViewList(
                       listBotijao: botijoes,
                       user: widget.userP,
@@ -59,6 +61,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                     );
                   }
                 } catch (NoSuchMethodError) {
+                  print("Burro");
                   return Center(
                     child: CircularProgressIndicator(),
                   );

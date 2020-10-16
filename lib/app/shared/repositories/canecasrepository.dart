@@ -1,11 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 import 'package:space_farming_modular/app/shared/models/caneca.dart';
 import 'package:space_farming_modular/app/shared/repositories/interfaces/irepositorycanecas.dart';
 
 class CanecasRepository implements IRepositoryCanecas {
   FirebaseFirestore firestore;
   DocumentReference doc;
-  CanecasRepository(this.firestore, this.doc);
+  CanecasRepository(this.firestore);
+  static List<Caneca> listCanecas = [];
   @override
   Future<bool> add(Caneca farm) {
     // TODO: implement add
@@ -13,17 +15,7 @@ class CanecasRepository implements IRepositoryCanecas {
   }
 
   @override
-  Stream<List<Caneca>> list() {
-    return firestore
-        .doc(this.doc.path)
-        .collection("canecas")
-        .snapshots()
-        .map((query) {
-      return query.docs.map((doc) {
-        return Caneca.fromMap(doc);
-      }).toList();
-    });
-  }
+  Stream<List<Caneca>> list(DocumentReference docRef) {}
 
   @override
   Future<bool> remove(Caneca id) {

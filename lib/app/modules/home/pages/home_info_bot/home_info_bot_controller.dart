@@ -24,6 +24,6 @@ abstract class _HomeInfoBotControllerBase with Store {
 
   @action
   getCanecas() {
-    listCanecas = repository.list().asObservable();
+    //listCanecas = repository.list().asObservable();
   }
 }

@@ -1,21 +1,28 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
+
 import 'package:space_farming_modular/app/shared/models/botijao.dart';
+import 'package:space_farming_modular/app/shared/models/caneca.dart';
 
 import 'package:space_farming_modular/app/shared/repositories/interfaces/irepositorybotijao.dart';
+import 'package:space_farming_modular/app/shared/repositories/interfaces/irepositorycanecas.dart';
 
 part 'home_controller.g.dart';
 
 @Injectable()
 class HomeController = _HomeControllerBase with _$HomeController;
 
-abstract class _HomeControllerBase with Store, Disposable {
+abstract class _HomeControllerBase with Store {
   final IRepositoryBotijao repository;
+  final IRepositoryCanecas repositoryCanecas;
 
   @observable
   ObservableStream<List<Botijao>> listBot;
 
-  _HomeControllerBase(this.repository) {
+  ObservableStream<List<Caneca>> listCaneca;
+
+  _HomeControllerBase(this.repository, this.repositoryCanecas) {
     getBot();
   }
 
@@ -24,6 +31,8 @@ abstract class _HomeControllerBase with Store, Disposable {
     listBot = repository.list().asObservable();
   }
 
-  @override
-  void dispose() {}
+  @action
+  getCaneca() {
+    // listCaneca = repositoryCanecas.list().asObservable();
+  }
 }

@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-
 import 'package:space_farming_modular/app/shared/models/botijao.dart';
-
+import 'package:space_farming_modular/app/shared/models/caneca.dart';
+import 'package:space_farming_modular/app/shared/models/rack.dart';
 import 'package:space_farming_modular/app/shared/repositories/interfaces/irepositorybotijao.dart';
 
 class BotijaoRepository implements IRepositoryBotijao {
@@ -9,6 +9,8 @@ class BotijaoRepository implements IRepositoryBotijao {
 
   FirebaseFirestore firestore;
   DocumentReference doc;
+  static List<Caneca> listCanecas = [];
+  static List<Rack> listRacks = [];
   BotijaoRepository(this.firestore, this.doc);
 
   @override
@@ -46,13 +48,36 @@ class BotijaoRepository implements IRepositoryBotijao {
 
   @override
   Stream<List<Botijao>> list() {
+    listCanecas = [];
     return firestore
         .doc(this.doc.path)
         .collection("botijoes")
         .snapshots()
         .map((query) {
       return query.docs.map((doc) {
-        return Botijao.fromMap(doc);
+        doc.reference.collection('canecas').snapshots().listen((getCanecas));
+
+        return Botijao.fromMap(doc, listCanecas);
+      }).toList();
+    });
+  }
+
+  getCanecas(QuerySnapshot snapshot) async {
+    for (var doc in snapshot.docs) {
+      getRacks(doc).listen((event) {
+        listCanecas.add(Caneca.fromMap(doc.reference, event));
+      });
+    }
+  }
+
+  Stream<List<Rack>> getRacks(DocumentSnapshot doc) {
+    return firestore
+        .doc(doc.reference.path)
+        .collection("racks")
+        .snapshots()
+        .map((query) {
+      return query.docs.map((docR) {
+        return Rack.fromMap(docR);
       }).toList();
     });
   }

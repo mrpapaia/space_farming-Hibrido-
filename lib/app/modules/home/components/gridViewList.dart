@@ -18,7 +18,7 @@ class _GridViewListState extends State<GridViewList> {
   @override
   Widget build(BuildContext context) {
     String imgSrc = '';
-
+    print(widget.listBotijao);
     return GridView.count(
       crossAxisCount: 2,
       children: List.generate(

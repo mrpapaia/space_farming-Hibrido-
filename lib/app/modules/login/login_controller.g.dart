@@ -79,15 +79,26 @@ mixin _$LoginController on _LoginControllerBase, Store {
     });
   }
 
-  final _$getUserAsyncAction = AsyncAction('_LoginControllerBase.getUser');
+  final _$loginAsyncAction = AsyncAction('_LoginControllerBase.login');
 
   @override
-  Future<void> getUser(String email) {
-    return _$getUserAsyncAction.run(() => super.getUser(email));
+  Future<bool> login() {
+    return _$loginAsyncAction.run(() => super.login());
   }
 
   final _$_LoginControllerBaseActionController =
       ActionController(name: '_LoginControllerBase');
+
+  @override
+  dynamic getUser(String email) {
+    final _$actionInfo = _$_LoginControllerBaseActionController.startAction(
+        name: '_LoginControllerBase.getUser');
+    try {
+      return super.getUser(email);
+    } finally {
+      _$_LoginControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
 
   @override
   dynamic isSuccefull(DocumentReference doc, UserP user) {

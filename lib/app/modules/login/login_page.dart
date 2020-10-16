@@ -129,27 +129,11 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
           ButtonCustom(
             text: "Login",
             width: 309.0,
-            onclick: () async {
-              print(controller.email);
-              print(controller.passwd);
-              try {
-                UserCredential userCredential = await FirebaseAuth.instance
-                    .signInWithEmailAndPassword(
-                        email: controller.email, password: controller.passwd);
-                if (userCredential.user != null) {
-                  print("aqui");
-                  controller.getUser(controller.email);
-                  startTimer();
-                }
-              } on FirebaseAuthException catch (e) {
-                if (e.code == 'user-not-found') {
-                  print('No user found for that email.');
-                } else if (e.code == 'wrong-password') {
-                  print('Wrong password provided for that user.');
-                }
-              }
+            onclick: () {
+              controller.getUser('d1@gmail.com');
+              startTimer();
             },
-          )
+          ),
         ],
       ),
     );

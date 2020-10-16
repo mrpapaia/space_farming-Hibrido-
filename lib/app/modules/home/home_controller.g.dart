@@ -7,7 +7,7 @@ part of 'home_controller.dart';
 // **************************************************************************
 
 final $HomeController = BindInject(
-  (i) => HomeController(i<IRepositoryBotijao>()),
+  (i) => HomeController(i<IRepositoryBotijao>(), i<IRepositoryCanecas>()),
   singleton: true,
   lazy: true,
 );
@@ -43,6 +43,17 @@ mixin _$HomeController on _HomeControllerBase, Store {
         name: '_HomeControllerBase.getBot');
     try {
       return super.getBot();
+    } finally {
+      _$_HomeControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic getCaneca() {
+    final _$actionInfo = _$_HomeControllerBaseActionController.startAction(
+        name: '_HomeControllerBase.getCaneca');
+    try {
+      return super.getCaneca();
     } finally {
       _$_HomeControllerBaseActionController.endAction(_$actionInfo);
     }

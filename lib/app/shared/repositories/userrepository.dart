@@ -19,7 +19,6 @@ class UserPRepository implements IRepositoryUserP {
         .snapshots()
         .map((query) {
       return query.docs.map((doc) {
-        print("doc:" + doc.data().toString());
         return UserP.fromMap(doc);
       }).toList();
     });

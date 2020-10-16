@@ -11,14 +11,15 @@ class Botijao {
   double volAtual;
   double volTotal;
   int numcanecas;
+  List<Caneca> canecas;
   DocumentReference ref;
-
   Botijao({
     this.idBot,
     this.qtdDose,
     this.volAtual,
     this.volTotal,
     this.numcanecas,
+    this.canecas,
     this.ref,
   });
 
@@ -28,6 +29,7 @@ class Botijao {
     double volAtual,
     double volTotal,
     int numcanecas,
+    int canecas,
     DocumentReference ref,
   }) {
     return Botijao(
@@ -36,6 +38,7 @@ class Botijao {
       volAtual: volAtual ?? this.volAtual,
       volTotal: volTotal ?? this.volTotal,
       numcanecas: numcanecas ?? this.numcanecas,
+      canecas: canecas ?? this.canecas,
       ref: ref ?? this.ref,
     );
   }
@@ -47,26 +50,26 @@ class Botijao {
       'volAtual': volAtual,
       'volTotal': volTotal,
       'numcanecas': numcanecas,
+      'canecas': canecas,
+      //'ref': ref?.toMap(),
     };
   }
 
-  factory Botijao.fromMap(DocumentSnapshot doc) {
+  factory Botijao.fromMap(DocumentSnapshot doc, List<Caneca> listCaneca) {
     return Botijao(
-        idBot: doc.data()['idBot'],
-        qtdDose: doc.data()['qtdDose'],
-        volAtual: doc.data()['volAtual'],
-        volTotal: doc.data()['volTotal'],
-        numcanecas: doc.data()['numcanecas'],
-        ref: doc.reference);
+      idBot: doc.data()['idBot'],
+      qtdDose: doc.data()['qtdDose'],
+      volAtual: doc.data()['volAtual'],
+      volTotal: doc.data()['volTotal'],
+      numcanecas: doc.data()['numcanecas'],
+      canecas: listCaneca,
+      ref: doc.reference,
+    );
   }
-  String toJson() => json.encode(toMap());
-
-  factory Botijao.fromJson(String source) =>
-      Botijao.fromMap(json.decode(source));
 
   @override
   String toString() {
-    return 'Botijao(idBot: $idBot, qtdDose: $qtdDose, volAtual: $volAtual, volTotal: $volTotal, numcanecas: $numcanecas, ref: $ref)';
+    return 'Botijao(idBot: $idBot, qtdDose: $qtdDose, volAtual: $volAtual, volTotal: $volTotal, numcanecas: $numcanecas, canecas: $canecas, ref: $ref)';
   }
 
   @override
@@ -79,6 +82,7 @@ class Botijao {
         o.volAtual == volAtual &&
         o.volTotal == volTotal &&
         o.numcanecas == numcanecas &&
+        o.canecas == canecas &&
         o.ref == ref;
   }
 
@@ -89,6 +93,7 @@ class Botijao {
         volAtual.hashCode ^
         volTotal.hashCode ^
         numcanecas.hashCode ^
+        canecas.hashCode ^
         ref.hashCode;
   }
 }

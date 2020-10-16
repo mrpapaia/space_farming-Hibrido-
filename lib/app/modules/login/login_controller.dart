@@ -1,11 +1,14 @@
 import 'dart:wasm';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:mobx/mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:space_farming_modular/app/shared/models/botijao.dart';
 import 'package:space_farming_modular/app/shared/models/farm.dart';
 import 'package:space_farming_modular/app/shared/models/user.dart';
+import 'package:space_farming_modular/app/shared/repositories/interfaces/irepositorybotijao.dart';
 import 'package:space_farming_modular/app/shared/repositories/interfaces/irepositoryfarm.dart';
 import 'package:space_farming_modular/app/shared/repositories/interfaces/irepositoryuser.dart';
 
@@ -20,6 +23,7 @@ abstract class _LoginControllerBase with Store {
 
   @observable
   ObservableStream<List<Farm>> farm;
+
   @observable
   ObservableStream<List<UserP>> user;
 
@@ -32,7 +36,7 @@ abstract class _LoginControllerBase with Store {
   _LoginControllerBase(this.farmRepository, this.userRepository);
 
   @action
-  Future<void> getUser(String email) async {
+  getUser(String email) {
     user = userRepository.list(email).asObservable();
     farm = farmRepository.list(email).asObservable();
   }
@@ -70,6 +74,27 @@ abstract class _LoginControllerBase with Store {
       return "Senha é um campo obrigatorio";
     } else {
       return null;
+    }
+  }
+
+  @action
+  Future<bool> login() async {
+    try {
+      UserCredential userCredential = await FirebaseAuth.instance
+          .signInWithEmailAndPassword(
+              email: 'd1@gmail.com', password: "123456");
+      if (userCredential.user != null) {
+        return true;
+        // controller.getUser(controller.email);
+        // startTimer();
+      }
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        print('No user found for that email.');
+      } else if (e.code == 'wrong-password') {
+        print('Wrong password provided for that user.');
+      }
+      return false;
     }
   }
 }
