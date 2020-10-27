@@ -15,6 +15,8 @@ class NavigationDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double _width = MediaQuery.of(context).size.width;
+    double _height = MediaQuery.of(context).size.height;
     return Drawer(
       child: Container(
         color: Color.fromRGBO(229, 231, 236, 1.0),
@@ -28,7 +30,7 @@ class NavigationDrawer extends StatelessWidget {
                 child: Text(
                   user.email[0].toUpperCase(),
                   style: TextStyle(
-                    fontSize: 40,
+                    fontSize: _width * 0.09,
                   ),
                 ),
               ),
@@ -37,6 +39,7 @@ class NavigationDrawer extends StatelessWidget {
               leading: Icon(
                 MyIcons.icon_botijao,
                 color: Colors.red,
+                size: _width * 0.1,
               ),
               title: Text("Botijões"),
               onTap: () {},
@@ -45,6 +48,7 @@ class NavigationDrawer extends StatelessWidget {
               leading: Icon(
                 Icons.history,
                 color: Colors.red,
+                size: _width * 0.1,
               ),
               title: Text("Hístorico"),
               onTap: () {},
@@ -53,6 +57,7 @@ class NavigationDrawer extends StatelessWidget {
               leading: Icon(
                 Icons.exit_to_app,
                 color: Colors.red,
+                size: _width * 0.1,
               ),
               title: Text("Sair"),
               onTap: () {

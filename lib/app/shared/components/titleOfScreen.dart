@@ -57,7 +57,7 @@ class _TitleOfScreenState extends State<TitleOfScreen> {
           ),
         ),
         SizedBox(
-          height: 50,
+          height: 40,
         )
       ],
     );

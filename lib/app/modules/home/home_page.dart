@@ -27,6 +27,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends ModularState<HomePage, HomeController> {
   @override
   Widget build(BuildContext context) {
+    double _width = MediaQuery.of(context).size.width;
+    double _height = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Color.fromRGBO(229, 231, 236, 1.0),
       drawer: NavigationDrawer(
@@ -38,19 +40,25 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
       ),
       body: Column(
         children: [
+          SizedBox(
+            height: 5,
+          ),
           TitleOfScreen(
             title: "Lista de Botijões",
             font: "Revalia",
-            fontSize: 24,
+            fontSize: _width * 0.07,
+          ),
+          SizedBox(
+            height: 5,
           ),
           Container(
-            height: MediaQuery.of(context).size.height - 160,
+            height: _height * 0.7,
             child: Observer(
               builder: (BuildContext context) {
                 try {
                   if (controller.listBot.data != null) {
                     List<Botijao> botijoes = controller.listBot.data;
-                    print(botijoes);
+
                     return GridViewList(
                       listBotijao: botijoes,
                       user: widget.userP,
@@ -61,7 +69,6 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                     );
                   }
                 } catch (NoSuchMethodError) {
-                  print("Burro");
                   return Center(
                     child: CircularProgressIndicator(),
                   );

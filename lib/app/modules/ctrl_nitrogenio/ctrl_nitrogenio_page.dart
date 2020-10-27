@@ -30,6 +30,7 @@ class _CtrlNitrogenioPageState
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width - 30;
 
+    double _height = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: PreferredSize(
           preferredSize: Size(
@@ -40,12 +41,15 @@ class _CtrlNitrogenioPageState
       drawer: NavigationDrawer(),
       backgroundColor: Color.fromRGBO(229, 231, 236, 1.0),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           TitleOfScreen(
             title: "Nível Atual",
             font: "Revalia",
-            fontSize: 32,
+            fontSize: _width * 0.1,
+          ),
+          SizedBox(
+            height: _height * 0.05,
           ),
           Center(
             child: Container(
@@ -55,7 +59,7 @@ class _CtrlNitrogenioPageState
                     "${widget.botijao.volAtual}",
                     style: TextStyle(
                       fontFamily: 'Robot',
-                      fontSize: 96,
+                      fontSize: _width * 0.3,
                       fontWeight: FontWeight.bold,
                       color: Colors.red,
                     ),
@@ -80,13 +84,19 @@ class _CtrlNitrogenioPageState
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
+              SizedBox(
+                height: _height * 0.05,
+              ),
               ButtonCustom(
                 text: "Medir Nivel",
                 onclick: () {
                   Modular.to.pushNamed('/ctrl/medirNivel',
                       arguments: [widget.botijao, widget.user]);
                 },
-                width: 309.0,
+                width: _width * 0.9,
+              ),
+              SizedBox(
+                height: _height * 0.01,
               ),
               ButtonCustom(
                 text: "Abastecer",
@@ -94,15 +104,18 @@ class _CtrlNitrogenioPageState
                   Modular.to.pushNamed('/ctrl/abastecer',
                       arguments: [widget.botijao, widget.user]);
                 },
-                width: 309.0,
+                width: _width * 0.9,
+              ),
+              SizedBox(
+                height: _height * 0.01,
               ),
               ButtonCustom(
-                text: "Hístorico do botijão",
+                text: "Hístorico",
                 onclick: () {
                   Modular.to.pushNamed('/ctrl/historico',
                       arguments: [widget.botijao, null]);
                 },
-                width: 309.0,
+                width: _width * 0.9,
               ),
             ],
           )

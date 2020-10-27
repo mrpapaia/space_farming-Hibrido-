@@ -81,12 +81,10 @@ abstract class _LoginControllerBase with Store {
   Future<bool> login() async {
     try {
       UserCredential userCredential = await FirebaseAuth.instance
-          .signInWithEmailAndPassword(
-              email: 'd1@gmail.com', password: "123456");
+          .signInWithEmailAndPassword(email: this.email, password: this.passwd);
       if (userCredential.user != null) {
+        getUser(email);
         return true;
-        // controller.getUser(controller.email);
-        // startTimer();
       }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {

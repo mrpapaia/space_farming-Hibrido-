@@ -28,6 +28,8 @@ class _HomeInfoBotPageState
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width - 30;
+
+    double _height = MediaQuery.of(context).size.height;
     String imgSrc = '';
     switch (widget.botijao.numcanecas) {
       case 2:
@@ -57,7 +59,7 @@ class _HomeInfoBotPageState
       drawer: NavigationDrawer(),
       backgroundColor: Color.fromRGBO(229, 231, 236, 1.0),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Center(
             child: Container(
@@ -72,7 +74,7 @@ class _HomeInfoBotPageState
                   ),
                 ),
               ),
-              width: _width - 100,
+              width: _width * 0.9,
               padding: EdgeInsets.all(5.0),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
@@ -87,50 +89,45 @@ class _HomeInfoBotPageState
               ),
             ),
           ),
+          SizedBox(
+            height: _height * 0.05,
+          ),
           Observer(builder: (_) {
-            try {
-              if (controller.listCanecas.data != null) {
-                return InkWell(
-                  child: Container(
-                    child: Image(
-                      image: AssetImage(imgSrc),
-                    ),
-                    width: _width - 30,
-                    padding: EdgeInsets.all(5.0),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.2),
-                          spreadRadius: 0,
-                          offset: Offset(5, 5),
-                        )
-                      ],
-                    ),
-                  ),
-                  onTap: () {
-                    Modular.to.pushNamed('/rack', arguments: [
-                      controller.listCanecas.data[0],
-                      widget.user
-                    ]);
-                  },
-                );
-              } else {
-                return Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
-            } catch (NoSuchMethodError) {
-              return Center(
-                child: CircularProgressIndicator(),
-              );
-            }
+            return InkWell(
+              child: Container(
+                child: Image(
+                  image: AssetImage(imgSrc),
+                ),
+                width: _width * 0.9,
+                padding: EdgeInsets.all(5.0),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.2),
+                      spreadRadius: 0,
+                      offset: Offset(5, 5),
+                    )
+                  ],
+                ),
+              ),
+              onTap: () {
+                Modular.to.pushNamed('/rack',
+                    arguments: [widget.botijao.canecas[0], widget.user]);
+              },
+            );
           }),
+          SizedBox(
+            height: _height * 0.05,
+          ),
           TitleOfScreen(
             title: "Régua",
             font: "Revalia",
-            fontSize: 34,
+            fontSize: _width * 0.09,
+          ),
+          SizedBox(
+            height: _height * 0.03,
           ),
           InkWell(
             child: Container(

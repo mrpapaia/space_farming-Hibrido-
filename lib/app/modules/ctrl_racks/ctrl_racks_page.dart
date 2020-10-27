@@ -26,7 +26,10 @@ class _CtrlRacksPageState
 
   @override
   Widget build(BuildContext context) {
+    double _width = MediaQuery.of(context).size.width;
+    double _height = MediaQuery.of(context).size.height;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Color.fromRGBO(229, 231, 236, 1.0),
       appBar: PreferredSize(
         preferredSize: Size(double.infinity, 100),
@@ -41,7 +44,7 @@ class _CtrlRacksPageState
             fontSize: 24,
           ),
           Container(
-            height: MediaQuery.of(context).size.height - 160,
+            height: MediaQuery.of(context).size.height * 0.7,
             child: Observer(builder: (_) {
               try {
                 if (controller.listRack.data != null) {
@@ -59,6 +62,12 @@ class _CtrlRacksPageState
             }),
           )
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Modular.to.pushNamed('/home/add');
+        },
+        child: Icon(Icons.add),
       ),
     );
   }

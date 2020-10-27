@@ -3,43 +3,45 @@ import 'package:flutter/material.dart';
 class SecAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    double _width = MediaQuery.of(context).size.width;
+    double _height = MediaQuery.of(context).size.height;
+
     return Container(
-      color: Color.fromRGBO(244, 67, 54, 1.0),
-      height: 100,
+      height: _height * 0.171,
+      color: Color.fromRGBO(229, 231, 236, 1.0),
+      margin: EdgeInsets.only(top: _height * 0.041),
       child: Container(
-        color: Color.fromRGBO(229, 231, 236, 1.0),
-        height: 10,
-        margin: EdgeInsets.only(top: 24),
-        child: Container(
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Image(
-                    image: AssetImage('lib/app/shared/graphics/logo.png'),
-                    width: 100,
-                    height: 50,
+        child: Column(
+          children: [
+            Row(
+              children: [
+                SizedBox(
+                  width: _width * 0.03,
+                ),
+                Image(
+                  image: AssetImage('lib/app/shared/graphics/logo.png'),
+                  width: _width * 0.3,
+                  height: _height * 0.09,
+                ),
+                SizedBox(width: _width * 0.5),
+                IconButton(
+                  icon: Icon(
+                    Icons.arrow_back,
+                    color: Colors.red,
+                    size: _width * 0.07,
                   ),
-                  IconButton(
-                    icon: Icon(
-                      Icons.arrow_back,
-                      color: Colors.red,
-                    ),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                  ),
-                ],
-              ),
-              Container(
-                width: MediaQuery.of(context).size.width,
-                height: 2,
-                color: Colors.white,
-                margin: EdgeInsets.only(top: 20),
-              ),
-            ],
-          ),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ),
+              ],
+            ),
+            Container(
+              width: MediaQuery.of(context).size.width,
+              height: 2,
+              color: Colors.white,
+            ),
+          ],
         ),
       ),
     );

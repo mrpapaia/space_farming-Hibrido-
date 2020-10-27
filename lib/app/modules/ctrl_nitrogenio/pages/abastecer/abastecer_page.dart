@@ -26,6 +26,8 @@ class _AbastecerPageState
 
   @override
   Widget build(BuildContext context) {
+    double _width = MediaQuery.of(context).size.width - 30;
+    double _height = MediaQuery.of(context).size.height;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: PreferredSize(
@@ -43,7 +45,7 @@ class _AbastecerPageState
             TitleOfScreen(
               title: "Abastecer",
               font: "Revalia",
-              fontSize: 32,
+              fontSize: _width * 0.09,
             ),
             SizedBox(
               height: 10,
@@ -73,11 +75,7 @@ class _AbastecerPageState
             SizedBox(
               height: 10,
             ),*/
-            TitleOfScreen(
-              title: "Nitrogênio",
-              font: "Robot",
-              fontSize: 32,
-            ),
+
             SizedBox(
               height: 10,
             ),
@@ -167,14 +165,14 @@ class _AbastecerPageState
                           widget.botijao.volAtual, widget.user);
                       Navigator.pop(context);
                     },
-                    width: 148.0,
+                    width: _width * 0.5,
                   ),
                   ButtonCustom(
                     text: "Cancelar",
                     onclick: () {
                       Navigator.pop(context);
                     },
-                    width: 148.0,
+                    width: _width * 0.5,
                   ),
                 ],
               ),

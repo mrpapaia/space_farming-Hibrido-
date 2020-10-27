@@ -3,17 +3,28 @@ import 'package:flutter/material.dart';
 class HomeAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    double _width = MediaQuery.of(context).size.width;
+    double _height = MediaQuery.of(context).size.height;
     return Container(
-      color: Color.fromRGBO(244, 67, 54, 1.0),
-      height: 100,
+      color: Color.fromRGBO(229, 231, 236, 1.0),
+      height: _height * 0.13,
       child: Container(
         color: Color.fromRGBO(229, 231, 236, 1.0),
-        height: 10,
-        margin: EdgeInsets.only(top: 24),
+        margin: EdgeInsets.only(top: _height * 0.045),
         child: Container(
+          width: _width * 0.5,
+          margin: EdgeInsets.only(top: 5, left: 5, right: 5, bottom: 5),
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12), color: Colors.white),
-          margin: EdgeInsets.only(top: 5, left: 5, bottom: 5, right: 5),
+            borderRadius: BorderRadius.circular(12),
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.2),
+                spreadRadius: 0,
+                offset: Offset(0, 5),
+              ),
+            ],
+          ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -21,7 +32,7 @@ class HomeAppBar extends StatelessWidget {
                 icon: Icon(
                   Icons.menu,
                   color: Colors.red,
-                  size: 30,
+                  size: _width * 0.1,
                 ),
                 onPressed: () {
                   Scaffold.of(context).openDrawer();
@@ -29,13 +40,13 @@ class HomeAppBar extends StatelessWidget {
               ),
               Text(
                 "Space Farming",
-                style: TextStyle(color: Colors.red, fontSize: 25),
+                style: TextStyle(color: Colors.red, fontSize: _width * 0.07),
               ),
               IconButton(
                   icon: Icon(
                     Icons.search,
                     color: Colors.red,
-                    size: 30,
+                    size: _width * 0.1,
                   ),
                   onPressed: null),
             ],

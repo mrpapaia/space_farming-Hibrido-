@@ -27,6 +27,7 @@ class _HomeBotCreatePageState
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width - 30;
+    double _height = MediaQuery.of(context).size.height;
     List<String> items = ["1", "2", "3", "4", "5", "6"];
 
     return Scaffold(
@@ -38,11 +39,15 @@ class _HomeBotCreatePageState
       ),
       drawer: NavigationDrawer(),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           TitleOfScreen(
             title: 'Cadastrar Botijão',
             font: "Revalia",
-            fontSize: 24,
+            fontSize: _width * 0.09,
+          ),
+          SizedBox(
+            height: _height * 0.04,
           ),
           ContainerBase(
             componets: [
@@ -54,17 +59,18 @@ class _HomeBotCreatePageState
                   cursorColor: Colors.red,
                   style: TextStyle(
                     fontFamily: 'Robot',
-                    fontSize: 18,
+                    fontSize: _width * 0.05,
                     color: Color.fromRGBO(113, 111, 137, 1.0),
                   ),
                   decoration: InputDecoration(
                     icon: Icon(
                       MyIcons.icon_botijao,
                       color: Colors.red,
+                      size: _width * 0.09,
                     ),
                     hintStyle: TextStyle(
                       fontFamily: 'Robot',
-                      fontSize: 18,
+                      fontSize: _width * 0.05,
                       color: Color.fromRGBO(113, 111, 137, 1.0),
                     ),
                     labelText: "Identificação do Botijão",
@@ -75,7 +81,7 @@ class _HomeBotCreatePageState
             ],
           ),
           SizedBox(
-            height: 20,
+            height: _height * 0.015,
           ),
           ContainerBase(
             componets: [
@@ -87,17 +93,18 @@ class _HomeBotCreatePageState
                   cursorColor: Colors.red,
                   style: TextStyle(
                     fontFamily: 'Robot',
-                    fontSize: 18,
+                    fontSize: _width * 0.05,
                     color: Color.fromRGBO(113, 111, 137, 1.0),
                   ),
                   decoration: InputDecoration(
                     icon: Icon(
                       MyIcons.icon_cap,
                       color: Colors.red,
+                      size: _width * 0.09,
                     ),
                     hintStyle: TextStyle(
                       fontFamily: 'Robot',
-                      fontSize: 18,
+                      fontSize: _width * 0.05,
                       color: Color.fromRGBO(113, 111, 137, 1.0),
                     ),
                     labelText: "Capacidade de nitrogênio em litros",
@@ -106,6 +113,9 @@ class _HomeBotCreatePageState
                 );
               }),
             ],
+          ),
+          SizedBox(
+            height: _height * 0.01,
           ),
           Container(
             margin: EdgeInsets.only(top: 10),
@@ -128,11 +138,14 @@ class _HomeBotCreatePageState
                     "Quantidade de Canecas",
                     style: TextStyle(
                         fontFamily: 'Robot',
-                        fontSize: 18,
+                        fontSize: _width * 0.05,
                         color: Color.fromRGBO(113, 111, 137, 1.0)),
                   ),
                   margin:
                       EdgeInsets.only(top: 0, left: 10, bottom: 0, right: 10),
+                ),
+                SizedBox(
+                  height: _height * 0.01,
                 ),
                 Observer(builder: (_) {
                   return DropdownButton<String>(
@@ -157,6 +170,9 @@ class _HomeBotCreatePageState
                 })
               ],
             ),
+          ),
+          SizedBox(
+            height: _height * 0.01,
           ),
           Container(
             margin: EdgeInsets.only(top: 10),
@@ -222,14 +238,14 @@ class _HomeBotCreatePageState
                     controller.addBot();
                     Navigator.pop(context);
                   },
-                  width: 148.0,
+                  width: _width * 0.5,
                 ),
                 ButtonCustom(
                   text: "Cancelar",
                   onclick: () {
                     Navigator.pop(context);
                   },
-                  width: 148.0,
+                  width: _width * 0.5,
                 ),
               ],
             ),

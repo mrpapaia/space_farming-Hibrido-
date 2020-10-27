@@ -27,6 +27,8 @@ class _MedirNivelPageState
 
   @override
   Widget build(BuildContext context) {
+    double _width = MediaQuery.of(context).size.width - 30;
+    double _height = MediaQuery.of(context).size.height;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: PreferredSize(
@@ -44,7 +46,7 @@ class _MedirNivelPageState
             TitleOfScreen(
               title: "Medir Nível",
               font: "Revalia",
-              fontSize: 32,
+              fontSize: _width * 0.09,
             ),
             /*  TitleOfScreen(
               title: "Responsavel",
@@ -85,14 +87,14 @@ class _MedirNivelPageState
                   cursorColor: Colors.red,
                   style: TextStyle(
                     fontFamily: 'Robot',
-                    fontSize: 18,
+                    fontSize: _width * 0.05,
                     color: Color.fromRGBO(113, 111, 137, 1.0),
                   ),
                   decoration: InputDecoration(
                     icon: Icon(Icons.poll, color: Colors.red),
                     hintStyle: TextStyle(
                       fontFamily: 'Robot',
-                      fontSize: 18,
+                      fontSize: _width * 0.05,
                       color: Color.fromRGBO(113, 111, 137, 1.0),
                     ),
                     labelText: "Nível",
@@ -107,14 +109,14 @@ class _MedirNivelPageState
                   cursorColor: Colors.red,
                   style: TextStyle(
                     fontFamily: 'Robot',
-                    fontSize: 18,
+                    fontSize: _width * 0.05,
                     color: Color.fromRGBO(113, 111, 137, 1.0),
                   ),
                   decoration: InputDecoration(
                     icon: Icon(Icons.calendar_today, color: Colors.red),
                     hintStyle: TextStyle(
                       fontFamily: 'Robot',
-                      fontSize: 18,
+                      fontSize: _width * 0.05,
                       color: Color.fromRGBO(113, 111, 137, 1.0),
                     ),
                     labelText: "Data",
@@ -125,6 +127,9 @@ class _MedirNivelPageState
                   height: 10,
                 )
               ],
+            ),
+            SizedBox(
+              height: _height * 0.05,
             ),
             Container(
               margin: EdgeInsets.only(top: 10),
@@ -137,14 +142,14 @@ class _MedirNivelPageState
                       controller.update(widget.botijao.idBot, widget.user);
                       Navigator.pop(context);
                     },
-                    width: 148.0,
+                    width: _width * 0.5,
                   ),
                   ButtonCustom(
                     text: "Cancelar",
                     onclick: () {
                       Navigator.pop(context);
                     },
-                    width: 148.0,
+                    width: _width * 0.5,
                   ),
                 ],
               ),

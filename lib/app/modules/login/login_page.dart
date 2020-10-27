@@ -118,6 +118,16 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                         ],
                       ),
                     ),
+                    ButtonCustom(
+                      text: "Login",
+                      width: 309.0,
+                      onclick: () async {
+                        bool a = await controller.login();
+                        if (a) {
+                          startTimer();
+                        }
+                      },
+                    ),
                   ],
                 );
               }
@@ -125,14 +135,6 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
           ),
           SizedBox(
             height: 10,
-          ),
-          ButtonCustom(
-            text: "Login",
-            width: 309.0,
-            onclick: () {
-              controller.getUser('d1@gmail.com');
-              startTimer();
-            },
           ),
         ],
       ),

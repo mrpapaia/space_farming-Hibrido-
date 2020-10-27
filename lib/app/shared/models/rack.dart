@@ -5,9 +5,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class Rack {
   String idTouro;
   String tipo;
-  double volume;
-  int doseUp;
-  int doseDown;
+  String volume;
+  String doseUp;
+  String doseDown;
 
   Rack({
     this.idTouro,

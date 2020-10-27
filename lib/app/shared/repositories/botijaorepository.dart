@@ -48,15 +48,13 @@ class BotijaoRepository implements IRepositoryBotijao {
 
   @override
   Stream<List<Botijao>> list() {
-    listCanecas = [];
     return firestore
         .doc(this.doc.path)
         .collection("botijoes")
         .snapshots()
         .map((query) {
       return query.docs.map((doc) {
-        doc.reference.collection('canecas').snapshots().listen((getCanecas));
-
+        doc.reference.collection('canecas').snapshots().listen(getCanecas);
         return Botijao.fromMap(doc, listCanecas);
       }).toList();
     });
@@ -64,8 +62,8 @@ class BotijaoRepository implements IRepositoryBotijao {
 
   getCanecas(QuerySnapshot snapshot) async {
     for (var doc in snapshot.docs) {
-      getRacks(doc).listen((event) {
-        listCanecas.add(Caneca.fromMap(doc.reference, event));
+      getRacks(doc).listen((racks) {
+        listCanecas.add(Caneca.fromMap(doc.reference, racks));
       });
     }
   }
