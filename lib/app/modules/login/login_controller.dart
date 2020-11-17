@@ -38,6 +38,7 @@ abstract class _LoginControllerBase with Store {
   @action
   getUser(String email) {
     user = userRepository.list(email).asObservable();
+
     farm = farmRepository.list(email).asObservable();
   }
 
@@ -54,7 +55,7 @@ abstract class _LoginControllerBase with Store {
   @action
   void getPasswd(String passwd) {
     this.passwd = passwd;
-    //print(this.email);
+    print(this.passwd);
   }
 
   @action
@@ -82,8 +83,10 @@ abstract class _LoginControllerBase with Store {
     try {
       UserCredential userCredential = await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: this.email, password: this.passwd);
+
       if (userCredential.user != null) {
         getUser(email);
+
         return true;
       }
     } on FirebaseAuthException catch (e) {

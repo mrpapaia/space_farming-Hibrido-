@@ -96,6 +96,9 @@ flutter:
     - family:  MyIcons
       fonts:
         - asset: lib/app/shared/fonts/MyIcons.ttf
+    - family:  CanecaIcons
+      fonts:
+        - asset: lib/app/shared/fonts/CanecaIcons.ttf
   # fonts:
   #   - family: Schyler
   #     fonts:

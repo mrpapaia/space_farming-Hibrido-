@@ -31,6 +31,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
     double _height = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Color.fromRGBO(229, 231, 236, 1.0),
+      resizeToAvoidBottomInset: false,
       drawer: NavigationDrawer(
         user: widget.userP,
       ),
@@ -56,9 +57,10 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
             child: Observer(
               builder: (BuildContext context) {
                 try {
+                  print(controller.listBot.data);
                   if (controller.listBot.data != null) {
                     List<Botijao> botijoes = controller.listBot.data;
-
+                    print(botijoes);
                     return GridViewList(
                       listBotijao: botijoes,
                       user: widget.userP,

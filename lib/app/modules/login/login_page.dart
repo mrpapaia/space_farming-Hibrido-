@@ -27,6 +27,8 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
       (Timer timer) => setState(
         () {
           if (controller.farm.data != null && controller.user.data != null) {
+            print(controller.user.data[0]);
+            print(controller.farm.data[0]);
             controller.isSuccefull(
                 controller.farm.data[0].ref, controller.user.data[0]);
 
@@ -122,10 +124,9 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                       text: "Login",
                       width: 309.0,
                       onclick: () async {
-                        bool a = await controller.login();
-                        if (a) {
-                          startTimer();
-                        }
+                        await controller.login();
+
+                        startTimer();
                       },
                     ),
                   ],

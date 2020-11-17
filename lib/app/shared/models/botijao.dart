@@ -58,10 +58,10 @@ class Botijao {
   factory Botijao.fromMap(DocumentSnapshot doc, List<Caneca> listCaneca) {
     return Botijao(
       idBot: doc.data()['idBot'],
-      qtdDose: doc.data()['qtdDose'],
-      volAtual: doc.data()['volAtual'],
-      volTotal: doc.data()['volTotal'],
-      numcanecas: doc.data()['numcanecas'],
+      qtdDose: int.parse(doc.data()['qtdDose']),
+      volAtual: double.parse(doc.data()['volAtual']),
+      volTotal: double.parse(doc.data()['volTotal']),
+      numcanecas: int.parse(doc.data()['numcanecas']),
       canecas: listCaneca,
       ref: doc.reference,
     );
