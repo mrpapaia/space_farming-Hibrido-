@@ -35,6 +35,8 @@ class _HomeInfoBotPageState
 
     double _height = MediaQuery.of(context).size.height;
     String imgSrc = '';
+    double hBot = _height > 700 ? 0.07 : 0.08;
+    double wBot = _height > 700 ? 0.155 : 0.15;
     switch (widget.botijao.numcanecas) {
       case 2:
         imgSrc = 'lib/app/shared/graphics/test3.svg';
@@ -97,7 +99,7 @@ class _HomeInfoBotPageState
             ),
           ),
           SizedBox(
-            height: _height * 0.05,
+            height: _height > 700 ? _height * 0.05 : _height * 0.03,
           ),
           Observer(builder: (_) {
             return Container(
@@ -106,8 +108,8 @@ class _HomeInfoBotPageState
                   children: [
                     Center(
                       child: Container(
-                        width: _width * 0.95,
-                        height: _height * 0.5,
+                        width: _height > 700 ? _width * 0.95 : _width * 0.95,
+                        height: _height > 700 ? _height * 0.5 : _height * 0.5,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(200),
                           border: Border.all(
@@ -137,8 +139,8 @@ class _HomeInfoBotPageState
                             ),
                           ),
                         ),
-                        width: 100,
-                        height: 100,
+                        width: _height > 700 ? 100 : 100,
+                        height: _height > 700 ? 100 : 75,
                         decoration: BoxDecoration(
                           border: Border.all(
                               color: Color.fromRGBO(126, 116, 116, 1.0),
@@ -155,86 +157,158 @@ class _HomeInfoBotPageState
                         ),
                       ),
                     ),
-                    Positioned(
-                      child: ContainerCaneca(
-                        icon: CanecaIcons.num1,
-                        color: Colors.grey,
-                      ),
-                      top: _height * 0.192,
-                      left: _width * 0.1,
-                    ),
-                    Positioned(
-                      child: ContainerCaneca(
-                        icon: CanecaIcons.num2,
-                        color: Colors.grey,
-                      ),
-                      top: _height * 0.185,
-                      left: _width * 0.65,
-                    ),
-                    Positioned(
-                      child: ContainerCaneca(
-                        icon: CanecaIcons.num3,
-                        color: Colors.grey,
-                      ),
-                      top: _height * 0.02,
-                      left: _width * 0.37,
-                    ),
+                    widget.botijao.numcanecas >= 8
+                        ? Positioned(
+                            child: ContainerCaneca(
+                              icon: CanecaIcons.num1,
+                              color: Colors.grey,
+                              h: hBot,
+                              w: wBot,
+                            ),
+                            top:
+                                _height > 700 ? _height * 0.24 : _height * 0.26,
+                            left: _height > 700 ? _width * 0.1 : _width * 0.1,
+                          )
+                        : SizedBox(
+                            width: 0,
+                            height: 0,
+                          ),
+                    widget.botijao.numcanecas >= 10
+                        ? Positioned(
+                            child: ContainerCaneca(
+                              icon: CanecaIcons.num2,
+                              color: Colors.grey,
+                              h: hBot,
+                              w: wBot,
+                            ),
+                            top: _height > 700
+                                ? _height * 0.223
+                                : _height * 0.26,
+                            left: _height > 700 ? _width * 0.63 : _width * 0.65,
+                          )
+                        : SizedBox(
+                            width: 0,
+                            height: 0,
+                          ),
+                    widget.botijao.numcanecas >= 6
+                        ? Positioned(
+                            child: ContainerCaneca(
+                              icon: CanecaIcons.num3,
+                              color: Colors.grey,
+                              h: hBot,
+                              w: wBot,
+                            ),
+                            top:
+                                _height > 700 ? _height * 0.03 : _height * 0.03,
+                            left: _height > 700 ? _width * 0.28 : _width * 0.28,
+                          )
+                        : SizedBox(
+                            width: 0,
+                            height: 0,
+                          ),
+                    widget.botijao.numcanecas >= 10
+                        ? Positioned(
+                            child: ContainerCaneca(
+                              icon: CanecaIcons.num4,
+                              color: Colors.grey,
+                              h: hBot,
+                              w: wBot,
+                            ),
+                            top: _height > 700
+                                ? _height * 0.068
+                                : _height * 0.068,
+                            left:
+                                _height > 700 ? _width * 0.115 : _width * 0.115,
+                          )
+                        : SizedBox(
+                            width: 0,
+                            height: 0,
+                          ),
                     Positioned(
                       child: ContainerCaneca(
                         icon: CanecaIcons.num5,
                         color: Colors.grey,
+                        h: hBot,
+                        w: wBot,
                       ),
-                      top: _height * 0.03,
-                      left: _width * 0.185,
+                      top: _height > 700 ? _height * 0.155 : _height * 0.16,
+                      left: _height > 700 ? _width * 0.05 : _width * 0.05,
                     ),
-                    Positioned(
-                      child: ContainerCaneca(
-                        icon: CanecaIcons.num5,
-                        color: Colors.grey,
-                      ),
-                      top: _height * 0.11,
-                      left: _width * 0.1,
-                    ),
-                    Positioned(
-                      child: ContainerCaneca(
-                        icon: CanecaIcons.num7,
-                        color: Colors.grey,
-                      ),
-                      top: _height * 0.028,
-                      left: _width * 0.55,
-                    ),
-                    Positioned(
-                      child: ContainerCaneca(
-                        icon: CanecaIcons.num6,
-                        color: Colors.grey,
-                      ),
-                      top: _height * 0.1,
-                      left: _width * 0.65,
-                    ),
-                    Positioned(
-                      child: ContainerCaneca(
-                        icon: CanecaIcons.num4,
-                        color: Colors.grey,
-                      ),
-                      top: _height * 0.28,
-                      left: _width * 0.37,
-                    ),
-                    Positioned(
-                      child: ContainerCaneca(
-                        icon: CanecaIcons.num4,
-                        color: Colors.grey,
-                      ),
-                      top: _height * 0.26,
-                      left: _width * 0.56,
-                    ),
+                    widget.botijao.numcanecas >= 4
+                        ? Positioned(
+                            child: ContainerCaneca(
+                              icon: CanecaIcons.num6,
+                              color: Colors.grey,
+                              h: hBot,
+                              w: wBot,
+                            ),
+                            top:
+                                _height > 700 ? _height * 0.03 : _height * 0.03,
+                            left: _height > 700 ? _width * 0.48 : _width * 0.48,
+                          )
+                        : SizedBox(
+                            width: 0,
+                            height: 0,
+                          ),
+                    widget.botijao.numcanecas >= 8
+                        ? Positioned(
+                            child: ContainerCaneca(
+                              icon: CanecaIcons.num7,
+                              color: Colors.grey,
+                              h: hBot,
+                              w: wBot,
+                            ),
+                            top:
+                                _height > 700 ? _height * 0.07 : _height * 0.07,
+                            left: _height > 700 ? _width * 0.65 : _width * 0.65,
+                          )
+                        : SizedBox(
+                            width: 0,
+                            height: 0,
+                          ),
                     widget.botijao.numcanecas >= 2
                         ? Positioned(
                             child: ContainerCaneca(
                               icon: CanecaIcons.num8,
                               color: Colors.grey,
+                              h: hBot,
+                              w: wBot,
                             ),
-                            top: _height * 0.27,
-                            left: _width * 0.18,
+                            top:
+                                _height > 700 ? _height * 0.15 : _height * 0.16,
+                            left: _height > 700 ? _width * 0.7 : _width * 0.7,
+                          )
+                        : SizedBox(
+                            width: 0,
+                            height: 0,
+                          ),
+                    widget.botijao.numcanecas >= 6
+                        ? Positioned(
+                            child: ContainerCaneca(
+                              icon: CanecaIcons.num1,
+                              color: Colors.grey,
+                              h: hBot,
+                              w: wBot,
+                            ),
+                            top:
+                                _height > 700 ? _height * 0.28 : _height * 0.31,
+                            left: _height > 700 ? _width * 0.48 : _width * 0.48,
+                          )
+                        : SizedBox(
+                            width: 0,
+                            height: 0,
+                          ),
+                    widget.botijao.numcanecas >= 4
+                        ? Positioned(
+                            child: ContainerCaneca(
+                              icon: CanecaIcons.num8,
+                              color: Colors.grey,
+                              h: hBot,
+                              w: wBot,
+                            ),
+                            top:
+                                _height > 700 ? _height * 0.28 : _height * 0.31,
+                            left: _height > 700 ? _width * 0.28 : _width * 0.28,
                           )
                         : SizedBox(
                             width: 0,
@@ -244,7 +318,7 @@ class _HomeInfoBotPageState
                 ),
               ),
               width: _width * 0.95,
-              height: _height * 0.4,
+              height: _height > 700 ? _height * 0.4 : _height * 0.45,
               padding: EdgeInsets.all(5.0),
               decoration: BoxDecoration(
                 border: Border.all(
@@ -267,7 +341,7 @@ class _HomeInfoBotPageState
             );
           }),
           SizedBox(
-            height: _height * 0.05,
+            height: _height > 700 ? _height * 0.05 : _height * 0.03,
           ),
           TitleOfScreen(
             title: "Régua",

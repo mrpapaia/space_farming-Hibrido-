@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/src/api/async.dart';
+import 'package:space_farming_modular/app/modules/home/pages/home_info_bot/components/container_caneca.dart';
+import 'package:space_farming_modular/app/shared/components/caneca_icons_icons.dart';
 import 'package:space_farming_modular/app/shared/components/slideLeftBackground.dart';
 import 'package:space_farming_modular/app/shared/components/slideRightBackground.dart';
 import 'package:space_farming_modular/app/shared/models/botijao.dart';
@@ -22,6 +24,8 @@ class _GridViewListState extends State<GridViewList> {
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
     String imgSrc = '';
+    double hIcon = _height > 700 ? 0.035 : 0.04;
+    double wIcon = _height > 700 ? 0.075 : 0.08;
     return GridView.count(
       crossAxisCount: 2,
       children: List.generate(
@@ -66,16 +70,252 @@ class _GridViewListState extends State<GridViewList> {
                 ),
                 child: Column(
                   children: [
-                    Image(
-                      image: AssetImage(imgSrc),
-                      width: _width * 0.4,
+                    Center(
+                      child: Stack(
+                        children: [
+                          Center(
+                            child: Container(
+                              width: _width * 0.4,
+                              height: _height > 700
+                                  ? _height * 0.17
+                                  : _height * 0.2,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(200),
+                                border: Border.all(
+                                    color: Color.fromRGBO(126, 116, 116, 1.0),
+                                    width: 5),
+                                color: Colors.white,
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.2),
+                                    spreadRadius: 0.2,
+                                    offset: Offset(5, 5),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            child: Container(
+                              child: Center(
+                                child: Text(
+                                  "${widget.listBotijao[index].volAtual}",
+                                  style: TextStyle(
+                                    fontFamily: 'Robot',
+                                    fontSize: _width * 0.03,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.red,
+                                  ),
+                                ),
+                              ),
+                              width: 50,
+                              height: 45,
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                    color: Color.fromRGBO(126, 116, 116, 1.0),
+                                    width: 5),
+                                borderRadius: BorderRadius.circular(12),
+                                color: Color.fromRGBO(229, 231, 236, 1.0),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.2),
+                                    spreadRadius: 0,
+                                    offset: Offset(5, 5),
+                                  )
+                                ],
+                              ),
+                            ),
+                            top: _height > 700
+                                ? _height * 0.06
+                                : _height * 0.065,
+                            left: _width * 0.15,
+                          ),
+                          widget.listBotijao[index].numcanecas >= 6
+                              ? Positioned(
+                                  child: ContainerCaneca(
+                                    icon: CanecaIcons.num2,
+                                    color: Colors.grey,
+                                    h: hIcon,
+                                    w: wIcon,
+                                  ),
+                                  top: _height > 700
+                                      ? _height * 0.12
+                                      : _height * 0.145,
+                                  left: _height > 700
+                                      ? _width * 0.14
+                                      : _width * 0.14,
+                                )
+                              : SizedBox(
+                                  width: 0,
+                                  height: 0,
+                                ),
+                          widget.listBotijao[index].numcanecas >= 4
+                              ? Positioned(
+                                  child: ContainerCaneca(
+                                    icon: CanecaIcons.num2,
+                                    color: Colors.grey,
+                                    h: hIcon,
+                                    w: wIcon,
+                                  ),
+                                  top: _height > 700
+                                      ? _height * 0.12
+                                      : _height * 0.145,
+                                  left: _height > 700
+                                      ? _width * 0.22
+                                      : _width * 0.22,
+                                )
+                              : SizedBox(
+                                  width: 0,
+                                  height: 0,
+                                ),
+                          widget.listBotijao[index].numcanecas >= 8
+                              ? Positioned(
+                                  child: ContainerCaneca(
+                                    icon: CanecaIcons.num3,
+                                    color: Colors.grey,
+                                    h: hIcon,
+                                    w: wIcon,
+                                  ),
+                                  top: _height > 700
+                                      ? _height * 0.105
+                                      : _height * 0.12,
+                                  left: _height > 700
+                                      ? _width * 0.29
+                                      : _width * 0.29,
+                                )
+                              : SizedBox(
+                                  width: 0,
+                                  height: 0,
+                                ),
+                          widget.listBotijao[index].numcanecas >= 10
+                              ? Positioned(
+                                  child: ContainerCaneca(
+                                    icon: CanecaIcons.num4,
+                                    color: Colors.grey,
+                                    h: hIcon,
+                                    w: wIcon,
+                                  ),
+                                  top: _height > 700
+                                      ? _height * 0.033
+                                      : _height * 0.033,
+                                  left: _height > 700
+                                      ? _width * 0.295
+                                      : _width * 0.286,
+                                )
+                              : SizedBox(
+                                  width: 0,
+                                  height: 0,
+                                ),
+                          widget.listBotijao[index].numcanecas >= 6
+                              ? Positioned(
+                                  child: ContainerCaneca(
+                                    icon: CanecaIcons.num5,
+                                    color: Colors.grey,
+                                    h: hIcon,
+                                    w: wIcon,
+                                  ),
+                                  top: _height > 700
+                                      ? _height * 0.011
+                                      : _height * 0.011,
+                                  left: _height > 700
+                                      ? _width * 0.23
+                                      : _width * 0.215,
+                                )
+                              : SizedBox(
+                                  width: 0,
+                                  height: 0,
+                                ),
+                          widget.listBotijao[index].numcanecas >= 4
+                              ? Positioned(
+                                  child: ContainerCaneca(
+                                    icon: CanecaIcons.num6,
+                                    color: Colors.grey,
+                                    h: hIcon,
+                                    w: wIcon,
+                                  ),
+                                  top: _height > 700
+                                      ? _height * 0.011
+                                      : _height * 0.011,
+                                  left: _height > 700
+                                      ? _width * 0.15
+                                      : _width * 0.132,
+                                )
+                              : SizedBox(
+                                  width: 0,
+                                  height: 0,
+                                ),
+                          widget.listBotijao[index].numcanecas >= 8
+                              ? Positioned(
+                                  child: ContainerCaneca(
+                                    icon: CanecaIcons.num7,
+                                    color: Colors.grey,
+                                    h: hIcon,
+                                    w: wIcon,
+                                  ),
+                                  top: _height > 700
+                                      ? _height * 0.028
+                                      : _height * 0.035,
+                                  left: _height > 700
+                                      ? _width * 0.07
+                                      : _width * 0.06,
+                                )
+                              : SizedBox(
+                                  width: 0,
+                                  height: 0,
+                                ),
+                          Positioned(
+                            child: ContainerCaneca(
+                              icon: CanecaIcons.num1,
+                              color: Colors.grey,
+                              h: hIcon,
+                              w: wIcon,
+                            ),
+                            top: _height > 700
+                                ? _height * 0.065
+                                : _height * 0.076,
+                            left: _height > 700 ? _width * 0.04 : _width * 0.31,
+                          ),
+                          Positioned(
+                            child: ContainerCaneca(
+                              icon: CanecaIcons.num2,
+                              color: Colors.grey,
+                              h: hIcon,
+                              w: wIcon,
+                            ),
+                            top: _height > 700
+                                ? _height * 0.068
+                                : _height * 0.08,
+                            left:
+                                _height > 700 ? _width * 0.32 : _width * 0.035,
+                          ),
+                          widget.listBotijao[index].numcanecas >= 10
+                              ? Positioned(
+                                  child: ContainerCaneca(
+                                    icon: CanecaIcons.num8,
+                                    color: Colors.grey,
+                                    h: hIcon,
+                                    w: wIcon,
+                                  ),
+                                  top: _height > 700
+                                      ? _height * 0.105
+                                      : _height * 0.125,
+                                  left: _height > 700
+                                      ? _width * 0.065
+                                      : _width * 0.06,
+                                )
+                              : SizedBox(
+                                  width: 0,
+                                  height: 0,
+                                ),
+                        ],
+                      ),
                     ),
                     Container(
                       margin: EdgeInsets.only(top: 10.0),
                       padding: EdgeInsets.all(2.0),
                       child: Center(
                         child: Text(
-                          "Botijao ${widget.listBotijao[index].idBot}",
+                          "${widget.listBotijao[index].idBot}",
                           style: TextStyle(
                               fontFamily: 'Revalia',
                               fontSize: _width * 0.04,

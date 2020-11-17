@@ -53,14 +53,12 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
             height: 5,
           ),
           Container(
-            height: _height * 0.7,
+            height: _height * 0.79,
             child: Observer(
               builder: (BuildContext context) {
                 try {
-                  print(controller.listBot.data);
                   if (controller.listBot.data != null) {
                     List<Botijao> botijoes = controller.listBot.data;
-                    print(botijoes);
                     return GridViewList(
                       listBotijao: botijoes,
                       user: widget.userP,

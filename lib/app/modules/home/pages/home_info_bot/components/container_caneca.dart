@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 
 class ContainerCaneca extends StatelessWidget {
-  ContainerCaneca({icon, color})
+  ContainerCaneca({icon, color, h, w})
       : icon = icon,
-        color = color;
-
+        color = color,
+        h = h,
+        w = w;
+  double w;
+  double h;
   IconData icon;
   Color color;
   @override
@@ -12,11 +15,12 @@ class ContainerCaneca extends StatelessWidget {
     double _width = MediaQuery.of(context).size.width - 30;
     double _height = MediaQuery.of(context).size.height;
     return Container(
-      width: _width * 0.18,
-      height: _height * 0.082,
+      width: _width * w,
+      height: _height * h,
       child: Icon(
         icon,
         color: Color.fromRGBO(229, 231, 236, 1.0),
+        size: 10,
       ),
       decoration: BoxDecoration(
         border: Border.all(color: Color.fromRGBO(126, 116, 116, 1.0), width: 5),
