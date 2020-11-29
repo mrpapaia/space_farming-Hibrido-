@@ -27,7 +27,7 @@ class Rack {
     };
   }
 
-  factory Rack.fromMap(DocumentSnapshot doc) {
+  factory Rack.fromMap(QueryDocumentSnapshot doc) {
     return Rack(
       idTouro: doc.data()['idTouro'],
       tipo: doc.data()['tipo'],

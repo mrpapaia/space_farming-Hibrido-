@@ -39,7 +39,12 @@ abstract class _LoginControllerBase with Store {
   getUser(String email) {
     user = userRepository.list(email).asObservable();
 
-    farm = farmRepository.list(email).asObservable();
+    //farm = farmRepository.list(email).asObservable();
+  }
+
+  @action
+  getFarm() {
+    farm = farmRepository.list(user.data[0].fazendas).asObservable();
   }
 
   @action
@@ -79,12 +84,11 @@ abstract class _LoginControllerBase with Store {
   }
 
   @action
-  Future<bool> login() async {
+  Future<bool> login(FirebaseAuth auth) async {
     try {
-      UserCredential userCredential = await FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: this.email, password: this.passwd);
-
-      if (userCredential.user != null) {
+      UserCredential user = await auth.signInWithEmailAndPassword(
+          email: this.email, password: this.passwd);
+      if (user != null) {
         getUser(email);
 
         return true;

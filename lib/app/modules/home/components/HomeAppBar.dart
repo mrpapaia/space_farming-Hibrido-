@@ -27,28 +27,35 @@ class HomeAppBar extends StatelessWidget {
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              IconButton(
-                icon: Icon(
-                  Icons.menu,
-                  color: Colors.red,
-                  size: _width * 0.1,
+              Padding(
+                padding: EdgeInsets.fromLTRB(0.0, 0, 0, 5.0),
+                child: IconButton(
+                  icon: Icon(
+                    Icons.menu,
+                    color: Colors.red,
+                    size: _width * 0.1,
+                  ),
+                  onPressed: () {
+                    Scaffold.of(context).openDrawer();
+                  },
                 ),
-                onPressed: () {
-                  Scaffold.of(context).openDrawer();
-                },
               ),
               Text(
                 "Space Farming",
                 style: TextStyle(color: Colors.red, fontSize: _width * 0.07),
               ),
-              IconButton(
-                  icon: Icon(
-                    Icons.search,
-                    color: Colors.red,
-                    size: _width * 0.1,
-                  ),
-                  onPressed: null),
+              Padding(
+                padding: EdgeInsets.fromLTRB(0.0, 0, 2.5, 5.0),
+                child: IconButton(
+                    icon: Icon(
+                      Icons.search,
+                      color: Colors.red,
+                      size: _width * 0.1,
+                    ),
+                    onPressed: null),
+              ),
             ],
           ),
         ),

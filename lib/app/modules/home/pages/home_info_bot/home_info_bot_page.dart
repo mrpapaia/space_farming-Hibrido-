@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:space_farming_modular/app/modules/home/components/hexcolor.dart';
 
 import 'package:space_farming_modular/app/modules/home/components/secondaryAppBar.dart';
 import 'package:space_farming_modular/app/modules/home/pages/home_info_bot/components/container_caneca.dart';
@@ -28,33 +30,16 @@ class HomeInfoBotPage extends StatefulWidget {
 class _HomeInfoBotPageState
     extends ModularState<HomeInfoBotPage, HomeInfoBotController> {
   //use 'controller' variable to access controller
+  Color currentColor = Colors.limeAccent;
+
+  String toHex(Color color) => "#" + color.value.toRadixString(16).substring(2);
 
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width - 30;
-
     double _height = MediaQuery.of(context).size.height;
-    String imgSrc = '';
     double hBot = _height > 700 ? 0.07 : 0.08;
     double wBot = _height > 700 ? 0.155 : 0.15;
-    switch (widget.botijao.numcanecas) {
-      case 2:
-        imgSrc = 'lib/app/shared/graphics/test3.svg';
-
-        break;
-      case 4:
-        imgSrc = 'lib/app/shared/graphics/botijao4.png';
-        break;
-      case 6:
-        imgSrc = 'lib/app/shared/graphics/botijao6.png';
-        break;
-      case 8:
-        imgSrc = 'lib/app/shared/graphics/botijao8.png';
-        break;
-      case 10:
-        imgSrc = 'lib/app/shared/graphics/botijao10.png';
-        break;
-    }
 
     return Scaffold(
       appBar: PreferredSize(
@@ -113,8 +98,9 @@ class _HomeInfoBotPageState
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(200),
                           border: Border.all(
-                              color: Color.fromRGBO(126, 116, 116, 1.0),
-                              width: 5),
+                            color: Color.fromRGBO(126, 116, 116, 1.0),
+                            width: 5,
+                          ),
                           color: Colors.white,
                           boxShadow: [
                             BoxShadow(
@@ -127,43 +113,105 @@ class _HomeInfoBotPageState
                       ),
                     ),
                     Center(
-                      child: Container(
-                        child: Center(
-                          child: Text(
-                            "${widget.botijao.volAtual}",
-                            style: TextStyle(
-                              fontFamily: 'Robot',
-                              fontSize: _width * 0.1,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.red,
+                      child: InkWell(
+                        child: Container(
+                          child: Center(
+                            child: Text(
+                              "${widget.botijao.volAtual.roundToDouble()}",
+                              style: TextStyle(
+                                fontFamily: 'Robot',
+                                fontSize: _width * 0.1,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.red,
+                              ),
                             ),
                           ),
-                        ),
-                        width: _height > 700 ? 100 : 100,
-                        height: _height > 700 ? 100 : 75,
-                        decoration: BoxDecoration(
-                          border: Border.all(
+                          width: _height > 700 ? 100 : 100,
+                          height: _height > 700 ? 100 : 75,
+                          decoration: BoxDecoration(
+                            border: Border.all(
                               color: Color.fromRGBO(126, 116, 116, 1.0),
-                              width: 5),
-                          borderRadius: BorderRadius.circular(12),
-                          color: Color.fromRGBO(229, 231, 236, 1.0),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.2),
-                              spreadRadius: 0,
-                              offset: Offset(5, 5),
-                            )
-                          ],
+                              width: 5,
+                            ),
+                            borderRadius: BorderRadius.circular(12),
+                            color: Color.fromRGBO(229, 231, 236, 1.0),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.2),
+                                spreadRadius: 0,
+                                offset: Offset(5, 5),
+                              )
+                            ],
+                          ),
                         ),
+                        onTap: () {
+                          Modular.to.pushNamed('/ctrl',
+                              arguments: [widget.botijao, widget.user]);
+                        },
                       ),
                     ),
                     widget.botijao.numcanecas >= 8
                         ? Positioned(
-                            child: ContainerCaneca(
-                              icon: CanecaIcons.num1,
-                              color: Colors.grey,
-                              h: hBot,
-                              w: wBot,
+                            child: InkWell(
+                              child: ContainerCaneca(
+                                icon: CanecaIcons.num8,
+                                color: widget.botijao.canecas[6].color,
+                                h: hBot,
+                                w: wBot,
+                              ),
+                              onTap: () {
+                                Modular.to.pushNamed('/rack', arguments: [
+                                  widget.botijao.canecas[6],
+                                  widget.user
+                                ]);
+                              },
+                              onLongPress: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    Color cor;
+                                    return AlertDialog(
+                                      title: Text('Selecione a cor da caneca'),
+                                      content: SingleChildScrollView(
+                                        child: BlockPicker(
+                                          pickerColor:
+                                              widget.botijao.canecas[6].color,
+                                          onColorChanged: (Color color) =>
+                                              cor = color,
+                                        ),
+                                      ),
+                                      actions: <Widget>[
+                                        FlatButton(
+                                          child: Text(
+                                            "Contirmar",
+                                            style:
+                                                TextStyle(color: Colors.black),
+                                          ),
+                                          onPressed: () {
+                                            toHex(cor);
+                                            setState(() {
+                                              widget.botijao.canecas[6].color =
+                                                  cor;
+                                            });
+
+                                            Navigator.of(context).pop();
+                                          },
+                                        ),
+                                        FlatButton(
+                                          child: Text(
+                                            "Cancelar",
+                                            style:
+                                                TextStyle(color: Colors.black),
+                                          ),
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              },
                             ),
                             top:
                                 _height > 700 ? _height * 0.24 : _height * 0.26,
@@ -175,11 +223,66 @@ class _HomeInfoBotPageState
                           ),
                     widget.botijao.numcanecas >= 10
                         ? Positioned(
-                            child: ContainerCaneca(
-                              icon: CanecaIcons.num2,
-                              color: Colors.grey,
-                              h: hBot,
-                              w: wBot,
+                            child: InkWell(
+                              child: ContainerCaneca(
+                                icon: CanecaIcons.num2,
+                                color: widget.botijao.canecas[8].color,
+                                h: hBot,
+                                w: wBot,
+                              ),
+                              onTap: () {
+                                Modular.to.pushNamed('/rack', arguments: [
+                                  widget.botijao.canecas[8],
+                                  widget.user
+                                ]);
+                              },
+                              onLongPress: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    Color cor;
+                                    return AlertDialog(
+                                      title: Text('Selecione a cor da caneca'),
+                                      content: SingleChildScrollView(
+                                        child: BlockPicker(
+                                          pickerColor:
+                                              widget.botijao.canecas[8].color,
+                                          onColorChanged: (Color color) =>
+                                              cor = color,
+                                        ),
+                                      ),
+                                      actions: <Widget>[
+                                        FlatButton(
+                                          child: Text(
+                                            "Contirmar",
+                                            style:
+                                                TextStyle(color: Colors.black),
+                                          ),
+                                          onPressed: () {
+                                            toHex(cor);
+                                            setState(() {
+                                              widget.botijao.canecas[8].color =
+                                                  cor;
+                                            });
+
+                                            Navigator.of(context).pop();
+                                          },
+                                        ),
+                                        FlatButton(
+                                          child: Text(
+                                            "Cancelar",
+                                            style:
+                                                TextStyle(color: Colors.black),
+                                          ),
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              },
                             ),
                             top: _height > 700
                                 ? _height * 0.223
@@ -192,11 +295,66 @@ class _HomeInfoBotPageState
                           ),
                     widget.botijao.numcanecas >= 6
                         ? Positioned(
-                            child: ContainerCaneca(
-                              icon: CanecaIcons.num3,
-                              color: Colors.grey,
-                              h: hBot,
-                              w: wBot,
+                            child: InkWell(
+                              child: ContainerCaneca(
+                                icon: CanecaIcons.num3,
+                                color: widget.botijao.canecas[4].color,
+                                h: hBot,
+                                w: wBot,
+                              ),
+                              onTap: () {
+                                Modular.to.pushNamed('/rack', arguments: [
+                                  widget.botijao.canecas[4],
+                                  widget.user
+                                ]);
+                              },
+                              onLongPress: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    Color cor;
+                                    return AlertDialog(
+                                      title: Text('Selecione a cor da caneca'),
+                                      content: SingleChildScrollView(
+                                        child: BlockPicker(
+                                          pickerColor:
+                                              widget.botijao.canecas[4].color,
+                                          onColorChanged: (Color color) =>
+                                              cor = color,
+                                        ),
+                                      ),
+                                      actions: <Widget>[
+                                        FlatButton(
+                                          child: Text(
+                                            "Contirmar",
+                                            style:
+                                                TextStyle(color: Colors.black),
+                                          ),
+                                          onPressed: () {
+                                            toHex(cor);
+                                            setState(() {
+                                              widget.botijao.canecas[4].color =
+                                                  cor;
+                                            });
+
+                                            Navigator.of(context).pop();
+                                          },
+                                        ),
+                                        FlatButton(
+                                          child: Text(
+                                            "Cancelar",
+                                            style:
+                                                TextStyle(color: Colors.black),
+                                          ),
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              },
                             ),
                             top:
                                 _height > 700 ? _height * 0.03 : _height * 0.03,
@@ -208,11 +366,66 @@ class _HomeInfoBotPageState
                           ),
                     widget.botijao.numcanecas >= 10
                         ? Positioned(
-                            child: ContainerCaneca(
-                              icon: CanecaIcons.num4,
-                              color: Colors.grey,
-                              h: hBot,
-                              w: wBot,
+                            child: InkWell(
+                              child: ContainerCaneca(
+                                icon: CanecaIcons.num4,
+                                color: widget.botijao.canecas[9].color,
+                                h: hBot,
+                                w: wBot,
+                              ),
+                              onTap: () {
+                                Modular.to.pushNamed('/rack', arguments: [
+                                  widget.botijao.canecas[9],
+                                  widget.user
+                                ]);
+                              },
+                              onLongPress: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    Color cor;
+                                    return AlertDialog(
+                                      title: Text('Selecione a cor da caneca'),
+                                      content: SingleChildScrollView(
+                                        child: BlockPicker(
+                                          pickerColor:
+                                              widget.botijao.canecas[9].color,
+                                          onColorChanged: (Color color) =>
+                                              cor = color,
+                                        ),
+                                      ),
+                                      actions: <Widget>[
+                                        FlatButton(
+                                          child: Text(
+                                            "Contirmar",
+                                            style:
+                                                TextStyle(color: Colors.black),
+                                          ),
+                                          onPressed: () {
+                                            toHex(cor);
+                                            setState(() {
+                                              widget.botijao.canecas[9].color =
+                                                  cor;
+                                            });
+
+                                            Navigator.of(context).pop();
+                                          },
+                                        ),
+                                        FlatButton(
+                                          child: Text(
+                                            "Cancelar",
+                                            style:
+                                                TextStyle(color: Colors.black),
+                                          ),
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              },
                             ),
                             top: _height > 700
                                 ? _height * 0.068
@@ -225,22 +438,129 @@ class _HomeInfoBotPageState
                             height: 0,
                           ),
                     Positioned(
-                      child: ContainerCaneca(
-                        icon: CanecaIcons.num5,
-                        color: Colors.grey,
-                        h: hBot,
-                        w: wBot,
+                      child: InkWell(
+                        child: ContainerCaneca(
+                          icon: CanecaIcons.num5,
+                          color: widget.botijao.canecas[0].color,
+                          h: hBot,
+                          w: wBot,
+                        ),
+                        onTap: () {
+                          Modular.to.pushNamed('/rack', arguments: [
+                            widget.botijao.canecas[0],
+                            widget.user
+                          ]);
+                        },
+                        onLongPress: () {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              Color cor;
+                              return AlertDialog(
+                                title: Text('Selecione a cor da caneca'),
+                                content: SingleChildScrollView(
+                                  child: BlockPicker(
+                                    pickerColor:
+                                        widget.botijao.canecas[0].color,
+                                    onColorChanged: (Color color) =>
+                                        cor = color,
+                                  ),
+                                ),
+                                actions: <Widget>[
+                                  FlatButton(
+                                    child: Text(
+                                      "Contirmar",
+                                      style: TextStyle(color: Colors.black),
+                                    ),
+                                    onPressed: () {
+                                      toHex(cor);
+                                      setState(() {
+                                        widget.botijao.canecas[0].color = cor;
+                                      });
+
+                                      Navigator.of(context).pop();
+                                    },
+                                  ),
+                                  FlatButton(
+                                    child: Text(
+                                      "Cancelar",
+                                      style: TextStyle(color: Colors.black),
+                                    ),
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        },
                       ),
                       top: _height > 700 ? _height * 0.155 : _height * 0.16,
                       left: _height > 700 ? _width * 0.05 : _width * 0.05,
                     ),
                     widget.botijao.numcanecas >= 4
                         ? Positioned(
-                            child: ContainerCaneca(
-                              icon: CanecaIcons.num6,
-                              color: Colors.grey,
-                              h: hBot,
-                              w: wBot,
+                            child: InkWell(
+                              child: ContainerCaneca(
+                                icon: CanecaIcons.num6,
+                                color: widget.botijao.canecas[2].color,
+                                h: hBot,
+                                w: wBot,
+                              ),
+                              onTap: () {
+                                Modular.to.pushNamed('/rack', arguments: [
+                                  widget.botijao.canecas[2],
+                                  widget.user
+                                ]);
+                              },
+                              onLongPress: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    Color cor;
+                                    return AlertDialog(
+                                      title: Text('Selecione a cor da caneca'),
+                                      content: SingleChildScrollView(
+                                        child: BlockPicker(
+                                          pickerColor:
+                                              widget.botijao.canecas[2].color,
+                                          onColorChanged: (Color color) =>
+                                              cor = color,
+                                        ),
+                                      ),
+                                      actions: <Widget>[
+                                        FlatButton(
+                                          child: Text(
+                                            "Contirmar",
+                                            style:
+                                                TextStyle(color: Colors.black),
+                                          ),
+                                          onPressed: () {
+                                            toHex(cor);
+                                            setState(() {
+                                              widget.botijao.canecas[2].color =
+                                                  cor;
+                                            });
+
+                                            Navigator.of(context).pop();
+                                          },
+                                        ),
+                                        FlatButton(
+                                          child: Text(
+                                            "Cancelar",
+                                            style:
+                                                TextStyle(color: Colors.black),
+                                          ),
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              },
                             ),
                             top:
                                 _height > 700 ? _height * 0.03 : _height * 0.03,
@@ -252,11 +572,66 @@ class _HomeInfoBotPageState
                           ),
                     widget.botijao.numcanecas >= 8
                         ? Positioned(
-                            child: ContainerCaneca(
-                              icon: CanecaIcons.num7,
-                              color: Colors.grey,
-                              h: hBot,
-                              w: wBot,
+                            child: InkWell(
+                              child: ContainerCaneca(
+                                icon: CanecaIcons.num7,
+                                color: widget.botijao.canecas[7].color,
+                                h: hBot,
+                                w: wBot,
+                              ),
+                              onTap: () {
+                                Modular.to.pushNamed('/rack', arguments: [
+                                  widget.botijao.canecas[7],
+                                  widget.user
+                                ]);
+                              },
+                              onLongPress: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    Color cor;
+                                    return AlertDialog(
+                                      title: Text('Selecione a cor da caneca'),
+                                      content: SingleChildScrollView(
+                                        child: BlockPicker(
+                                          pickerColor:
+                                              widget.botijao.canecas[7].color,
+                                          onColorChanged: (Color color) =>
+                                              cor = color,
+                                        ),
+                                      ),
+                                      actions: <Widget>[
+                                        FlatButton(
+                                          child: Text(
+                                            "Contirmar",
+                                            style:
+                                                TextStyle(color: Colors.black),
+                                          ),
+                                          onPressed: () {
+                                            toHex(cor);
+                                            setState(() {
+                                              widget.botijao.canecas[7].color =
+                                                  cor;
+                                            });
+
+                                            Navigator.of(context).pop();
+                                          },
+                                        ),
+                                        FlatButton(
+                                          child: Text(
+                                            "Cancelar",
+                                            style:
+                                                TextStyle(color: Colors.black),
+                                          ),
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              },
                             ),
                             top:
                                 _height > 700 ? _height * 0.07 : _height * 0.07,
@@ -268,11 +643,66 @@ class _HomeInfoBotPageState
                           ),
                     widget.botijao.numcanecas >= 2
                         ? Positioned(
-                            child: ContainerCaneca(
-                              icon: CanecaIcons.num8,
-                              color: Colors.grey,
-                              h: hBot,
-                              w: wBot,
+                            child: InkWell(
+                              child: ContainerCaneca(
+                                icon: CanecaIcons.num8,
+                                color: widget.botijao.canecas[1].color,
+                                h: hBot,
+                                w: wBot,
+                              ),
+                              onTap: () {
+                                Modular.to.pushNamed('/rack', arguments: [
+                                  widget.botijao.canecas[1],
+                                  widget.user
+                                ]);
+                              },
+                              onLongPress: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    Color cor;
+                                    return AlertDialog(
+                                      title: Text('Selecione a cor da caneca'),
+                                      content: SingleChildScrollView(
+                                        child: BlockPicker(
+                                          pickerColor:
+                                              widget.botijao.canecas[1].color,
+                                          onColorChanged: (Color color) =>
+                                              cor = color,
+                                        ),
+                                      ),
+                                      actions: <Widget>[
+                                        FlatButton(
+                                          child: Text(
+                                            "Contirmar",
+                                            style:
+                                                TextStyle(color: Colors.black),
+                                          ),
+                                          onPressed: () {
+                                            toHex(cor);
+                                            setState(() {
+                                              widget.botijao.canecas[1].color =
+                                                  cor;
+                                            });
+
+                                            Navigator.of(context).pop();
+                                          },
+                                        ),
+                                        FlatButton(
+                                          child: Text(
+                                            "Cancelar",
+                                            style:
+                                                TextStyle(color: Colors.black),
+                                          ),
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              },
                             ),
                             top:
                                 _height > 700 ? _height * 0.15 : _height * 0.16,
@@ -284,11 +714,66 @@ class _HomeInfoBotPageState
                           ),
                     widget.botijao.numcanecas >= 6
                         ? Positioned(
-                            child: ContainerCaneca(
-                              icon: CanecaIcons.num1,
-                              color: Colors.grey,
-                              h: hBot,
-                              w: wBot,
+                            child: InkWell(
+                              child: ContainerCaneca(
+                                icon: CanecaIcons.num1,
+                                color: widget.botijao.canecas[5].color,
+                                h: hBot,
+                                w: wBot,
+                              ),
+                              onTap: () {
+                                Modular.to.pushNamed('/rack', arguments: [
+                                  widget.botijao.canecas[5],
+                                  widget.user
+                                ]);
+                              },
+                              onLongPress: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    Color cor;
+                                    return AlertDialog(
+                                      title: Text('Selecione a cor da caneca'),
+                                      content: SingleChildScrollView(
+                                        child: BlockPicker(
+                                          pickerColor:
+                                              widget.botijao.canecas[5].color,
+                                          onColorChanged: (Color color) =>
+                                              cor = color,
+                                        ),
+                                      ),
+                                      actions: <Widget>[
+                                        FlatButton(
+                                          child: Text(
+                                            "Contirmar",
+                                            style:
+                                                TextStyle(color: Colors.black),
+                                          ),
+                                          onPressed: () {
+                                            toHex(cor);
+                                            setState(() {
+                                              widget.botijao.canecas[5].color =
+                                                  cor;
+                                            });
+
+                                            Navigator.of(context).pop();
+                                          },
+                                        ),
+                                        FlatButton(
+                                          child: Text(
+                                            "Cancelar",
+                                            style:
+                                                TextStyle(color: Colors.black),
+                                          ),
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              },
                             ),
                             top:
                                 _height > 700 ? _height * 0.28 : _height * 0.31,
@@ -300,11 +785,66 @@ class _HomeInfoBotPageState
                           ),
                     widget.botijao.numcanecas >= 4
                         ? Positioned(
-                            child: ContainerCaneca(
-                              icon: CanecaIcons.num8,
-                              color: Colors.grey,
-                              h: hBot,
-                              w: wBot,
+                            child: InkWell(
+                              child: ContainerCaneca(
+                                icon: CanecaIcons.num8,
+                                color: widget.botijao.canecas[3].color,
+                                h: hBot,
+                                w: wBot,
+                              ),
+                              onTap: () {
+                                Modular.to.pushNamed('/rack', arguments: [
+                                  widget.botijao.canecas[3],
+                                  widget.user
+                                ]);
+                              },
+                              onLongPress: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    Color cor;
+                                    return AlertDialog(
+                                      title: Text('Selecione a cor da caneca'),
+                                      content: SingleChildScrollView(
+                                        child: BlockPicker(
+                                          pickerColor:
+                                              widget.botijao.canecas[3].color,
+                                          onColorChanged: (Color color) =>
+                                              cor = color,
+                                        ),
+                                      ),
+                                      actions: <Widget>[
+                                        FlatButton(
+                                          child: Text(
+                                            "Contirmar",
+                                            style:
+                                                TextStyle(color: Colors.black),
+                                          ),
+                                          onPressed: () {
+                                            toHex(cor);
+                                            setState(() {
+                                              widget.botijao.canecas[3].color =
+                                                  cor;
+                                            });
+
+                                            Navigator.of(context).pop();
+                                          },
+                                        ),
+                                        FlatButton(
+                                          child: Text(
+                                            "Cancelar",
+                                            style:
+                                                TextStyle(color: Colors.black),
+                                          ),
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              },
                             ),
                             top:
                                 _height > 700 ? _height * 0.28 : _height * 0.31,
@@ -333,11 +873,6 @@ class _HomeInfoBotPageState
                   )
                 ],
               ),
-
-              /* onTap: () {
-                Modular.to.pushNamed('/rack',
-                    arguments: [widget.botijao.canecas[0], widget.user]);
-              },*/
             );
           }),
           SizedBox(
@@ -348,59 +883,49 @@ class _HomeInfoBotPageState
             font: "Revalia",
             fontSize: _width * 0.09,
           ),
-          SizedBox(
-            height: _height * 0.03,
-          ),
-          InkWell(
-            child: Container(
-              child: Stack(
-                children: [
-                  InkWell(
-                    child: Image(
-                      image: AssetImage("lib/app/shared/graphics/regua.png"),
-                    ),
-                    onTap: () {
-                      Modular.to.pushNamed('/ctrl',
-                          arguments: [widget.botijao, widget.user]);
+          Container(
+            child: Stack(
+              children: [
+                Image(
+                  image: AssetImage("lib/app/shared/graphics/regua.png"),
+                ),
+                SliderTheme(
+                  data: SliderTheme.of(context).copyWith(
+                    activeTrackColor: Colors.transparent,
+                    inactiveTrackColor: Colors.transparent,
+                    thumbColor: Colors.black,
+                    overlayColor: Colors.red.withAlpha(0),
+                    overlayShape: RoundSliderOverlayShape(overlayRadius: 3.0),
+                  ),
+                  child: Slider(
+                    value: widget.botijao.volAtual,
+                    min: 0,
+                    max: 51,
+                    onChanged: (value) {
+                      setState(
+                        () {
+                          widget.botijao.volAtual = value;
+                        },
+                      );
                     },
                   ),
-                  SliderTheme(
-                    data: SliderTheme.of(context).copyWith(
-                      activeTrackColor: Colors.transparent,
-                      inactiveTrackColor: Colors.transparent,
-                      thumbColor: Colors.black,
-                      thumbShape: RoundSliderThumbShape(
-                        enabledThumbRadius: 10,
-                      ),
-                      overlayColor: Colors.red.withAlpha(0),
-                      overlayShape: RoundSliderOverlayShape(overlayRadius: 3.0),
-                    ),
-                    child: Slider(
-                      value: widget.botijao.volAtual,
-                      min: 0,
-                      max: 45,
-                      onChanged: (value) {
-                        value = value;
-                      },
-                    ),
-                  ),
-                ],
-              ),
-              width: _width - 30,
-              padding: EdgeInsets.all(5.0),
-              decoration: BoxDecoration(
-                border: Border.all(
-                    color: Color.fromRGBO(126, 116, 116, 1.0), width: 5),
-                borderRadius: BorderRadius.circular(12),
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.2),
-                    spreadRadius: 0,
-                    offset: Offset(5, 5),
-                  )
-                ],
-              ),
+                ),
+              ],
+            ),
+            width: _width - 30,
+            padding: EdgeInsets.all(5.0),
+            decoration: BoxDecoration(
+              border: Border.all(
+                  color: Color.fromRGBO(126, 116, 116, 1.0), width: 5),
+              borderRadius: BorderRadius.circular(12),
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.2),
+                  spreadRadius: 0,
+                  offset: Offset(5, 5),
+                )
+              ],
             ),
           ),
         ],

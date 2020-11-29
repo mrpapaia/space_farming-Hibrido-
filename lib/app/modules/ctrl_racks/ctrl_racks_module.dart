@@ -21,7 +21,7 @@ class CtrlRacksModule extends ChildModule {
   List<ModularRouter> get routers => [
         ModularRouter(Modular.initialRoute,
             child: (_, args) =>
-                CtrlRacksPage(doc: args.data[0].id, user: args.data[1])),
+                CtrlRacksPage(listRacks: args.data[0].racks, user: args.data[1])),
       ];
 
   static Inject get to => Inject<CtrlRacksModule>.of();

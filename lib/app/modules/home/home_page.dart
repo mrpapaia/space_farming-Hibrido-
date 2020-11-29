@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:flutter/material.dart';
@@ -25,10 +27,26 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends ModularState<HomePage, HomeController> {
+  List<Botijao> botijoes;
+
+  void startTimer() {
+    new Timer.periodic(
+      Duration(seconds: 1),
+      (Timer timer) => setState(
+        () {
+          if (controller.listBot.data != null) {
+            timer.cancel();
+          }
+        },
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
+    startTimer();
     return Scaffold(
       backgroundColor: Color.fromRGBO(229, 231, 236, 1.0),
       resizeToAvoidBottomInset: false,
@@ -57,20 +75,22 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
             child: Observer(
               builder: (BuildContext context) {
                 try {
-                  if (controller.listBot.data != null) {
-                    List<Botijao> botijoes = controller.listBot.data;
-                    return GridViewList(
-                      listBotijao: botijoes,
-                      user: widget.userP,
-                    );
-                  } else {
-                    return Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  }
+                  botijoes = controller.listBot.data;
+                  return GridViewList(
+                    listBotijao: botijoes,
+                    user: widget.userP,
+                  );
+                  //Botijão 1- Boa nova
                 } catch (NoSuchMethodError) {
-                  return Center(
-                    child: CircularProgressIndicator(),
+                  return Column(
+                    children: [
+                      Center(
+                        child: Text("Aguerde..."),
+                      ),
+                      Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                    ],
                   );
                 }
               },

@@ -6,14 +6,15 @@ import 'package:space_farming_modular/app/modules/ctrl_racks/components/gridview
 import 'package:space_farming_modular/app/modules/home/components/secondaryAppBar.dart';
 import 'package:space_farming_modular/app/shared/components/nav_draw.dart';
 import 'package:space_farming_modular/app/shared/components/titleOfScreen.dart';
+import 'package:space_farming_modular/app/shared/models/rack.dart';
 import 'package:space_farming_modular/app/shared/models/user.dart';
 import 'ctrl_racks_controller.dart';
 
 class CtrlRacksPage extends StatefulWidget {
   final String title;
-  CtrlRacksPage({Key key, this.title = "CtrlRacks", this.doc, this.user})
+  CtrlRacksPage({Key key, this.title = "CtrlRacks", this.listRacks, this.user})
       : super(key: key);
-  DocumentReference doc;
+  List<Rack> listRacks;
   UserP user;
 
   @override
@@ -28,6 +29,7 @@ class _CtrlRacksPageState
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Color.fromRGBO(229, 231, 236, 1.0),
@@ -47,8 +49,9 @@ class _CtrlRacksPageState
             height: MediaQuery.of(context).size.height * 0.7,
             child: Observer(builder: (_) {
               try {
-                if (controller.listRack.data != null) {
-                  return GridViewRacks(listRack: controller.listRack.data);
+                if (widget.listRacks != null) {
+                  print(widget.listRacks);
+                  return GridViewRacks(listRack: widget.listRacks);
                 } else {
                   return Center(
                     child: CircularProgressIndicator(),

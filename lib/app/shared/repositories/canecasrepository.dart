@@ -15,7 +15,17 @@ class CanecasRepository implements IRepositoryCanecas {
   }
 
   @override
-  Stream<List<Caneca>> list(DocumentReference docRef) {}
+  Stream<List<Caneca>> list(DocumentReference docRef) {
+    return firestore
+        .doc(docRef.path)
+        .collection('canecas')
+        .snapshots()
+        .map((query) {
+      return query.docs.map((doc) {
+        return Caneca.fromMap(doc.reference, doc.data()['color'], null);
+      }).toList();
+    });
+  }
 
   @override
   Future<bool> remove(Caneca id) {

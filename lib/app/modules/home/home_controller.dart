@@ -18,7 +18,7 @@ abstract class _HomeControllerBase with Store {
   final IRepositoryCanecas repositoryCanecas;
 
   @observable
-  ObservableStream<List<Botijao>> listBot;
+ ObservableStream< List<Botijao>> listBot;
 
   ObservableStream<List<Caneca>> listCaneca;
 
@@ -28,11 +28,11 @@ abstract class _HomeControllerBase with Store {
 
   @action
   getBot() {
-    listBot = repository.list().asObservable();
+   listBot= repository.list().asObservable();
   }
 
   @action
-  getCaneca() {
-    // listCaneca = repositoryCanecas.list().asObservable();
+  getCaneca(DocumentReference doc) {
+    return repositoryCanecas.list(doc).asObservable();
   }
 }

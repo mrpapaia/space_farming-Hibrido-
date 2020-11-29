@@ -23,14 +23,14 @@ class ContainerCaneca extends StatelessWidget {
         size: 10,
       ),
       decoration: BoxDecoration(
-        border: Border.all(color: Color.fromRGBO(126, 116, 116, 1.0), width: 5),
+        border: Border.all(color: Color.fromRGBO(126, 116, 116, 1.0), width: 2),
         borderRadius: BorderRadius.circular(200),
         color: color,
         boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(0.2),
             spreadRadius: 0,
-            offset: Offset(5, 5),
+            offset: Offset(3, 3),
           )
         ],
       ),

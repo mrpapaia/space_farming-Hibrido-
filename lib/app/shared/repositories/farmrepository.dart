@@ -12,13 +12,15 @@ class FarmRepository implements IRepositoryFarm {
   }
 
   @override
-  Stream<List<Farm>> list(String farmName) {
+  Stream<List<Farm>> list(List<String> farmName) {
+    print("ENtrou");
     return firestore
         .collection('farms')
-        .where('email', isEqualTo: farmName)
+        .where('nome', isEqualTo: 'test2')
         .snapshots()
         .map((query) {
       return query.docs.map((doc) {
+        print(doc.data());
         return Farm.fromMap(doc);
       }).toList();
     });

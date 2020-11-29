@@ -55,14 +55,14 @@ class Botijao {
     };
   }
 
-  factory Botijao.fromMap(DocumentSnapshot doc, List<Caneca> listCaneca) {
+  factory Botijao.fromMap(QueryDocumentSnapshot doc, List<Caneca> canecas) {
     return Botijao(
       idBot: doc.data()['idBot'],
       qtdDose: int.parse(doc.data()['qtdDose']),
       volAtual: double.parse(doc.data()['volAtual']),
       volTotal: double.parse(doc.data()['volTotal']),
       numcanecas: int.parse(doc.data()['numcanecas']),
-      canecas: listCaneca,
+      canecas: canecas,
       ref: doc.reference,
     );
   }

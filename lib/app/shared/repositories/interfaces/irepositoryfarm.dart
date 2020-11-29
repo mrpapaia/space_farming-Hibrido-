@@ -5,5 +5,5 @@ abstract class IRepositoryFarm {
   Future<bool> remove(String id);
   Future<bool> update(Farm obj);
 
-  Stream<List<Farm>> list(String farmName);
+  Stream<List<Farm>> list(List<String> farmName);
 }

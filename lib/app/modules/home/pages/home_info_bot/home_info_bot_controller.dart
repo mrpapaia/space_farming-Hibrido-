@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:space_farming_modular/app/shared/models/botijao.dart';
 import 'package:space_farming_modular/app/shared/models/caneca.dart';
 import 'package:space_farming_modular/app/shared/models/rack.dart';
 import 'package:space_farming_modular/app/shared/repositories/interfaces/irepositorycanecas.dart';
@@ -18,12 +20,5 @@ abstract class _HomeInfoBotControllerBase with Store {
   @observable
   ObservableStream<List<Caneca>> listCanecas;
 
-  _HomeInfoBotControllerBase(this.repository) {
-    getCanecas();
-  }
-
-  @action
-  getCanecas() {
-    //listCanecas = repository.list().asObservable();
-  }
+  _HomeInfoBotControllerBase(this.repository) {}
 }

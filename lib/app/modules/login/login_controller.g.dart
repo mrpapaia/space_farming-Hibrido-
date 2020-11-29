@@ -82,8 +82,8 @@ mixin _$LoginController on _LoginControllerBase, Store {
   final _$loginAsyncAction = AsyncAction('_LoginControllerBase.login');
 
   @override
-  Future<bool> login() {
-    return _$loginAsyncAction.run(() => super.login());
+  Future<bool> login(FirebaseAuth auth) {
+    return _$loginAsyncAction.run(() => super.login(auth));
   }
 
   final _$_LoginControllerBaseActionController =
@@ -95,6 +95,17 @@ mixin _$LoginController on _LoginControllerBase, Store {
         name: '_LoginControllerBase.getUser');
     try {
       return super.getUser(email);
+    } finally {
+      _$_LoginControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic getFarm() {
+    final _$actionInfo = _$_LoginControllerBaseActionController.startAction(
+        name: '_LoginControllerBase.getFarm');
+    try {
+      return super.getFarm();
     } finally {
       _$_LoginControllerBaseActionController.endAction(_$actionInfo);
     }

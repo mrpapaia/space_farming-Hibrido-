@@ -20,28 +20,40 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
   //use 'controller' variable to access controller
   bool press = false;
   String teste;
+  var _auth = FirebaseAuth.instance;
 
   void startTimer() {
     new Timer.periodic(
       Duration(seconds: 1),
-      (Timer timer) => setState(
-        () {
-          if (controller.farm.data != null && controller.user.data != null) {
-            print(controller.user.data[0]);
-            print(controller.farm.data[0]);
-            controller.isSuccefull(
-                controller.farm.data[0].ref, controller.user.data[0]);
-
-            timer.cancel();
+      (Timer timer) => setState(() {
+        try {
+          if (controller.user.data != null) {
+            print(controller.user.data[0].nome);
+            controller.getFarm();
+            timer.toString();
           }
-        },
-      ),
+        } catch (NoSuchMethodError) {}
+      }),
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _auth.signOut();
+    _auth.authStateChanges().listen((User user) {
+      if (user == null) {
+        print('User is currently signed out!');
+      } else {
+        print('User is signed in!');
+      }
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width - 30;
+    var flag = false;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Color.fromRGBO(229, 231, 236, 1.0),
@@ -58,8 +70,12 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
           Observer(
             builder: (BuildContext context) {
               try {
-                controller.farm.data;
-                controller.user.data;
+                if (controller.user.data != null) {
+                  print(controller.farm.data);
+                  // controller.getFarm();
+
+                }
+
                 return Center(child: CircularProgressIndicator());
               } catch (NoSuchMethodError) {
                 return Column(
@@ -73,7 +89,6 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                             obscureText: false,
                             keyboardType: TextInputType.emailAddress,
                             cursorColor: Colors.red,
-                            //validator: controller.valideteEmail,
                             style: TextStyle(
                               fontFamily: 'Robot',
                               fontSize: 18,
@@ -124,8 +139,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                       text: "Login",
                       width: 309.0,
                       onclick: () async {
-                        await controller.login();
-
+                        await controller.login(_auth);
                         startTimer();
                       },
                     ),

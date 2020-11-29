@@ -5,12 +5,12 @@ import 'package:space_farming_modular/app/shared/models/rack.dart';
 import 'package:space_farming_modular/app/shared/repositories/interfaces/irepositorybotijao.dart';
 
 class BotijaoRepository implements IRepositoryBotijao {
-  String _colecao = "botijoes";
-
   FirebaseFirestore firestore;
   DocumentReference doc;
-  static List<Caneca> listCanecas = [];
-  static List<Rack> listRacks = [];
+  List<Botijao> listBotijao = List();
+  List<Caneca> listCanecas = List();
+  List<Rack> listRacks = List();
+
   BotijaoRepository(this.firestore, this.doc);
 
   @override
@@ -54,29 +54,31 @@ class BotijaoRepository implements IRepositoryBotijao {
         .snapshots()
         .map((query) {
       return query.docs.map((doc) {
-        doc.reference.collection('canecas').snapshots().listen(getCanecas);
-        return Botijao.fromMap(doc, listCanecas);
+        //doc.reference.collection('canecas').snapshots().listen(getCanecas);
+        return Botijao.fromMap(
+            doc, getCanecas(doc.reference.collection('canecas').get()));
       }).toList();
     });
   }
 
-  getCanecas(QuerySnapshot snapshot) async {
-    for (var doc in snapshot.docs) {
-      getRacks(doc).listen((racks) {
-        listCanecas.add(Caneca.fromMap(doc.reference, racks));
+  List<Caneca> getCanecas(Future<QuerySnapshot> snapshot) {
+    List<Caneca> canecas = [];
+    snapshot.then((value) {
+      for (var doc in value.docs) {
+        canecas.add(Caneca.fromMap(doc.reference, doc.data()["color"],
+            getRacks(doc.reference.collection('racks').get())));
+      }
+    });
+    return canecas;
+  }
+
+  List<Rack> getRacks(Future<QuerySnapshot> snapshot) {
+    List<Rack> racks = [];
+    snapshot.then((value) {
+      value.docs.forEach((rack) {
+        racks.add(Rack.fromMap(rack));
       });
-    }
-  }
-
-  Stream<List<Rack>> getRacks(DocumentSnapshot doc) {
-    return firestore
-        .doc(doc.reference.path)
-        .collection("racks")
-        .snapshots()
-        .map((query) {
-      return query.docs.map((docR) {
-        return Rack.fromMap(docR);
-      }).toList();
     });
+    return racks;
   }
 }

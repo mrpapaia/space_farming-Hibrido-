@@ -49,11 +49,11 @@ mixin _$HomeController on _HomeControllerBase, Store {
   }
 
   @override
-  dynamic getCaneca() {
+  dynamic getCaneca(DocumentReference doc) {
     final _$actionInfo = _$_HomeControllerBaseActionController.startAction(
         name: '_HomeControllerBase.getCaneca');
     try {
-      return super.getCaneca();
+      return super.getCaneca(doc);
     } finally {
       _$_HomeControllerBaseActionController.endAction(_$actionInfo);
     }

@@ -31,15 +31,24 @@ class HomeModule extends ChildModule {
 
   @override
   List<ModularRouter> get routers => [
-        ModularRouter(Modular.initialRoute,
-            child: (_, args) => HomePage(
-                  doc: args.data[0],
-                  userP: args.data[1],
-                )),
-        ModularRouter("/info",
-            child: (_, args) =>
-                HomeInfoBotPage(botijao: args.data[0], user: args.data[1])),
-        ModularRouter("/add", child: (_, args) => HomeBotCreatePage()),
+        ModularRouter(
+          Modular.initialRoute,
+          child: (_, args) => HomePage(
+            doc: args.data[0],
+            userP: args.data[1],
+          ),
+        ),
+        ModularRouter(
+          "/info",
+          child: (_, args) => HomeInfoBotPage(
+            botijao: args.data[0],
+            user: args.data[1],
+          ),
+        ),
+        ModularRouter(
+          "/add",
+          child: (_, args) => HomeBotCreatePage(),
+        ),
       ];
 
   static Inject get to => Inject<HomeModule>.of();
