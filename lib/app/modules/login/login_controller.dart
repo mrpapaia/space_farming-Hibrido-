@@ -71,14 +71,14 @@ abstract class _LoginControllerBase with Store {
   }
 
   @action
-  Future<bool> login(FirebaseAuth auth) async {
+  Future<UserCredential> login(FirebaseAuth auth) async {
     try {
       UserCredential user = await auth.signInWithEmailAndPassword(
           email: this.email, password: this.passwd);
       if (user != null) {
         getUser(email);
 
-        return true;
+        return user;
       }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
@@ -86,7 +86,7 @@ abstract class _LoginControllerBase with Store {
       } else if (e.code == 'wrong-password') {
         print('Wrong password provided for that user.');
       }
-      return false;
+      return null;
     }
   }
 }

@@ -4,9 +4,11 @@ import 'package:mobx/mobx.dart';
 
 import 'package:space_farming_modular/app/shared/models/botijao.dart';
 import 'package:space_farming_modular/app/shared/models/caneca.dart';
+import 'package:space_farming_modular/app/shared/models/user.dart';
 
 import 'package:space_farming_modular/app/shared/repositories/interfaces/irepositorybotijao.dart';
 import 'package:space_farming_modular/app/shared/repositories/interfaces/irepositorycanecas.dart';
+import 'package:space_farming_modular/app/shared/repositories/interfaces/irepositoryuser.dart';
 
 import '../../shared/models/farm.dart';
 import '../../shared/repositories/interfaces/irepositoryfarm.dart';
@@ -18,30 +20,27 @@ class HomeController = _HomeControllerBase with _$HomeController;
 
 abstract class _HomeControllerBase with Store {
   final IRepositoryBotijao repository;
-  final IRepositoryFarm repositoryFarm;
+  final IRepositoryUserP repositoryUser;
 
   @observable
-  ObservableStream<List<Botijao>> listBot;
+  List<Botijao> listBot;
   @observable
-  ObservableStream<List<Farm>> farm;
+  ObservableStream<List<UserP>> user;
 
-  _HomeControllerBase(this.repository, this.repositoryFarm) {
+  _HomeControllerBase(this.repository, this.repositoryUser) {
     //getBot();
   }
 
-  /*@action
-  getBot() {
-    listBot = repository.list().asObservable();
-  }*/
-
   @action
-  getBot(String path) {
+  Future<List<Botijao>> getBot(String path) async {
+    List<Botijao> t = [];
     print(path);
-    listBot = repository.list(path).asObservable();
+    await repository.list(path).then((value) => listBot = value);
+    return t;
   }
 
   @action
-  getFarm(String farmName) {
-    farm = repositoryFarm.list(farmName).asObservable();
+  getUser(String email) {
+    user = repositoryUser.list(email).asObservable();
   }
 }

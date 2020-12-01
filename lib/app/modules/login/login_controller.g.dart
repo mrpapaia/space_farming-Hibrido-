@@ -67,7 +67,7 @@ mixin _$LoginController on _LoginControllerBase, Store {
   final _$loginAsyncAction = AsyncAction('_LoginControllerBase.login');
 
   @override
-  Future<bool> login(FirebaseAuth auth) {
+  Future<UserCredential> login(FirebaseAuth auth) {
     return _$loginAsyncAction.run(() => super.login(auth));
   }
 

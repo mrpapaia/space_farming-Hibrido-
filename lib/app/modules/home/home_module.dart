@@ -9,6 +9,8 @@ import 'package:space_farming_modular/app/shared/repositories/botijaorepository.
 import 'package:space_farming_modular/app/shared/repositories/canecasrepository.dart';
 import 'package:space_farming_modular/app/shared/repositories/interfaces/irepositorybotijao.dart';
 import 'package:space_farming_modular/app/shared/repositories/interfaces/irepositorycanecas.dart';
+import 'package:space_farming_modular/app/shared/repositories/interfaces/irepositoryuser.dart';
+import 'package:space_farming_modular/app/shared/repositories/userrepository.dart';
 
 import 'home_controller.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -23,8 +25,8 @@ class HomeModule extends ChildModule {
       Bind((i) => HomeInfoBotController(i.get())),
       Bind<IRepositoryBotijao>(
           (i) => BotijaoRepository(FirebaseFirestore.instance)),
-      Bind<IRepositoryCanecas>(
-          (i) => CanecasRepository(FirebaseFirestore.instance)),
+      Bind<IRepositoryUserP>(
+          (i) => UserPRepository(FirebaseFirestore.instance)),
       Bind((i) => HomeBotCreateController(i.get())),
     ];
   }
@@ -34,7 +36,7 @@ class HomeModule extends ChildModule {
         ModularRouter(
           Modular.initialRoute,
           child: (_, args) => HomePage(
-            userP: args.data,
+            credential: args.data,
           ),
         ),
         ModularRouter(

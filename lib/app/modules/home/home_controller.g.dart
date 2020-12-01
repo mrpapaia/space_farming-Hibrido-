@@ -7,7 +7,7 @@ part of 'home_controller.dart';
 // **************************************************************************
 
 final $HomeController = BindInject(
-  (i) => HomeController(i<IRepositoryBotijao>(), i<IRepositoryFarm>()),
+  (i) => HomeController(i<IRepositoryBotijao>(), i<IRepositoryUserP>()),
   singleton: true,
   lazy: true,
 );
@@ -22,53 +22,49 @@ mixin _$HomeController on _HomeControllerBase, Store {
   final _$listBotAtom = Atom(name: '_HomeControllerBase.listBot');
 
   @override
-  ObservableStream<List<Botijao>> get listBot {
+  List<Botijao> get listBot {
     _$listBotAtom.reportRead();
     return super.listBot;
   }
 
   @override
-  set listBot(ObservableStream<List<Botijao>> value) {
+  set listBot(List<Botijao> value) {
     _$listBotAtom.reportWrite(value, super.listBot, () {
       super.listBot = value;
     });
   }
 
-  final _$farmAtom = Atom(name: '_HomeControllerBase.farm');
+  final _$userAtom = Atom(name: '_HomeControllerBase.user');
 
   @override
-  ObservableStream<List<Farm>> get farm {
-    _$farmAtom.reportRead();
-    return super.farm;
+  ObservableStream<List<UserP>> get user {
+    _$userAtom.reportRead();
+    return super.user;
   }
 
   @override
-  set farm(ObservableStream<List<Farm>> value) {
-    _$farmAtom.reportWrite(value, super.farm, () {
-      super.farm = value;
+  set user(ObservableStream<List<UserP>> value) {
+    _$userAtom.reportWrite(value, super.user, () {
+      super.user = value;
     });
+  }
+
+  final _$getBotAsyncAction = AsyncAction('_HomeControllerBase.getBot');
+
+  @override
+  Future<List<Botijao>> getBot(String path) {
+    return _$getBotAsyncAction.run(() => super.getBot(path));
   }
 
   final _$_HomeControllerBaseActionController =
       ActionController(name: '_HomeControllerBase');
 
   @override
-  dynamic getBot(String path) {
+  dynamic getUser(String email) {
     final _$actionInfo = _$_HomeControllerBaseActionController.startAction(
-        name: '_HomeControllerBase.getBot');
+        name: '_HomeControllerBase.getUser');
     try {
-      return super.getBot(path);
-    } finally {
-      _$_HomeControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  dynamic getFarm(String farmName) {
-    final _$actionInfo = _$_HomeControllerBaseActionController.startAction(
-        name: '_HomeControllerBase.getFarm');
-    try {
-      return super.getFarm(farmName);
+      return super.getUser(email);
     } finally {
       _$_HomeControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -78,7 +74,7 @@ mixin _$HomeController on _HomeControllerBase, Store {
   String toString() {
     return '''
 listBot: ${listBot},
-farm: ${farm}
+user: ${user}
     ''';
   }
 }
