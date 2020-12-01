@@ -1,15 +1,11 @@
-import 'dart:wasm';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:mobx/mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:space_farming_modular/app/shared/models/botijao.dart';
-import 'package:space_farming_modular/app/shared/models/farm.dart';
+
 import 'package:space_farming_modular/app/shared/models/user.dart';
-import 'package:space_farming_modular/app/shared/repositories/interfaces/irepositorybotijao.dart';
-import 'package:space_farming_modular/app/shared/repositories/interfaces/irepositoryfarm.dart';
+
 import 'package:space_farming_modular/app/shared/repositories/interfaces/irepositoryuser.dart';
 
 part 'login_controller.g.dart';
@@ -18,11 +14,7 @@ part 'login_controller.g.dart';
 class LoginController = _LoginControllerBase with _$LoginController;
 
 abstract class _LoginControllerBase with Store {
-  final IRepositoryFarm farmRepository;
   final IRepositoryUserP userRepository;
-
-  @observable
-  ObservableStream<List<Farm>> farm;
 
   @observable
   ObservableStream<List<UserP>> user;
@@ -33,18 +25,13 @@ abstract class _LoginControllerBase with Store {
   @observable
   String passwd;
 
-  _LoginControllerBase(this.farmRepository, this.userRepository);
+  _LoginControllerBase(this.userRepository);
 
   @action
   getUser(String email) {
     user = userRepository.list(email).asObservable();
 
     //farm = farmRepository.list(email).asObservable();
-  }
-
-  @action
-  getFarm() {
-    farm = farmRepository.list(user.data[0].fazendas).asObservable();
   }
 
   @action

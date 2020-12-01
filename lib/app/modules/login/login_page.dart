@@ -1,16 +1,16 @@
-import 'dart:async';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:space_farming_modular/app/shared/components/button.dart';
 import 'package:space_farming_modular/app/shared/components/containerBase.dart';
+import '../../shared/models/user.dart';
 import 'login_controller.dart';
 
 class LoginPage extends StatefulWidget {
   final String title;
-  const LoginPage({Key key, this.title = "Login"}) : super(key: key);
+  UserP user;
+  LoginPage({Key key, this.title = "Login", this.user}) : super(key: key);
 
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -21,34 +21,6 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
   bool press = false;
   String teste;
   var _auth = FirebaseAuth.instance;
-
-  void startTimer() {
-    new Timer.periodic(
-      Duration(seconds: 1),
-      (Timer timer) => setState(() {
-        try {
-          if (controller.user.data != null) {
-            print(controller.user.data[0].nome);
-            controller.getFarm();
-            timer.toString();
-          }
-        } catch (NoSuchMethodError) {}
-      }),
-    );
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _auth.signOut();
-    _auth.authStateChanges().listen((User user) {
-      if (user == null) {
-        print('User is currently signed out!');
-      } else {
-        print('User is signed in!');
-      }
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -71,11 +43,16 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
             builder: (BuildContext context) {
               try {
                 if (controller.user.data != null) {
-                  print(controller.farm.data);
-                  // controller.getFarm();
-
+                  //WidgetsBinding.instance.addPostFrameCallback((_) {});
+                  return ButtonCustom(
+                    text: "Login",
+                    width: 309.0,
+                    onclick: () async {
+                      Modular.to.pushNamed('/home',
+                          arguments: controller.user.data[0]);
+                    },
+                  );
                 }
-
                 return Center(child: CircularProgressIndicator());
               } catch (NoSuchMethodError) {
                 return Column(
@@ -140,7 +117,6 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                       width: 309.0,
                       onclick: () async {
                         await controller.login(_auth);
-                        startTimer();
                       },
                     ),
                   ],
@@ -150,6 +126,14 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
           ),
           SizedBox(
             height: 10,
+          ),
+          InkWell(
+            child: Text("Não possui conta?"),
+            onTap: () {
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                Modular.to.pushNamed('/login/cadastro');
+              });
+            },
           ),
         ],
       ),

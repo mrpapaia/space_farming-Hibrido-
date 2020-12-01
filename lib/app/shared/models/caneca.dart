@@ -33,11 +33,11 @@ class Caneca {
     return {
       'id': id,
       'color': color?.value,
-      'racks': racks?.map((x) => x?.toMap())?.toList(),
+      //'racks': racks?.map((x) => x?.toMap())?.toList(),
     };
   }
 
-  factory Caneca.fromMap(
+  factory Caneca.fromDoc(
       DocumentReference doc, String color, List<Rack> racks) {
     return Caneca(
       id: doc,

@@ -25,7 +25,7 @@ class RackRepository implements IRepositoryRack {
         .snapshots()
         .map((query) {
       return query.docs.map((doc) {
-        return Rack.fromMap(doc);
+        return Rack.fromDoc(doc);
       }).toList();
     });
   }

@@ -8,6 +8,9 @@ import 'package:space_farming_modular/app/shared/models/caneca.dart';
 import 'package:space_farming_modular/app/shared/repositories/interfaces/irepositorybotijao.dart';
 import 'package:space_farming_modular/app/shared/repositories/interfaces/irepositorycanecas.dart';
 
+import '../../shared/models/farm.dart';
+import '../../shared/repositories/interfaces/irepositoryfarm.dart';
+
 part 'home_controller.g.dart';
 
 @Injectable()
@@ -15,24 +18,30 @@ class HomeController = _HomeControllerBase with _$HomeController;
 
 abstract class _HomeControllerBase with Store {
   final IRepositoryBotijao repository;
-  final IRepositoryCanecas repositoryCanecas;
+  final IRepositoryFarm repositoryFarm;
 
   @observable
- ObservableStream< List<Botijao>> listBot;
+  ObservableStream<List<Botijao>> listBot;
+  @observable
+  ObservableStream<List<Farm>> farm;
 
-  ObservableStream<List<Caneca>> listCaneca;
-
-  _HomeControllerBase(this.repository, this.repositoryCanecas) {
-    getBot();
+  _HomeControllerBase(this.repository, this.repositoryFarm) {
+    //getBot();
   }
 
-  @action
+  /*@action
   getBot() {
-   listBot= repository.list().asObservable();
+    listBot = repository.list().asObservable();
+  }*/
+
+  @action
+  getBot(String path) {
+    print(path);
+    listBot = repository.list(path).asObservable();
   }
 
   @action
-  getCaneca(DocumentReference doc) {
-    return repositoryCanecas.list(doc).asObservable();
+  getFarm(String farmName) {
+    farm = repositoryFarm.list(farmName).asObservable();
   }
 }

@@ -42,7 +42,7 @@ class HistoricoAbastecimento {
     };
   }
 
-  factory HistoricoAbastecimento.fromMap(DocumentSnapshot doc) {
+  factory HistoricoAbastecimento.fromDoc(DocumentSnapshot doc) {
     return HistoricoAbastecimento(
       respon: doc.data()['respon'],
       qtdAtual: doc.data()['qtdAnt'],
@@ -55,7 +55,7 @@ class HistoricoAbastecimento {
   String toJson() => json.encode(toMap());
 
   factory HistoricoAbastecimento.fromJson(String source) =>
-      HistoricoAbastecimento.fromMap(json.decode(source));
+      HistoricoAbastecimento.fromDoc(json.decode(source));
 
   @override
   String toString() {

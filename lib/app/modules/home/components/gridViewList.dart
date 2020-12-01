@@ -65,7 +65,7 @@ class _GridViewListState extends State<GridViewList> {
                                 width: _width * 0.4,
                                 height: _height > 700
                                     ? _height * 0.18
-                                    : _height * 0.25,
+                                    : _height * 0.2,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(200),
                                   border: Border.all(
@@ -310,8 +310,8 @@ class _GridViewListState extends State<GridViewList> {
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.only(top: 10.0),
-                        padding: EdgeInsets.all(6.5),
+                        margin: EdgeInsets.only(top: 3.0),
+                        padding: EdgeInsets.all(3.5),
                         child: Center(
                           child: Text(
                             "${widget.listBotijao[index].idBot}",
@@ -321,6 +321,7 @@ class _GridViewListState extends State<GridViewList> {
                                 color: Colors.white),
                           ),
                         ),
+                        height: _height * 0.04,
                         width: _width * 0.35,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(7),

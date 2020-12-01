@@ -6,22 +6,22 @@ class FarmRepository implements IRepositoryFarm {
   FirebaseFirestore firestore;
   FarmRepository(this.firestore);
   @override
-  Future<bool> add(Farm farm) {
-    // TODO: implement add
-    throw UnimplementedError();
+  Future<String> add(Farm farm) async {
+    return firestore
+        .collection('farms')
+        .add(farm.toMap())
+        .then((value) => value.id);
   }
 
   @override
-  Stream<List<Farm>> list(List<String> farmName) {
-    print("ENtrou");
+  Stream<List<Farm>> list(String farmName) {
     return firestore
         .collection('farms')
-        .where('nome', isEqualTo: 'test2')
+        .where('nome', isEqualTo: farmName)
         .snapshots()
         .map((query) {
       return query.docs.map((doc) {
-        print(doc.data());
-        return Farm.fromMap(doc);
+        return Farm.fromDoc(doc);
       }).toList();
     });
   }

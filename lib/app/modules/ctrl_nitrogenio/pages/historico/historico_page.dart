@@ -84,13 +84,13 @@ class _HistoricoPageState
             child: TabBar(
               tabs: [
                 Text(
-                  "Informações",
+                  "Nivel",
                   style: TextStyle(
                     fontSize: 20,
                   ),
                 ),
                 Text(
-                  "Estados",
+                  "Abastecimento",
                   style: TextStyle(
                     fontSize: 20,
                   ),

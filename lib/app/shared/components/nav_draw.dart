@@ -8,18 +8,20 @@ import 'package:space_farming_modular/app/shared/models/user.dart';
 import 'package:space_farming_modular/app/shared/repositories/farmrepository.dart';
 import 'package:space_farming_modular/app/shared/repositories/interfaces/irepositoryfarm.dart';
 
+import '../../modules/home/home_page.dart';
 import 'my_icons_icons.dart';
 
 class NavigationDrawer extends StatelessWidget {
   final UserP user;
-  final List<Farm> farms;
-  const NavigationDrawer({Key key, this.user, this.farms}) : super(key: key);
+
+  const NavigationDrawer({Key key, this.user}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
-    IRepositoryFarm repositoryFarm = FarmRepository(FirebaseFirestore.instance);
+    Widget home = HomePage();
+
     return Drawer(
       child: Container(
         color: Color.fromRGBO(229, 231, 236, 1.0),
@@ -51,10 +53,7 @@ class NavigationDrawer extends StatelessWidget {
                         size: _width * 0.1,
                       ),
                       title: Text("Botijões"),
-                      onTap: () {
-                        /* Modular.to.pushNamed('/home',
-                            arguments: [, user]);*/
-                      },
+                      onTap: () {},
                     ),
                     ListTile(
                       leading: Icon(

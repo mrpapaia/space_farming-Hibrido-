@@ -24,8 +24,8 @@ class CtrlNitrogenioModule extends ChildModule {
       Bind((i) => MedirNivelController(i.get(), i.get())),
       Bind((i) => AbastecerController(i.get(), i.get())),
       Bind((i) => HistoricoController(i.get(), i.get())),
-      Bind<IRepositoryBotijao>((i) =>
-          BotijaoRepository(FirebaseFirestore.instance, i.args.data[0].ref)),
+      Bind<IRepositoryBotijao>(
+          (i) => BotijaoRepository(FirebaseFirestore.instance)),
       Bind<IRepositoryHistoricoNivel>(
         (i) => HistoricoNivelRepository(
             FirebaseFirestore.instance, i.args.data[0].ref),

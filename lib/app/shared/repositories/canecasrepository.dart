@@ -22,7 +22,7 @@ class CanecasRepository implements IRepositoryCanecas {
         .snapshots()
         .map((query) {
       return query.docs.map((doc) {
-        return Caneca.fromMap(doc.reference, doc.data()['color'], null);
+        return Caneca.fromDoc(doc.reference, doc.data()['color'], null);
       }).toList();
     });
   }

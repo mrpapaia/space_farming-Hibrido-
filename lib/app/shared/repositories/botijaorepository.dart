@@ -11,7 +11,7 @@ class BotijaoRepository implements IRepositoryBotijao {
   List<Caneca> listCanecas = List();
   List<Rack> listRacks = List();
 
-  BotijaoRepository(this.firestore, this.doc);
+  BotijaoRepository(this.firestore);
 
   @override
   Future<void> add(Botijao botijao) {
@@ -47,15 +47,15 @@ class BotijaoRepository implements IRepositoryBotijao {
   }
 
   @override
-  Stream<List<Botijao>> list() {
+  Stream<List<Botijao>> list(String path) {
     return firestore
-        .doc(this.doc.path)
+        .doc("farms/" + path)
         .collection("botijoes")
         .snapshots()
         .map((query) {
       return query.docs.map((doc) {
         //doc.reference.collection('canecas').snapshots().listen(getCanecas);
-        return Botijao.fromMap(
+        return Botijao.fromDoc(
             doc, getCanecas(doc.reference.collection('canecas').get()));
       }).toList();
     });
@@ -65,7 +65,7 @@ class BotijaoRepository implements IRepositoryBotijao {
     List<Caneca> canecas = [];
     snapshot.then((value) {
       for (var doc in value.docs) {
-        canecas.add(Caneca.fromMap(doc.reference, doc.data()["color"],
+        canecas.add(Caneca.fromDoc(doc.reference, doc.data()["color"],
             getRacks(doc.reference.collection('racks').get())));
       }
     });
@@ -76,7 +76,7 @@ class BotijaoRepository implements IRepositoryBotijao {
     List<Rack> racks = [];
     snapshot.then((value) {
       value.docs.forEach((rack) {
-        racks.add(Rack.fromMap(rack));
+        racks.add(Rack.fromDoc(rack));
       });
     });
     return racks;

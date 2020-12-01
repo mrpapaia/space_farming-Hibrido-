@@ -32,7 +32,7 @@ class HistoricoNivel {
     };
   }
 
-  factory HistoricoNivel.fromMap(DocumentSnapshot doc) {
+  factory HistoricoNivel.fromDoc(DocumentSnapshot doc) {
     return HistoricoNivel(
       respon: doc.data()['respon'],
       qtdAtual: doc.data()['qtdAtual'],
@@ -43,7 +43,7 @@ class HistoricoNivel {
   String toJson() => json.encode(toMap());
 
   factory HistoricoNivel.fromJson(String source) =>
-      HistoricoNivel.fromMap(json.decode(source));
+      HistoricoNivel.fromDoc(json.decode(source));
 
   @override
   String toString() =>

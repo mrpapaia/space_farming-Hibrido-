@@ -27,7 +27,7 @@ class Rack {
     };
   }
 
-  factory Rack.fromMap(QueryDocumentSnapshot doc) {
+  factory Rack.fromDoc(QueryDocumentSnapshot doc) {
     return Rack(
       idTouro: doc.data()['idTouro'],
       tipo: doc.data()['tipo'],
@@ -39,7 +39,7 @@ class Rack {
 
   String toJson() => json.encode(toMap());
 
-  factory Rack.fromJson(String source) => Rack.fromMap(json.decode(source));
+  factory Rack.fromJson(String source) => Rack.fromDoc(json.decode(source));
 
   @override
   String toString() {

@@ -26,7 +26,7 @@ class UserP {
     };
   }
 
-  factory UserP.fromMap(DocumentSnapshot doc) {
+  factory UserP.fromDoc(DocumentSnapshot doc) {
     return UserP(
       nome: doc.data()['nome'],
       cpf: doc.data()['cpf'],
@@ -38,7 +38,7 @@ class UserP {
 
   String toJson() => json.encode(toMap());
 
-  factory UserP.fromJson(String source) => UserP.fromMap(json.decode(source));
+  factory UserP.fromJson(String source) => UserP.fromDoc(json.decode(source));
 
   @override
   String toString() {

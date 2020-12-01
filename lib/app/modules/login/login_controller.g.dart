@@ -7,7 +7,7 @@ part of 'login_controller.dart';
 // **************************************************************************
 
 final $LoginController = BindInject(
-  (i) => LoginController(i<IRepositoryFarm>(), i<IRepositoryUserP>()),
+  (i) => LoginController(i<IRepositoryUserP>()),
   singleton: true,
   lazy: true,
 );
@@ -19,21 +19,6 @@ final $LoginController = BindInject(
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$LoginController on _LoginControllerBase, Store {
-  final _$farmAtom = Atom(name: '_LoginControllerBase.farm');
-
-  @override
-  ObservableStream<List<Farm>> get farm {
-    _$farmAtom.reportRead();
-    return super.farm;
-  }
-
-  @override
-  set farm(ObservableStream<List<Farm>> value) {
-    _$farmAtom.reportWrite(value, super.farm, () {
-      super.farm = value;
-    });
-  }
-
   final _$userAtom = Atom(name: '_LoginControllerBase.user');
 
   @override
@@ -101,17 +86,6 @@ mixin _$LoginController on _LoginControllerBase, Store {
   }
 
   @override
-  dynamic getFarm() {
-    final _$actionInfo = _$_LoginControllerBaseActionController.startAction(
-        name: '_LoginControllerBase.getFarm');
-    try {
-      return super.getFarm();
-    } finally {
-      _$_LoginControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   dynamic isSuccefull(DocumentReference doc, UserP user) {
     final _$actionInfo = _$_LoginControllerBaseActionController.startAction(
         name: '_LoginControllerBase.isSuccefull');
@@ -169,7 +143,6 @@ mixin _$LoginController on _LoginControllerBase, Store {
   @override
   String toString() {
     return '''
-farm: ${farm},
 user: ${user},
 email: ${email},
 passwd: ${passwd}

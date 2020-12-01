@@ -16,7 +16,7 @@ class HistoricoNivelRepository implements IRepositoryHistoricoNivel {
         .snapshots()
         .map((query) {
       return query.docs.map((doc) {
-        return HistoricoNivel.fromMap(doc);
+        return HistoricoNivel.fromDoc(doc);
       }).toList();
     });
   }

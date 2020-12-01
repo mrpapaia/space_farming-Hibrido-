@@ -7,7 +7,7 @@ part of 'home_controller.dart';
 // **************************************************************************
 
 final $HomeController = BindInject(
-  (i) => HomeController(i<IRepositoryBotijao>(), i<IRepositoryCanecas>()),
+  (i) => HomeController(i<IRepositoryBotijao>(), i<IRepositoryFarm>()),
   singleton: true,
   lazy: true,
 );
@@ -34,26 +34,41 @@ mixin _$HomeController on _HomeControllerBase, Store {
     });
   }
 
+  final _$farmAtom = Atom(name: '_HomeControllerBase.farm');
+
+  @override
+  ObservableStream<List<Farm>> get farm {
+    _$farmAtom.reportRead();
+    return super.farm;
+  }
+
+  @override
+  set farm(ObservableStream<List<Farm>> value) {
+    _$farmAtom.reportWrite(value, super.farm, () {
+      super.farm = value;
+    });
+  }
+
   final _$_HomeControllerBaseActionController =
       ActionController(name: '_HomeControllerBase');
 
   @override
-  dynamic getBot() {
+  dynamic getBot(String path) {
     final _$actionInfo = _$_HomeControllerBaseActionController.startAction(
         name: '_HomeControllerBase.getBot');
     try {
-      return super.getBot();
+      return super.getBot(path);
     } finally {
       _$_HomeControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  dynamic getCaneca(DocumentReference doc) {
+  dynamic getFarm(String farmName) {
     final _$actionInfo = _$_HomeControllerBaseActionController.startAction(
-        name: '_HomeControllerBase.getCaneca');
+        name: '_HomeControllerBase.getFarm');
     try {
-      return super.getCaneca(doc);
+      return super.getFarm(farmName);
     } finally {
       _$_HomeControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -62,7 +77,8 @@ mixin _$HomeController on _HomeControllerBase, Store {
   @override
   String toString() {
     return '''
-listBot: ${listBot}
+listBot: ${listBot},
+farm: ${farm}
     ''';
   }
 }

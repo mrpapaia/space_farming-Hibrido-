@@ -24,7 +24,7 @@ class Farm {
     );
   }
 
-  factory Farm.fromMap(DocumentSnapshot doc) {
+  factory Farm.fromDoc(DocumentSnapshot doc) {
     return Farm(
       nome: doc.data()['nome'],
       email: doc.data()['email'],
@@ -32,7 +32,7 @@ class Farm {
     );
   }
 
-  factory Farm.fromJson(String source) => Farm.fromMap(json.decode(source));
+  factory Farm.fromJson(String source) => Farm.fromDoc(json.decode(source));
 
   @override
   String toString() => 'Farm(nome: $nome, email: $email, ref: $ref)';
@@ -46,4 +46,13 @@ class Farm {
 
   @override
   int get hashCode => nome.hashCode ^ email.hashCode ^ ref.hashCode;
+
+  Map<String, dynamic> toMap() {
+    return {
+      'nome': nome,
+      'email': email,
+    };
+  }
+
+  String toJson() => json.encode(toMap());
 }

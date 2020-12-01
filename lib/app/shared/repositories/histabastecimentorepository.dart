@@ -25,7 +25,7 @@ class HistoricoAbastecimentoRepository
         .snapshots()
         .map((query) {
       return query.docs.map((doc) {
-        return HistoricoAbastecimento.fromMap(doc);
+        return HistoricoAbastecimento.fromDoc(doc);
       }).toList();
     });
   }

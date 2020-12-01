@@ -6,9 +6,11 @@ class UserPRepository implements IRepositoryUserP {
   FirebaseFirestore firestore;
   UserPRepository(this.firestore);
   @override
-  Future<bool> add(UserP farm) {
-    // TODO: implement add
-    throw UnimplementedError();
+  Future<String> add(UserP user) {
+    return firestore
+        .collection('users')
+        .add(user.toMap())
+        .then((value) => value.id);
   }
 
   @override
@@ -19,7 +21,7 @@ class UserPRepository implements IRepositoryUserP {
         .snapshots()
         .map((query) {
       return query.docs.map((doc) {
-        return UserP.fromMap(doc);
+        return UserP.fromDoc(doc);
       }).toList();
     });
   }

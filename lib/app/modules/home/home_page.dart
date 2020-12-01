@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -11,35 +12,40 @@ import 'package:space_farming_modular/app/modules/home/components/gridViewList.d
 import 'package:space_farming_modular/app/shared/components/nav_draw.dart';
 import 'package:space_farming_modular/app/shared/components/titleOfScreen.dart';
 import 'package:space_farming_modular/app/shared/models/botijao.dart';
-import 'package:space_farming_modular/app/shared/models/caneca.dart';
 import 'package:space_farming_modular/app/shared/models/user.dart';
 
+import '../../shared/components/my_icons_icons.dart';
 import 'home_controller.dart';
 
 class HomePage extends StatefulWidget {
   final String title;
-  DocumentReference doc;
   UserP userP;
-  HomePage({Key key, this.title, this.doc, this.userP}) : super(key: key);
+  HomePage({Key key, this.title, this.userP}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends ModularState<HomePage, HomeController> {
-  List<Botijao> botijoes;
+  List<Botijao> botijoes = List();
 
   void startTimer() {
-    new Timer.periodic(
-      Duration(seconds: 1),
-      (Timer timer) => setState(
-        () {
-          if (controller.listBot.data != null) {
-            timer.cancel();
-          }
-        },
-      ),
-    );
+    new Timer.periodic(Duration(seconds: 1), (Timer timer) {
+      setState(() {
+        if (controller.listBot.data != null) {
+          timer.cancel();
+        }
+        timer.cancel();
+      });
+      timer.cancel();
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    controller.getBot(widget.userP.fazenda[0]);
   }
 
   @override
@@ -50,8 +56,71 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
     return Scaffold(
       backgroundColor: Color.fromRGBO(229, 231, 236, 1.0),
       resizeToAvoidBottomInset: false,
-      drawer: NavigationDrawer(
-        user: widget.userP,
+      drawer: Drawer(
+        child: Container(
+          color: Color.fromRGBO(229, 231, 236, 1.0),
+          child: ListView(
+            children: [
+              UserAccountsDrawerHeader(
+                accountName: Text(widget.userP.nome),
+                accountEmail: Text(widget.userP.email),
+                currentAccountPicture: CircleAvatar(
+                  backgroundColor: Colors.white,
+                  child: Text(
+                    widget.userP.email[0].toUpperCase(),
+                    style: TextStyle(
+                      fontSize: _width * 0.09,
+                    ),
+                  ),
+                ),
+              ),
+              ExpansionTile(
+                title: Text("Fazendas"),
+                children: List.generate(widget.userP.fazenda.length, (index) {
+                  return ExpansionTile(
+                    title: Text(widget.userP.fazenda[index]),
+                    children: [
+                      ListTile(
+                        leading: Icon(
+                          MyIcons.icon_botijao,
+                          color: Colors.red,
+                          size: _width * 0.1,
+                        ),
+                        title: Text("Botijões"),
+                        onTap: () {
+                          setState(() {
+                            controller.getBot(widget.userP.fazenda[index]);
+                          });
+                        },
+                      ),
+                      ListTile(
+                        leading: Icon(
+                          Icons.history,
+                          color: Colors.red,
+                          size: _width * 0.1,
+                        ),
+                        title: Text("Hístorico"),
+                        onTap: () {},
+                      ),
+                    ],
+                  );
+                }),
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.exit_to_app,
+                  color: Colors.red,
+                  size: _width * 0.1,
+                ),
+                title: Text("Sair"),
+                onTap: () {
+                  FirebaseAuth.instance.signOut();
+                  Modular.to.pushNamed('/');
+                },
+              ),
+            ],
+          ),
+        ),
       ),
       appBar: PreferredSize(
         preferredSize: Size(double.infinity, 100),
@@ -75,7 +144,9 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
             child: Observer(
               builder: (BuildContext context) {
                 try {
-                  botijoes = controller.listBot.data;
+                  if (controller.listBot.data != null) {
+                    botijoes = controller.listBot.data;
+                  }
                   return GridViewList(
                     listBotijao: botijoes,
                     user: widget.userP,
