@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/foundation.dart';
 import 'package:space_farming_modular/app/shared/models/caneca.dart';
 import 'package:space_farming_modular/app/shared/repositories/interfaces/irepositorycanecas.dart';
 
@@ -9,9 +8,13 @@ class CanecasRepository implements IRepositoryCanecas {
   CanecasRepository(this.firestore);
   static List<Caneca> listCanecas = [];
   @override
-  Future<bool> add(Caneca farm) {
-    // TODO: implement add
-    throw UnimplementedError();
+  Future<void> add(String path, Caneca caneca) {
+    return firestore
+        .collection("farms/" + path + '/botijoes/canecas')
+        .doc(caneca.id.toString())
+        .set(caneca.toMap())
+        .then((value) => print("Botijão adicionado com suecsso"))
+        .catchError((error) => print("Failed to add botijao: $error"));
   }
 
   @override
@@ -22,7 +25,8 @@ class CanecasRepository implements IRepositoryCanecas {
         .snapshots()
         .map((query) {
       return query.docs.map((doc) {
-        return Caneca.fromDoc(doc.reference, doc.data()['color'], null);
+        return Caneca.fromDoc(
+            doc.reference, doc.data()['color'], doc.data()['estado'], null);
       }).toList();
     });
   }

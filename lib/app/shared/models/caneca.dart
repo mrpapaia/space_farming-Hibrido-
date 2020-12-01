@@ -11,9 +11,11 @@ class Caneca {
   DocumentReference id;
   Color color;
   List<Rack> racks;
+  String estado;
   Caneca({
     this.id,
     this.color,
+    this.estado,
     this.racks,
   });
 
@@ -31,17 +33,19 @@ class Caneca {
 
   Map<String, dynamic> toMap() {
     return {
-      'id': id,
-      'color': color?.value,
+      //'id': id,
+      'color': "#" + color.value.toRadixString(16).substring(2),
+      'estado': estado,
       //'racks': racks?.map((x) => x?.toMap())?.toList(),
     };
   }
 
   factory Caneca.fromDoc(
-      DocumentReference doc, String color, List<Rack> racks) {
+      DocumentReference doc, String color, String estado, List<Rack> racks) {
     return Caneca(
       id: doc,
       color: HexColor(color),
+      estado: estado,
       racks: racks,
     );
   }

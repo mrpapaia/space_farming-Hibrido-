@@ -473,7 +473,7 @@ class _HomeInfoBotPageState
                                       style: TextStyle(color: Colors.black),
                                     ),
                                     onPressed: () {
-                                      toHex(cor);
+                                      print(toHex(cor));
                                       setState(() {
                                         widget.botijao.canecas[0].color = cor;
                                       });

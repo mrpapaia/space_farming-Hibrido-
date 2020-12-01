@@ -9,11 +9,16 @@ import 'package:space_farming_modular/app/shared/components/containerBase.dart';
 import 'package:space_farming_modular/app/shared/components/my_icons_icons.dart';
 import 'package:space_farming_modular/app/shared/components/nav_draw.dart';
 import 'package:space_farming_modular/app/shared/components/titleOfScreen.dart';
+import 'package:space_farming_modular/app/shared/models/botijao.dart';
 import 'home_bot_create_controller.dart';
 
 class HomeBotCreatePage extends StatefulWidget {
   final String title;
-  HomeBotCreatePage({Key key, this.title = "HomeBotCreate"}) : super(key: key);
+  String path;
+  Botijao bot;
+  HomeBotCreatePage(
+      {Key key, this.title = "HomeBotCreate", this.path, this.bot})
+      : super(key: key);
   String inicio = "1";
   String inicio2 = "1";
   @override
@@ -29,6 +34,9 @@ class _HomeBotCreatePageState
     double _width = MediaQuery.of(context).size.width - 30;
     double _height = MediaQuery.of(context).size.height;
     List<String> items = ["1", "2", "3", "4", "5", "6"];
+    if (widget.bot != null) {
+      controller.idBot = widget.bot.idBot;
+    }
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -42,7 +50,7 @@ class _HomeBotCreatePageState
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           TitleOfScreen(
-            title: 'Cadastrar Botijão',
+            title: widget.bot == null ? 'Cadastrar Botijão' : "Alterar Botijão",
             font: "Revalia",
             fontSize: _width * 0.09,
           ),
@@ -235,7 +243,7 @@ class _HomeBotCreatePageState
                 ButtonCustom(
                   text: "Confirmar",
                   onclick: () {
-                    controller.addBot();
+                    controller.addBot(widget.path);
                     Navigator.pop(context);
                   },
                   width: _width * 0.5,

@@ -22,22 +22,13 @@ class GridViewList extends StatefulWidget {
 
 class _GridViewListState extends State<GridViewList> {
   @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    if (widget.listBotijao != null) {
-      print("oi");
-    }
-  }
-
-  @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
 
     double hIcon = _height > 700 ? 0.035 : 0.04;
     double wIcon = _height > 700 ? 0.075 : 0.08;
-    print(widget.listBotijao);
+
     try {
       return GridView.builder(
         itemCount: widget.listBotijao.length,
@@ -383,7 +374,6 @@ class _GridViewListState extends State<GridViewList> {
         },
       );
     } on RangeError catch (e) {
-      print(e);
       return Column(
         children: [
           Center(

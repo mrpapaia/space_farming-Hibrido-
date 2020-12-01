@@ -29,7 +29,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends ModularState<HomePage, HomeController> {
   List<Botijao> botijoes = List();
   UserP user;
-
+  String path;
   void startTimer() {
     new Timer.periodic(Duration(seconds: 1), (Timer timer) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -98,6 +98,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                             ),
                             title: Text("Botijões"),
                             onTap: () {
+                              path = user.fazenda[index];
                               controller.getBot(user.fazenda[index]);
                             },
                           ),
@@ -157,10 +158,8 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
               builder: (BuildContext context) {
                 try {
                   if (controller.user.data != null) {
-                    print(controller.listBot);
-
                     botijoes = controller.listBot;
-                    // print(botijoes);
+
                     return GridViewList(
                       listBotijao: botijoes,
                       user: user,
@@ -170,8 +169,6 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                       child: CircularProgressIndicator(),
                     );
                   }
-
-                  //Botijão 1- Boa nova
                 } catch (NoSuchMethodError) {
                   return Column(
                     children: [
@@ -191,7 +188,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Modular.to.pushNamed('/home/add');
+          Modular.to.pushNamed('/home/add', arguments: [path, null]);
         },
         child: Icon(Icons.add),
       ),

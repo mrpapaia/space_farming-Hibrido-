@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:space_farming_modular/app/modules/home/components/hexcolor.dart';
 import 'package:space_farming_modular/app/shared/models/botijao.dart';
 import 'package:space_farming_modular/app/shared/models/caneca.dart';
 import 'package:space_farming_modular/app/shared/models/rack.dart';
@@ -14,13 +15,24 @@ class BotijaoRepository implements IRepositoryBotijao {
   BotijaoRepository(this.firestore);
 
   @override
-  Future<void> add(Botijao botijao) {
+  Future<void> add(String path, Botijao botijao) {
+    String pathF = "farms/" + path + '/botijoes';
     return firestore
-        .collection('botijoes')
+        .collection(pathF)
         .doc(botijao.idBot)
         .set(botijao.toMap())
-        .then((value) => print("Botijão adicionado com suecsso"))
-        .catchError((error) => print("Failed to add botijao: $error"));
+        .then((value) {
+      print("Botijão adicionado com suecsso");
+      for (int i = 0; i < botijao.numcanecas; i++) {
+        firestore
+            .collection(
+                "farms/" + path + '/botijoes/' + botijao.idBot + '/canecas')
+            .doc((i + 1).toString())
+            .set(Caneca(color: HexColor("#adadad"), estado: "disabled").toMap())
+            .then((value) => print("Caneca adicionado com suecsso"))
+            .catchError((error) => print("Failed to add botijao: $error"));
+      }
+    }).catchError((error) => print("Failed to add botijao: $error"));
   }
 
   @override
@@ -68,8 +80,8 @@ class BotijaoRepository implements IRepositoryBotijao {
     await snapshot.then((value) {
       for (var doc in value.docs) {
         getRacks(doc.reference.collection('racks').get()).then((value) =>
-            canecas.add(
-                Caneca.fromDoc(doc.reference, doc.data()["color"], value)));
+            canecas.add(Caneca.fromDoc(doc.reference, doc.data()["color"],
+                doc.data()['estado'], value)));
       }
     });
     return canecas;

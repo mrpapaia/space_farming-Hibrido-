@@ -102,11 +102,11 @@ mixin _$HomeBotCreateController on _HomeBotCreateControllerBase, Store {
   }
 
   @override
-  dynamic addBot() {
+  dynamic addBot(String path) {
     final _$actionInfo = _$_HomeBotCreateControllerBaseActionController
         .startAction(name: '_HomeBotCreateControllerBase.addBot');
     try {
-      return super.addBot();
+      return super.addBot(path);
     } finally {
       _$_HomeBotCreateControllerBaseActionController.endAction(_$actionInfo);
     }

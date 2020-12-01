@@ -15,10 +15,5 @@ class HomeInfoBotController = _HomeInfoBotControllerBase
     with _$HomeInfoBotController;
 
 abstract class _HomeInfoBotControllerBase with Store {
-  final IRepositoryCanecas repository;
-
-  @observable
-  ObservableStream<List<Caneca>> listCanecas;
-
-  _HomeInfoBotControllerBase(this.repository) {}
+  _HomeInfoBotControllerBase() {}
 }

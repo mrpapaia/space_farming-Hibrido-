@@ -22,7 +22,7 @@ class HomeModule extends ChildModule {
   List<Bind> get binds {
     return [
       Bind((i) => HomeController(i.get(), i.get())),
-      Bind((i) => HomeInfoBotController(i.get())),
+      Bind((i) => HomeInfoBotController()),
       Bind<IRepositoryBotijao>(
           (i) => BotijaoRepository(FirebaseFirestore.instance)),
       Bind<IRepositoryUserP>(
@@ -48,7 +48,10 @@ class HomeModule extends ChildModule {
         ),
         ModularRouter(
           "/add",
-          child: (_, args) => HomeBotCreatePage(),
+          child: (_, args) => HomeBotCreatePage(
+            path: args.data[0],
+            bot: args.data[1],
+          ),
         ),
       ];
 

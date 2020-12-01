@@ -46,10 +46,10 @@ class Botijao {
   Map<String, dynamic> toMap() {
     return {
       'idBot': idBot,
-      'qtdDose': qtdDose,
-      'volAtual': volAtual,
-      'volTotal': volTotal,
-      'numcanecas': numcanecas,
+      'qtdDose': qtdDose.toString(),
+      'volAtual': volAtual.toString(),
+      'volTotal': volTotal.toString(),
+      'numcanecas': numcanecas.toString(),
       //'canecas': canecas,
       //'ref': ref?.toMap(),
     };

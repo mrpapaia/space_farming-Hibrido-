@@ -35,9 +35,16 @@ abstract class _HomeBotCreateControllerBase with Store {
   }
 
   @action
-  addBot() {
+  addBot(String path) {
     repository.add(
-        new Botijao(idBot: idBot, numcanecas: numcanecas, volTotal: volTotal));
+        path,
+        new Botijao(
+          idBot: idBot,
+          numcanecas: numcanecas,
+          volTotal: volTotal,
+          volAtual: 0,
+          qtdDose: 0,
+        ));
   }
 
   @action
