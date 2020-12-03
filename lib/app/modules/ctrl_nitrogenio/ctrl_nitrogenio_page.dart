@@ -54,17 +54,15 @@ class _CtrlNitrogenioPageState
           Center(
             child: Container(
               child: Center(
-                child: Observer(builder: (_) {
-                  return Text(
-                    "${widget.botijao.volAtual.toStringAsFixed(2)}",
-                    style: TextStyle(
-                      fontFamily: 'Robot',
-                      fontSize: _width * 0.3,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.red,
-                    ),
-                  );
-                }),
+                child: Text(
+                  "${widget.botijao.volAtual.toStringAsFixed(2)}",
+                  style: TextStyle(
+                    fontFamily: 'Robot',
+                    fontSize: _width * 0.3,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.red,
+                  ),
+                ),
               ),
               width: _width - 30,
               padding: EdgeInsets.all(5.0),

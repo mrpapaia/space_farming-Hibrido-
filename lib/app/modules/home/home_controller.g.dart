@@ -7,7 +7,7 @@ part of 'home_controller.dart';
 // **************************************************************************
 
 final $HomeController = BindInject(
-  (i) => HomeController(i<IRepositoryBotijao>(), i<IRepositoryUserP>()),
+  (i) => HomeController(i<IRepositoryBotijao>(), i<UserP>()),
   singleton: true,
   lazy: true,
 );
@@ -22,49 +22,27 @@ mixin _$HomeController on _HomeControllerBase, Store {
   final _$listBotAtom = Atom(name: '_HomeControllerBase.listBot');
 
   @override
-  List<Botijao> get listBot {
+  ObservableStream<List<Botijao>> get listBot {
     _$listBotAtom.reportRead();
     return super.listBot;
   }
 
   @override
-  set listBot(List<Botijao> value) {
+  set listBot(ObservableStream<List<Botijao>> value) {
     _$listBotAtom.reportWrite(value, super.listBot, () {
       super.listBot = value;
     });
-  }
-
-  final _$userAtom = Atom(name: '_HomeControllerBase.user');
-
-  @override
-  ObservableStream<List<UserP>> get user {
-    _$userAtom.reportRead();
-    return super.user;
-  }
-
-  @override
-  set user(ObservableStream<List<UserP>> value) {
-    _$userAtom.reportWrite(value, super.user, () {
-      super.user = value;
-    });
-  }
-
-  final _$getBotAsyncAction = AsyncAction('_HomeControllerBase.getBot');
-
-  @override
-  Future<List<Botijao>> getBot(String path) {
-    return _$getBotAsyncAction.run(() => super.getBot(path));
   }
 
   final _$_HomeControllerBaseActionController =
       ActionController(name: '_HomeControllerBase');
 
   @override
-  dynamic getUser(String email) {
+  dynamic getBot(String path) {
     final _$actionInfo = _$_HomeControllerBaseActionController.startAction(
-        name: '_HomeControllerBase.getUser');
+        name: '_HomeControllerBase.getBot');
     try {
-      return super.getUser(email);
+      return super.getBot(path);
     } finally {
       _$_HomeControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -73,8 +51,7 @@ mixin _$HomeController on _HomeControllerBase, Store {
   @override
   String toString() {
     return '''
-listBot: ${listBot},
-user: ${user}
+listBot: ${listBot}
     ''';
   }
 }

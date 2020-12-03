@@ -21,7 +21,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
   bool press = false;
   String teste;
   var _auth = FirebaseAuth.instance;
-
+  var aa;
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width - 30;
@@ -43,15 +43,10 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
             builder: (BuildContext context) {
               try {
                 if (controller.user.data != null) {
-                  //WidgetsBinding.instance.addPostFrameCallback((_) {});
-                  return ButtonCustom(
-                    text: "Login",
-                    width: 309.0,
-                    onclick: () async {
-                      Modular.to.pushNamed('/home',
-                          arguments: controller.user.data[0]);
-                    },
-                  );
+                  WidgetsBinding.instance.addPostFrameCallback((_) {
+                    Modular.to
+                        .pushNamed('/home', arguments: controller.user.data[0]);
+                  });
                 }
                 return Center(child: CircularProgressIndicator());
               } catch (NoSuchMethodError) {
@@ -118,7 +113,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                       onclick: () async {
                         await controller.login(_auth).then((value) {
                           if (value != null) {
-                            Modular.to.pushNamed('/home', arguments: value);
+                            aa = value;
                           }
                         });
                       },

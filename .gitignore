@@ -1,6 +1,8 @@
 # Slidy History Files
 .slidy/
-
+.dart_tool
+.vscode
+._.DS_Store
 # Miscellaneous
 *.class
 *.log

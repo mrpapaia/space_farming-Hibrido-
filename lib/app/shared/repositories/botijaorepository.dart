@@ -59,37 +59,38 @@ class BotijaoRepository implements IRepositoryBotijao {
   }
 
   @override
-  Future<List<Botijao>> list(String path) async {
-    List<Botijao> listBotijoes = [];
-    await firestore
+  Stream<List<Botijao>> list(String path) {
+    return firestore
         .doc("farms/" + path)
         .collection("botijoes")
-        .get()
-        .then((listBot) {
-      listBot.docs.forEach((bot) {
-        getCanecas(bot.reference.collection('canecas').get())
-            .then((value) => listBotijoes.add(Botijao.fromDoc(bot, value)));
-      });
+        .snapshots()
+        .map((query) {
+      return query.docs.map((doc) {
+        //doc.reference.collection('canecas').snapshots().listen(getCanecas);
+        return Botijao.fromDoc(
+            doc, getCanecas(doc.reference.collection('canecas').get()));
+      }).toList();
     });
-
-    return listBotijoes;
   }
 
-  Future<List<Caneca>> getCanecas(Future<QuerySnapshot> snapshot) async {
+  List<Caneca> getCanecas(Future<QuerySnapshot> snapshot) {
     List<Caneca> canecas = [];
-    await snapshot.then((value) {
+    snapshot.then((value) {
       for (var doc in value.docs) {
-        getRacks(doc.reference.collection('racks').get()).then((value) =>
-            canecas.add(Caneca.fromDoc(doc.reference, doc.data()["color"],
-                doc.data()['estado'], value)));
+        canecas.add(Caneca.fromDoc(
+            doc.reference,
+            doc.data()["color"],
+            doc.data()['estado'],
+            getRacks(doc.reference.collection('racks').get())));
       }
     });
+
     return canecas;
   }
 
-  Future<List<Rack>> getRacks(Future<QuerySnapshot> snapshot) async {
+  List<Rack> getRacks(Future<QuerySnapshot> snapshot) {
     List<Rack> racks = [];
-    await snapshot.then((value) {
+    snapshot.then((value) {
       value.docs.forEach((rack) {
         racks.add(Rack.fromDoc(rack));
       });

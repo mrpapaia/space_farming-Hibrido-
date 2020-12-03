@@ -20,27 +20,18 @@ class HomeController = _HomeControllerBase with _$HomeController;
 
 abstract class _HomeControllerBase with Store {
   final IRepositoryBotijao repository;
-  final IRepositoryUserP repositoryUser;
+
+  final UserP user;
 
   @observable
-  List<Botijao> listBot;
-  @observable
-  ObservableStream<List<UserP>> user;
+  ObservableStream<List<Botijao>> listBot;
 
-  _HomeControllerBase(this.repository, this.repositoryUser) {
-    //getBot();
+  _HomeControllerBase(this.repository, this.user) {
+    getBot(user.fazenda[0]);
   }
 
   @action
-  Future<List<Botijao>> getBot(String path) async {
-    List<Botijao> t = [];
-    print(path);
-    await repository.list(path).then((value) => listBot = value);
-    return t;
-  }
-
-  @action
-  getUser(String email) {
-    user = repositoryUser.list(email).asObservable();
+  getBot(String path) {
+    listBot = repository.list(path).asObservable();
   }
 }

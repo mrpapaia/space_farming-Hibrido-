@@ -13,12 +13,9 @@ import 'package:space_farming_modular/app/shared/models/botijao.dart';
 import 'home_bot_create_controller.dart';
 
 class HomeBotCreatePage extends StatefulWidget {
-  final String title;
   String path;
-  Botijao bot;
-  HomeBotCreatePage(
-      {Key key, this.title = "HomeBotCreate", this.path, this.bot})
-      : super(key: key);
+
+  HomeBotCreatePage({Key key, this.path}) : super(key: key);
   String inicio = "1";
   String inicio2 = "1";
   @override
@@ -34,9 +31,6 @@ class _HomeBotCreatePageState
     double _width = MediaQuery.of(context).size.width - 30;
     double _height = MediaQuery.of(context).size.height;
     List<String> items = ["1", "2", "3", "4", "5", "6"];
-    if (widget.bot != null) {
-      controller.idBot = widget.bot.idBot;
-    }
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -50,7 +44,7 @@ class _HomeBotCreatePageState
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           TitleOfScreen(
-            title: widget.bot == null ? 'Cadastrar Botijão' : "Alterar Botijão",
+            title: 'Cadastrar Botijão',
             font: "Revalia",
             fontSize: _width * 0.09,
           ),
@@ -59,33 +53,31 @@ class _HomeBotCreatePageState
           ),
           ContainerBase(
             componets: [
-              Observer(builder: (_) {
-                return TextField(
-                  onChanged: controller.getId,
-                  obscureText: false,
-                  keyboardType: TextInputType.text,
-                  cursorColor: Colors.red,
-                  style: TextStyle(
+              TextField(
+                onChanged: controller.getId,
+                obscureText: false,
+                keyboardType: TextInputType.text,
+                cursorColor: Colors.red,
+                style: TextStyle(
+                  fontFamily: 'Robot',
+                  fontSize: _width * 0.05,
+                  color: Color.fromRGBO(113, 111, 137, 1.0),
+                ),
+                decoration: InputDecoration(
+                  icon: Icon(
+                    MyIcons.icon_botijao,
+                    color: Colors.red,
+                    size: _width * 0.09,
+                  ),
+                  hintStyle: TextStyle(
                     fontFamily: 'Robot',
                     fontSize: _width * 0.05,
                     color: Color.fromRGBO(113, 111, 137, 1.0),
                   ),
-                  decoration: InputDecoration(
-                    icon: Icon(
-                      MyIcons.icon_botijao,
-                      color: Colors.red,
-                      size: _width * 0.09,
-                    ),
-                    hintStyle: TextStyle(
-                      fontFamily: 'Robot',
-                      fontSize: _width * 0.05,
-                      color: Color.fromRGBO(113, 111, 137, 1.0),
-                    ),
-                    labelText: "Identificação do Botijão",
-                    labelStyle: TextStyle(),
-                  ),
-                );
-              }),
+                  labelText: "Identificação do Botijão",
+                  labelStyle: TextStyle(),
+                ),
+              )
             ],
           ),
           SizedBox(
@@ -93,33 +85,31 @@ class _HomeBotCreatePageState
           ),
           ContainerBase(
             componets: [
-              Observer(builder: (_) {
-                return TextField(
-                  onChanged: controller.getVolTotal,
-                  obscureText: false,
-                  keyboardType: TextInputType.text,
-                  cursorColor: Colors.red,
-                  style: TextStyle(
+              TextField(
+                onChanged: controller.getVolTotal,
+                obscureText: false,
+                keyboardType: TextInputType.text,
+                cursorColor: Colors.red,
+                style: TextStyle(
+                  fontFamily: 'Robot',
+                  fontSize: _width * 0.05,
+                  color: Color.fromRGBO(113, 111, 137, 1.0),
+                ),
+                decoration: InputDecoration(
+                  icon: Icon(
+                    MyIcons.icon_cap,
+                    color: Colors.red,
+                    size: _width * 0.09,
+                  ),
+                  hintStyle: TextStyle(
                     fontFamily: 'Robot',
                     fontSize: _width * 0.05,
                     color: Color.fromRGBO(113, 111, 137, 1.0),
                   ),
-                  decoration: InputDecoration(
-                    icon: Icon(
-                      MyIcons.icon_cap,
-                      color: Colors.red,
-                      size: _width * 0.09,
-                    ),
-                    hintStyle: TextStyle(
-                      fontFamily: 'Robot',
-                      fontSize: _width * 0.05,
-                      color: Color.fromRGBO(113, 111, 137, 1.0),
-                    ),
-                    labelText: "Capacidade de nitrogênio em litros",
-                    labelStyle: TextStyle(),
-                  ),
-                );
-              }),
+                  labelText: "Capacidade de nitrogênio em litros",
+                  labelStyle: TextStyle(),
+                ),
+              )
             ],
           ),
           SizedBox(

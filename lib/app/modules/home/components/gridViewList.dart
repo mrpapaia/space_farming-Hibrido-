@@ -14,7 +14,10 @@ import 'package:space_farming_modular/app/shared/models/user.dart';
 class GridViewList extends StatefulWidget {
   List<Botijao> listBotijao;
   UserP user;
-  GridViewList({Key key, this.listBotijao, this.user}) : super(key: key);
+  double width;
+  double height;
+  GridViewList({Key key, this.listBotijao, this.user, this.width, this.height})
+      : super(key: key);
 
   @override
   _GridViewListState createState() => _GridViewListState();
@@ -23,11 +26,8 @@ class GridViewList extends StatefulWidget {
 class _GridViewListState extends State<GridViewList> {
   @override
   Widget build(BuildContext context) {
-    double _width = MediaQuery.of(context).size.width;
-    double _height = MediaQuery.of(context).size.height;
-
-    double hIcon = _height > 700 ? 0.035 : 0.04;
-    double wIcon = _height > 700 ? 0.075 : 0.08;
+    double hIcon = widget.height > 700 ? 0.035 : 0.04;
+    double wIcon = widget.height > 700 ? 0.075 : 0.08;
 
     try {
       return GridView.builder(
@@ -41,7 +41,7 @@ class _GridViewListState extends State<GridViewList> {
             key: Key(widget.listBotijao[index].idBot),
             child: InkWell(
               child: Container(
-                width: _width * 0.5,
+                width: widget.width * 0.5,
                 margin: EdgeInsets.only(top: 5, left: 10, bottom: 5, right: 10),
                 padding: EdgeInsets.all(5.0),
                 decoration: BoxDecoration(
@@ -62,10 +62,10 @@ class _GridViewListState extends State<GridViewList> {
                         children: [
                           Center(
                             child: Container(
-                              width: _width * 0.4,
-                              height: _height > 700
-                                  ? _height * 0.18
-                                  : _height * 0.2,
+                              width: widget.width * 0.4,
+                              height: widget.height > 700
+                                  ? widget.height * 0.18
+                                  : widget.height * 0.2,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(200),
                                 border: Border.all(
@@ -89,7 +89,7 @@ class _GridViewListState extends State<GridViewList> {
                                   "${widget.listBotijao[index].volAtual}",
                                   style: TextStyle(
                                     fontFamily: 'Robot',
-                                    fontSize: _width * 0.03,
+                                    fontSize: widget.width * 0.03,
                                     fontWeight: FontWeight.bold,
                                     color: Colors.red,
                                   ),
@@ -112,10 +112,10 @@ class _GridViewListState extends State<GridViewList> {
                                 ],
                               ),
                             ),
-                            top: _height > 700
-                                ? _height * 0.06
-                                : _height * 0.065,
-                            left: _width * 0.15,
+                            top: widget.height > 700
+                                ? widget.height * 0.06
+                                : widget.height * 0.065,
+                            left: widget.width * 0.15,
                           ),
                           widget.listBotijao[index].numcanecas >= 6
                               ? Positioned(
@@ -126,12 +126,12 @@ class _GridViewListState extends State<GridViewList> {
                                     h: hIcon,
                                     w: wIcon,
                                   ),
-                                  top: _height > 700
-                                      ? _height * 0.13
-                                      : _height * 0.145,
-                                  left: _height > 700
-                                      ? _width * 0.14
-                                      : _width * 0.14,
+                                  top: widget.height > 700
+                                      ? widget.height * 0.13
+                                      : widget.height * 0.145,
+                                  left: widget.height > 700
+                                      ? widget.width * 0.14
+                                      : widget.width * 0.14,
                                 )
                               : SizedBox(
                                   width: 0,
@@ -146,12 +146,12 @@ class _GridViewListState extends State<GridViewList> {
                                     h: hIcon,
                                     w: wIcon,
                                   ),
-                                  top: _height > 700
-                                      ? _height * 0.13
-                                      : _height * 0.145,
-                                  left: _height > 700
-                                      ? _width * 0.22
-                                      : _width * 0.22,
+                                  top: widget.height > 700
+                                      ? widget.height * 0.13
+                                      : widget.height * 0.145,
+                                  left: widget.height > 700
+                                      ? widget.width * 0.22
+                                      : widget.width * 0.22,
                                 )
                               : SizedBox(
                                   width: 0,
@@ -166,12 +166,12 @@ class _GridViewListState extends State<GridViewList> {
                                     h: hIcon,
                                     w: wIcon,
                                   ),
-                                  top: _height > 700
-                                      ? _height * 0.105
-                                      : _height * 0.12,
-                                  left: _height > 700
-                                      ? _width * 0.29
-                                      : _width * 0.29,
+                                  top: widget.height > 700
+                                      ? widget.height * 0.105
+                                      : widget.height * 0.12,
+                                  left: widget.height > 700
+                                      ? widget.width * 0.29
+                                      : widget.width * 0.29,
                                 )
                               : SizedBox(
                                   width: 0,
@@ -186,12 +186,12 @@ class _GridViewListState extends State<GridViewList> {
                                     h: hIcon,
                                     w: wIcon,
                                   ),
-                                  top: _height > 700
-                                      ? _height * 0.033
-                                      : _height * 0.033,
-                                  left: _height > 700
-                                      ? _width * 0.295
-                                      : _width * 0.286,
+                                  top: widget.height > 700
+                                      ? widget.height * 0.033
+                                      : widget.height * 0.033,
+                                  left: widget.height > 700
+                                      ? widget.width * 0.295
+                                      : widget.width * 0.286,
                                 )
                               : SizedBox(
                                   width: 0,
@@ -206,12 +206,12 @@ class _GridViewListState extends State<GridViewList> {
                                     h: hIcon,
                                     w: wIcon,
                                   ),
-                                  top: _height > 700
-                                      ? _height * 0.011
-                                      : _height * 0.011,
-                                  left: _height > 700
-                                      ? _width * 0.23
-                                      : _width * 0.215,
+                                  top: widget.height > 700
+                                      ? widget.height * 0.011
+                                      : widget.height * 0.011,
+                                  left: widget.height > 700
+                                      ? widget.width * 0.23
+                                      : widget.width * 0.215,
                                 )
                               : SizedBox(
                                   width: 0,
@@ -226,12 +226,12 @@ class _GridViewListState extends State<GridViewList> {
                                     h: hIcon,
                                     w: wIcon,
                                   ),
-                                  top: _height > 700
-                                      ? _height * 0.011
-                                      : _height * 0.011,
-                                  left: _height > 700
-                                      ? _width * 0.15
-                                      : _width * 0.132,
+                                  top: widget.height > 700
+                                      ? widget.height * 0.011
+                                      : widget.height * 0.011,
+                                  left: widget.height > 700
+                                      ? widget.width * 0.15
+                                      : widget.width * 0.132,
                                 )
                               : SizedBox(
                                   width: 0,
@@ -246,12 +246,12 @@ class _GridViewListState extends State<GridViewList> {
                                     h: hIcon,
                                     w: wIcon,
                                   ),
-                                  top: _height > 700
-                                      ? _height * 0.028
-                                      : _height * 0.035,
-                                  left: _height > 700
-                                      ? _width * 0.07
-                                      : _width * 0.06,
+                                  top: widget.height > 700
+                                      ? widget.height * 0.028
+                                      : widget.height * 0.035,
+                                  left: widget.height > 700
+                                      ? widget.width * 0.07
+                                      : widget.width * 0.06,
                                 )
                               : SizedBox(
                                   width: 0,
@@ -264,10 +264,12 @@ class _GridViewListState extends State<GridViewList> {
                               h: hIcon,
                               w: wIcon,
                             ),
-                            top: _height > 700
-                                ? _height * 0.065
-                                : _height * 0.076,
-                            left: _height > 700 ? _width * 0.04 : _width * 0.31,
+                            top: widget.height > 700
+                                ? widget.height * 0.065
+                                : widget.height * 0.076,
+                            left: widget.height > 700
+                                ? widget.width * 0.04
+                                : widget.width * 0.31,
                           ),
                           Positioned(
                             child: ContainerCaneca(
@@ -276,11 +278,12 @@ class _GridViewListState extends State<GridViewList> {
                               h: hIcon,
                               w: wIcon,
                             ),
-                            top: _height > 700
-                                ? _height * 0.068
-                                : _height * 0.08,
-                            left:
-                                _height > 700 ? _width * 0.32 : _width * 0.035,
+                            top: widget.height > 700
+                                ? widget.height * 0.068
+                                : widget.height * 0.08,
+                            left: widget.height > 700
+                                ? widget.width * 0.32
+                                : widget.width * 0.035,
                           ),
                           widget.listBotijao[index].numcanecas >= 10
                               ? Positioned(
@@ -291,12 +294,12 @@ class _GridViewListState extends State<GridViewList> {
                                     h: hIcon,
                                     w: wIcon,
                                   ),
-                                  top: _height > 700
-                                      ? _height * 0.105
-                                      : _height * 0.125,
-                                  left: _height > 700
-                                      ? _width * 0.065
-                                      : _width * 0.06,
+                                  top: widget.height > 700
+                                      ? widget.height * 0.105
+                                      : widget.height * 0.125,
+                                  left: widget.height > 700
+                                      ? widget.width * 0.065
+                                      : widget.width * 0.06,
                                 )
                               : SizedBox(
                                   width: 0,
@@ -313,12 +316,12 @@ class _GridViewListState extends State<GridViewList> {
                           "${widget.listBotijao[index].idBot}",
                           style: TextStyle(
                               fontFamily: 'Revalia',
-                              fontSize: _width * 0.04,
+                              fontSize: widget.width * 0.04,
                               color: Colors.white),
                         ),
                       ),
-                      height: _height * 0.04,
-                      width: _width * 0.35,
+                      height: widget.height * 0.04,
+                      width: widget.width * 0.35,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(7),
                         color: Colors.red,

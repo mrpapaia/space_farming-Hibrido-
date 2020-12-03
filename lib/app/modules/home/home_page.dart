@@ -19,8 +19,8 @@ import 'home_controller.dart';
 
 class HomePage extends StatefulWidget {
   final String title;
-  UserCredential credential;
-  HomePage({Key key, this.title, this.credential}) : super(key: key);
+
+  HomePage({Key key, this.title}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -28,112 +28,88 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends ModularState<HomePage, HomeController> {
   List<Botijao> botijoes = List();
-  UserP user;
+
   String path;
   void startTimer() {
-    new Timer.periodic(Duration(seconds: 1), (Timer timer) {
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        setState(() {
-          if (controller.listBot != null) {
-            timer.cancel();
-          }
-          timer.cancel();
-        });
-        timer.cancel();
-      });
-    });
-  }
+    Future.delayed(const Duration(milliseconds: 10), () {
+// Here you can write your code
 
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    controller.getUser(widget.credential.user.email);
+      setState(() {});
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
-
     startTimer();
-
     return Scaffold(
       backgroundColor: Color.fromRGBO(229, 231, 236, 1.0),
       resizeToAvoidBottomInset: false,
       drawer: Drawer(
         child: Container(
-          color: Color.fromRGBO(229, 231, 236, 1.0),
-          child: Observer(builder: (BuildContext context) {
-            try {
-              if (controller.user.data != null) {
-                user = controller.user.data[0];
-              }
-              return ListView(
-                children: [
-                  UserAccountsDrawerHeader(
-                    accountName: Text(user.nome),
-                    accountEmail: Text(user.email),
-                    currentAccountPicture: CircleAvatar(
-                      backgroundColor: Colors.white,
-                      child: Text(
-                        user.email[0].toUpperCase(),
-                        style: TextStyle(
-                          fontSize: _width * 0.09,
-                        ),
+            color: Color.fromRGBO(229, 231, 236, 1.0),
+            child: ListView(
+              children: [
+                UserAccountsDrawerHeader(
+                  accountName: Text(controller.user.nome),
+                  accountEmail: Text(controller.user.email),
+                  currentAccountPicture: CircleAvatar(
+                    backgroundColor: Colors.white,
+                    child: Text(
+                      controller.user.email[0].toUpperCase(),
+                      style: TextStyle(
+                        fontSize: _width * 0.09,
                       ),
                     ),
                   ),
-                  ExpansionTile(
-                    title: Text("Fazendas"),
-                    children: List.generate(user.fazenda.length, (index) {
-                      return ExpansionTile(
-                        title: Text(user.fazenda[index]),
-                        children: [
-                          ListTile(
-                            leading: Icon(
-                              MyIcons.icon_botijao,
-                              color: Colors.red,
-                              size: _width * 0.1,
-                            ),
-                            title: Text("Botijões"),
-                            onTap: () {
-                              path = user.fazenda[index];
-                              controller.getBot(user.fazenda[index]);
-                            },
+                ),
+                ExpansionTile(
+                  title: Text("Fazendas"),
+                  children:
+                      List.generate(controller.user.fazenda.length, (index) {
+                    return ExpansionTile(
+                      title: Text(controller.user.fazenda[index]),
+                      children: [
+                        ListTile(
+                          leading: Icon(
+                            MyIcons.icon_botijao,
+                            color: Colors.red,
+                            size: _width * 0.1,
                           ),
-                          ListTile(
-                            leading: Icon(
-                              Icons.history,
-                              color: Colors.red,
-                              size: _width * 0.1,
-                            ),
-                            title: Text("Hístorico"),
-                            onTap: () {},
+                          title: Text("Botijões"),
+                          onTap: () {
+                            path = controller.user.fazenda[index];
+                            controller.getBot(controller.user.fazenda[index]);
+                          },
+                        ),
+                        ListTile(
+                          leading: Icon(
+                            Icons.history,
+                            color: Colors.red,
+                            size: _width * 0.1,
                           ),
-                        ],
-                      );
-                    }),
+                          title: Text("Hístorico"),
+                          onTap: () {},
+                        ),
+                      ],
+                    );
+                  }),
+                ),
+                ListTile(
+                  leading: Icon(
+                    Icons.exit_to_app,
+                    color: Colors.red,
+                    size: _width * 0.1,
                   ),
-                  ListTile(
-                    leading: Icon(
-                      Icons.exit_to_app,
-                      color: Colors.red,
-                      size: _width * 0.1,
-                    ),
-                    title: Text("Sair"),
-                    onTap: () {
-                      FirebaseAuth.instance.signOut();
-                      Modular.to.pushNamed('/');
-                    },
-                  ),
-                ],
-              );
-            } catch (NoSuchMethodError) {
-              return CircularProgressIndicator();
-            }
-          }),
-        ),
+                  title: Text("Sair"),
+                  onTap: () {
+                    FirebaseAuth.instance.signOut();
+                    Modular.to.pushNamed('/');
+                  },
+                ),
+              ],
+            )),
       ),
       appBar: PreferredSize(
         preferredSize: Size(double.infinity, 100),
@@ -157,12 +133,14 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
             child: Observer(
               builder: (BuildContext context) {
                 try {
-                  if (controller.user.data != null) {
-                    botijoes = controller.listBot;
+                  if (controller.listBot.data[0].canecas[0] != null) {
+                    botijoes = controller.listBot.data;
 
                     return GridViewList(
                       listBotijao: botijoes,
-                      user: user,
+                      user: controller.user,
+                      height: _height,
+                      width: _width,
                     );
                   } else {
                     return Center(
@@ -188,7 +166,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Modular.to.pushNamed('/home/add', arguments: [path, null]);
+          Modular.to.pushNamed('/home/add', arguments: path);
         },
         child: Icon(Icons.add),
       ),
