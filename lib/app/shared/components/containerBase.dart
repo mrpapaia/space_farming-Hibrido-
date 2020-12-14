@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 
 class ContainerBase extends StatelessWidget {
-  ContainerBase({Key key, this.componets, this.height}) : super(key: key);
+  ContainerBase({Key key, this.componets, this.height, this.width})
+      : super(key: key);
   List<Widget> componets;
   double height;
+  double width;
   @override
   Widget build(BuildContext context) {
-    double _width = MediaQuery.of(context).size.width - 30;
-
     return Container(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: componets,
       ),
-      width: _width,
+      width: width,
       height: height,
       padding: EdgeInsets.all(5.0),
       decoration: BoxDecoration(

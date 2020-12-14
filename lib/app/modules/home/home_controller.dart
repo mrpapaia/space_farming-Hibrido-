@@ -27,7 +27,7 @@ abstract class _HomeControllerBase with Store {
   ObservableStream<List<Botijao>> listBot;
 
   _HomeControllerBase(this.repository, this.user) {
-    getBot(user.fazenda[0]);
+    getBot(user.fazenda.values.toList()[0]);
   }
 
   @action

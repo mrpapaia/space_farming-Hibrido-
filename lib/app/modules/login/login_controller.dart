@@ -41,6 +41,7 @@ abstract class _LoginControllerBase with Store {
 
   @action
   void getEmail(String email) {
+    print(email);
     this.email = email;
   }
 

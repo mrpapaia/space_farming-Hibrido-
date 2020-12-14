@@ -7,7 +7,7 @@ part of 'home_info_bot_controller.dart';
 // **************************************************************************
 
 final $HomeInfoBotController = BindInject(
-  (i) => HomeInfoBotController(),
+  (i) => HomeInfoBotController(botijao: i<Botijao>(), user: i<UserP>()),
   singleton: true,
   lazy: true,
 );
@@ -19,6 +19,20 @@ final $HomeInfoBotController = BindInject(
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$HomeInfoBotController on _HomeInfoBotControllerBase, Store {
+  final _$_HomeInfoBotControllerBaseActionController =
+      ActionController(name: '_HomeInfoBotControllerBase');
+
+  @override
+  dynamic getNivel(dynamic value) {
+    final _$actionInfo = _$_HomeInfoBotControllerBaseActionController
+        .startAction(name: '_HomeInfoBotControllerBase.getNivel');
+    try {
+      return super.getNivel(value);
+    } finally {
+      _$_HomeInfoBotControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''

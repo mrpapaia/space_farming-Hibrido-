@@ -50,7 +50,6 @@ class _CtrlRacksPageState
             child: Observer(builder: (_) {
               try {
                 if (widget.listRacks != null) {
-                  print(widget.listRacks);
                   return GridViewRacks(listRack: widget.listRacks);
                 } else {
                   return Center(
@@ -68,7 +67,7 @@ class _CtrlRacksPageState
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Modular.to.pushNamed('/home/add');
+          Modular.to.pushNamed('/rack/add');
         },
         child: Icon(Icons.add),
       ),

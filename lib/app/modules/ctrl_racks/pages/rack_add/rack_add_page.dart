@@ -3,36 +3,30 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:space_farming_modular/app/modules/home/components/secondaryAppBar.dart';
 import 'package:space_farming_modular/app/shared/components/button.dart';
-import 'package:space_farming_modular/app/shared/components/cardComboBox.dart';
-import 'package:space_farming_modular/app/shared/components/cardEditText.dart';
 import 'package:space_farming_modular/app/shared/components/containerBase.dart';
 import 'package:space_farming_modular/app/shared/components/editText.dart';
 import 'package:space_farming_modular/app/shared/components/my_icons_icons.dart';
-import 'package:space_farming_modular/app/shared/components/nav_draw.dart';
 import 'package:space_farming_modular/app/shared/components/titleOfScreen.dart';
-import 'package:space_farming_modular/app/shared/models/botijao.dart';
-import 'home_bot_create_controller.dart';
+import 'rack_add_controller.dart';
 
-class HomeBotCreatePage extends StatefulWidget {
-  String path;
+class RackAddPage extends StatefulWidget {
+  final String title;
+  const RackAddPage({Key key, this.title = "RackAdd"}) : super(key: key);
 
-  HomeBotCreatePage({Key key, this.path}) : super(key: key);
-  String inicio = "1";
-  String inicio2 = "1";
   @override
-  _HomeBotCreatePageState createState() => _HomeBotCreatePageState();
+  _RackAddPageState createState() => _RackAddPageState();
 }
 
-class _HomeBotCreatePageState
-    extends ModularState<HomeBotCreatePage, HomeBotCreateController> {
+class _RackAddPageState extends ModularState<RackAddPage, RackAddController> {
   //use 'controller' variable to access controller
-
+  String volumeInicio = "0.25";
+  String tipoInicio = "Convencionado";
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width - 30;
     double _height = MediaQuery.of(context).size.height;
-    List<String> items = ["1", "2", "3", "4", "5", "6"];
-
+    List<String> volume = ["0.25", "0.50"];
+    List<String> tipo = ["Convencionado", "Sexado", "Embrião"];
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Color.fromRGBO(229, 231, 236, 1.0),
@@ -40,12 +34,11 @@ class _HomeBotCreatePageState
         preferredSize: Size(double.infinity, 100),
         child: SecAppBar(),
       ),
-      drawer: NavigationDrawer(),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           TitleOfScreen(
-            title: 'Cadastrar Botijão',
+            title: 'Adicionar Rack',
             font: "Revalia",
             fontSize: _width * 0.09,
           ),
@@ -53,13 +46,14 @@ class _HomeBotCreatePageState
             height: _height * 0.04,
           ),
           EditText(
-            texto: "Identificação do Botijão",
-            icon: MyIcons.icon_botijao,
+            icon: Icons.ac_unit,
+            function: controller.idToure,
             kbType: TextInputType.text,
             isPasswd: false,
+            texto: "Id do Touro",
             width: _width,
             fontSize: _width * 0.05,
-            height: _height * 0.07,
+            height: _height * 0.09,
           ),
           SizedBox(
             height: _height * 0.015,
@@ -69,35 +63,34 @@ class _HomeBotCreatePageState
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               EditText(
-                texto: "Vol. Total ",
-                icon: MyIcons.icon_cap,
+                icon: Icons.arrow_upward,
+                function: controller.idToure,
                 kbType: TextInputType.number,
                 isPasswd: false,
+                texto: "Dose Up",
                 width: _width * 0.50,
                 fontSize: _width * 0.05,
-                height: _height * 0.07,
+                height: _height * 0.09,
               ),
               SizedBox(
                 width: _width * 0.01,
               ),
               EditText(
-                texto: "Vol. Atual",
-                icon: MyIcons.icon_cap,
+                icon: Icons.arrow_downward,
+                function: controller.idToure,
                 kbType: TextInputType.number,
                 isPasswd: false,
+                texto: "Dose Down",
                 width: _width * 0.50,
                 fontSize: _width * 0.05,
                 height: _height * 0.07,
               ),
             ],
           ),
-          SizedBox(
-            height: _height * 0.01,
-          ),
           Container(
             height: _height * 0.08,
-            margin: EdgeInsets.only(top: 10),
-            width: _width,
+            margin: EdgeInsets.only(top: 10, right: _width * 0.25),
+            width: _width * 0.75,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
               color: Colors.white,
@@ -113,65 +106,7 @@ class _HomeBotCreatePageState
               children: [
                 Container(
                   child: Text(
-                    "Quantidade de Canecas",
-                    style: TextStyle(
-                        fontFamily: 'Robot',
-                        fontSize: _width * 0.05,
-                        color: Color.fromRGBO(113, 111, 137, 1.0)),
-                  ),
-                  margin:
-                      EdgeInsets.only(top: 0, left: 10, bottom: 0, right: 10),
-                ),
-                SizedBox(
-                  height: _height * 0.01,
-                ),
-                Observer(builder: (_) {
-                  return DropdownButton<String>(
-                    value: controller.numcanecas.toString(),
-                    icon: Icon(Icons.arrow_drop_down),
-                    iconSize: 24,
-                    elevation: 16,
-                    style: TextStyle(color: Colors.deepPurple),
-                    underline: Container(
-                      height: 2,
-                      width: 10,
-                      color: Colors.red,
-                    ),
-                    onChanged: controller.getCanecas,
-                    items: items.map<DropdownMenuItem<String>>((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
-                  );
-                })
-              ],
-            ),
-          ),
-          SizedBox(
-            height: _height * 0.01,
-          ),
-          Container(
-            height: _height * 0.08,
-            margin: EdgeInsets.only(top: 10),
-            width: _width,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.2),
-                  spreadRadius: 0,
-                  offset: Offset(0, 5),
-                ),
-              ],
-            ),
-            child: Row(
-              children: [
-                Container(
-                  child: Text(
-                    "Quantidade de Racks por Caneca",
+                    "Tipo do semên:",
                     style: TextStyle(
                         fontFamily: 'Robot',
                         fontSize: 18,
@@ -181,28 +116,77 @@ class _HomeBotCreatePageState
                       EdgeInsets.only(top: 0, left: 10, bottom: 0, right: 10),
                 ),
                 DropdownButton<String>(
-                  value: widget.inicio2,
+                  value: tipoInicio,
                   icon: Icon(Icons.arrow_drop_down),
                   iconSize: 24,
                   elevation: 16,
                   style: TextStyle(color: Colors.deepPurple),
                   underline: Container(
                     height: 2,
-                    width: 10,
+                    width: 5,
                     color: Colors.red,
                   ),
-                  onChanged: (String newValue) {
-                    setState(() {
-                      widget.inicio2 = newValue;
-                    });
-                  },
-                  items: items.map<DropdownMenuItem<String>>((String value) {
+                  onChanged: controller.volume,
+                  items: tipo.map<DropdownMenuItem<String>>((String value) {
                     return DropdownMenuItem<String>(
                       value: value,
                       child: Text(value),
                     );
                   }).toList(),
-                )
+                ),
+              ],
+            ),
+          ),
+          SizedBox(
+            width: _width * 0.1,
+          ),
+          Container(
+            height: _height * 0.08,
+            margin: EdgeInsets.only(top: 10, right: _width * 0.60),
+            width: _width * 0.40,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(12),
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.2),
+                  spreadRadius: 0,
+                  offset: Offset(0, 5),
+                ),
+              ],
+            ),
+            child: Row(
+              children: [
+                Container(
+                  child: Text(
+                    "Volume:",
+                    style: TextStyle(
+                        fontFamily: 'Robot',
+                        fontSize: _width * 0.05,
+                        color: Color.fromRGBO(113, 111, 137, 1.0)),
+                  ),
+                  margin:
+                      EdgeInsets.only(top: 0, left: 10, bottom: 0, right: 10),
+                ),
+                DropdownButton<String>(
+                  value: volumeInicio,
+                  icon: Icon(Icons.arrow_drop_down),
+                  iconSize: 24,
+                  elevation: 16,
+                  style: TextStyle(color: Colors.deepPurple),
+                  underline: Container(
+                    height: 2,
+                    width: 5,
+                    color: Colors.red,
+                  ),
+                  onChanged: controller.volume,
+                  items: volume.map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                ),
               ],
             ),
           ),
@@ -214,7 +198,6 @@ class _HomeBotCreatePageState
                 ButtonCustom(
                   text: "Confirmar",
                   onclick: () {
-                    controller.addBot(widget.path);
                     Navigator.pop(context);
                   },
                   width: _width * 0.5,

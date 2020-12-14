@@ -86,7 +86,7 @@ class _GridViewListState extends State<GridViewList> {
                             child: Container(
                               child: Center(
                                 child: Text(
-                                  "${widget.listBotijao[index].volAtual}",
+                                  "${widget.listBotijao[index].volAtual.toStringAsFixed(2)}",
                                   style: TextStyle(
                                     fontFamily: 'Robot',
                                     fontSize: widget.width * 0.03,
@@ -308,6 +308,9 @@ class _GridViewListState extends State<GridViewList> {
                         ],
                       ),
                     ),
+                    SizedBox(
+                      height: widget.height * 0.026,
+                    ),
                     Container(
                       margin: EdgeInsets.only(top: 3.0),
                       padding: EdgeInsets.all(3.5),
@@ -332,7 +335,7 @@ class _GridViewListState extends State<GridViewList> {
               ),
               onTap: () {
                 Modular.to.pushNamed('/home/info',
-                    arguments: [widget.listBotijao[index], widget.user]);
+                    arguments: [widget.user, widget.listBotijao[index]]);
               },
             ),
             confirmDismiss: (direction) async {

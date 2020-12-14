@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 class SecAppBar extends StatelessWidget {
   @override
@@ -31,7 +32,7 @@ class SecAppBar extends StatelessWidget {
                     size: _width * 0.07,
                   ),
                   onPressed: () {
-                    Navigator.pop(context);
+                    Modular.to.pop(context);
                   },
                 ),
               ],

@@ -1,18 +1,16 @@
 import 'dart:async';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-import 'package:space_farming_modular/app/modules/home/components/HomeAppBar.dart';
+import 'package:space_farming_modular/app/modules/home/components/homeAppBar.dart';
 import 'package:space_farming_modular/app/modules/home/components/gridViewList.dart';
-import 'package:space_farming_modular/app/shared/components/nav_draw.dart';
+
 import 'package:space_farming_modular/app/shared/components/titleOfScreen.dart';
 import 'package:space_farming_modular/app/shared/models/botijao.dart';
-import 'package:space_farming_modular/app/shared/models/user.dart';
 
 import '../../shared/components/my_icons_icons.dart';
 import 'home_controller.dart';
@@ -32,8 +30,6 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
   String path;
   void startTimer() {
     Future.delayed(const Duration(milliseconds: 10), () {
-// Here you can write your code
-
       setState(() {});
     });
   }
@@ -66,35 +62,65 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                 ),
                 ExpansionTile(
                   title: Text("Fazendas"),
+                  leading: Icon(
+                    Icons.terrain,
+                    color: Colors.red,
+                    size: _width * 0.1,
+                  ),
                   children:
                       List.generate(controller.user.fazenda.length, (index) {
                     return ExpansionTile(
-                      title: Text(controller.user.fazenda[index]),
+                      title: Text(controller.user.fazenda.keys.toList()[index]),
+                      leading: Icon(
+                        Icons.terrain,
+                        color: Colors.red,
+                        size: _width * 0.1,
+                      ),
                       children: [
                         ListTile(
                           leading: Icon(
                             MyIcons.icon_botijao,
                             color: Colors.red,
-                            size: _width * 0.1,
+                            size: _width * 0.05,
                           ),
                           title: Text("Botijões"),
                           onTap: () {
-                            path = controller.user.fazenda[index];
-                            controller.getBot(controller.user.fazenda[index]);
+                            path =
+                                controller.user.fazenda.values.toList()[index];
+                            controller.getBot(
+                                controller.user.fazenda.values.toList()[index]);
                           },
                         ),
                         ListTile(
                           leading: Icon(
                             Icons.history,
                             color: Colors.red,
-                            size: _width * 0.1,
+                            size: _width * 0.05,
                           ),
                           title: Text("Hístorico"),
+                          onTap: () {},
+                        ),
+                        ListTile(
+                          leading: Icon(
+                            Icons.person,
+                            color: Colors.red,
+                            size: _width * 0.05,
+                          ),
+                          title: Text("Colaboradores"),
                           onTap: () {},
                         ),
                       ],
                     );
                   }),
+                ),
+                ListTile(
+                  leading: Icon(
+                    Icons.add_location,
+                    color: Colors.red,
+                    size: _width * 0.1,
+                  ),
+                  title: Text("Adicionar Fazenda"),
+                  onTap: () {},
                 ),
                 ListTile(
                   leading: Icon(
@@ -111,9 +137,8 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
               ],
             )),
       ),
-      appBar: PreferredSize(
-        preferredSize: Size(double.infinity, 100),
-        child: HomeAppBar(),
+      appBar: HomeAppBar(
+        preferredSize: Size.fromHeight(70.0),
       ),
       body: Column(
         children: [
@@ -129,13 +154,12 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
             height: 5,
           ),
           Container(
-            height: _height * 0.79,
+            height: _height * 0.8,
             child: Observer(
               builder: (BuildContext context) {
                 try {
                   if (controller.listBot.data[0].canecas[0] != null) {
                     botijoes = controller.listBot.data;
-
                     return GridViewList(
                       listBotijao: botijoes,
                       user: controller.user,

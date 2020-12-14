@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:mobx/mobx.dart';
+import 'package:space_farming_modular/app/modules/home/components/search.dart';
 
-class HomeAppBar extends StatelessWidget {
+class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
+  @override
+  final Size preferredSize;
+
+  HomeAppBar({Key key, this.preferredSize}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
+    final double statusbarHeight = MediaQuery.of(context).padding.top;
+
     return Container(
       color: Color.fromRGBO(229, 231, 236, 1.0),
-      height: _height * 0.13,
+      height: preferredSize.height + statusbarHeight,
       child: Container(
         color: Color.fromRGBO(229, 231, 236, 1.0),
         margin: EdgeInsets.only(top: _height * 0.045),
@@ -54,7 +62,9 @@ class HomeAppBar extends StatelessWidget {
                       color: Colors.red,
                       size: _width * 0.1,
                     ),
-                    onPressed: null),
+                    onPressed: () {
+                      showSearch(context: context, delegate: Search());
+                    }),
               ),
             ],
           ),

@@ -4,6 +4,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:space_farming_modular/app/shared/components/button.dart';
 import 'package:space_farming_modular/app/shared/components/containerBase.dart';
+import 'package:space_farming_modular/app/shared/components/editText.dart';
 import '../../shared/models/user.dart';
 import 'login_controller.dart';
 
@@ -21,11 +22,11 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
   bool press = false;
   String teste;
   var _auth = FirebaseAuth.instance;
-  var aa;
+
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width - 30;
-    var flag = false;
+    double _height = MediaQuery.of(context).size.height;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Color.fromRGBO(229, 231, 236, 1.0),
@@ -43,6 +44,8 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
             builder: (BuildContext context) {
               try {
                 if (controller.user.data != null) {
+                  // UserP p = controller.user.data[0];
+                  //print(p.fazenda.length);
                   WidgetsBinding.instance.addPostFrameCallback((_) {
                     Modular.to
                         .pushNamed('/home', arguments: controller.user.data[0]);
@@ -52,70 +55,34 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
               } catch (NoSuchMethodError) {
                 return Column(
                   children: [
-                    Center(
-                      child: ContainerBase(
-                        height: 180,
-                        componets: [
-                          TextField(
-                            onChanged: controller.getEmail,
-                            obscureText: false,
-                            keyboardType: TextInputType.emailAddress,
-                            cursorColor: Colors.red,
-                            style: TextStyle(
-                              fontFamily: 'Robot',
-                              fontSize: 18,
-                              color: Color.fromRGBO(113, 111, 137, 1.0),
-                            ),
-                            decoration: InputDecoration(
-                              icon: Icon(
-                                Icons.mail,
-                                color: Colors.red,
-                              ),
-                              hintStyle: TextStyle(
-                                fontFamily: 'Robot',
-                                fontSize: 18,
-                                color: Color.fromRGBO(113, 111, 137, 1.0),
-                              ),
-                              labelText: "E-mail",
-                              labelStyle: TextStyle(),
-                            ),
-                          ),
-                          TextField(
-                            onChanged: controller.getPasswd,
-                            obscureText: true,
-                            keyboardType: TextInputType.text,
-                            cursorColor: Colors.red,
-                            style: TextStyle(
-                              fontFamily: 'Robot',
-                              fontSize: 18,
-                              color: Color.fromRGBO(113, 111, 137, 1.0),
-                            ),
-                            decoration: InputDecoration(
-                              icon: Icon(
-                                Icons.lock,
-                                color: Colors.red,
-                              ),
-                              hintStyle: TextStyle(
-                                fontFamily: 'Robot',
-                                fontSize: 18,
-                                color: Color.fromRGBO(113, 111, 137, 1.0),
-                              ),
-                              labelText: "Senha",
-                              labelStyle: TextStyle(),
-                            ),
-                          ),
-                        ],
-                      ),
+                    EditText(
+                      icon: Icons.mail,
+                      function: controller.getEmail,
+                      kbType: TextInputType.emailAddress,
+                      isPasswd: false,
+                      texto: "E-mail",
+                      width: _width,
+                      fontSize: _width * 0.05,
+                      height: _height * 0.09,
+                    ),
+                    SizedBox(
+                      height: _height * 0.015,
+                    ),
+                    EditText(
+                      icon: Icons.lock,
+                      function: controller.getPasswd,
+                      kbType: TextInputType.visiblePassword,
+                      isPasswd: true,
+                      texto: "Senha",
+                      width: _width,
+                      fontSize: _width * 0.05,
+                      height: _height * 0.09,
                     ),
                     ButtonCustom(
                       text: "Login",
                       width: 309.0,
                       onclick: () async {
-                        await controller.login(_auth).then((value) {
-                          if (value != null) {
-                            aa = value;
-                          }
-                        });
+                        await controller.login(_auth);
                       },
                     ),
                   ],

@@ -1,27 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
+
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:space_farming_modular/app/modules/home/components/hexcolor.dart';
 
 import 'package:space_farming_modular/app/modules/home/components/secondaryAppBar.dart';
 import 'package:space_farming_modular/app/modules/home/pages/home_info_bot/components/container_caneca.dart';
+import 'package:space_farming_modular/app/modules/home/pages/home_info_bot/components/thumb.dart';
 import 'package:space_farming_modular/app/shared/components/caneca_icons_icons.dart';
 
-import 'package:space_farming_modular/app/shared/components/my_icons2_icons.dart';
 import 'package:space_farming_modular/app/shared/components/nav_draw.dart';
 import 'package:space_farming_modular/app/shared/components/titleOfScreen.dart';
-import 'package:space_farming_modular/app/shared/models/botijao.dart';
-import 'package:space_farming_modular/app/shared/models/user.dart';
 
 import 'home_info_bot_controller.dart';
 
 class HomeInfoBotPage extends StatefulWidget {
   final String title;
-  Botijao botijao;
-  UserP user;
-  HomeInfoBotPage({Key key, this.title, this.botijao, this.user})
-      : super(key: key);
+
+  HomeInfoBotPage({
+    Key key,
+    this.title,
+  }) : super(key: key);
 
   @override
   _HomeInfoBotPageState createState() => _HomeInfoBotPageState();
@@ -57,7 +55,7 @@ class _HomeInfoBotPageState
             child: Container(
               child: Center(
                 child: Text(
-                  "Botijão ${widget.botijao.idBot}",
+                  "Botijão ${controller.botijao.idBot}",
                   style: TextStyle(
                     fontFamily: "Robot",
                     fontSize: 35,
@@ -116,7 +114,7 @@ class _HomeInfoBotPageState
                       child: Container(
                         child: Center(
                           child: Text(
-                            "${widget.botijao.volAtual.roundToDouble()}",
+                            "${controller.botijao.volAtual.toStringAsFixed(2)}",
                             style: TextStyle(
                               fontFamily: 'Robot',
                               fontSize: _width * 0.1,
@@ -125,7 +123,7 @@ class _HomeInfoBotPageState
                             ),
                           ),
                         ),
-                        width: _height > 700 ? 100 : 100,
+                        width: _height > 700 ? 110 : 110,
                         height: _height > 700 ? 100 : 75,
                         decoration: BoxDecoration(
                           border: Border.all(
@@ -136,7 +134,7 @@ class _HomeInfoBotPageState
                           color: Color.fromRGBO(229, 231, 236, 1.0),
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.grey.withOpacity(0.2),
+                              color: Colors.grey.withOpacity(0.02),
                               spreadRadius: 0,
                               offset: Offset(5, 5),
                             )
@@ -145,23 +143,23 @@ class _HomeInfoBotPageState
                       ),
                       onTap: () {
                         Modular.to.pushNamed('/ctrl',
-                            arguments: [widget.botijao, widget.user]);
+                            arguments: [controller.botijao, controller.user]);
                       },
                     ),
                   ),
-                  widget.botijao.numcanecas >= 8
+                  controller.botijao.numcanecas >= 8
                       ? Positioned(
                           child: InkWell(
                             child: ContainerCaneca(
                               icon: CanecaIcons.num8,
-                              color: widget.botijao.canecas[6].color,
+                              color: controller.botijao.canecas[6].color,
                               h: hBot,
                               w: wBot,
                             ),
                             onTap: () {
                               Modular.to.pushNamed('/rack', arguments: [
-                                widget.botijao.canecas[6],
-                                widget.user
+                                controller.botijao.canecas[6],
+                                controller.user
                               ]);
                             },
                             onLongPress: () {
@@ -174,7 +172,7 @@ class _HomeInfoBotPageState
                                     content: SingleChildScrollView(
                                       child: BlockPicker(
                                         pickerColor:
-                                            widget.botijao.canecas[6].color,
+                                            controller.botijao.canecas[6].color,
                                         onColorChanged: (Color color) =>
                                             cor = color,
                                       ),
@@ -188,8 +186,8 @@ class _HomeInfoBotPageState
                                         onPressed: () {
                                           toHex(cor);
                                           setState(() {
-                                            widget.botijao.canecas[6].color =
-                                                cor;
+                                            controller
+                                                .botijao.canecas[6].color = cor;
                                           });
 
                                           Navigator.of(context).pop();
@@ -217,19 +215,19 @@ class _HomeInfoBotPageState
                           width: 0,
                           height: 0,
                         ),
-                  widget.botijao.numcanecas >= 10
+                  controller.botijao.numcanecas >= 10
                       ? Positioned(
                           child: InkWell(
                             child: ContainerCaneca(
                               icon: CanecaIcons.num2,
-                              color: widget.botijao.canecas[8].color,
+                              color: controller.botijao.canecas[8].color,
                               h: hBot,
                               w: wBot,
                             ),
                             onTap: () {
                               Modular.to.pushNamed('/rack', arguments: [
-                                widget.botijao.canecas[8],
-                                widget.user
+                                controller.botijao.canecas[8],
+                                controller.user
                               ]);
                             },
                             onLongPress: () {
@@ -242,7 +240,7 @@ class _HomeInfoBotPageState
                                     content: SingleChildScrollView(
                                       child: BlockPicker(
                                         pickerColor:
-                                            widget.botijao.canecas[8].color,
+                                            controller.botijao.canecas[8].color,
                                         onColorChanged: (Color color) =>
                                             cor = color,
                                       ),
@@ -256,8 +254,8 @@ class _HomeInfoBotPageState
                                         onPressed: () {
                                           toHex(cor);
                                           setState(() {
-                                            widget.botijao.canecas[8].color =
-                                                cor;
+                                            controller
+                                                .botijao.canecas[8].color = cor;
                                           });
 
                                           Navigator.of(context).pop();
@@ -285,19 +283,19 @@ class _HomeInfoBotPageState
                           width: 0,
                           height: 0,
                         ),
-                  widget.botijao.numcanecas >= 6
+                  controller.botijao.numcanecas >= 6
                       ? Positioned(
                           child: InkWell(
                             child: ContainerCaneca(
                               icon: CanecaIcons.num3,
-                              color: widget.botijao.canecas[4].color,
+                              color: controller.botijao.canecas[4].color,
                               h: hBot,
                               w: wBot,
                             ),
                             onTap: () {
                               Modular.to.pushNamed('/rack', arguments: [
-                                widget.botijao.canecas[4],
-                                widget.user
+                                controller.botijao.canecas[4],
+                                controller.user
                               ]);
                             },
                             onLongPress: () {
@@ -310,7 +308,7 @@ class _HomeInfoBotPageState
                                     content: SingleChildScrollView(
                                       child: BlockPicker(
                                         pickerColor:
-                                            widget.botijao.canecas[4].color,
+                                            controller.botijao.canecas[4].color,
                                         onColorChanged: (Color color) =>
                                             cor = color,
                                       ),
@@ -324,8 +322,8 @@ class _HomeInfoBotPageState
                                         onPressed: () {
                                           toHex(cor);
                                           setState(() {
-                                            widget.botijao.canecas[4].color =
-                                                cor;
+                                            controller
+                                                .botijao.canecas[4].color = cor;
                                           });
 
                                           Navigator.of(context).pop();
@@ -353,19 +351,19 @@ class _HomeInfoBotPageState
                           width: 0,
                           height: 0,
                         ),
-                  widget.botijao.numcanecas >= 10
+                  controller.botijao.numcanecas >= 10
                       ? Positioned(
                           child: InkWell(
                             child: ContainerCaneca(
                               icon: CanecaIcons.num4,
-                              color: widget.botijao.canecas[9].color,
+                              color: controller.botijao.canecas[9].color,
                               h: hBot,
                               w: wBot,
                             ),
                             onTap: () {
                               Modular.to.pushNamed('/rack', arguments: [
-                                widget.botijao.canecas[9],
-                                widget.user
+                                controller.botijao.canecas[9],
+                                controller.user
                               ]);
                             },
                             onLongPress: () {
@@ -378,7 +376,7 @@ class _HomeInfoBotPageState
                                     content: SingleChildScrollView(
                                       child: BlockPicker(
                                         pickerColor:
-                                            widget.botijao.canecas[9].color,
+                                            controller.botijao.canecas[9].color,
                                         onColorChanged: (Color color) =>
                                             cor = color,
                                       ),
@@ -392,8 +390,8 @@ class _HomeInfoBotPageState
                                         onPressed: () {
                                           toHex(cor);
                                           setState(() {
-                                            widget.botijao.canecas[9].color =
-                                                cor;
+                                            controller
+                                                .botijao.canecas[9].color = cor;
                                           });
 
                                           Navigator.of(context).pop();
@@ -426,14 +424,14 @@ class _HomeInfoBotPageState
                     child: InkWell(
                       child: ContainerCaneca(
                         icon: CanecaIcons.num5,
-                        color: widget.botijao.canecas[0].color,
+                        color: controller.botijao.canecas[0].color,
                         h: hBot,
                         w: wBot,
                       ),
                       onTap: () {
                         Modular.to.pushNamed('/rack', arguments: [
-                          widget.botijao.canecas[0],
-                          widget.user
+                          controller.botijao.canecas[0],
+                          controller.user
                         ]);
                       },
                       onLongPress: () {
@@ -445,7 +443,8 @@ class _HomeInfoBotPageState
                               title: Text('Selecione a cor da caneca'),
                               content: SingleChildScrollView(
                                 child: BlockPicker(
-                                  pickerColor: widget.botijao.canecas[0].color,
+                                  pickerColor:
+                                      controller.botijao.canecas[0].color,
                                   onColorChanged: (Color color) => cor = color,
                                 ),
                               ),
@@ -458,7 +457,7 @@ class _HomeInfoBotPageState
                                   onPressed: () {
                                     print(toHex(cor));
                                     setState(() {
-                                      widget.botijao.canecas[0].color = cor;
+                                      controller.botijao.canecas[0].color = cor;
                                     });
 
                                     Navigator.of(context).pop();
@@ -482,19 +481,19 @@ class _HomeInfoBotPageState
                     top: _height > 700 ? _height * 0.155 : _height * 0.16,
                     left: _height > 700 ? _width * 0.05 : _width * 0.05,
                   ),
-                  widget.botijao.numcanecas >= 4
+                  controller.botijao.numcanecas >= 4
                       ? Positioned(
                           child: InkWell(
                             child: ContainerCaneca(
                               icon: CanecaIcons.num6,
-                              color: widget.botijao.canecas[2].color,
+                              color: controller.botijao.canecas[2].color,
                               h: hBot,
                               w: wBot,
                             ),
                             onTap: () {
                               Modular.to.pushNamed('/rack', arguments: [
-                                widget.botijao.canecas[2],
-                                widget.user
+                                controller.botijao.canecas[2],
+                                controller.user
                               ]);
                             },
                             onLongPress: () {
@@ -507,7 +506,7 @@ class _HomeInfoBotPageState
                                     content: SingleChildScrollView(
                                       child: BlockPicker(
                                         pickerColor:
-                                            widget.botijao.canecas[2].color,
+                                            controller.botijao.canecas[2].color,
                                         onColorChanged: (Color color) =>
                                             cor = color,
                                       ),
@@ -521,8 +520,8 @@ class _HomeInfoBotPageState
                                         onPressed: () {
                                           toHex(cor);
                                           setState(() {
-                                            widget.botijao.canecas[2].color =
-                                                cor;
+                                            controller
+                                                .botijao.canecas[2].color = cor;
                                           });
 
                                           Navigator.of(context).pop();
@@ -550,19 +549,19 @@ class _HomeInfoBotPageState
                           width: 0,
                           height: 0,
                         ),
-                  widget.botijao.numcanecas >= 8
+                  controller.botijao.numcanecas >= 8
                       ? Positioned(
                           child: InkWell(
                             child: ContainerCaneca(
                               icon: CanecaIcons.num7,
-                              color: widget.botijao.canecas[7].color,
+                              color: controller.botijao.canecas[7].color,
                               h: hBot,
                               w: wBot,
                             ),
                             onTap: () {
                               Modular.to.pushNamed('/rack', arguments: [
-                                widget.botijao.canecas[7],
-                                widget.user
+                                controller.botijao.canecas[7],
+                                controller.user
                               ]);
                             },
                             onLongPress: () {
@@ -575,7 +574,7 @@ class _HomeInfoBotPageState
                                     content: SingleChildScrollView(
                                       child: BlockPicker(
                                         pickerColor:
-                                            widget.botijao.canecas[7].color,
+                                            controller.botijao.canecas[7].color,
                                         onColorChanged: (Color color) =>
                                             cor = color,
                                       ),
@@ -589,8 +588,8 @@ class _HomeInfoBotPageState
                                         onPressed: () {
                                           toHex(cor);
                                           setState(() {
-                                            widget.botijao.canecas[7].color =
-                                                cor;
+                                            controller
+                                                .botijao.canecas[7].color = cor;
                                           });
 
                                           Navigator.of(context).pop();
@@ -618,19 +617,19 @@ class _HomeInfoBotPageState
                           width: 0,
                           height: 0,
                         ),
-                  widget.botijao.numcanecas >= 2
+                  controller.botijao.numcanecas >= 2
                       ? Positioned(
                           child: InkWell(
                             child: ContainerCaneca(
                               icon: CanecaIcons.num8,
-                              color: widget.botijao.canecas[1].color,
+                              color: controller.botijao.canecas[1].color,
                               h: hBot,
                               w: wBot,
                             ),
                             onTap: () {
                               Modular.to.pushNamed('/rack', arguments: [
-                                widget.botijao.canecas[1],
-                                widget.user
+                                controller.botijao.canecas[1],
+                                controller.user
                               ]);
                             },
                             onLongPress: () {
@@ -643,7 +642,7 @@ class _HomeInfoBotPageState
                                     content: SingleChildScrollView(
                                       child: BlockPicker(
                                         pickerColor:
-                                            widget.botijao.canecas[1].color,
+                                            controller.botijao.canecas[1].color,
                                         onColorChanged: (Color color) =>
                                             cor = color,
                                       ),
@@ -657,8 +656,8 @@ class _HomeInfoBotPageState
                                         onPressed: () {
                                           toHex(cor);
                                           setState(() {
-                                            widget.botijao.canecas[1].color =
-                                                cor;
+                                            controller
+                                                .botijao.canecas[1].color = cor;
                                           });
 
                                           Navigator.of(context).pop();
@@ -686,19 +685,19 @@ class _HomeInfoBotPageState
                           width: 0,
                           height: 0,
                         ),
-                  widget.botijao.numcanecas >= 6
+                  controller.botijao.numcanecas >= 6
                       ? Positioned(
                           child: InkWell(
                             child: ContainerCaneca(
                               icon: CanecaIcons.num1,
-                              color: widget.botijao.canecas[5].color,
+                              color: controller.botijao.canecas[5].color,
                               h: hBot,
                               w: wBot,
                             ),
                             onTap: () {
                               Modular.to.pushNamed('/rack', arguments: [
-                                widget.botijao.canecas[5],
-                                widget.user
+                                controller.botijao.canecas[5],
+                                controller.user
                               ]);
                             },
                             onLongPress: () {
@@ -711,7 +710,7 @@ class _HomeInfoBotPageState
                                     content: SingleChildScrollView(
                                       child: BlockPicker(
                                         pickerColor:
-                                            widget.botijao.canecas[5].color,
+                                            controller.botijao.canecas[5].color,
                                         onColorChanged: (Color color) =>
                                             cor = color,
                                       ),
@@ -725,8 +724,8 @@ class _HomeInfoBotPageState
                                         onPressed: () {
                                           toHex(cor);
                                           setState(() {
-                                            widget.botijao.canecas[5].color =
-                                                cor;
+                                            controller
+                                                .botijao.canecas[5].color = cor;
                                           });
 
                                           Navigator.of(context).pop();
@@ -754,19 +753,19 @@ class _HomeInfoBotPageState
                           width: 0,
                           height: 0,
                         ),
-                  widget.botijao.numcanecas >= 4
+                  controller.botijao.numcanecas >= 4
                       ? Positioned(
                           child: InkWell(
                             child: ContainerCaneca(
                               icon: CanecaIcons.num8,
-                              color: widget.botijao.canecas[3].color,
+                              color: controller.botijao.canecas[3].color,
                               h: hBot,
                               w: wBot,
                             ),
                             onTap: () {
                               Modular.to.pushNamed('/rack', arguments: [
-                                widget.botijao.canecas[3],
-                                widget.user
+                                controller.botijao.canecas[3],
+                                controller.user
                               ]);
                             },
                             onLongPress: () {
@@ -779,7 +778,7 @@ class _HomeInfoBotPageState
                                     content: SingleChildScrollView(
                                       child: BlockPicker(
                                         pickerColor:
-                                            widget.botijao.canecas[3].color,
+                                            controller.botijao.canecas[3].color,
                                         onColorChanged: (Color color) =>
                                             cor = color,
                                       ),
@@ -793,8 +792,8 @@ class _HomeInfoBotPageState
                                         onPressed: () {
                                           toHex(cor);
                                           setState(() {
-                                            widget.botijao.canecas[3].color =
-                                                cor;
+                                            controller
+                                                .botijao.canecas[3].color = cor;
                                           });
 
                                           Navigator.of(context).pop();
@@ -850,28 +849,54 @@ class _HomeInfoBotPageState
             font: "Revalia",
             fontSize: _width * 0.09,
           ),
+          SizedBox(
+            height: _height > 700 ? _height * 0.04 : _height * 0.03,
+          ),
           Container(
+            width: _width - 30,
             child: Stack(
               children: [
-                Image(
-                  image: AssetImage("lib/app/shared/graphics/regua.png"),
+                Positioned(
+                  top: 1,
+                  left: 22,
+                  child: Container(
+                    width: _width - 90,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage("lib/app/shared/graphics/regua.png"),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
                 ),
                 SliderTheme(
                   data: SliderTheme.of(context).copyWith(
-                    activeTrackColor: Colors.transparent,
-                    inactiveTrackColor: Colors.transparent,
+                    activeTrackColor: controller.botijao.volAtual < 15
+                        ? Colors.red
+                        : controller.botijao.volAtual < 25
+                            ? Colors.yellow
+                            : Colors.green,
+                    inactiveTrackColor: Colors.white.withOpacity(0.8),
                     thumbColor: Colors.black,
-                    overlayColor: Colors.red.withAlpha(0),
-                    overlayShape: RoundSliderOverlayShape(overlayRadius: 3.0),
+                    thumbShape: CustomSliderThumbRect(
+                      thumbRadius: 48 * .04,
+                      thumbHeight: 40,
+                      min: 0,
+                      max: 51,
+                    ),
+                    overlayColor: Colors.white.withOpacity(.4),
+                    activeTickMarkColor: Colors.white,
+                    inactiveTickMarkColor: Colors.black,
                   ),
                   child: Slider(
-                    value: widget.botijao.volAtual,
+                    value: controller.botijao.volAtual,
                     min: 0,
                     max: 51,
                     onChanged: (value) {
                       setState(
                         () {
-                          widget.botijao.volAtual = value;
+                          controller.getNivel(value);
                         },
                       );
                     },
@@ -879,7 +904,6 @@ class _HomeInfoBotPageState
                 ),
               ],
             ),
-            width: _width - 30,
             padding: EdgeInsets.all(5.0),
             decoration: BoxDecoration(
               border: Border.all(
