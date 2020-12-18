@@ -44,26 +44,40 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
             builder: (BuildContext context) {
               try {
                 if (controller.user.data != null) {
-                  // UserP p = controller.user.data[0];
-                  //print(p.fazenda.length);
-                  WidgetsBinding.instance.addPostFrameCallback((_) {
-                    Modular.to
-                        .pushNamed('/home', arguments: controller.user.data[0]);
-                  });
+                  return AlertDialog(
+                    content: Text("Logado com sucesso!!"),
+                    actions: <Widget>[
+                      FlatButton(
+                        child: Text(
+                          "OK",
+                          style: TextStyle(color: Colors.red),
+                        ),
+                        onPressed: () {
+                          Modular.to.pushNamed('/home',
+                              arguments: controller.user.data[0]);
+                        },
+                      ),
+                    ],
+                  );
                 }
                 return Center(child: CircularProgressIndicator());
               } catch (NoSuchMethodError) {
                 return Column(
                   children: [
-                    EditText(
-                      icon: Icons.mail,
-                      function: controller.getEmail,
-                      kbType: TextInputType.emailAddress,
-                      isPasswd: false,
-                      texto: "E-mail",
-                      width: _width,
-                      fontSize: _width * 0.05,
-                      height: _height * 0.09,
+                    SizedBox(
+                      height: _height * 0.015,
+                    ),
+                    Center(
+                      child: EditText(
+                        icon: Icons.mail,
+                        function: controller.getEmail,
+                        kbType: TextInputType.emailAddress,
+                        isPasswd: false,
+                        texto: "E-mail",
+                        width: _width,
+                        fontSize: _width * 0.05,
+                        height: _height * 0.09,
+                      ),
                     ),
                     SizedBox(
                       height: _height * 0.015,
@@ -77,6 +91,9 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                       width: _width,
                       fontSize: _width * 0.05,
                       height: _height * 0.09,
+                    ),
+                    SizedBox(
+                      height: _height * 0.015,
                     ),
                     ButtonCustom(
                       text: "Login",
@@ -96,9 +113,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
           InkWell(
             child: Text("Não possui conta?"),
             onTap: () {
-              WidgetsBinding.instance.addPostFrameCallback((_) {
-                Modular.to.pushNamed('/login/cadastro');
-              });
+              Modular.to.pushNamed('/login/cadastro');
             },
           ),
         ],

@@ -35,11 +35,6 @@ abstract class _LoginControllerBase with Store {
   }
 
   @action
-  isSuccefull(DocumentReference doc, UserP user) {
-    Modular.to.pushNamed('/home', arguments: [doc, user]);
-  }
-
-  @action
   void getEmail(String email) {
     print(email);
     this.email = email;

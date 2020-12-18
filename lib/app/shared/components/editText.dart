@@ -43,6 +43,7 @@ class _EditTextState extends State<EditText> {
       child: Padding(
         padding: EdgeInsets.all(5.0),
         child: TextField(
+          controller: TextEditingController(),
           onChanged: widget.function,
           obscureText: widget.isPasswd,
           keyboardType: widget.kbType,

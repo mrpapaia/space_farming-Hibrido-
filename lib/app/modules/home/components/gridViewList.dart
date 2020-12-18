@@ -120,7 +120,7 @@ class _GridViewListState extends State<GridViewList> {
                           widget.listBotijao[index].numcanecas >= 6
                               ? Positioned(
                                   child: ContainerCaneca(
-                                    icon: CanecaIcons.num2,
+                                    id: "6",
                                     color: widget
                                         .listBotijao[index].canecas[5].color,
                                     h: hIcon,
@@ -140,7 +140,7 @@ class _GridViewListState extends State<GridViewList> {
                           widget.listBotijao[index].numcanecas >= 4
                               ? Positioned(
                                   child: ContainerCaneca(
-                                    icon: CanecaIcons.num2,
+                                    id: "4",
                                     color: widget
                                         .listBotijao[index].canecas[3].color,
                                     h: hIcon,
@@ -160,7 +160,7 @@ class _GridViewListState extends State<GridViewList> {
                           widget.listBotijao[index].numcanecas >= 8
                               ? Positioned(
                                   child: ContainerCaneca(
-                                    icon: CanecaIcons.num3,
+                                    id: "7",
                                     color: widget
                                         .listBotijao[index].canecas[6].color,
                                     h: hIcon,
@@ -180,7 +180,7 @@ class _GridViewListState extends State<GridViewList> {
                           widget.listBotijao[index].numcanecas >= 10
                               ? Positioned(
                                   child: ContainerCaneca(
-                                    icon: CanecaIcons.num4,
+                                    id: "9",
                                     color: widget
                                         .listBotijao[index].canecas[8].color,
                                     h: hIcon,
@@ -200,7 +200,7 @@ class _GridViewListState extends State<GridViewList> {
                           widget.listBotijao[index].numcanecas >= 6
                               ? Positioned(
                                   child: ContainerCaneca(
-                                    icon: CanecaIcons.num5,
+                                    id: "5",
                                     color: widget
                                         .listBotijao[index].canecas[4].color,
                                     h: hIcon,
@@ -220,7 +220,7 @@ class _GridViewListState extends State<GridViewList> {
                           widget.listBotijao[index].numcanecas >= 4
                               ? Positioned(
                                   child: ContainerCaneca(
-                                    icon: CanecaIcons.num6,
+                                    id: "3",
                                     color: widget
                                         .listBotijao[index].canecas[2].color,
                                     h: hIcon,
@@ -240,7 +240,7 @@ class _GridViewListState extends State<GridViewList> {
                           widget.listBotijao[index].numcanecas >= 8
                               ? Positioned(
                                   child: ContainerCaneca(
-                                    icon: CanecaIcons.num1,
+                                    id: "8",
                                     color: widget
                                         .listBotijao[index].canecas[7].color,
                                     h: hIcon,
@@ -259,7 +259,7 @@ class _GridViewListState extends State<GridViewList> {
                                 ),
                           Positioned(
                             child: ContainerCaneca(
-                              icon: CanecaIcons.num1,
+                              id: "1",
                               color: widget.listBotijao[index].canecas[0].color,
                               h: hIcon,
                               w: wIcon,
@@ -273,7 +273,7 @@ class _GridViewListState extends State<GridViewList> {
                           ),
                           Positioned(
                             child: ContainerCaneca(
-                              icon: CanecaIcons.num5,
+                              id: "2",
                               color: widget.listBotijao[index].canecas[1].color,
                               h: hIcon,
                               w: wIcon,
@@ -288,7 +288,7 @@ class _GridViewListState extends State<GridViewList> {
                           widget.listBotijao[index].numcanecas >= 10
                               ? Positioned(
                                   child: ContainerCaneca(
-                                    icon: CanecaIcons.num8,
+                                    id: "10",
                                     color: widget
                                         .listBotijao[index].canecas[9].color,
                                     h: hIcon,
@@ -309,10 +309,10 @@ class _GridViewListState extends State<GridViewList> {
                       ),
                     ),
                     SizedBox(
-                      height: widget.height * 0.026,
+                      height: widget.height * 0.006,
                     ),
                     Container(
-                      margin: EdgeInsets.only(top: 3.0),
+                      //  margin: EdgeInsets.only(top: 1.0),
                       padding: EdgeInsets.all(3.5),
                       child: Center(
                         child: Text(
@@ -323,7 +323,7 @@ class _GridViewListState extends State<GridViewList> {
                               color: Colors.white),
                         ),
                       ),
-                      height: widget.height * 0.04,
+                      height: widget.height * 0.043,
                       width: widget.width * 0.35,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(7),

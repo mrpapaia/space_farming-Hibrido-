@@ -23,7 +23,10 @@ abstract class _HomeBotCreateControllerBase with Store {
   _HomeBotCreateControllerBase(this.repository);
 
   @action
-  getId(String id) => idBot = id;
+  getId(String id) {
+    print(id);
+    idBot = id;
+  }
 
   @action
   getVolTotal(String vol) => volTotal = double.parse(vol);

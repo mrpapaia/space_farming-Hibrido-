@@ -31,7 +31,7 @@ class _CtrlRacksPageState
     double _height = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+      // resizeToAvoidBottomInset: false,
       backgroundColor: Color.fromRGBO(229, 231, 236, 1.0),
       appBar: PreferredSize(
         preferredSize: Size(double.infinity, 100),
@@ -47,21 +47,7 @@ class _CtrlRacksPageState
           ),
           Container(
             height: MediaQuery.of(context).size.height * 0.7,
-            child: Observer(builder: (_) {
-              try {
-                if (widget.listRacks != null) {
-                  return GridViewRacks(listRack: widget.listRacks);
-                } else {
-                  return Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }
-              } catch (NoSuchMethodError) {
-                return Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
-            }),
+            child: GridViewRacks(listRack: widget.listRacks),
           )
         ],
       ),

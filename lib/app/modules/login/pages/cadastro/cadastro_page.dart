@@ -20,7 +20,7 @@ class _CadastroPageState
 
   @override
   Widget build(BuildContext context) {
-    double _width = MediaQuery.of(context).size.width;
+    double _width = MediaQuery.of(context).size.width - 30;
     double _height = MediaQuery.of(context).size.height;
     return Scaffold(
         resizeToAvoidBottomInset: false,
@@ -28,7 +28,7 @@ class _CadastroPageState
         appBar: PreferredSize(
             preferredSize: Size(
               double.infinity,
-              75,
+              80,
             ),
             child: SecAppBar()),
         body: SingleChildScrollView(
@@ -47,6 +47,7 @@ class _CadastroPageState
                   Center(
                     child: ContainerBase(
                       height: _height * 0.22,
+                      width: _width,
                       componets: [
                         TextField(
                           onChanged: controller.getEmail,
@@ -104,6 +105,7 @@ class _CadastroPageState
                   ),
                   Center(
                     child: ContainerBase(
+                      width: _width,
                       height: _height * 0.4,
                       componets: [
                         TextField(

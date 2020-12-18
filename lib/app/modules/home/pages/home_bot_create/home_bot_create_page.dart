@@ -35,6 +35,7 @@ class _HomeBotCreatePageState
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomPadding: false,
       backgroundColor: Color.fromRGBO(229, 231, 236, 1.0),
       appBar: PreferredSize(
         preferredSize: Size(double.infinity, 100),
@@ -53,6 +54,7 @@ class _HomeBotCreatePageState
             height: _height * 0.04,
           ),
           EditText(
+            function: controller.getId,
             texto: "Identificação do Botijão",
             icon: MyIcons.icon_botijao,
             kbType: TextInputType.text,

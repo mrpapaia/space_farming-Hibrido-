@@ -151,7 +151,7 @@ class _HomeInfoBotPageState
                       ? Positioned(
                           child: InkWell(
                             child: ContainerCaneca(
-                              icon: CanecaIcons.num8,
+                              id: "7",
                               color: controller.botijao.canecas[6].color,
                               h: hBot,
                               w: wBot,
@@ -219,7 +219,7 @@ class _HomeInfoBotPageState
                       ? Positioned(
                           child: InkWell(
                             child: ContainerCaneca(
-                              icon: CanecaIcons.num2,
+                              id: "9",
                               color: controller.botijao.canecas[8].color,
                               h: hBot,
                               w: wBot,
@@ -287,7 +287,7 @@ class _HomeInfoBotPageState
                       ? Positioned(
                           child: InkWell(
                             child: ContainerCaneca(
-                              icon: CanecaIcons.num3,
+                              id: "5",
                               color: controller.botijao.canecas[4].color,
                               h: hBot,
                               w: wBot,
@@ -355,7 +355,7 @@ class _HomeInfoBotPageState
                       ? Positioned(
                           child: InkWell(
                             child: ContainerCaneca(
-                              icon: CanecaIcons.num4,
+                              id: "10",
                               color: controller.botijao.canecas[9].color,
                               h: hBot,
                               w: wBot,
@@ -423,7 +423,7 @@ class _HomeInfoBotPageState
                   Positioned(
                     child: InkWell(
                       child: ContainerCaneca(
-                        icon: CanecaIcons.num5,
+                        id: "1",
                         color: controller.botijao.canecas[0].color,
                         h: hBot,
                         w: wBot,
@@ -485,7 +485,7 @@ class _HomeInfoBotPageState
                       ? Positioned(
                           child: InkWell(
                             child: ContainerCaneca(
-                              icon: CanecaIcons.num6,
+                              id: "3",
                               color: controller.botijao.canecas[2].color,
                               h: hBot,
                               w: wBot,
@@ -553,7 +553,7 @@ class _HomeInfoBotPageState
                       ? Positioned(
                           child: InkWell(
                             child: ContainerCaneca(
-                              icon: CanecaIcons.num7,
+                              id: "8",
                               color: controller.botijao.canecas[7].color,
                               h: hBot,
                               w: wBot,
@@ -621,7 +621,7 @@ class _HomeInfoBotPageState
                       ? Positioned(
                           child: InkWell(
                             child: ContainerCaneca(
-                              icon: CanecaIcons.num8,
+                              id: "2",
                               color: controller.botijao.canecas[1].color,
                               h: hBot,
                               w: wBot,
@@ -689,7 +689,7 @@ class _HomeInfoBotPageState
                       ? Positioned(
                           child: InkWell(
                             child: ContainerCaneca(
-                              icon: CanecaIcons.num1,
+                              id: "6",
                               color: controller.botijao.canecas[5].color,
                               h: hBot,
                               w: wBot,
@@ -757,7 +757,7 @@ class _HomeInfoBotPageState
                       ? Positioned(
                           child: InkWell(
                             child: ContainerCaneca(
-                              icon: CanecaIcons.num8,
+                              id: "4",
                               color: controller.botijao.canecas[3].color,
                               h: hBot,
                               w: wBot,
@@ -867,6 +867,7 @@ class _HomeInfoBotPageState
                         image: AssetImage("lib/app/shared/graphics/regua.png"),
                         fit: BoxFit.cover,
                       ),
+                      borderRadius: BorderRadius.circular(12),
                     ),
                   ),
                 ),
@@ -906,10 +907,10 @@ class _HomeInfoBotPageState
             ),
             padding: EdgeInsets.all(5.0),
             decoration: BoxDecoration(
+              color: Colors.white,
               border: Border.all(
                   color: Color.fromRGBO(126, 116, 116, 1.0), width: 5),
               borderRadius: BorderRadius.circular(12),
-              color: Colors.white,
               boxShadow: [
                 BoxShadow(
                   color: Colors.grey.withOpacity(0.2),

@@ -38,10 +38,11 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
-    startTimer();
+    // startTimer();
     return Scaffold(
       backgroundColor: Color.fromRGBO(229, 231, 236, 1.0),
       resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomPadding: false,
       drawer: Drawer(
         child: Container(
             color: Color.fromRGBO(229, 231, 236, 1.0),
