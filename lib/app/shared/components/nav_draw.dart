@@ -45,7 +45,7 @@ class NavigationDrawer extends StatelessWidget {
                   children: [
                     ListTile(
                       leading: Icon(
-                        MyIcons.icon_botijao,
+                        MyIcons.bottle,
                         color: Colors.red,
                         size: _width * 0.1,
                       ),

@@ -5,6 +5,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:space_farming_modular/app/shared/components/button.dart';
 import 'package:space_farming_modular/app/shared/components/containerBase.dart';
 import 'package:space_farming_modular/app/shared/components/editText.dart';
+import 'package:space_farming_modular/app/shared/components/my_icons_icons.dart';
 import '../../shared/models/user.dart';
 import 'login_controller.dart';
 
@@ -45,7 +46,8 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
               try {
                 if (controller.user.data != null) {
                   return AlertDialog(
-                    content: Text("Logado com sucesso!!"),
+                    content: Text(
+                        "Logado com sucesso!!\nBem Vindo ${controller.user.data[0].nome}"),
                     actions: <Widget>[
                       FlatButton(
                         child: Text(
@@ -69,7 +71,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                     ),
                     Center(
                       child: EditText(
-                        icon: Icons.mail,
+                        icon: MyIcons.user,
                         function: controller.getEmail,
                         kbType: TextInputType.emailAddress,
                         isPasswd: false,
@@ -83,7 +85,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                       height: _height * 0.015,
                     ),
                     EditText(
-                      icon: Icons.lock,
+                      icon: MyIcons.password,
                       function: controller.getPasswd,
                       kbType: TextInputType.visiblePassword,
                       isPasswd: true,
@@ -102,18 +104,18 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                         await controller.login(_auth);
                       },
                     ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    InkWell(
+                      child: Text("Não possui conta?"),
+                      onTap: () {
+                        Modular.to.pushNamed('/login/cadastro');
+                      },
+                    ),
                   ],
                 );
               }
-            },
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          InkWell(
-            child: Text("Não possui conta?"),
-            onTap: () {
-              Modular.to.pushNamed('/login/cadastro');
             },
           ),
         ],

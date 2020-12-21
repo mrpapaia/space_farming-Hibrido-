@@ -46,7 +46,7 @@ class _RackAddPageState extends ModularState<RackAddPage, RackAddController> {
             height: _height * 0.04,
           ),
           EditText(
-            icon: Icons.ac_unit,
+            icon: MyIcons.cow,
             function: controller.idToure,
             kbType: TextInputType.text,
             isPasswd: false,
@@ -63,7 +63,7 @@ class _RackAddPageState extends ModularState<RackAddPage, RackAddController> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               EditText(
-                icon: Icons.arrow_upward,
+                icon: MyIcons.dose,
                 function: controller.idToure,
                 kbType: TextInputType.number,
                 isPasswd: false,
@@ -76,7 +76,7 @@ class _RackAddPageState extends ModularState<RackAddPage, RackAddController> {
                 width: _width * 0.01,
               ),
               EditText(
-                icon: Icons.arrow_downward,
+                icon: MyIcons.dose,
                 function: controller.idToure,
                 kbType: TextInputType.number,
                 isPasswd: false,

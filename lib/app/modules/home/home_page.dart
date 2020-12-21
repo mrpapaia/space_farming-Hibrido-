@@ -38,7 +38,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
-    // startTimer();
+    startTimer();
     return Scaffold(
       backgroundColor: Color.fromRGBO(229, 231, 236, 1.0),
       resizeToAvoidBottomInset: false,
@@ -64,7 +64,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                 ExpansionTile(
                   title: Text("Fazendas"),
                   leading: Icon(
-                    Icons.terrain,
+                    MyIcons.farms,
                     color: Colors.red,
                     size: _width * 0.1,
                   ),
@@ -73,16 +73,16 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                     return ExpansionTile(
                       title: Text(controller.user.fazenda.keys.toList()[index]),
                       leading: Icon(
-                        Icons.terrain,
+                        MyIcons.farm,
                         color: Colors.red,
                         size: _width * 0.1,
                       ),
                       children: [
                         ListTile(
                           leading: Icon(
-                            MyIcons.icon_botijao,
+                            MyIcons.bottle,
                             color: Colors.red,
-                            size: _width * 0.05,
+                            size: _width * 0.1,
                           ),
                           title: Text("Botijões"),
                           onTap: () {
@@ -94,18 +94,18 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                         ),
                         ListTile(
                           leading: Icon(
-                            Icons.history,
+                            MyIcons.history,
                             color: Colors.red,
-                            size: _width * 0.05,
+                            size: _width * 0.1,
                           ),
                           title: Text("Hístorico"),
                           onTap: () {},
                         ),
                         ListTile(
                           leading: Icon(
-                            Icons.person,
+                            MyIcons.employee,
                             color: Colors.red,
-                            size: _width * 0.05,
+                            size: _width * 0.1,
                           ),
                           title: Text("Colaboradores"),
                           onTap: () {},
@@ -125,14 +125,14 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                 ),
                 ListTile(
                   leading: Icon(
-                    Icons.exit_to_app,
+                    MyIcons.exit,
                     color: Colors.red,
                     size: _width * 0.1,
                   ),
                   title: Text("Sair"),
                   onTap: () {
                     FirebaseAuth.instance.signOut();
-                    Modular.to.pushNamed('/');
+                    Modular.to.pushNamed('/', arguments: null);
                   },
                 ),
               ],

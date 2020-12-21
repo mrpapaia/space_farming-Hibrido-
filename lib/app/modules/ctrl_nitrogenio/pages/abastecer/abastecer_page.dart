@@ -4,6 +4,7 @@ import 'package:space_farming_modular/app/modules/home/components/secondaryAppBa
 import 'package:space_farming_modular/app/shared/components/button.dart';
 import 'package:space_farming_modular/app/shared/components/containerBase.dart';
 import 'package:space_farming_modular/app/shared/components/editText.dart';
+import 'package:space_farming_modular/app/shared/components/my_icons_icons.dart';
 import 'package:space_farming_modular/app/shared/components/nav_draw.dart';
 import 'package:space_farming_modular/app/shared/components/titleOfScreen.dart';
 import 'package:space_farming_modular/app/shared/models/botijao.dart';
@@ -80,6 +81,7 @@ class _AbastecerPageState
               height: 10,
             ),
             ContainerBase(
+              width: _width,
               componets: <Widget>[
                 TextField(
                   onChanged: controller.getVol,
@@ -92,7 +94,8 @@ class _AbastecerPageState
                     color: Color.fromRGBO(113, 111, 137, 1.0),
                   ),
                   decoration: InputDecoration(
-                    icon: Icon(Icons.poll, color: Colors.red),
+                    icon: Icon(MyIcons.volume,
+                        color: Colors.red, size: _width * 0.1),
                     hintStyle: TextStyle(
                       fontFamily: 'Robot',
                       fontSize: 18,
@@ -114,7 +117,8 @@ class _AbastecerPageState
                     color: Color.fromRGBO(113, 111, 137, 1.0),
                   ),
                   decoration: InputDecoration(
-                    icon: Icon(Icons.calendar_today, color: Colors.red),
+                    icon: Icon(MyIcons.date,
+                        color: Colors.red, size: _width * 0.1),
                     hintStyle: TextStyle(
                       fontFamily: 'Robot',
                       fontSize: 18,
@@ -135,7 +139,8 @@ class _AbastecerPageState
                     color: Color.fromRGBO(113, 111, 137, 1.0),
                   ),
                   decoration: InputDecoration(
-                    icon: Icon(Icons.attach_money, color: Colors.red),
+                    icon: Icon(MyIcons.price,
+                        color: Colors.red, size: _width * 0.1),
                     hintStyle: TextStyle(
                       fontFamily: 'Robot',
                       fontSize: 18,

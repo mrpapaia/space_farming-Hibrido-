@@ -25,7 +25,7 @@ abstract class _LoginControllerBase with Store {
   @observable
   String passwd;
 
-  _LoginControllerBase(this.userRepository);
+  _LoginControllerBase(this.userRepository, this.user);
 
   @action
   getUser(String email) {

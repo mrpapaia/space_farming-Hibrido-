@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'my_icons_icons.dart';
+
 class EditText extends StatefulWidget {
   EditText(
       {this.icon,
@@ -67,8 +69,14 @@ class _EditTextState extends State<EditText> {
             prefixIcon: Icon(
               widget.icon,
               color: Colors.red,
-              size: 30,
+              size: widget.icon == MyIcons.bottle ||
+                      widget.icon == MyIcons.cow ||
+                      widget.icon == MyIcons.user ||
+                      widget.icon == MyIcons.password
+                  ? widget.width * 0.125
+                  : widget.width * 0.22,
             ),
+
             hintStyle: TextStyle(
               fontFamily: 'Robot',
               fontSize: widget.fontSize,

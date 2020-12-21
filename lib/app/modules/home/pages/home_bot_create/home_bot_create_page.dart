@@ -56,7 +56,7 @@ class _HomeBotCreatePageState
           EditText(
             function: controller.getId,
             texto: "Identificação do Botijão",
-            icon: MyIcons.icon_botijao,
+            icon: MyIcons.bottle,
             kbType: TextInputType.text,
             isPasswd: false,
             width: _width,
@@ -72,7 +72,7 @@ class _HomeBotCreatePageState
             children: [
               EditText(
                 texto: "Vol. Total ",
-                icon: MyIcons.icon_cap,
+                icon: MyIcons.volume,
                 kbType: TextInputType.number,
                 isPasswd: false,
                 width: _width * 0.50,
@@ -84,7 +84,7 @@ class _HomeBotCreatePageState
               ),
               EditText(
                 texto: "Vol. Atual",
-                icon: MyIcons.icon_cap,
+                icon: MyIcons.volume,
                 kbType: TextInputType.number,
                 isPasswd: false,
                 width: _width * 0.50,
