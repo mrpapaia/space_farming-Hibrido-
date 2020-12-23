@@ -1,22 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:space_farming_modular/app/shared/components/sizeConfig.dart';
 
 class ContainerCaneca extends StatelessWidget {
-  ContainerCaneca({id, color, h, w})
+  ContainerCaneca({id, color, h, w, this.flag})
       : id = id,
         color = color,
         h = h,
         w = w;
   double w;
   double h;
+  bool flag;
   String id;
   Color color;
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width - 30;
     double _height = MediaQuery.of(context).size.height;
+    final sizeConfig = SizeConfig(mediaQueryData: MediaQuery.of(context));
+
     return Container(
-      width: _width * w,
-      height: _height * h,
+      width: flag
+          ? sizeConfig.dynamicScaleSize(size: 25)
+          : sizeConfig.dynamicScaleSize(size: 50),
+      height: flag
+          ? sizeConfig.dynamicScaleSize(size: 25)
+          : sizeConfig.dynamicScaleSize(size: 50),
       child: Center(
         child: Text(
           id,
@@ -32,7 +40,7 @@ class ContainerCaneca extends StatelessWidget {
           BoxShadow(
             color: Colors.grey.withOpacity(0.2),
             spreadRadius: 0,
-            offset: Offset(3, 3),
+            offset: Offset(1.5, 1.5),
           )
         ],
       ),

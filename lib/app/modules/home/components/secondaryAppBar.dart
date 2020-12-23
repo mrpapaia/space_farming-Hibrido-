@@ -1,35 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:space_farming_modular/app/shared/components/sizeConfig.dart';
 
-class SecAppBar extends StatelessWidget {
+class SecAppBar extends StatelessWidget implements PreferredSizeWidget {
+  SecAppBar({Key key, this.preferredSize}) : super(key: key);
+  final Size preferredSize;
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
-    double _height = MediaQuery.of(context).size.height;
 
+    final double statusbarHeight = MediaQuery.of(context).padding.top;
+    final sizeConfig = SizeConfig(mediaQueryData: MediaQuery.of(context));
     return Container(
-      height: _height * 0.171,
+      height: preferredSize.height + statusbarHeight,
       color: Color.fromRGBO(229, 231, 236, 1.0),
-      margin: EdgeInsets.only(top: _height * 0.041),
+      margin: EdgeInsets.only(top: statusbarHeight),
       child: Container(
         child: Column(
           children: [
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                SizedBox(
-                  width: _width * 0.03,
-                ),
                 Image(
                   image: AssetImage('lib/app/shared/graphics/logo.png'),
-                  width: _width * 0.3,
-                  height: _height * 0.09,
+                  width: sizeConfig.dynamicScaleSize(size: 70),
+                  height: sizeConfig.dynamicScaleSize(size: 67),
                 ),
-                SizedBox(width: _width * 0.5),
+                SizedBox(width: sizeConfig.dynamicScaleSize(size: 200)),
                 IconButton(
                   icon: Icon(
                     Icons.arrow_back,
                     color: Colors.red,
-                    size: _width * 0.07,
+                    size: sizeConfig.dynamicScaleSize(size: 30),
                   ),
                   onPressed: () {
                     Modular.to.pop(context);
@@ -38,8 +40,8 @@ class SecAppBar extends StatelessWidget {
               ],
             ),
             Container(
-              width: MediaQuery.of(context).size.width,
-              height: 2,
+              width: _width,
+              height: sizeConfig.dynamicScaleSize(size: 3),
               color: Colors.white,
             ),
           ],

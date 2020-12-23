@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:space_farming_modular/app/shared/components/button.dart';
-import 'package:space_farming_modular/app/shared/components/containerBase.dart';
-import 'package:space_farming_modular/app/shared/components/editText.dart';
+
+import 'package:space_farming_modular/app/shared/components/cardEditText.dart';
 import 'package:space_farming_modular/app/shared/components/my_icons_icons.dart';
 import '../../shared/models/user.dart';
 import 'login_controller.dart';
@@ -56,7 +56,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                         ),
                         onPressed: () {
                           Modular.to.pushNamed('/home',
-                              arguments: controller.user.data[0]);
+                              arguments: [controller.user.data[0], _auth]);
                         },
                       ),
                     ],
@@ -70,29 +70,77 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                       height: _height * 0.015,
                     ),
                     Center(
-                      child: EditText(
-                        icon: MyIcons.user,
-                        function: controller.getEmail,
-                        kbType: TextInputType.emailAddress,
-                        isPasswd: false,
-                        texto: "E-mail",
+                      child: CardEditText(
+                        child: TextField(
+                          controller: null,
+                          onChanged: controller.getEmail,
+                          obscureText: false,
+                          keyboardType: TextInputType.text,
+                          cursorColor: Colors.red,
+                          style: TextStyle(
+                            fontFamily: 'Robot',
+                            fontSize: _width * 0.05,
+                            color: Color.fromRGBO(113, 111, 137, 1.0),
+                          ),
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(16),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8),
+                              borderSide: BorderSide(
+                                width: 0,
+                                style: BorderStyle.solid,
+                              ),
+                            ),
+                            prefixIcon: Icon(MyIcons.user,
+                                color: Colors.red, size: _width * 0.125),
+                            hintStyle: TextStyle(
+                              fontFamily: 'Robot',
+                              fontSize: _width * 0.05,
+                              color: Color.fromRGBO(113, 111, 137, 1.0),
+                            ),
+                            labelText: "E-mail",
+                            labelStyle: TextStyle(),
+                          ),
+                        ),
                         width: _width,
-                        fontSize: _width * 0.05,
-                        height: _height * 0.09,
                       ),
                     ),
                     SizedBox(
                       height: _height * 0.015,
                     ),
-                    EditText(
-                      icon: MyIcons.password,
-                      function: controller.getPasswd,
-                      kbType: TextInputType.visiblePassword,
-                      isPasswd: true,
-                      texto: "Senha",
+                    CardEditText(
+                      child: TextField(
+                        controller: null,
+                        onChanged: controller.getPasswd,
+                        obscureText: true,
+                        keyboardType: TextInputType.text,
+                        cursorColor: Colors.red,
+                        style: TextStyle(
+                          fontFamily: 'Robot',
+                          fontSize: _width * 0.05,
+                          color: Color.fromRGBO(113, 111, 137, 1.0),
+                        ),
+                        decoration: InputDecoration(
+                          contentPadding: EdgeInsets.all(16),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8),
+                            borderSide: BorderSide(
+                              width: 0,
+                              style: BorderStyle.solid,
+                            ),
+                          ),
+                          prefixIcon: Icon(MyIcons.password,
+                              color: Colors.red, size: _width * 0.12),
+                          hintStyle: TextStyle(
+                            fontFamily: 'Robot',
+                            fontSize: _width * 0.05,
+                            color: Color.fromRGBO(113, 111, 137, 1.0),
+                          ),
+                          labelText: "Senha",
+                          labelStyle: TextStyle(),
+                        ),
+                      ),
                       width: _width,
-                      fontSize: _width * 0.05,
-                      height: _height * 0.09,
                     ),
                     SizedBox(
                       height: _height * 0.015,

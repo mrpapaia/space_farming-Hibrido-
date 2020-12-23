@@ -7,7 +7,8 @@ part of 'login_controller.dart';
 // **************************************************************************
 
 final $LoginController = BindInject(
-  (i) => LoginController(i<IRepositoryUserP>(), i<ObservableStream>()),
+  (i) => LoginController(
+      userRepository: i<IRepositoryUserP>(), user: i<ObservableStream>()),
   singleton: true,
   lazy: true,
 );

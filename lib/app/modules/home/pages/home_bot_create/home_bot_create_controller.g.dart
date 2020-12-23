@@ -7,7 +7,10 @@ part of 'home_bot_create_controller.dart';
 // **************************************************************************
 
 final $HomeBotCreateController = BindInject(
-  (i) => HomeBotCreateController(i<IRepositoryBotijao>()),
+  (i) => HomeBotCreateController(
+      repository: i<IRepositoryBotijao>(),
+      path: i<String>(),
+      botijao: i<Botijao>()),
   singleton: true,
   lazy: true,
 );
@@ -19,49 +22,63 @@ final $HomeBotCreateController = BindInject(
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$HomeBotCreateController on _HomeBotCreateControllerBase, Store {
-  final _$idBotAtom = Atom(name: '_HomeBotCreateControllerBase.idBot');
+  final _$ctrl1Atom = Atom(name: '_HomeBotCreateControllerBase.ctrl1');
 
   @override
-  String get idBot {
-    _$idBotAtom.reportRead();
-    return super.idBot;
+  TextEditingController get ctrl1 {
+    _$ctrl1Atom.reportRead();
+    return super.ctrl1;
   }
 
   @override
-  set idBot(String value) {
-    _$idBotAtom.reportWrite(value, super.idBot, () {
-      super.idBot = value;
+  set ctrl1(TextEditingController value) {
+    _$ctrl1Atom.reportWrite(value, super.ctrl1, () {
+      super.ctrl1 = value;
     });
   }
 
-  final _$volTotalAtom = Atom(name: '_HomeBotCreateControllerBase.volTotal');
+  final _$ctrl2Atom = Atom(name: '_HomeBotCreateControllerBase.ctrl2');
 
   @override
-  double get volTotal {
-    _$volTotalAtom.reportRead();
-    return super.volTotal;
+  TextEditingController get ctrl2 {
+    _$ctrl2Atom.reportRead();
+    return super.ctrl2;
   }
 
   @override
-  set volTotal(double value) {
-    _$volTotalAtom.reportWrite(value, super.volTotal, () {
-      super.volTotal = value;
+  set ctrl2(TextEditingController value) {
+    _$ctrl2Atom.reportWrite(value, super.ctrl2, () {
+      super.ctrl2 = value;
     });
   }
 
-  final _$numcanecasAtom =
-      Atom(name: '_HomeBotCreateControllerBase.numcanecas');
+  final _$ctrl3Atom = Atom(name: '_HomeBotCreateControllerBase.ctrl3');
 
   @override
-  int get numcanecas {
-    _$numcanecasAtom.reportRead();
-    return super.numcanecas;
+  TextEditingController get ctrl3 {
+    _$ctrl3Atom.reportRead();
+    return super.ctrl3;
   }
 
   @override
-  set numcanecas(int value) {
-    _$numcanecasAtom.reportWrite(value, super.numcanecas, () {
-      super.numcanecas = value;
+  set ctrl3(TextEditingController value) {
+    _$ctrl3Atom.reportWrite(value, super.ctrl3, () {
+      super.ctrl3 = value;
+    });
+  }
+
+  final _$editAtom = Atom(name: '_HomeBotCreateControllerBase.edit');
+
+  @override
+  bool get edit {
+    _$editAtom.reportRead();
+    return super.edit;
+  }
+
+  @override
+  set edit(bool value) {
+    _$editAtom.reportWrite(value, super.edit, () {
+      super.edit = value;
     });
   }
 
@@ -91,6 +108,17 @@ mixin _$HomeBotCreateController on _HomeBotCreateControllerBase, Store {
   }
 
   @override
+  dynamic getVolAtual(String vol) {
+    final _$actionInfo = _$_HomeBotCreateControllerBaseActionController
+        .startAction(name: '_HomeBotCreateControllerBase.getVolAtual');
+    try {
+      return super.getVolAtual(vol);
+    } finally {
+      _$_HomeBotCreateControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   dynamic getCanecas(String canecas) {
     final _$actionInfo = _$_HomeBotCreateControllerBaseActionController
         .startAction(name: '_HomeBotCreateControllerBase.getCanecas');
@@ -102,11 +130,33 @@ mixin _$HomeBotCreateController on _HomeBotCreateControllerBase, Store {
   }
 
   @override
-  dynamic addBot(String path) {
+  dynamic getDoses(String dose) {
+    final _$actionInfo = _$_HomeBotCreateControllerBaseActionController
+        .startAction(name: '_HomeBotCreateControllerBase.getDoses');
+    try {
+      return super.getDoses(dose);
+    } finally {
+      _$_HomeBotCreateControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic updateBot() {
+    final _$actionInfo = _$_HomeBotCreateControllerBaseActionController
+        .startAction(name: '_HomeBotCreateControllerBase.updateBot');
+    try {
+      return super.updateBot();
+    } finally {
+      _$_HomeBotCreateControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic addBot() {
     final _$actionInfo = _$_HomeBotCreateControllerBaseActionController
         .startAction(name: '_HomeBotCreateControllerBase.addBot');
     try {
-      return super.addBot(path);
+      return super.addBot();
     } finally {
       _$_HomeBotCreateControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -126,9 +176,10 @@ mixin _$HomeBotCreateController on _HomeBotCreateControllerBase, Store {
   @override
   String toString() {
     return '''
-idBot: ${idBot},
-volTotal: ${volTotal},
-numcanecas: ${numcanecas}
+ctrl1: ${ctrl1},
+ctrl2: ${ctrl2},
+ctrl3: ${ctrl3},
+edit: ${edit}
     ''';
   }
 }

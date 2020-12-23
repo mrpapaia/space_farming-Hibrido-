@@ -18,7 +18,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
       height: preferredSize.height + statusbarHeight,
       child: Container(
         color: Color.fromRGBO(229, 231, 236, 1.0),
-        margin: EdgeInsets.only(top: _height * 0.045),
+        margin: EdgeInsets.only(top: statusbarHeight),
         child: Container(
           width: _width * 0.5,
           margin: EdgeInsets.only(top: 5, left: 5, right: 5, bottom: 5),

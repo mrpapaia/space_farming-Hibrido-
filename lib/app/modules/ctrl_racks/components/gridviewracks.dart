@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:space_farming_modular/app/shared/components/slideLeftBackground.dart';
 import 'package:space_farming_modular/app/shared/components/slideRightBackground.dart';
 
@@ -22,102 +23,155 @@ class _GridViewRacksState extends State<GridViewRacks> {
       children: List.generate(
         widget.listRack.length,
         (index) {
-          return Container(
-            margin: EdgeInsets.only(top: 5, left: 10, bottom: 5, right: 10),
-            padding: EdgeInsets.all(5.0),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(7),
-              color: Color.fromRGBO(248, 248, 251, 1.0),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.2),
-                  spreadRadius: 0,
-                  offset: Offset(4, 5),
-                ),
-              ],
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  margin: EdgeInsets.only(top: 10.0),
-                  padding: EdgeInsets.all(2.0),
-                  child: Center(
-                    child: Text(
-                      "${widget.listRack[index].idTouro}",
-                      style: TextStyle(
-                          fontFamily: 'Revalia',
-                          fontSize: 14,
-                          color: Colors.white),
-                    ),
+          return InkWell(
+            child: Container(
+              margin: EdgeInsets.only(top: 5, left: 10, bottom: 5, right: 10),
+              padding: EdgeInsets.all(5.0),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(7),
+                color: Color.fromRGBO(248, 248, 251, 1.0),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.2),
+                    spreadRadius: 0,
+                    offset: Offset(4, 5),
                   ),
-                  width: 100,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(7),
-                    color: Colors.red,
-                  ),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "${widget.listRack[index].doseUp}",
-                      style: TextStyle(fontSize: 20, fontFamily: 'Revalia'),
+                ],
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(top: 10.0),
+                    padding: EdgeInsets.all(2.0),
+                    child: Center(
+                      child: Text(
+                        "${widget.listRack[index].idTouro}",
+                        style: TextStyle(
+                            fontFamily: 'Revalia',
+                            fontSize: 14,
+                            color: Colors.white),
+                      ),
                     ),
-                    Icon(
-                      Icons.arrow_upward,
+                    width: 100,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(7),
                       color: Colors.red,
                     ),
-                  ],
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Container(
-                  height: 1,
-                  color: Colors.red,
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text("${widget.listRack[index].doseDown}",
-                        style: TextStyle(fontSize: 20, fontFamily: 'Revalia')),
-                    Icon(
-                      Icons.arrow_downward,
-                      color: Colors.red,
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Container(
-                  margin: EdgeInsets.only(top: 10.0),
-                  padding: EdgeInsets.all(2.0),
-                  child: Center(
-                    child: Text(
-                      "${widget.listRack[index].tipo}",
-                      style: TextStyle(
-                          fontFamily: 'Revalia',
-                          fontSize: 14,
-                          color: Colors.white),
-                    ),
                   ),
-                  width: 150,
-                  height: 20,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(7),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "${widget.listRack[index].doseUp}",
+                        style: TextStyle(fontSize: 20, fontFamily: 'Revalia'),
+                      ),
+                      Icon(
+                        Icons.arrow_upward,
+                        color: Colors.red,
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                    height: 1,
                     color: Colors.red,
                   ),
-                ),
-              ],
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text("${widget.listRack[index].doseDown}",
+                          style:
+                              TextStyle(fontSize: 20, fontFamily: 'Revalia')),
+                      Icon(
+                        Icons.arrow_downward,
+                        color: Colors.red,
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(top: 5.0),
+                    padding: EdgeInsets.all(2.5),
+                    child: Center(
+                      child: Text(
+                        "${widget.listRack[index].tipo}",
+                        style: TextStyle(
+                            fontFamily: 'Revalia',
+                            fontSize: 14,
+                            color: Colors.white),
+                      ),
+                    ),
+                    width: 150,
+                    height: 20,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(7),
+                      color: Colors.red,
+                    ),
+                  ),
+                ],
+              ),
             ),
+            onLongPress: () async {
+              await showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      content: Text(
+                          "Are you sure yuo want to delete ${widget.listRack[index].idTouro}?"),
+                      actions: <Widget>[
+                        FlatButton(
+                          child: Text(
+                            "Cancel",
+                            style: TextStyle(color: Colors.black),
+                          ),
+                          onPressed: () {
+                            Modular.to.pop();
+                          },
+                        ),
+                        FlatButton(
+                          child: Text(
+                            "Delete",
+                            style: TextStyle(color: Colors.red),
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              widget.listRack.removeAt(index);
+                            });
+
+                            Modular.to.pop();
+                          },
+                        ),
+                        FlatButton(
+                          child: Text(
+                            "Editar",
+                            style: TextStyle(color: Colors.green),
+                          ),
+                          onPressed: () {
+                            Modular.to.pop();
+
+                            /* Modular.to.pushNamed('/home/add', arguments: [
+                              widget.listRack[index]..ref.path,
+                              widget.listRack[index]
+                            ]);*/
+                            Modular.to.pushNamed('/rack/add',
+                                arguments: widget.listRack[index]);
+                          },
+                        ),
+                      ],
+                    );
+                  });
+            },
           );
         },
       ),

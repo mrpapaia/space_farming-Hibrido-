@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
-
 import 'package:flutter_modular/flutter_modular.dart';
-
 import 'package:space_farming_modular/app/modules/home/components/secondaryAppBar.dart';
 import 'package:space_farming_modular/app/modules/home/pages/home_info_bot/components/container_caneca.dart';
 import 'package:space_farming_modular/app/modules/home/pages/home_info_bot/components/thumb.dart';
-import 'package:space_farming_modular/app/shared/components/caneca_icons_icons.dart';
-
 import 'package:space_farming_modular/app/shared/components/nav_draw.dart';
+import 'package:space_farming_modular/app/shared/components/sizeConfig.dart';
 import 'package:space_farming_modular/app/shared/components/titleOfScreen.dart';
-
 import 'home_info_bot_controller.dart';
 
 class HomeInfoBotPage extends StatefulWidget {
@@ -38,19 +34,19 @@ class _HomeInfoBotPageState
     double _height = MediaQuery.of(context).size.height;
     double hBot = _height > 700 ? 0.07 : 0.08;
     double wBot = _height > 700 ? 0.155 : 0.15;
+    final sizeConfig = SizeConfig(mediaQueryData: MediaQuery.of(context));
 
     return Scaffold(
-      appBar: PreferredSize(
-          preferredSize: Size(
-            double.infinity,
-            100,
-          ),
-          child: SecAppBar()),
-      drawer: NavigationDrawer(),
+      appBar: SecAppBar(
+        preferredSize: Size.fromHeight(70.0),
+      ),
       backgroundColor: Color.fromRGBO(229, 231, 236, 1.0),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
+          SizedBox(
+            height: sizeConfig.dynamicScaleSize(size: 10),
+          ),
           Center(
             child: Container(
               child: Center(
@@ -58,13 +54,13 @@ class _HomeInfoBotPageState
                   "Botijão ${controller.botijao.idBot}",
                   style: TextStyle(
                     fontFamily: "Robot",
-                    fontSize: 35,
+                    fontSize: sizeConfig.dynamicScaleSize(size: 35),
                     fontWeight: FontWeight.bold,
                     color: Colors.red,
                   ),
                 ),
               ),
-              width: _width * 0.9,
+              width: sizeConfig.dynamicScaleSize(size: 370),
               padding: EdgeInsets.all(5.0),
               decoration: BoxDecoration(
                 border: Border.all(
@@ -82,7 +78,7 @@ class _HomeInfoBotPageState
             ),
           ),
           SizedBox(
-            height: _height > 700 ? _height * 0.05 : _height * 0.03,
+            height: sizeConfig.dynamicScaleSize(size: 30),
           ),
           Container(
             child: Center(
@@ -90,8 +86,8 @@ class _HomeInfoBotPageState
                 children: [
                   Center(
                     child: Container(
-                      width: _height > 700 ? _width * 0.95 : _width * 0.95,
-                      height: _height > 700 ? _height * 0.5 : _height * 0.5,
+                      width: sizeConfig.dynamicScaleSize(size: 370),
+                      height: sizeConfig.dynamicScaleSize(size: 370),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(200),
                         border: Border.all(
@@ -117,14 +113,14 @@ class _HomeInfoBotPageState
                             "${controller.botijao.volAtual.toStringAsFixed(2)}",
                             style: TextStyle(
                               fontFamily: 'Robot',
-                              fontSize: _width * 0.1,
+                              fontSize: sizeConfig.dynamicScaleSize(size: 25),
                               fontWeight: FontWeight.bold,
                               color: Colors.red,
                             ),
                           ),
                         ),
-                        width: _height > 700 ? 110 : 110,
-                        height: _height > 700 ? 100 : 75,
+                        width: sizeConfig.dynamicScaleSize(size: 100),
+                        height: sizeConfig.dynamicScaleSize(size: 100),
                         decoration: BoxDecoration(
                           border: Border.all(
                             color: Color.fromRGBO(126, 116, 116, 1.0),
@@ -151,210 +147,7 @@ class _HomeInfoBotPageState
                       ? Positioned(
                           child: InkWell(
                             child: ContainerCaneca(
-                              id: "7",
-                              color: controller.botijao.canecas[6].color,
-                              h: hBot,
-                              w: wBot,
-                            ),
-                            onTap: () {
-                              Modular.to.pushNamed('/rack', arguments: [
-                                controller.botijao.canecas[6],
-                                controller.user
-                              ]);
-                            },
-                            onLongPress: () {
-                              showDialog(
-                                context: context,
-                                builder: (BuildContext context) {
-                                  Color cor;
-                                  return AlertDialog(
-                                    title: Text('Selecione a cor da caneca'),
-                                    content: SingleChildScrollView(
-                                      child: BlockPicker(
-                                        pickerColor:
-                                            controller.botijao.canecas[6].color,
-                                        onColorChanged: (Color color) =>
-                                            cor = color,
-                                      ),
-                                    ),
-                                    actions: <Widget>[
-                                      FlatButton(
-                                        child: Text(
-                                          "Contirmar",
-                                          style: TextStyle(color: Colors.black),
-                                        ),
-                                        onPressed: () {
-                                          toHex(cor);
-                                          setState(() {
-                                            controller
-                                                .botijao.canecas[6].color = cor;
-                                          });
-
-                                          Navigator.of(context).pop();
-                                        },
-                                      ),
-                                      FlatButton(
-                                        child: Text(
-                                          "Cancelar",
-                                          style: TextStyle(color: Colors.black),
-                                        ),
-                                        onPressed: () {
-                                          Navigator.of(context).pop();
-                                        },
-                                      ),
-                                    ],
-                                  );
-                                },
-                              );
-                            },
-                          ),
-                          top: _height > 700 ? _height * 0.24 : _height * 0.26,
-                          left: _height > 700 ? _width * 0.1 : _width * 0.1,
-                        )
-                      : SizedBox(
-                          width: 0,
-                          height: 0,
-                        ),
-                  controller.botijao.numcanecas >= 10
-                      ? Positioned(
-                          child: InkWell(
-                            child: ContainerCaneca(
-                              id: "9",
-                              color: controller.botijao.canecas[8].color,
-                              h: hBot,
-                              w: wBot,
-                            ),
-                            onTap: () {
-                              Modular.to.pushNamed('/rack', arguments: [
-                                controller.botijao.canecas[8],
-                                controller.user
-                              ]);
-                            },
-                            onLongPress: () {
-                              showDialog(
-                                context: context,
-                                builder: (BuildContext context) {
-                                  Color cor;
-                                  return AlertDialog(
-                                    title: Text('Selecione a cor da caneca'),
-                                    content: SingleChildScrollView(
-                                      child: BlockPicker(
-                                        pickerColor:
-                                            controller.botijao.canecas[8].color,
-                                        onColorChanged: (Color color) =>
-                                            cor = color,
-                                      ),
-                                    ),
-                                    actions: <Widget>[
-                                      FlatButton(
-                                        child: Text(
-                                          "Contirmar",
-                                          style: TextStyle(color: Colors.black),
-                                        ),
-                                        onPressed: () {
-                                          toHex(cor);
-                                          setState(() {
-                                            controller
-                                                .botijao.canecas[8].color = cor;
-                                          });
-
-                                          Navigator.of(context).pop();
-                                        },
-                                      ),
-                                      FlatButton(
-                                        child: Text(
-                                          "Cancelar",
-                                          style: TextStyle(color: Colors.black),
-                                        ),
-                                        onPressed: () {
-                                          Navigator.of(context).pop();
-                                        },
-                                      ),
-                                    ],
-                                  );
-                                },
-                              );
-                            },
-                          ),
-                          top: _height > 700 ? _height * 0.223 : _height * 0.26,
-                          left: _height > 700 ? _width * 0.63 : _width * 0.65,
-                        )
-                      : SizedBox(
-                          width: 0,
-                          height: 0,
-                        ),
-                  controller.botijao.numcanecas >= 6
-                      ? Positioned(
-                          child: InkWell(
-                            child: ContainerCaneca(
-                              id: "5",
-                              color: controller.botijao.canecas[4].color,
-                              h: hBot,
-                              w: wBot,
-                            ),
-                            onTap: () {
-                              Modular.to.pushNamed('/rack', arguments: [
-                                controller.botijao.canecas[4],
-                                controller.user
-                              ]);
-                            },
-                            onLongPress: () {
-                              showDialog(
-                                context: context,
-                                builder: (BuildContext context) {
-                                  Color cor;
-                                  return AlertDialog(
-                                    title: Text('Selecione a cor da caneca'),
-                                    content: SingleChildScrollView(
-                                      child: BlockPicker(
-                                        pickerColor:
-                                            controller.botijao.canecas[4].color,
-                                        onColorChanged: (Color color) =>
-                                            cor = color,
-                                      ),
-                                    ),
-                                    actions: <Widget>[
-                                      FlatButton(
-                                        child: Text(
-                                          "Contirmar",
-                                          style: TextStyle(color: Colors.black),
-                                        ),
-                                        onPressed: () {
-                                          toHex(cor);
-                                          setState(() {
-                                            controller
-                                                .botijao.canecas[4].color = cor;
-                                          });
-
-                                          Navigator.of(context).pop();
-                                        },
-                                      ),
-                                      FlatButton(
-                                        child: Text(
-                                          "Cancelar",
-                                          style: TextStyle(color: Colors.black),
-                                        ),
-                                        onPressed: () {
-                                          Navigator.of(context).pop();
-                                        },
-                                      ),
-                                    ],
-                                  );
-                                },
-                              );
-                            },
-                          ),
-                          top: _height > 700 ? _height * 0.03 : _height * 0.03,
-                          left: _height > 700 ? _width * 0.28 : _width * 0.28,
-                        )
-                      : SizedBox(
-                          width: 0,
-                          height: 0,
-                        ),
-                  controller.botijao.numcanecas >= 10
-                      ? Positioned(
-                          child: InkWell(
-                            child: ContainerCaneca(
+                              flag: false,
                               id: "10",
                               color: controller.botijao.canecas[9].color,
                               h: hBot,
@@ -412,79 +205,87 @@ class _HomeInfoBotPageState
                               );
                             },
                           ),
-                          top:
-                              _height > 700 ? _height * 0.068 : _height * 0.068,
-                          left: _height > 700 ? _width * 0.115 : _width * 0.115,
+                          bottom: sizeConfig.dynamicScaleSize(size: 70),
+                          left: sizeConfig.dynamicScaleSize(size: 50),
                         )
                       : SizedBox(
                           width: 0,
                           height: 0,
                         ),
-                  Positioned(
-                    child: InkWell(
-                      child: ContainerCaneca(
-                        id: "1",
-                        color: controller.botijao.canecas[0].color,
-                        h: hBot,
-                        w: wBot,
-                      ),
-                      onTap: () {
-                        Modular.to.pushNamed('/rack', arguments: [
-                          controller.botijao.canecas[0],
-                          controller.user
-                        ]);
-                      },
-                      onLongPress: () {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            Color cor;
-                            return AlertDialog(
-                              title: Text('Selecione a cor da caneca'),
-                              content: SingleChildScrollView(
-                                child: BlockPicker(
-                                  pickerColor:
-                                      controller.botijao.canecas[0].color,
-                                  onColorChanged: (Color color) => cor = color,
-                                ),
-                              ),
-                              actions: <Widget>[
-                                FlatButton(
-                                  child: Text(
-                                    "Contirmar",
-                                    style: TextStyle(color: Colors.black),
-                                  ),
-                                  onPressed: () {
-                                    print(toHex(cor));
-                                    setState(() {
-                                      controller.botijao.canecas[0].color = cor;
-                                    });
-
-                                    Navigator.of(context).pop();
-                                  },
-                                ),
-                                FlatButton(
-                                  child: Text(
-                                    "Cancelar",
-                                    style: TextStyle(color: Colors.black),
-                                  ),
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  },
-                                ),
-                              ],
-                            );
-                          },
-                        );
-                      },
-                    ),
-                    top: _height > 700 ? _height * 0.155 : _height * 0.16,
-                    left: _height > 700 ? _width * 0.05 : _width * 0.05,
-                  ),
-                  controller.botijao.numcanecas >= 4
+                  controller.botijao.numcanecas >= 10
                       ? Positioned(
                           child: InkWell(
                             child: ContainerCaneca(
+                              flag: false,
+                              id: "7",
+                              color: controller.botijao.canecas[6].color,
+                              h: hBot,
+                              w: wBot,
+                            ),
+                            onTap: () {
+                              Modular.to.pushNamed('/rack', arguments: [
+                                controller.botijao.canecas[6],
+                                controller.user
+                              ]);
+                            },
+                            onLongPress: () {
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  Color cor;
+                                  return AlertDialog(
+                                    title: Text('Selecione a cor da caneca'),
+                                    content: SingleChildScrollView(
+                                      child: BlockPicker(
+                                        pickerColor:
+                                            controller.botijao.canecas[6].color,
+                                        onColorChanged: (Color color) =>
+                                            cor = color,
+                                      ),
+                                    ),
+                                    actions: <Widget>[
+                                      FlatButton(
+                                        child: Text(
+                                          "Contirmar",
+                                          style: TextStyle(color: Colors.black),
+                                        ),
+                                        onPressed: () {
+                                          toHex(cor);
+                                          setState(() {
+                                            controller
+                                                .botijao.canecas[6].color = cor;
+                                          });
+
+                                          Navigator.of(context).pop();
+                                        },
+                                      ),
+                                      FlatButton(
+                                        child: Text(
+                                          "Cancelar",
+                                          style: TextStyle(color: Colors.black),
+                                        ),
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                        },
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                            },
+                          ),
+                          bottom: sizeConfig.dynamicScaleSize(size: 70),
+                          right: sizeConfig.dynamicScaleSize(size: 50),
+                        )
+                      : SizedBox(
+                          width: 0,
+                          height: 0,
+                        ),
+                  controller.botijao.numcanecas >= 6
+                      ? Positioned(
+                          child: InkWell(
+                            child: ContainerCaneca(
+                              flag: false,
                               id: "3",
                               color: controller.botijao.canecas[2].color,
                               h: hBot,
@@ -542,17 +343,18 @@ class _HomeInfoBotPageState
                               );
                             },
                           ),
-                          top: _height > 700 ? _height * 0.03 : _height * 0.03,
-                          left: _height > 700 ? _width * 0.48 : _width * 0.48,
+                          top: sizeConfig.dynamicScaleSize(size: 25),
+                          left: sizeConfig.dynamicScaleSize(size: 110),
                         )
                       : SizedBox(
                           width: 0,
                           height: 0,
                         ),
-                  controller.botijao.numcanecas >= 8
+                  controller.botijao.numcanecas >= 10
                       ? Positioned(
                           child: InkWell(
                             child: ContainerCaneca(
+                              flag: false,
                               id: "8",
                               color: controller.botijao.canecas[7].color,
                               h: hBot,
@@ -610,8 +412,208 @@ class _HomeInfoBotPageState
                               );
                             },
                           ),
-                          top: _height > 700 ? _height * 0.07 : _height * 0.07,
-                          left: _height > 700 ? _width * 0.65 : _width * 0.65,
+                          top: sizeConfig.dynamicScaleSize(size: 70),
+                          left: sizeConfig.dynamicScaleSize(size: 50),
+                        )
+                      : SizedBox(
+                          width: 0,
+                          height: 0,
+                        ),
+                  Positioned(
+                    child: InkWell(
+                      child: ContainerCaneca(
+                        flag: false,
+                        id: "1",
+                        color: controller.botijao.canecas[0].color,
+                        h: hBot,
+                        w: wBot,
+                      ),
+                      onTap: () {
+                        Modular.to.pushNamed('/rack', arguments: [
+                          controller.botijao.canecas[0],
+                          controller.user
+                        ]);
+                      },
+                      onLongPress: () {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            Color cor;
+                            return AlertDialog(
+                              title: Text('Selecione a cor da caneca'),
+                              content: SingleChildScrollView(
+                                child: BlockPicker(
+                                  pickerColor:
+                                      controller.botijao.canecas[0].color,
+                                  onColorChanged: (Color color) => cor = color,
+                                ),
+                              ),
+                              actions: <Widget>[
+                                FlatButton(
+                                  child: Text(
+                                    "Contirmar",
+                                    style: TextStyle(color: Colors.black),
+                                  ),
+                                  onPressed: () {
+                                    print(toHex(cor));
+                                    setState(() {
+                                      controller.botijao.canecas[0].color = cor;
+                                    });
+
+                                    Navigator.of(context).pop();
+                                  },
+                                ),
+                                FlatButton(
+                                  child: Text(
+                                    "Cancelar",
+                                    style: TextStyle(color: Colors.black),
+                                  ),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      },
+                    ),
+                    top: sizeConfig.dynamicScaleSize(size: 140),
+                    left: sizeConfig.dynamicScaleSize(size: 25),
+                  ),
+                  controller.botijao.numcanecas >= 4
+                      ? Positioned(
+                          child: InkWell(
+                            child: ContainerCaneca(
+                              flag: false,
+                              id: "5",
+                              color: controller.botijao.canecas[4].color,
+                              h: hBot,
+                              w: wBot,
+                            ),
+                            onTap: () {
+                              Modular.to.pushNamed('/rack', arguments: [
+                                controller.botijao.canecas[4],
+                                controller.user
+                              ]);
+                            },
+                            onLongPress: () {
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  Color cor;
+                                  return AlertDialog(
+                                    title: Text('Selecione a cor da caneca'),
+                                    content: SingleChildScrollView(
+                                      child: BlockPicker(
+                                        pickerColor:
+                                            controller.botijao.canecas[4].color,
+                                        onColorChanged: (Color color) =>
+                                            cor = color,
+                                      ),
+                                    ),
+                                    actions: <Widget>[
+                                      FlatButton(
+                                        child: Text(
+                                          "Contirmar",
+                                          style: TextStyle(color: Colors.black),
+                                        ),
+                                        onPressed: () {
+                                          toHex(cor);
+                                          setState(() {
+                                            controller
+                                                .botijao.canecas[4].color = cor;
+                                          });
+
+                                          Navigator.of(context).pop();
+                                        },
+                                      ),
+                                      FlatButton(
+                                        child: Text(
+                                          "Cancelar",
+                                          style: TextStyle(color: Colors.black),
+                                        ),
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                        },
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                            },
+                          ),
+                          top: sizeConfig.dynamicScaleSize(size: 25),
+                          right: sizeConfig.dynamicScaleSize(size: 110),
+                        )
+                      : SizedBox(
+                          width: 0,
+                          height: 0,
+                        ),
+                  controller.botijao.numcanecas >= 8
+                      ? Positioned(
+                          child: InkWell(
+                            child: ContainerCaneca(
+                              flag: false,
+                              id: "9",
+                              color: controller.botijao.canecas[8].color,
+                              h: hBot,
+                              w: wBot,
+                            ),
+                            onTap: () {
+                              Modular.to.pushNamed('/rack', arguments: [
+                                controller.botijao.canecas[8],
+                                controller.user
+                              ]);
+                            },
+                            onLongPress: () {
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  Color cor;
+                                  return AlertDialog(
+                                    title: Text('Selecione a cor da caneca'),
+                                    content: SingleChildScrollView(
+                                      child: BlockPicker(
+                                        pickerColor:
+                                            controller.botijao.canecas[8].color,
+                                        onColorChanged: (Color color) =>
+                                            cor = color,
+                                      ),
+                                    ),
+                                    actions: <Widget>[
+                                      FlatButton(
+                                        child: Text(
+                                          "Contirmar",
+                                          style: TextStyle(color: Colors.black),
+                                        ),
+                                        onPressed: () {
+                                          toHex(cor);
+                                          setState(() {
+                                            controller
+                                                .botijao.canecas[8].color = cor;
+                                          });
+
+                                          Navigator.of(context).pop();
+                                        },
+                                      ),
+                                      FlatButton(
+                                        child: Text(
+                                          "Cancelar",
+                                          style: TextStyle(color: Colors.black),
+                                        ),
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                        },
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                            },
+                          ),
+                          top: sizeConfig.dynamicScaleSize(size: 70),
+                          right: sizeConfig.dynamicScaleSize(size: 50),
                         )
                       : SizedBox(
                           width: 0,
@@ -621,6 +623,7 @@ class _HomeInfoBotPageState
                       ? Positioned(
                           child: InkWell(
                             child: ContainerCaneca(
+                              flag: false,
                               id: "2",
                               color: controller.botijao.canecas[1].color,
                               h: hBot,
@@ -678,8 +681,8 @@ class _HomeInfoBotPageState
                               );
                             },
                           ),
-                          top: _height > 700 ? _height * 0.15 : _height * 0.16,
-                          left: _height > 700 ? _width * 0.7 : _width * 0.7,
+                          top: sizeConfig.dynamicScaleSize(size: 140),
+                          right: sizeConfig.dynamicScaleSize(size: 25),
                         )
                       : SizedBox(
                           width: 0,
@@ -689,74 +692,7 @@ class _HomeInfoBotPageState
                       ? Positioned(
                           child: InkWell(
                             child: ContainerCaneca(
-                              id: "6",
-                              color: controller.botijao.canecas[5].color,
-                              h: hBot,
-                              w: wBot,
-                            ),
-                            onTap: () {
-                              Modular.to.pushNamed('/rack', arguments: [
-                                controller.botijao.canecas[5],
-                                controller.user
-                              ]);
-                            },
-                            onLongPress: () {
-                              showDialog(
-                                context: context,
-                                builder: (BuildContext context) {
-                                  Color cor;
-                                  return AlertDialog(
-                                    title: Text('Selecione a cor da caneca'),
-                                    content: SingleChildScrollView(
-                                      child: BlockPicker(
-                                        pickerColor:
-                                            controller.botijao.canecas[5].color,
-                                        onColorChanged: (Color color) =>
-                                            cor = color,
-                                      ),
-                                    ),
-                                    actions: <Widget>[
-                                      FlatButton(
-                                        child: Text(
-                                          "Contirmar",
-                                          style: TextStyle(color: Colors.black),
-                                        ),
-                                        onPressed: () {
-                                          toHex(cor);
-                                          setState(() {
-                                            controller
-                                                .botijao.canecas[5].color = cor;
-                                          });
-
-                                          Navigator.of(context).pop();
-                                        },
-                                      ),
-                                      FlatButton(
-                                        child: Text(
-                                          "Cancelar",
-                                          style: TextStyle(color: Colors.black),
-                                        ),
-                                        onPressed: () {
-                                          Navigator.of(context).pop();
-                                        },
-                                      ),
-                                    ],
-                                  );
-                                },
-                              );
-                            },
-                          ),
-                          top: _height > 700 ? _height * 0.28 : _height * 0.31,
-                          left: _height > 700 ? _width * 0.48 : _width * 0.48,
-                        )
-                      : SizedBox(
-                          width: 0,
-                          height: 0,
-                        ),
-                  controller.botijao.numcanecas >= 4
-                      ? Positioned(
-                          child: InkWell(
-                            child: ContainerCaneca(
+                              flag: false,
                               id: "4",
                               color: controller.botijao.canecas[3].color,
                               h: hBot,
@@ -814,8 +750,77 @@ class _HomeInfoBotPageState
                               );
                             },
                           ),
-                          top: _height > 700 ? _height * 0.28 : _height * 0.31,
-                          left: _height > 700 ? _width * 0.28 : _width * 0.28,
+                          bottom: sizeConfig.dynamicScaleSize(size: 25),
+                          right: sizeConfig.dynamicScaleSize(size: 110),
+                        )
+                      : SizedBox(
+                          width: 0,
+                          height: 0,
+                        ),
+                  controller.botijao.numcanecas >= 4
+                      ? Positioned(
+                          child: InkWell(
+                            child: ContainerCaneca(
+                              flag: false,
+                              id: "6",
+                              color: controller.botijao.canecas[5].color,
+                              h: hBot,
+                              w: wBot,
+                            ),
+                            onTap: () {
+                              Modular.to.pushNamed('/rack', arguments: [
+                                controller.botijao.canecas[5],
+                                controller.user
+                              ]);
+                            },
+                            onLongPress: () {
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  Color cor;
+                                  return AlertDialog(
+                                    title: Text('Selecione a cor da caneca'),
+                                    content: SingleChildScrollView(
+                                      child: BlockPicker(
+                                        pickerColor:
+                                            controller.botijao.canecas[5].color,
+                                        onColorChanged: (Color color) =>
+                                            cor = color,
+                                      ),
+                                    ),
+                                    actions: <Widget>[
+                                      FlatButton(
+                                        child: Text(
+                                          "Contirmar",
+                                          style: TextStyle(color: Colors.black),
+                                        ),
+                                        onPressed: () {
+                                          toHex(cor);
+                                          setState(() {
+                                            controller
+                                                .botijao.canecas[5].color = cor;
+                                          });
+
+                                          Navigator.of(context).pop();
+                                        },
+                                      ),
+                                      FlatButton(
+                                        child: Text(
+                                          "Cancelar",
+                                          style: TextStyle(color: Colors.black),
+                                        ),
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                        },
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                            },
+                          ),
+                          bottom: sizeConfig.dynamicScaleSize(size: 25),
+                          left: sizeConfig.dynamicScaleSize(size: 110),
                         )
                       : SizedBox(
                           width: 0,
@@ -824,8 +829,8 @@ class _HomeInfoBotPageState
                 ],
               ),
             ),
-            width: _width * 0.95,
-            height: _height > 700 ? _height * 0.4 : _height * 0.45,
+            width: sizeConfig.dynamicScaleSize(size: 370),
+            height: sizeConfig.dynamicScaleSize(size: 350),
             padding: EdgeInsets.all(5.0),
             decoration: BoxDecoration(
               border: Border.all(
@@ -853,14 +858,14 @@ class _HomeInfoBotPageState
             height: _height > 700 ? _height * 0.04 : _height * 0.03,
           ),
           Container(
-            width: _width - 30,
+            width: sizeConfig.dynamicScaleSize(size: 370),
             child: Stack(
               children: [
                 Positioned(
                   top: 1,
                   left: 22,
                   child: Container(
-                    width: _width - 90,
+                    width: sizeConfig.dynamicScaleSize(size: 310),
                     height: 50,
                     decoration: BoxDecoration(
                       image: DecorationImage(

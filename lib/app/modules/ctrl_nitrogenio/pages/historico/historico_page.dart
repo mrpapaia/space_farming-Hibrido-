@@ -31,13 +31,9 @@ class _HistoricoPageState
     return DefaultTabController(
         length: 2,
         child: Scaffold(
-          appBar: PreferredSize(
-              preferredSize: Size(
-                double.infinity,
-                100,
-              ),
-              child: SecAppBar()),
-          drawer: NavigationDrawer(),
+          appBar: SecAppBar(
+            preferredSize: Size.fromHeight(70.0),
+          ),
           backgroundColor: Color.fromRGBO(229, 231, 236, 1.0),
           body: Column(
             children: [

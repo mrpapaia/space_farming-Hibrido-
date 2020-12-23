@@ -3,7 +3,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:space_farming_modular/app/modules/home/components/secondaryAppBar.dart';
 import 'package:space_farming_modular/app/shared/components/button.dart';
 import 'package:space_farming_modular/app/shared/components/containerBase.dart';
-import 'package:space_farming_modular/app/shared/components/editText.dart';
+import 'package:space_farming_modular/app/shared/components/cardEditText.dart';
 import 'package:space_farming_modular/app/shared/components/my_icons_icons.dart';
 import 'package:space_farming_modular/app/shared/components/nav_draw.dart';
 import 'package:space_farming_modular/app/shared/components/titleOfScreen.dart';
@@ -31,13 +31,10 @@ class _AbastecerPageState
     double _height = MediaQuery.of(context).size.height;
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: PreferredSize(
-          preferredSize: Size(
-            double.infinity,
-            100,
-          ),
-          child: SecAppBar()),
-      drawer: NavigationDrawer(),
+      appBar: SecAppBar(
+        preferredSize: Size.fromHeight(70.0),
+      ),
+     
       backgroundColor: Color.fromRGBO(229, 231, 236, 1.0),
       body: SingleChildScrollView(
         child: Column(

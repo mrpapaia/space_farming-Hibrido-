@@ -29,7 +29,7 @@ class CtrlRacksModule extends ChildModule {
                 listRacks: args.data[0].racks, user: args.data[1])),
         ModularRouter(
           "/add",
-          child: (_, args) => RackAddPage(),
+          child: (_, args) => RackAddPage(rack: args.data),
         ),
       ];
 

@@ -25,7 +25,7 @@ abstract class _LoginControllerBase with Store {
   @observable
   String passwd;
 
-  _LoginControllerBase(this.userRepository, this.user);
+  _LoginControllerBase({this.userRepository, this.user});
 
   @action
   getUser(String email) {
@@ -36,14 +36,12 @@ abstract class _LoginControllerBase with Store {
 
   @action
   void getEmail(String email) {
-    print(email);
     this.email = email;
   }
 
   @action
   void getPasswd(String passwd) {
     this.passwd = passwd;
-    print(this.passwd);
   }
 
   @action

@@ -6,7 +6,8 @@ import 'package:space_farming_modular/app/shared/models/farm.dart';
 abstract class IRepositoryBotijao {
   Future<void> add(String path, Botijao botijao);
   Future<void> remove(String id);
-  Future<void> update(Botijao obj);
+  Future<void> updateVol(Botijao obj);
+  Future<void> updateBot(Botijao obj);
   Future<Botijao> search(String id);
   Stream<List<Botijao>> list(String path);
 }

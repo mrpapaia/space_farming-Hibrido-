@@ -22,7 +22,6 @@ class BotijaoRepository implements IRepositoryBotijao {
         .doc(botijao.idBot)
         .set(botijao.toMap())
         .then((value) {
-      print("Botijão adicionado com suecsso");
       for (int i = 0; i < botijao.numcanecas; i++) {
         firestore
             .collection(
@@ -36,9 +35,9 @@ class BotijaoRepository implements IRepositoryBotijao {
   }
 
   @override
-  Future<void> remove(String id) {
+  Future<void> remove(String path) {
     return firestore
-        .doc(id + "/botijoes/" + id)
+        .doc(path)
         .delete()
         .then((value) => print("botijao deletado"))
         .catchError((error) => print("Failed to delete botijao: $error"));
@@ -50,11 +49,21 @@ class BotijaoRepository implements IRepositoryBotijao {
   }
 
   @override
-  Future<void> update(Botijao obj) {
+  Future<void> updateVol(Botijao obj) {
     return firestore
         .doc("a" + "/botijoes/" + obj.idBot)
         .update({'volAtual': obj.volAtual})
         .then((value) => print("Volume atualizado"))
+        .catchError((error) => print("Failed to delete botijao: $error"));
+  }
+
+  @override
+  Future<void> updateBot(Botijao bot) {
+    print(bot);
+    return firestore
+        .doc(bot.ref.path)
+        .set(bot.toMap())
+        .then((value) => print("Botijão atualizado"))
         .catchError((error) => print("Failed to delete botijao: $error"));
   }
 
@@ -67,6 +76,7 @@ class BotijaoRepository implements IRepositoryBotijao {
         .map((query) {
       return query.docs.map((doc) {
         //doc.reference.collection('canecas').snapshots().listen(getCanecas);
+
         return Botijao.fromDoc(
             doc, getCanecas(doc.reference.collection('canecas').get()));
       }).toList();

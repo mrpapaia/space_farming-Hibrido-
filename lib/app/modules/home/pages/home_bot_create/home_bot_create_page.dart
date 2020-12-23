@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:flutter/services.dart';
+
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:space_farming_modular/app/modules/home/components/secondaryAppBar.dart';
 import 'package:space_farming_modular/app/shared/components/button.dart';
-import 'package:space_farming_modular/app/shared/components/cardComboBox.dart';
+
 import 'package:space_farming_modular/app/shared/components/cardEditText.dart';
-import 'package:space_farming_modular/app/shared/components/containerBase.dart';
-import 'package:space_farming_modular/app/shared/components/editText.dart';
+
 import 'package:space_farming_modular/app/shared/components/my_icons_icons.dart';
 import 'package:space_farming_modular/app/shared/components/nav_draw.dart';
 import 'package:space_farming_modular/app/shared/components/titleOfScreen.dart';
@@ -14,9 +14,7 @@ import 'package:space_farming_modular/app/shared/models/botijao.dart';
 import 'home_bot_create_controller.dart';
 
 class HomeBotCreatePage extends StatefulWidget {
-  String path;
-
-  HomeBotCreatePage({Key key, this.path}) : super(key: key);
+  HomeBotCreatePage({Key key}) : super(key: key);
   String inicio = "1";
   String inicio2 = "1";
   @override
@@ -25,43 +23,68 @@ class HomeBotCreatePage extends StatefulWidget {
 
 class _HomeBotCreatePageState
     extends ModularState<HomeBotCreatePage, HomeBotCreateController> {
-  //use 'controller' variable to access controller
-
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width - 30;
     double _height = MediaQuery.of(context).size.height;
-    List<String> items = ["1", "2", "3", "4", "5", "6"];
+    var ctrl1 = TextEditingController();
+    var ctrl2 = TextEditingController();
+    var ctrl3 = TextEditingController();
+    List<String> items = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
       resizeToAvoidBottomPadding: false,
       backgroundColor: Color.fromRGBO(229, 231, 236, 1.0),
-      appBar: PreferredSize(
-        preferredSize: Size(double.infinity, 100),
-        child: SecAppBar(),
+      appBar: SecAppBar(
+        preferredSize: Size.fromHeight(70.0),
       ),
-      drawer: NavigationDrawer(),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           TitleOfScreen(
-            title: 'Cadastrar Botijão',
+            title: controller.botijao.idBot != null
+                ? "Editar Botijão"
+                : 'Cadastrar Botijão',
             font: "Revalia",
             fontSize: _width * 0.09,
           ),
           SizedBox(
             height: _height * 0.04,
           ),
-          EditText(
-            function: controller.getId,
-            texto: "Identificação do Botijão",
-            icon: MyIcons.bottle,
-            kbType: TextInputType.text,
-            isPasswd: false,
+          CardEditText(
+            child: TextField(
+              controller: controller.ctrl1,
+              onChanged: controller.getId,
+              obscureText: false,
+              keyboardType: TextInputType.text,
+              cursorColor: Colors.red,
+              style: TextStyle(
+                fontFamily: 'Robot',
+                fontSize: _width * 0.05,
+                color: Color.fromRGBO(113, 111, 137, 1.0),
+              ),
+              decoration: InputDecoration(
+                contentPadding: EdgeInsets.all(16),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: BorderSide(
+                    width: 0,
+                    style: BorderStyle.solid,
+                  ),
+                ),
+                prefixIcon: Icon(MyIcons.bottle,
+                    color: Colors.red, size: _width * 0.125),
+                hintStyle: TextStyle(
+                  fontFamily: 'Robot',
+                  fontSize: _width * 0.05,
+                  color: Color.fromRGBO(113, 111, 137, 1.0),
+                ),
+                labelText: "Identificação do botijão",
+                labelStyle: TextStyle(),
+              ),
+            ),
             width: _width,
-            fontSize: _width * 0.05,
-            height: _height * 0.07,
           ),
           SizedBox(
             height: _height * 0.015,
@@ -70,26 +93,76 @@ class _HomeBotCreatePageState
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              EditText(
-                texto: "Vol. Total ",
-                icon: MyIcons.volume,
-                kbType: TextInputType.number,
-                isPasswd: false,
+              CardEditText(
+                child: TextField(
+                  controller: controller.ctrl2,
+                  onChanged: controller.getVolTotal,
+                  obscureText: false,
+                  keyboardType: TextInputType.text,
+                  cursorColor: Colors.red,
+                  style: TextStyle(
+                    fontFamily: 'Robot',
+                    fontSize: _width * 0.05,
+                    color: Color.fromRGBO(113, 111, 137, 1.0),
+                  ),
+                  decoration: InputDecoration(
+                    contentPadding: EdgeInsets.all(16),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8),
+                      borderSide: BorderSide(
+                        width: 0,
+                        style: BorderStyle.solid,
+                      ),
+                    ),
+                    prefixIcon: Icon(MyIcons.volume,
+                        color: Colors.red, size: _width * 0.125),
+                    hintStyle: TextStyle(
+                      fontFamily: 'Robot',
+                      fontSize: _width * 0.05,
+                      color: Color.fromRGBO(113, 111, 137, 1.0),
+                    ),
+                    labelText: "Vol. Total",
+                    labelStyle: TextStyle(),
+                  ),
+                ),
                 width: _width * 0.50,
-                fontSize: _width * 0.05,
-                height: _height * 0.07,
               ),
               SizedBox(
                 width: _width * 0.01,
               ),
-              EditText(
-                texto: "Vol. Atual",
-                icon: MyIcons.volume,
-                kbType: TextInputType.number,
-                isPasswd: false,
+              CardEditText(
+                child: TextField(
+                  controller: controller.ctrl3,
+                  onChanged: controller.getVolAtual,
+                  obscureText: false,
+                  keyboardType: TextInputType.text,
+                  cursorColor: Colors.red,
+                  style: TextStyle(
+                    fontFamily: 'Robot',
+                    fontSize: _width * 0.05,
+                    color: Color.fromRGBO(113, 111, 137, 1.0),
+                  ),
+                  decoration: InputDecoration(
+                    contentPadding: EdgeInsets.all(16),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8),
+                      borderSide: BorderSide(
+                        width: 0,
+                        style: BorderStyle.solid,
+                      ),
+                    ),
+                    prefixIcon: Icon(MyIcons.volume,
+                        color: Colors.red, size: _width * 0.125),
+                    hintStyle: TextStyle(
+                      fontFamily: 'Robot',
+                      fontSize: _width * 0.05,
+                      color: Color.fromRGBO(113, 111, 137, 1.0),
+                    ),
+                    labelText: "Vol. Atual",
+                    labelStyle: TextStyle(),
+                  ),
+                ),
                 width: _width * 0.50,
-                fontSize: _width * 0.05,
-                height: _height * 0.07,
               ),
             ],
           ),
@@ -127,27 +200,29 @@ class _HomeBotCreatePageState
                 SizedBox(
                   height: _height * 0.01,
                 ),
-                Observer(builder: (_) {
-                  return DropdownButton<String>(
-                    value: controller.numcanecas.toString(),
-                    icon: Icon(Icons.arrow_drop_down),
-                    iconSize: 24,
-                    elevation: 16,
-                    style: TextStyle(color: Colors.deepPurple),
-                    underline: Container(
-                      height: 2,
-                      width: 10,
-                      color: Colors.red,
-                    ),
-                    onChanged: controller.getCanecas,
-                    items: items.map<DropdownMenuItem<String>>((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
-                  );
-                })
+                DropdownButton<String>(
+                  value: controller.botijao.numcanecas.toString(),
+                  icon: Icon(Icons.arrow_drop_down),
+                  iconSize: 24,
+                  elevation: 16,
+                  style: TextStyle(color: Colors.deepPurple),
+                  underline: Container(
+                    height: 2,
+                    width: 10,
+                    color: Colors.red,
+                  ),
+                  onChanged: (String newValue) {
+                    setState(() {
+                      controller.botijao.numcanecas = int.parse(newValue);
+                    });
+                  },
+                  items: items.map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                ),
               ],
             ),
           ),
@@ -183,7 +258,7 @@ class _HomeBotCreatePageState
                       EdgeInsets.only(top: 0, left: 10, bottom: 0, right: 10),
                 ),
                 DropdownButton<String>(
-                  value: widget.inicio2,
+                  value: controller.botijao.qtdDose.toString(),
                   icon: Icon(Icons.arrow_drop_down),
                   iconSize: 24,
                   elevation: 16,
@@ -195,7 +270,7 @@ class _HomeBotCreatePageState
                   ),
                   onChanged: (String newValue) {
                     setState(() {
-                      widget.inicio2 = newValue;
+                      controller.botijao.qtdDose = int.parse(newValue);
                     });
                   },
                   items: items.map<DropdownMenuItem<String>>((String value) {
@@ -216,7 +291,12 @@ class _HomeBotCreatePageState
                 ButtonCustom(
                   text: "Confirmar",
                   onclick: () {
-                    controller.addBot(widget.path);
+                    if (controller.edit) {
+                      controller.updateBot();
+                    } else {
+                      controller.addBot();
+                    }
+
                     Navigator.pop(context);
                   },
                   width: _width * 0.5,

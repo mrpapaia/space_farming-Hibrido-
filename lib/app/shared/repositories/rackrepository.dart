@@ -11,14 +11,16 @@ class RackRepository implements IRepositoryRack {
     this.doc,
   );
   @override
-  Future<void> add(Rack farm) {
-    // TODO: implement add
-    throw UnimplementedError();
+  Future<void> add(Rack rack) async {
+    return firestore
+        .doc(doc.path)
+        .set(rack.toMap())
+        .then((value) => print("rack adicionado com suecsso"))
+        .catchError((error) => print("Failed to add botijao: $error"));
   }
 
   @override
   Stream<List<Rack>> list() {
-    print(this.doc.path);
     return firestore
         .doc(this.doc.path)
         .collection("racks")

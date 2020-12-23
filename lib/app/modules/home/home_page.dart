@@ -8,6 +8,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 
 import 'package:space_farming_modular/app/modules/home/components/homeAppBar.dart';
 import 'package:space_farming_modular/app/modules/home/components/gridViewList.dart';
+import 'package:space_farming_modular/app/shared/components/sizeConfig.dart';
 
 import 'package:space_farming_modular/app/shared/components/titleOfScreen.dart';
 import 'package:space_farming_modular/app/shared/models/botijao.dart';
@@ -26,7 +27,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends ModularState<HomePage, HomeController> {
   List<Botijao> botijoes = List();
-
+  var flag = false;
   String path;
   void startTimer() {
     Future.delayed(const Duration(milliseconds: 10), () {
@@ -36,9 +37,11 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
 
   @override
   Widget build(BuildContext context) {
+    final sizeConfig = SizeConfig(mediaQueryData: MediaQuery.of(context));
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
     startTimer();
+
     return Scaffold(
       backgroundColor: Color.fromRGBO(229, 231, 236, 1.0),
       resizeToAvoidBottomInset: false,
@@ -88,6 +91,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                           onTap: () {
                             path =
                                 controller.user.fazenda.values.toList()[index];
+
                             controller.getBot(
                                 controller.user.fazenda.values.toList()[index]);
                           },
@@ -130,8 +134,10 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                     size: _width * 0.1,
                   ),
                   title: Text("Sair"),
-                  onTap: () {
-                    FirebaseAuth.instance.signOut();
+                  onTap: () async {
+                    flag = true;
+                    await controller.auth.signOut();
+
                     Modular.to.pushNamed('/', arguments: null);
                   },
                 ),
@@ -155,7 +161,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
             height: 5,
           ),
           Container(
-            height: _height * 0.8,
+            height: sizeConfig.dynamicScaleSize(size: 585),
             child: Observer(
               builder: (BuildContext context) {
                 try {
@@ -166,6 +172,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                       user: controller.user,
                       height: _height,
                       width: _width,
+                      controller: controller,
                     );
                   } else {
                     return Center(
@@ -191,7 +198,8 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Modular.to.pushNamed('/home/add', arguments: path);
+          Modular.to.pushNamed('/home/add',
+              arguments: [path, Botijao(numcanecas: 2, qtdDose: 1)]);
         },
         child: Icon(Icons.add),
       ),

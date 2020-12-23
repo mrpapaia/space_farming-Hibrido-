@@ -33,11 +33,10 @@ class _CtrlRacksPageState
     return Scaffold(
       // resizeToAvoidBottomInset: false,
       backgroundColor: Color.fromRGBO(229, 231, 236, 1.0),
-      appBar: PreferredSize(
-        preferredSize: Size(double.infinity, 100),
-        child: SecAppBar(),
+      appBar: SecAppBar(
+        preferredSize: Size.fromHeight(70.0),
       ),
-      drawer: NavigationDrawer(),
+
       body: Column(
         children: [
           TitleOfScreen(
@@ -53,7 +52,7 @@ class _CtrlRacksPageState
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Modular.to.pushNamed('/rack/add');
+          Modular.to.pushNamed('/rack/add', arguments: Rack());
         },
         child: Icon(Icons.add),
       ),

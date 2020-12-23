@@ -3,15 +3,17 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:space_farming_modular/app/modules/home/components/secondaryAppBar.dart';
 import 'package:space_farming_modular/app/shared/components/button.dart';
-import 'package:space_farming_modular/app/shared/components/containerBase.dart';
-import 'package:space_farming_modular/app/shared/components/editText.dart';
+import 'package:space_farming_modular/app/shared/components/cardEditText.dart';
+
 import 'package:space_farming_modular/app/shared/components/my_icons_icons.dart';
 import 'package:space_farming_modular/app/shared/components/titleOfScreen.dart';
+import 'package:space_farming_modular/app/shared/models/rack.dart';
 import 'rack_add_controller.dart';
 
 class RackAddPage extends StatefulWidget {
   final String title;
-  const RackAddPage({Key key, this.title = "RackAdd"}) : super(key: key);
+  Rack rack;
+  RackAddPage({Key key, this.title = "RackAdd", this.rack}) : super(key: key);
 
   @override
   _RackAddPageState createState() => _RackAddPageState();
@@ -30,30 +32,54 @@ class _RackAddPageState extends ModularState<RackAddPage, RackAddController> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Color.fromRGBO(229, 231, 236, 1.0),
-      appBar: PreferredSize(
-        preferredSize: Size(double.infinity, 100),
-        child: SecAppBar(),
+      appBar: SecAppBar(
+        preferredSize: Size.fromHeight(70.0),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           TitleOfScreen(
-            title: 'Adicionar Rack',
+            title:
+                widget.rack.idTouro != null ? "Editar Rack" : 'Adicionar Rack',
             font: "Revalia",
             fontSize: _width * 0.09,
           ),
           SizedBox(
             height: _height * 0.04,
           ),
-          EditText(
-            icon: MyIcons.cow,
-            function: controller.idToure,
-            kbType: TextInputType.text,
-            isPasswd: false,
-            texto: "Id do Touro",
+          CardEditText(
+            child: TextField(
+              controller: null,
+              onChanged: null,
+              obscureText: false,
+              keyboardType: TextInputType.text,
+              cursorColor: Colors.red,
+              style: TextStyle(
+                fontFamily: 'Robot',
+                fontSize: _width * 0.125,
+                color: Color.fromRGBO(113, 111, 137, 1.0),
+              ),
+              decoration: InputDecoration(
+                contentPadding: EdgeInsets.all(16),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: BorderSide(
+                    width: 0,
+                    style: BorderStyle.solid,
+                  ),
+                ),
+                prefixIcon: Icon(MyIcons.bottle,
+                    color: Colors.red, size: _width * 0.125),
+                hintStyle: TextStyle(
+                  fontFamily: 'Robot',
+                  fontSize: _width * 0.125,
+                  color: Color.fromRGBO(113, 111, 137, 1.0),
+                ),
+                labelText: "Identificação do botijão",
+                labelStyle: TextStyle(),
+              ),
+            ),
             width: _width,
-            fontSize: _width * 0.05,
-            height: _height * 0.09,
           ),
           SizedBox(
             height: _height * 0.015,
@@ -62,28 +88,76 @@ class _RackAddPageState extends ModularState<RackAddPage, RackAddController> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              EditText(
-                icon: MyIcons.dose,
-                function: controller.idToure,
-                kbType: TextInputType.number,
-                isPasswd: false,
-                texto: "Dose Up",
-                width: _width * 0.50,
-                fontSize: _width * 0.05,
-                height: _height * 0.09,
+              CardEditText(
+                child: TextField(
+                  controller: null,
+                  onChanged: null,
+                  obscureText: false,
+                  keyboardType: TextInputType.text,
+                  cursorColor: Colors.red,
+                  style: TextStyle(
+                    fontFamily: 'Robot',
+                    fontSize: _width * 0.125,
+                    color: Color.fromRGBO(113, 111, 137, 1.0),
+                  ),
+                  decoration: InputDecoration(
+                    contentPadding: EdgeInsets.all(16),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8),
+                      borderSide: BorderSide(
+                        width: 0,
+                        style: BorderStyle.solid,
+                      ),
+                    ),
+                    prefixIcon: Icon(MyIcons.bottle,
+                        color: Colors.red, size: _width * 0.125),
+                    hintStyle: TextStyle(
+                      fontFamily: 'Robot',
+                      fontSize: _width * 0.125,
+                      color: Color.fromRGBO(113, 111, 137, 1.0),
+                    ),
+                    labelText: "Identificação do botijão",
+                    labelStyle: TextStyle(),
+                  ),
+                ),
+                width: _width,
               ),
               SizedBox(
                 width: _width * 0.01,
               ),
-              EditText(
-                icon: MyIcons.dose,
-                function: controller.idToure,
-                kbType: TextInputType.number,
-                isPasswd: false,
-                texto: "Dose Down",
-                width: _width * 0.50,
-                fontSize: _width * 0.05,
-                height: _height * 0.07,
+              CardEditText(
+                child: TextField(
+                  controller: null,
+                  onChanged: null,
+                  obscureText: false,
+                  keyboardType: TextInputType.text,
+                  cursorColor: Colors.red,
+                  style: TextStyle(
+                    fontFamily: 'Robot',
+                    fontSize: _width * 0.125,
+                    color: Color.fromRGBO(113, 111, 137, 1.0),
+                  ),
+                  decoration: InputDecoration(
+                    contentPadding: EdgeInsets.all(16),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8),
+                      borderSide: BorderSide(
+                        width: 0,
+                        style: BorderStyle.solid,
+                      ),
+                    ),
+                    prefixIcon: Icon(MyIcons.bottle,
+                        color: Colors.red, size: _width * 0.125),
+                    hintStyle: TextStyle(
+                      fontFamily: 'Robot',
+                      fontSize: _width * 0.125,
+                      color: Color.fromRGBO(113, 111, 137, 1.0),
+                    ),
+                    labelText: "Identificação do botijão",
+                    labelStyle: TextStyle(),
+                  ),
+                ),
+                width: _width,
               ),
             ],
           ),

@@ -17,7 +17,7 @@ class LoginModule extends ChildModule {
   @override
   List<Bind> get binds {
     return [
-      Bind((i) => LoginController(i.get(), i.get())),
+      Bind((i) => LoginController(userRepository: i.get(), user: null)),
       Bind((i) => CadastroController(i.get(), i.get())),
       Bind<IRepositoryFarm>(
         (i) => FarmRepository(FirebaseFirestore.instance),
@@ -30,10 +30,7 @@ class LoginModule extends ChildModule {
 
   @override
   List<ModularRouter> get routers => [
-        ModularRouter(Modular.initialRoute,
-            child: (_, args) => LoginPage(
-                  user: null,
-                )),
+        ModularRouter(Modular.initialRoute, child: (_, args) => LoginPage()),
         ModularRouter(
           "/login/cadastro",
           child: (_, args) => CadastroPage(),

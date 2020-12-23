@@ -8,14 +8,15 @@ class Rack {
   String volume;
   String doseUp;
   String doseDown;
+  DocumentReference ref;
 
-  Rack({
-    this.idTouro,
-    this.tipo,
-    this.volume,
-    this.doseUp,
-    this.doseDown,
-  });
+  Rack(
+      {this.idTouro,
+      this.tipo,
+      this.volume,
+      this.doseUp,
+      this.doseDown,
+      this.ref});
 
   Map<String, dynamic> toMap() {
     return {
@@ -29,12 +30,12 @@ class Rack {
 
   factory Rack.fromDoc(QueryDocumentSnapshot doc) {
     return Rack(
-      idTouro: doc.data()['idTouro'],
-      tipo: doc.data()['tipo'],
-      volume: doc.data()['volume'],
-      doseUp: doc.data()['doseUp'],
-      doseDown: doc.data()['doseDown'],
-    );
+        idTouro: doc.data()['idTouro'],
+        tipo: doc.data()['tipo'],
+        volume: doc.data()['volume'],
+        doseUp: doc.data()['doseUp'],
+        doseDown: doc.data()['doseDown'],
+        ref: doc.reference);
   }
 
   String toJson() => json.encode(toMap());
