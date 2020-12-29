@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:space_farming_modular/app/modules/home/components/hexcolor.dart';
 import 'package:space_farming_modular/app/modules/home/home_controller.dart';
 
 import 'package:space_farming_modular/app/modules/home/pages/home_info_bot/components/container_caneca.dart';
@@ -45,6 +46,7 @@ class _GridViewListState extends State<GridViewList> {
         itemBuilder: (BuildContext context, int index) {
           widget.listBotijao[index].canecas
               .sort((a, b) => int.parse(a.id.id).compareTo(int.parse(b.id.id)));
+
           return InkWell(
             child: Container(
               width: sizeConfig.dynamicScaleSize(size: 100),
@@ -119,8 +121,12 @@ class _GridViewListState extends State<GridViewList> {
                                   flag: true,
                                   id: widget
                                       .listBotijao[index].canecas[5].id.id,
-                                  color: widget
-                                      .listBotijao[index].canecas[5].color,
+                                  color: widget.listBotijao[index].canecas[5]
+                                              .estado ==
+                                          "disabled"
+                                      ? HexColor("#adadad")
+                                      : widget
+                                          .listBotijao[index].canecas[5].color,
                                   h: hIcon,
                                   w: wIcon,
                                 ),
@@ -137,8 +143,12 @@ class _GridViewListState extends State<GridViewList> {
                                   flag: true,
                                   id: widget
                                       .listBotijao[index].canecas[3].id.id,
-                                  color: widget
-                                      .listBotijao[index].canecas[3].color,
+                                  color: widget.listBotijao[index].canecas[3]
+                                              .estado ==
+                                          "disabled"
+                                      ? HexColor("#adadad")
+                                      : widget
+                                          .listBotijao[index].canecas[3].color,
                                   h: hIcon,
                                   w: wIcon,
                                 ),
@@ -155,8 +165,12 @@ class _GridViewListState extends State<GridViewList> {
                                   flag: true,
                                   id: widget
                                       .listBotijao[index].canecas[6].id.id,
-                                  color: widget
-                                      .listBotijao[index].canecas[6].color,
+                                  color: widget.listBotijao[index].canecas[6]
+                                              .estado ==
+                                          "disabled"
+                                      ? HexColor("#adadad")
+                                      : widget
+                                          .listBotijao[index].canecas[6].color,
                                   h: hIcon,
                                   w: wIcon,
                                 ),
@@ -173,8 +187,12 @@ class _GridViewListState extends State<GridViewList> {
                                   flag: true,
                                   id: widget
                                       .listBotijao[index].canecas[8].id.id,
-                                  color: widget
-                                      .listBotijao[index].canecas[8].color,
+                                  color: widget.listBotijao[index].canecas[8]
+                                              .estado ==
+                                          "disabled"
+                                      ? HexColor("#adadad")
+                                      : widget
+                                          .listBotijao[index].canecas[8].color,
                                   h: hIcon,
                                   w: wIcon,
                                 ),
@@ -191,8 +209,12 @@ class _GridViewListState extends State<GridViewList> {
                                   flag: true,
                                   id: widget
                                       .listBotijao[index].canecas[4].id.id,
-                                  color: widget
-                                      .listBotijao[index].canecas[4].color,
+                                  color: widget.listBotijao[index].canecas[4]
+                                              .estado ==
+                                          "disabled"
+                                      ? HexColor("#adadad")
+                                      : widget
+                                          .listBotijao[index].canecas[4].color,
                                   h: hIcon,
                                   w: wIcon,
                                 ),
@@ -209,8 +231,12 @@ class _GridViewListState extends State<GridViewList> {
                                   flag: true,
                                   id: widget
                                       .listBotijao[index].canecas[2].id.id,
-                                  color: widget
-                                      .listBotijao[index].canecas[2].color,
+                                  color: widget.listBotijao[index].canecas[2]
+                                              .estado ==
+                                          "disabled"
+                                      ? HexColor("#adadad")
+                                      : widget
+                                          .listBotijao[index].canecas[2].color,
                                   h: hIcon,
                                   w: wIcon,
                                 ),
@@ -227,8 +253,12 @@ class _GridViewListState extends State<GridViewList> {
                                   flag: true,
                                   id: widget
                                       .listBotijao[index].canecas[7].id.id,
-                                  color: widget
-                                      .listBotijao[index].canecas[7].color,
+                                  color: widget.listBotijao[index].canecas[7]
+                                              .estado ==
+                                          "disabled"
+                                      ? HexColor("#adadad")
+                                      : widget
+                                          .listBotijao[index].canecas[7].color,
                                   h: hIcon,
                                   w: wIcon,
                                 ),
@@ -243,7 +273,11 @@ class _GridViewListState extends State<GridViewList> {
                           child: ContainerCaneca(
                             flag: true,
                             id: widget.listBotijao[index].canecas[0].id.id,
-                            color: widget.listBotijao[index].canecas[0].color,
+                            color: widget
+                                        .listBotijao[index].canecas[0].estado ==
+                                    "disabled"
+                                ? HexColor("#adadad")
+                                : widget.listBotijao[index].canecas[0].color,
                             h: hIcon,
                             w: wIcon,
                           ),
@@ -254,7 +288,11 @@ class _GridViewListState extends State<GridViewList> {
                           child: ContainerCaneca(
                             flag: true,
                             id: widget.listBotijao[index].canecas[1].id.id,
-                            color: widget.listBotijao[index].canecas[1].color,
+                            color: widget
+                                        .listBotijao[index].canecas[1].estado ==
+                                    "disabled"
+                                ? HexColor("#adadad")
+                                : widget.listBotijao[index].canecas[1].color,
                             h: hIcon,
                             w: wIcon,
                           ),
@@ -267,8 +305,12 @@ class _GridViewListState extends State<GridViewList> {
                                   flag: true,
                                   id: widget
                                       .listBotijao[index].canecas[9].id.id,
-                                  color: widget
-                                      .listBotijao[index].canecas[9].color,
+                                  color: widget.listBotijao[index].canecas[9]
+                                              .estado ==
+                                          "disabled"
+                                      ? HexColor("#adadad")
+                                      : widget
+                                          .listBotijao[index].canecas[9].color,
                                   h: hIcon,
                                   w: wIcon,
                                 ),
@@ -404,7 +446,7 @@ class _GridViewListState extends State<GridViewList> {
                                         sizeConfig.dynamicScaleSize(size: 10),
                                   ),
                                   Text(
-                                    "${widget.listBotijao[index].volAtual}",
+                                    "${widget.listBotijao[index].volAtual.toStringAsFixed(2)}",
                                     style: TextStyle(
                                         fontFamily: 'Revalia',
                                         fontSize: sizeConfig.dynamicScaleSize(
