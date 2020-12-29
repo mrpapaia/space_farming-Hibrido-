@@ -12,8 +12,11 @@ import 'rack_add_controller.dart';
 
 class RackAddPage extends StatefulWidget {
   final String title;
-  Rack rack;
-  RackAddPage({Key key, this.title = "RackAdd", this.rack}) : super(key: key);
+
+  RackAddPage({
+    Key key,
+    this.title = "RackAdd",
+  }) : super(key: key);
 
   @override
   _RackAddPageState createState() => _RackAddPageState();
@@ -22,13 +25,13 @@ class RackAddPage extends StatefulWidget {
 class _RackAddPageState extends ModularState<RackAddPage, RackAddController> {
   //use 'controller' variable to access controller
   String volumeInicio = "0.25";
-  String tipoInicio = "Convencionado";
+  String tipoInicio = "Convencional";
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width - 30;
     double _height = MediaQuery.of(context).size.height;
     List<String> volume = ["0.25", "0.50"];
-    List<String> tipo = ["Convencionado", "Sexado", "Embrião"];
+    List<String> tipo = ["Convencional", "Sexado", "Embrião"];
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Color.fromRGBO(229, 231, 236, 1.0),
@@ -39,8 +42,9 @@ class _RackAddPageState extends ModularState<RackAddPage, RackAddController> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           TitleOfScreen(
-            title:
-                widget.rack.idTouro != null ? "Editar Rack" : 'Adicionar Rack',
+            title: controller.rack.idTouro != null
+                ? "Editar Rack"
+                : 'Adicionar Rack',
             font: "Revalia",
             fontSize: _width * 0.09,
           ),

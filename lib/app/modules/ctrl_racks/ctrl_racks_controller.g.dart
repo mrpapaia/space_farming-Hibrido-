@@ -7,7 +7,7 @@ part of 'ctrl_racks_controller.dart';
 // **************************************************************************
 
 final $CtrlRacksController = BindInject(
-  (i) => CtrlRacksController(i<IRepositoryRack>()),
+  (i) => CtrlRacksController(i<IRepositoryRack>(), i<List>(), i<UserP>()),
   singleton: true,
   lazy: true,
 );
@@ -38,11 +38,11 @@ mixin _$CtrlRacksController on _CtrlRacksControllerBase, Store {
       ActionController(name: '_CtrlRacksControllerBase');
 
   @override
-  dynamic getRacks() {
+  dynamic remove(Rack rack) {
     final _$actionInfo = _$_CtrlRacksControllerBaseActionController.startAction(
-        name: '_CtrlRacksControllerBase.getRacks');
+        name: '_CtrlRacksControllerBase.remove');
     try {
-      return super.getRacks();
+      return super.remove(rack);
     } finally {
       _$_CtrlRacksControllerBaseActionController.endAction(_$actionInfo);
     }

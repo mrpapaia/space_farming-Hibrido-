@@ -34,8 +34,7 @@ class RackRepository implements IRepositoryRack {
 
   @override
   Future<void> remove(String id) {
-    // TODO: implement remove
-    throw UnimplementedError();
+    return firestore.doc(id).delete();
   }
 
   @override

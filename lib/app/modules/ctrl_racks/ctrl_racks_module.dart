@@ -16,8 +16,9 @@ class CtrlRacksModule extends ChildModule {
   List<Bind> get binds => [
         $RackAddController,
         $RackInfoController,
-        Bind((i) => CtrlRacksController(i.get())),
-        Bind((i) => RackAddController()),
+        Bind((i) =>
+            CtrlRacksController(i.get(), i.args.data[0].racks, i.args.data[1])),
+        Bind((i) => RackAddController(i.args.data[0])),
         Bind<IRepositoryRack>((i) =>
             RackRepository(FirebaseFirestore.instance, i.args.data[0].id)),
       ];
@@ -25,11 +26,10 @@ class CtrlRacksModule extends ChildModule {
   @override
   List<ModularRouter> get routers => [
         ModularRouter(Modular.initialRoute,
-            child: (_, args) => CtrlRacksPage(
-                listRacks: args.data[0].racks, user: args.data[1])),
+            child: (_, args) => CtrlRacksPage()),
         ModularRouter(
           "/add",
-          child: (_, args) => RackAddPage(rack: args.data),
+          child: (_, args) => RackAddPage(),
         ),
       ];
 

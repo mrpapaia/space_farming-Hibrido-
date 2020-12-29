@@ -43,6 +43,8 @@ class _GridViewListState extends State<GridViewList> {
         gridDelegate:
             SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
         itemBuilder: (BuildContext context, int index) {
+          widget.listBotijao[index].canecas
+              .sort((a, b) => int.parse(a.id.id).compareTo(int.parse(b.id.id)));
           return InkWell(
             child: Container(
               width: sizeConfig.dynamicScaleSize(size: 100),
@@ -115,7 +117,8 @@ class _GridViewListState extends State<GridViewList> {
                             ? Positioned(
                                 child: ContainerCaneca(
                                   flag: true,
-                                  id: "6",
+                                  id: widget
+                                      .listBotijao[index].canecas[5].id.id,
                                   color: widget
                                       .listBotijao[index].canecas[5].color,
                                   h: hIcon,
@@ -132,7 +135,8 @@ class _GridViewListState extends State<GridViewList> {
                             ? Positioned(
                                 child: ContainerCaneca(
                                   flag: true,
-                                  id: "4",
+                                  id: widget
+                                      .listBotijao[index].canecas[3].id.id,
                                   color: widget
                                       .listBotijao[index].canecas[3].color,
                                   h: hIcon,
@@ -149,7 +153,8 @@ class _GridViewListState extends State<GridViewList> {
                             ? Positioned(
                                 child: ContainerCaneca(
                                   flag: true,
-                                  id: "7",
+                                  id: widget
+                                      .listBotijao[index].canecas[6].id.id,
                                   color: widget
                                       .listBotijao[index].canecas[6].color,
                                   h: hIcon,
@@ -166,7 +171,8 @@ class _GridViewListState extends State<GridViewList> {
                             ? Positioned(
                                 child: ContainerCaneca(
                                   flag: true,
-                                  id: "9",
+                                  id: widget
+                                      .listBotijao[index].canecas[8].id.id,
                                   color: widget
                                       .listBotijao[index].canecas[8].color,
                                   h: hIcon,
@@ -183,7 +189,8 @@ class _GridViewListState extends State<GridViewList> {
                             ? Positioned(
                                 child: ContainerCaneca(
                                   flag: true,
-                                  id: "5",
+                                  id: widget
+                                      .listBotijao[index].canecas[4].id.id,
                                   color: widget
                                       .listBotijao[index].canecas[4].color,
                                   h: hIcon,
@@ -200,7 +207,8 @@ class _GridViewListState extends State<GridViewList> {
                             ? Positioned(
                                 child: ContainerCaneca(
                                   flag: true,
-                                  id: "3",
+                                  id: widget
+                                      .listBotijao[index].canecas[2].id.id,
                                   color: widget
                                       .listBotijao[index].canecas[2].color,
                                   h: hIcon,
@@ -217,7 +225,8 @@ class _GridViewListState extends State<GridViewList> {
                             ? Positioned(
                                 child: ContainerCaneca(
                                   flag: true,
-                                  id: "8",
+                                  id: widget
+                                      .listBotijao[index].canecas[7].id.id,
                                   color: widget
                                       .listBotijao[index].canecas[7].color,
                                   h: hIcon,
@@ -233,7 +242,7 @@ class _GridViewListState extends State<GridViewList> {
                         Positioned(
                           child: ContainerCaneca(
                             flag: true,
-                            id: "1",
+                            id: widget.listBotijao[index].canecas[0].id.id,
                             color: widget.listBotijao[index].canecas[0].color,
                             h: hIcon,
                             w: wIcon,
@@ -244,7 +253,7 @@ class _GridViewListState extends State<GridViewList> {
                         Positioned(
                           child: ContainerCaneca(
                             flag: true,
-                            id: "2",
+                            id: widget.listBotijao[index].canecas[1].id.id,
                             color: widget.listBotijao[index].canecas[1].color,
                             h: hIcon,
                             w: wIcon,
@@ -256,7 +265,8 @@ class _GridViewListState extends State<GridViewList> {
                             ? Positioned(
                                 child: ContainerCaneca(
                                   flag: true,
-                                  id: "10",
+                                  id: widget
+                                      .listBotijao[index].canecas[9].id.id,
                                   color: widget
                                       .listBotijao[index].canecas[9].color,
                                   h: hIcon,
@@ -305,6 +315,12 @@ class _GridViewListState extends State<GridViewList> {
               await showDialog(
                 context: context,
                 builder: (BuildContext context) {
+                  int qtdEnabled = 0;
+                  widget.listBotijao[index].canecas.forEach((caneca) {
+                    if (caneca.estado == "enabled") {
+                      qtdEnabled++;
+                    }
+                  });
                   return AlertDialog(
                     backgroundColor: Colors.transparent,
                     contentPadding: EdgeInsets.zero,
@@ -358,14 +374,102 @@ class _GridViewListState extends State<GridViewList> {
                                     ),
                                   ],
                                 ),
-                                onTap: () {
+                                /*   onTap: () {
                                   Modular.to.pop();
                                   Modular.to.pushNamed('/home/info',
                                       arguments: [
                                         widget.user,
                                         widget.listBotijao[index]
                                       ]);
-                                },
+                                },*/
+                              ),
+                              Divider(),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    width:
+                                        sizeConfig.dynamicScaleSize(size: 15),
+                                  ),
+                                  Text(
+                                    "Nivel Atual:",
+                                    style: TextStyle(
+                                        fontFamily: 'Revalia',
+                                        fontSize: sizeConfig.dynamicScaleSize(
+                                            size: 13),
+                                        color: Colors.grey[700]),
+                                  ),
+                                  SizedBox(
+                                    width:
+                                        sizeConfig.dynamicScaleSize(size: 10),
+                                  ),
+                                  Text(
+                                    "${widget.listBotijao[index].volAtual}",
+                                    style: TextStyle(
+                                        fontFamily: 'Revalia',
+                                        fontSize: sizeConfig.dynamicScaleSize(
+                                            size: 13),
+                                        color: Colors.grey[700]),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    width:
+                                        sizeConfig.dynamicScaleSize(size: 15),
+                                  ),
+                                  Text(
+                                    "Quantidade de canecas:",
+                                    style: TextStyle(
+                                        fontFamily: 'Revalia',
+                                        fontSize: sizeConfig.dynamicScaleSize(
+                                            size: 13),
+                                        color: Colors.grey[700]),
+                                  ),
+                                  SizedBox(
+                                    width:
+                                        sizeConfig.dynamicScaleSize(size: 10),
+                                  ),
+                                  Text(
+                                    "${widget.listBotijao[index].numcanecas}",
+                                    style: TextStyle(
+                                        fontFamily: 'Revalia',
+                                        fontSize: sizeConfig.dynamicScaleSize(
+                                            size: 13),
+                                        color: Colors.grey[700]),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    width:
+                                        sizeConfig.dynamicScaleSize(size: 15),
+                                  ),
+                                  Text(
+                                    "Quantidade de canecas atual:",
+                                    style: TextStyle(
+                                        fontFamily: 'Revalia',
+                                        fontSize: sizeConfig.dynamicScaleSize(
+                                            size: 13),
+                                        color: Colors.grey[700]),
+                                  ),
+                                  SizedBox(
+                                    width:
+                                        sizeConfig.dynamicScaleSize(size: 10),
+                                  ),
+                                  Text(
+                                    "${qtdEnabled}",
+                                    style: TextStyle(
+                                        fontFamily: 'Revalia',
+                                        fontSize: sizeConfig.dynamicScaleSize(
+                                            size: 13),
+                                        color: Colors.grey[700]),
+                                  ),
+                                ],
                               ),
                               Divider(),
                               InkWell(

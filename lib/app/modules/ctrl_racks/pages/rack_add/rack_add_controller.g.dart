@@ -7,7 +7,7 @@ part of 'rack_add_controller.dart';
 // **************************************************************************
 
 final $RackAddController = BindInject(
-  (i) => RackAddController(),
+  (i) => RackAddController(i<Rack>()),
   singleton: true,
   lazy: true,
 );
@@ -19,21 +19,6 @@ final $RackAddController = BindInject(
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$RackAddController on _RackAddControllerBase, Store {
-  final _$rackAtom = Atom(name: '_RackAddControllerBase.rack');
-
-  @override
-  Rack get rack {
-    _$rackAtom.reportRead();
-    return super.rack;
-  }
-
-  @override
-  set rack(Rack value) {
-    _$rackAtom.reportWrite(value, super.rack, () {
-      super.rack = value;
-    });
-  }
-
   final _$_RackAddControllerBaseActionController =
       ActionController(name: '_RackAddControllerBase');
 
@@ -62,7 +47,7 @@ mixin _$RackAddController on _RackAddControllerBase, Store {
   @override
   String toString() {
     return '''
-rack: ${rack}
+
     ''';
   }
 }

@@ -9,8 +9,9 @@ part 'rack_add_controller.g.dart';
 class RackAddController = _RackAddControllerBase with _$RackAddController;
 
 abstract class _RackAddControllerBase with Store {
-  @observable
-  Rack rack;
+  final Rack rack;
+
+  _RackAddControllerBase(this.rack);
 
   @action
   void idToure(String value) {

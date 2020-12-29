@@ -1,21 +1,20 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
+
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:space_farming_modular/app/modules/ctrl_racks/components/gridviewracks.dart';
 import 'package:space_farming_modular/app/modules/home/components/secondaryAppBar.dart';
-import 'package:space_farming_modular/app/shared/components/nav_draw.dart';
+
 import 'package:space_farming_modular/app/shared/components/titleOfScreen.dart';
 import 'package:space_farming_modular/app/shared/models/rack.dart';
-import 'package:space_farming_modular/app/shared/models/user.dart';
+
 import 'ctrl_racks_controller.dart';
 
 class CtrlRacksPage extends StatefulWidget {
   final String title;
-  CtrlRacksPage({Key key, this.title = "CtrlRacks", this.listRacks, this.user})
-      : super(key: key);
-  List<Rack> listRacks;
-  UserP user;
+  CtrlRacksPage({
+    Key key,
+    this.title = "CtrlRacks",
+  }) : super(key: key);
 
   @override
   _CtrlRacksPageState createState() => _CtrlRacksPageState();
@@ -46,7 +45,10 @@ class _CtrlRacksPageState
           ),
           Container(
             height: MediaQuery.of(context).size.height * 0.7,
-            child: GridViewRacks(listRack: widget.listRacks),
+            child: GridViewRacks(
+              listRack: controller.listRacks,
+              controller: controller,
+            ),
           )
         ],
       ),

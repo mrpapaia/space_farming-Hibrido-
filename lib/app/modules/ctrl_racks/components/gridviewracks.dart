@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:space_farming_modular/app/modules/ctrl_racks/ctrl_racks_controller.dart';
+import 'package:space_farming_modular/app/shared/components/sizeConfig.dart';
 import 'package:space_farming_modular/app/shared/components/slideLeftBackground.dart';
 import 'package:space_farming_modular/app/shared/components/slideRightBackground.dart';
 
@@ -9,7 +11,9 @@ import 'package:space_farming_modular/app/shared/models/user.dart';
 class GridViewRacks extends StatefulWidget {
   List<Rack> listRack;
   UserP user;
-  GridViewRacks({Key key, this.listRack, this.user}) : super(key: key);
+  CtrlRacksController controller;
+  GridViewRacks({Key key, this.listRack, this.user, this.controller})
+      : super(key: key);
 
   @override
   _GridViewRacksState createState() => _GridViewRacksState();
@@ -18,6 +22,7 @@ class GridViewRacks extends StatefulWidget {
 class _GridViewRacksState extends State<GridViewRacks> {
   @override
   Widget build(BuildContext context) {
+    final sizeConfig = SizeConfig(mediaQueryData: MediaQuery.of(context));
     return GridView.count(
       crossAxisCount: 2,
       children: List.generate(
@@ -123,52 +128,240 @@ class _GridViewRacksState extends State<GridViewRacks> {
               ),
             ),
             onLongPress: () async {
+              int total = 0;
+              int totalSexado = 0;
+              int totalEmbriao = 0;
+              int totalConvencianado = 0;
+
+              widget.listRack.forEach((rack) {
+                if (rack.idTouro == widget.listRack[index].idTouro) {
+                  total += int.parse(rack.doseDown) + int.parse(rack.doseUp);
+                  if (rack.tipo == "Convencional") {
+                    totalConvencianado +=
+                        int.parse(rack.doseDown) + int.parse(rack.doseUp);
+                  } else if (rack.tipo == "Embrião") {
+                    totalEmbriao +=
+                        int.parse(rack.doseDown) + int.parse(rack.doseUp);
+                  } else {
+                    totalSexado +=
+                        int.parse(rack.doseDown) + int.parse(rack.doseUp);
+                  }
+                }
+              });
+
               await showDialog(
                   context: context,
                   builder: (BuildContext context) {
                     return AlertDialog(
-                      content: Text(
-                          "Are you sure yuo want to delete ${widget.listRack[index].idTouro}?"),
-                      actions: <Widget>[
-                        FlatButton(
-                          child: Text(
-                            "Cancel",
-                            style: TextStyle(color: Colors.black),
+                      backgroundColor: Color.fromRGBO(229, 231, 236, 1.0),
+                      contentPadding: EdgeInsets.zero,
+                      elevation: 0.0,
+                      //title: Center(child: Text("Botijao")),
+                      content: Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Container(
+                            width: sizeConfig.dynamicScaleSize(size: 400),
+                            padding: EdgeInsets.all(8.0),
+                            decoration: BoxDecoration(
+                              color: Color.fromRGBO(229, 231, 236, 1.0),
+                              borderRadius: const BorderRadius.all(
+                                Radius.circular(10.0),
+                              ),
+                            ),
+                            child: Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Icon(Icons.info, color: Colors.grey[700]),
+                                    SizedBox(
+                                      width:
+                                          sizeConfig.dynamicScaleSize(size: 25),
+                                    ),
+                                    Text(
+                                      "Informações do Rack",
+                                      style: TextStyle(
+                                          fontFamily: 'Revalia',
+                                          fontSize: sizeConfig.dynamicScaleSize(
+                                              size: 13),
+                                          color: Colors.grey[700]),
+                                    ),
+                                  ],
+                                ),
+                                Divider(),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    SizedBox(
+                                      width:
+                                          sizeConfig.dynamicScaleSize(size: 50),
+                                    ),
+                                    Text("Touro"),
+                                    SizedBox(
+                                      width: sizeConfig.dynamicScaleSize(
+                                          size: 135),
+                                    ),
+                                    Text("${widget.listRack[index].idTouro}"),
+                                  ],
+                                ),
+                                Divider(),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    SizedBox(
+                                      width:
+                                          sizeConfig.dynamicScaleSize(size: 50),
+                                    ),
+                                    Text("Total"),
+                                    SizedBox(
+                                      width: sizeConfig.dynamicScaleSize(
+                                          size: 150),
+                                    ),
+                                    Text("${total}"),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    SizedBox(
+                                      width:
+                                          sizeConfig.dynamicScaleSize(size: 50),
+                                    ),
+                                    Text("Convencional"),
+                                    SizedBox(
+                                      width:
+                                          sizeConfig.dynamicScaleSize(size: 90),
+                                    ),
+                                    Text("${totalConvencianado}"),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    SizedBox(
+                                      width:
+                                          sizeConfig.dynamicScaleSize(size: 50),
+                                    ),
+                                    Text("Sexado"),
+                                    SizedBox(
+                                      width: sizeConfig.dynamicScaleSize(
+                                          size: 135),
+                                    ),
+                                    Text("${totalSexado}"),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    SizedBox(
+                                      width:
+                                          sizeConfig.dynamicScaleSize(size: 50),
+                                    ),
+                                    Text("Embrião"),
+                                    SizedBox(
+                                      width: sizeConfig.dynamicScaleSize(
+                                          size: 135),
+                                    ),
+                                    Text("${totalEmbriao}"),
+                                  ],
+                                ),
+                                Divider(),
+                                InkWell(
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      SizedBox(
+                                        width: sizeConfig.dynamicScaleSize(
+                                            size: 70),
+                                      ),
+                                      Icon(Icons.edit, color: Colors.green),
+                                      SizedBox(
+                                        width: sizeConfig.dynamicScaleSize(
+                                            size: 25),
+                                      ),
+                                      Text(
+                                        "Editar",
+                                        style: TextStyle(
+                                            fontFamily: 'Revalia',
+                                            fontSize: sizeConfig
+                                                .dynamicScaleSize(size: 13),
+                                            color: Colors.green),
+                                      ),
+                                    ],
+                                  ),
+                                  onTap: () {
+                                    //print(widget.listBotijao[index]);
+                                    Modular.to.pop();
+                                  },
+                                ),
+                                Divider(),
+                                InkWell(
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      SizedBox(
+                                        width: sizeConfig.dynamicScaleSize(
+                                            size: 70),
+                                      ),
+                                      Icon(Icons.delete_forever,
+                                          color: Colors.red),
+                                      SizedBox(
+                                        width: sizeConfig.dynamicScaleSize(
+                                            size: 25),
+                                      ),
+                                      Text(
+                                        "Excluir",
+                                        style: TextStyle(
+                                            fontFamily: 'Revalia',
+                                            fontSize: sizeConfig
+                                                .dynamicScaleSize(size: 13),
+                                            color: Colors.red),
+                                      ),
+                                    ],
+                                  ),
+                                  onTap: () {
+                                    Modular.to.pop();
+                                    widget.listRack.remove(index);
+                                    widget.controller
+                                        .remove(widget.listRack[index]);
+                                  },
+                                ),
+                              ],
+                            ),
                           ),
-                          onPressed: () {
-                            Modular.to.pop();
-                          },
-                        ),
-                        FlatButton(
-                          child: Text(
-                            "Delete",
-                            style: TextStyle(color: Colors.red),
+                          SizedBox(
+                            height: 10,
                           ),
-                          onPressed: () {
-                            setState(() {
-                              widget.listRack.removeAt(index);
-                            });
-
-                            Modular.to.pop();
-                          },
-                        ),
-                        FlatButton(
-                          child: Text(
-                            "Editar",
-                            style: TextStyle(color: Colors.green),
+                          InkWell(
+                            child: Container(
+                              padding: EdgeInsets.all(8.0),
+                              decoration: BoxDecoration(
+                                  color: Color.fromRGBO(229, 231, 236, 1.0),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10.0))),
+                              child: Center(
+                                  child: Text(
+                                "Cancelar",
+                                style: TextStyle(
+                                    fontFamily: 'Revalia',
+                                    fontWeight: FontWeight.bold,
+                                    fontSize:
+                                        sizeConfig.dynamicScaleSize(size: 13),
+                                    color: Colors.black),
+                              )),
+                            ),
+                            onTap: () {
+                              Modular.to.pop();
+                            },
                           ),
-                          onPressed: () {
-                            Modular.to.pop();
-
-                            /* Modular.to.pushNamed('/home/add', arguments: [
-                              widget.listRack[index]..ref.path,
-                              widget.listRack[index]
-                            ]);*/
-                            Modular.to.pushNamed('/rack/add',
-                                arguments: widget.listRack[index]);
-                          },
-                        ),
-                      ],
+                        ],
+                      ),
                     );
                   });
             },

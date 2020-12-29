@@ -3,6 +3,7 @@ import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:space_farming_modular/app/modules/home/components/secondaryAppBar.dart';
 import 'package:space_farming_modular/app/modules/home/pages/home_info_bot/components/container_caneca.dart';
+import 'package:space_farming_modular/app/modules/home/pages/home_info_bot/components/longPressCaneca.dart';
 import 'package:space_farming_modular/app/modules/home/pages/home_info_bot/components/thumb.dart';
 import 'package:space_farming_modular/app/shared/components/nav_draw.dart';
 import 'package:space_farming_modular/app/shared/components/sizeConfig.dart';
@@ -148,7 +149,7 @@ class _HomeInfoBotPageState
                           child: InkWell(
                             child: ContainerCaneca(
                               flag: false,
-                              id: "10",
+                              id: controller.botijao.canecas[9].id.id,
                               color: controller.botijao.canecas[9].color,
                               h: hBot,
                               w: wBot,
@@ -163,43 +164,11 @@ class _HomeInfoBotPageState
                               showDialog(
                                 context: context,
                                 builder: (BuildContext context) {
-                                  Color cor;
-                                  return AlertDialog(
-                                    title: Text('Selecione a cor da caneca'),
-                                    content: SingleChildScrollView(
-                                      child: BlockPicker(
-                                        pickerColor:
-                                            controller.botijao.canecas[9].color,
-                                        onColorChanged: (Color color) =>
-                                            cor = color,
-                                      ),
-                                    ),
-                                    actions: <Widget>[
-                                      FlatButton(
-                                        child: Text(
-                                          "Contirmar",
-                                          style: TextStyle(color: Colors.black),
-                                        ),
-                                        onPressed: () {
-                                          toHex(cor);
-                                          setState(() {
-                                            controller
-                                                .botijao.canecas[9].color = cor;
-                                          });
-
-                                          Navigator.of(context).pop();
-                                        },
-                                      ),
-                                      FlatButton(
-                                        child: Text(
-                                          "Cancelar",
-                                          style: TextStyle(color: Colors.black),
-                                        ),
-                                        onPressed: () {
-                                          Navigator.of(context).pop();
-                                        },
-                                      ),
-                                    ],
+                                  return LongPressCaneca(
+                                    h: hBot,
+                                    w: wBot,
+                                    index: 9,
+                                    controller: controller,
                                   );
                                 },
                               );
@@ -217,7 +186,7 @@ class _HomeInfoBotPageState
                           child: InkWell(
                             child: ContainerCaneca(
                               flag: false,
-                              id: "7",
+                              id: controller.botijao.canecas[6].id.id,
                               color: controller.botijao.canecas[6].color,
                               h: hBot,
                               w: wBot,
@@ -232,43 +201,11 @@ class _HomeInfoBotPageState
                               showDialog(
                                 context: context,
                                 builder: (BuildContext context) {
-                                  Color cor;
-                                  return AlertDialog(
-                                    title: Text('Selecione a cor da caneca'),
-                                    content: SingleChildScrollView(
-                                      child: BlockPicker(
-                                        pickerColor:
-                                            controller.botijao.canecas[6].color,
-                                        onColorChanged: (Color color) =>
-                                            cor = color,
-                                      ),
-                                    ),
-                                    actions: <Widget>[
-                                      FlatButton(
-                                        child: Text(
-                                          "Contirmar",
-                                          style: TextStyle(color: Colors.black),
-                                        ),
-                                        onPressed: () {
-                                          toHex(cor);
-                                          setState(() {
-                                            controller
-                                                .botijao.canecas[6].color = cor;
-                                          });
-
-                                          Navigator.of(context).pop();
-                                        },
-                                      ),
-                                      FlatButton(
-                                        child: Text(
-                                          "Cancelar",
-                                          style: TextStyle(color: Colors.black),
-                                        ),
-                                        onPressed: () {
-                                          Navigator.of(context).pop();
-                                        },
-                                      ),
-                                    ],
+                                  return LongPressCaneca(
+                                    h: hBot,
+                                    w: wBot,
+                                    index: 6,
+                                    controller: controller,
                                   );
                                 },
                               );
@@ -286,7 +223,7 @@ class _HomeInfoBotPageState
                           child: InkWell(
                             child: ContainerCaneca(
                               flag: false,
-                              id: "3",
+                              id: controller.botijao.canecas[2].id.id,
                               color: controller.botijao.canecas[2].color,
                               h: hBot,
                               w: wBot,
@@ -302,42 +239,11 @@ class _HomeInfoBotPageState
                                 context: context,
                                 builder: (BuildContext context) {
                                   Color cor;
-                                  return AlertDialog(
-                                    title: Text('Selecione a cor da caneca'),
-                                    content: SingleChildScrollView(
-                                      child: BlockPicker(
-                                        pickerColor:
-                                            controller.botijao.canecas[2].color,
-                                        onColorChanged: (Color color) =>
-                                            cor = color,
-                                      ),
-                                    ),
-                                    actions: <Widget>[
-                                      FlatButton(
-                                        child: Text(
-                                          "Contirmar",
-                                          style: TextStyle(color: Colors.black),
-                                        ),
-                                        onPressed: () {
-                                          toHex(cor);
-                                          setState(() {
-                                            controller
-                                                .botijao.canecas[2].color = cor;
-                                          });
-
-                                          Navigator.of(context).pop();
-                                        },
-                                      ),
-                                      FlatButton(
-                                        child: Text(
-                                          "Cancelar",
-                                          style: TextStyle(color: Colors.black),
-                                        ),
-                                        onPressed: () {
-                                          Navigator.of(context).pop();
-                                        },
-                                      ),
-                                    ],
+                                  return LongPressCaneca(
+                                    h: hBot,
+                                    w: wBot,
+                                    index: 2,
+                                    controller: controller,
                                   );
                                 },
                               );
@@ -355,7 +261,7 @@ class _HomeInfoBotPageState
                           child: InkWell(
                             child: ContainerCaneca(
                               flag: false,
-                              id: "8",
+                              id: controller.botijao.canecas[7].id.id,
                               color: controller.botijao.canecas[7].color,
                               h: hBot,
                               w: wBot,
@@ -370,43 +276,11 @@ class _HomeInfoBotPageState
                               showDialog(
                                 context: context,
                                 builder: (BuildContext context) {
-                                  Color cor;
-                                  return AlertDialog(
-                                    title: Text('Selecione a cor da caneca'),
-                                    content: SingleChildScrollView(
-                                      child: BlockPicker(
-                                        pickerColor:
-                                            controller.botijao.canecas[7].color,
-                                        onColorChanged: (Color color) =>
-                                            cor = color,
-                                      ),
-                                    ),
-                                    actions: <Widget>[
-                                      FlatButton(
-                                        child: Text(
-                                          "Contirmar",
-                                          style: TextStyle(color: Colors.black),
-                                        ),
-                                        onPressed: () {
-                                          toHex(cor);
-                                          setState(() {
-                                            controller
-                                                .botijao.canecas[7].color = cor;
-                                          });
-
-                                          Navigator.of(context).pop();
-                                        },
-                                      ),
-                                      FlatButton(
-                                        child: Text(
-                                          "Cancelar",
-                                          style: TextStyle(color: Colors.black),
-                                        ),
-                                        onPressed: () {
-                                          Navigator.of(context).pop();
-                                        },
-                                      ),
-                                    ],
+                                  return LongPressCaneca(
+                                    h: hBot,
+                                    w: wBot,
+                                    index: 7,
+                                    controller: controller,
                                   );
                                 },
                               );
@@ -423,7 +297,7 @@ class _HomeInfoBotPageState
                     child: InkWell(
                       child: ContainerCaneca(
                         flag: false,
-                        id: "1",
+                        id: controller.botijao.canecas[0].id.id,
                         color: controller.botijao.canecas[0].color,
                         h: hBot,
                         w: wBot,
@@ -439,40 +313,11 @@ class _HomeInfoBotPageState
                           context: context,
                           builder: (BuildContext context) {
                             Color cor;
-                            return AlertDialog(
-                              title: Text('Selecione a cor da caneca'),
-                              content: SingleChildScrollView(
-                                child: BlockPicker(
-                                  pickerColor:
-                                      controller.botijao.canecas[0].color,
-                                  onColorChanged: (Color color) => cor = color,
-                                ),
-                              ),
-                              actions: <Widget>[
-                                FlatButton(
-                                  child: Text(
-                                    "Contirmar",
-                                    style: TextStyle(color: Colors.black),
-                                  ),
-                                  onPressed: () {
-                                    print(toHex(cor));
-                                    setState(() {
-                                      controller.botijao.canecas[0].color = cor;
-                                    });
-
-                                    Navigator.of(context).pop();
-                                  },
-                                ),
-                                FlatButton(
-                                  child: Text(
-                                    "Cancelar",
-                                    style: TextStyle(color: Colors.black),
-                                  ),
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  },
-                                ),
-                              ],
+                            return LongPressCaneca(
+                              h: hBot,
+                              w: wBot,
+                              index: 0,
+                              controller: controller,
                             );
                           },
                         );
@@ -486,7 +331,7 @@ class _HomeInfoBotPageState
                           child: InkWell(
                             child: ContainerCaneca(
                               flag: false,
-                              id: "5",
+                              id: controller.botijao.canecas[4].id.id,
                               color: controller.botijao.canecas[4].color,
                               h: hBot,
                               w: wBot,
@@ -502,42 +347,11 @@ class _HomeInfoBotPageState
                                 context: context,
                                 builder: (BuildContext context) {
                                   Color cor;
-                                  return AlertDialog(
-                                    title: Text('Selecione a cor da caneca'),
-                                    content: SingleChildScrollView(
-                                      child: BlockPicker(
-                                        pickerColor:
-                                            controller.botijao.canecas[4].color,
-                                        onColorChanged: (Color color) =>
-                                            cor = color,
-                                      ),
-                                    ),
-                                    actions: <Widget>[
-                                      FlatButton(
-                                        child: Text(
-                                          "Contirmar",
-                                          style: TextStyle(color: Colors.black),
-                                        ),
-                                        onPressed: () {
-                                          toHex(cor);
-                                          setState(() {
-                                            controller
-                                                .botijao.canecas[4].color = cor;
-                                          });
-
-                                          Navigator.of(context).pop();
-                                        },
-                                      ),
-                                      FlatButton(
-                                        child: Text(
-                                          "Cancelar",
-                                          style: TextStyle(color: Colors.black),
-                                        ),
-                                        onPressed: () {
-                                          Navigator.of(context).pop();
-                                        },
-                                      ),
-                                    ],
+                                  return LongPressCaneca(
+                                    h: hBot,
+                                    w: wBot,
+                                    index: 4,
+                                    controller: controller,
                                   );
                                 },
                               );
@@ -555,7 +369,7 @@ class _HomeInfoBotPageState
                           child: InkWell(
                             child: ContainerCaneca(
                               flag: false,
-                              id: "9",
+                              id: controller.botijao.canecas[8].id.id,
                               color: controller.botijao.canecas[8].color,
                               h: hBot,
                               w: wBot,
@@ -571,42 +385,11 @@ class _HomeInfoBotPageState
                                 context: context,
                                 builder: (BuildContext context) {
                                   Color cor;
-                                  return AlertDialog(
-                                    title: Text('Selecione a cor da caneca'),
-                                    content: SingleChildScrollView(
-                                      child: BlockPicker(
-                                        pickerColor:
-                                            controller.botijao.canecas[8].color,
-                                        onColorChanged: (Color color) =>
-                                            cor = color,
-                                      ),
-                                    ),
-                                    actions: <Widget>[
-                                      FlatButton(
-                                        child: Text(
-                                          "Contirmar",
-                                          style: TextStyle(color: Colors.black),
-                                        ),
-                                        onPressed: () {
-                                          toHex(cor);
-                                          setState(() {
-                                            controller
-                                                .botijao.canecas[8].color = cor;
-                                          });
-
-                                          Navigator.of(context).pop();
-                                        },
-                                      ),
-                                      FlatButton(
-                                        child: Text(
-                                          "Cancelar",
-                                          style: TextStyle(color: Colors.black),
-                                        ),
-                                        onPressed: () {
-                                          Navigator.of(context).pop();
-                                        },
-                                      ),
-                                    ],
+                                  return LongPressCaneca(
+                                    h: hBot,
+                                    w: wBot,
+                                    index: 8,
+                                    controller: controller,
                                   );
                                 },
                               );
@@ -624,7 +407,7 @@ class _HomeInfoBotPageState
                           child: InkWell(
                             child: ContainerCaneca(
                               flag: false,
-                              id: "2",
+                              id: controller.botijao.canecas[1].id.id,
                               color: controller.botijao.canecas[1].color,
                               h: hBot,
                               w: wBot,
@@ -639,43 +422,11 @@ class _HomeInfoBotPageState
                               showDialog(
                                 context: context,
                                 builder: (BuildContext context) {
-                                  Color cor;
-                                  return AlertDialog(
-                                    title: Text('Selecione a cor da caneca'),
-                                    content: SingleChildScrollView(
-                                      child: BlockPicker(
-                                        pickerColor:
-                                            controller.botijao.canecas[1].color,
-                                        onColorChanged: (Color color) =>
-                                            cor = color,
-                                      ),
-                                    ),
-                                    actions: <Widget>[
-                                      FlatButton(
-                                        child: Text(
-                                          "Contirmar",
-                                          style: TextStyle(color: Colors.black),
-                                        ),
-                                        onPressed: () {
-                                          toHex(cor);
-                                          setState(() {
-                                            controller
-                                                .botijao.canecas[1].color = cor;
-                                          });
-
-                                          Navigator.of(context).pop();
-                                        },
-                                      ),
-                                      FlatButton(
-                                        child: Text(
-                                          "Cancelar",
-                                          style: TextStyle(color: Colors.black),
-                                        ),
-                                        onPressed: () {
-                                          Navigator.of(context).pop();
-                                        },
-                                      ),
-                                    ],
+                                  return LongPressCaneca(
+                                    h: hBot,
+                                    w: wBot,
+                                    index: 1,
+                                    controller: controller,
                                   );
                                 },
                               );
@@ -693,7 +444,7 @@ class _HomeInfoBotPageState
                           child: InkWell(
                             child: ContainerCaneca(
                               flag: false,
-                              id: "4",
+                              id: controller.botijao.canecas[3].id.id,
                               color: controller.botijao.canecas[3].color,
                               h: hBot,
                               w: wBot,
@@ -709,42 +460,11 @@ class _HomeInfoBotPageState
                                 context: context,
                                 builder: (BuildContext context) {
                                   Color cor;
-                                  return AlertDialog(
-                                    title: Text('Selecione a cor da caneca'),
-                                    content: SingleChildScrollView(
-                                      child: BlockPicker(
-                                        pickerColor:
-                                            controller.botijao.canecas[3].color,
-                                        onColorChanged: (Color color) =>
-                                            cor = color,
-                                      ),
-                                    ),
-                                    actions: <Widget>[
-                                      FlatButton(
-                                        child: Text(
-                                          "Contirmar",
-                                          style: TextStyle(color: Colors.black),
-                                        ),
-                                        onPressed: () {
-                                          toHex(cor);
-                                          setState(() {
-                                            controller
-                                                .botijao.canecas[3].color = cor;
-                                          });
-
-                                          Navigator.of(context).pop();
-                                        },
-                                      ),
-                                      FlatButton(
-                                        child: Text(
-                                          "Cancelar",
-                                          style: TextStyle(color: Colors.black),
-                                        ),
-                                        onPressed: () {
-                                          Navigator.of(context).pop();
-                                        },
-                                      ),
-                                    ],
+                                  return LongPressCaneca(
+                                    h: hBot,
+                                    w: wBot,
+                                    index: 3,
+                                    controller: controller,
                                   );
                                 },
                               );
@@ -762,7 +482,7 @@ class _HomeInfoBotPageState
                           child: InkWell(
                             child: ContainerCaneca(
                               flag: false,
-                              id: "6",
+                              id: controller.botijao.canecas[5].id.id,
                               color: controller.botijao.canecas[5].color,
                               h: hBot,
                               w: wBot,
@@ -778,42 +498,11 @@ class _HomeInfoBotPageState
                                 context: context,
                                 builder: (BuildContext context) {
                                   Color cor;
-                                  return AlertDialog(
-                                    title: Text('Selecione a cor da caneca'),
-                                    content: SingleChildScrollView(
-                                      child: BlockPicker(
-                                        pickerColor:
-                                            controller.botijao.canecas[5].color,
-                                        onColorChanged: (Color color) =>
-                                            cor = color,
-                                      ),
-                                    ),
-                                    actions: <Widget>[
-                                      FlatButton(
-                                        child: Text(
-                                          "Contirmar",
-                                          style: TextStyle(color: Colors.black),
-                                        ),
-                                        onPressed: () {
-                                          toHex(cor);
-                                          setState(() {
-                                            controller
-                                                .botijao.canecas[5].color = cor;
-                                          });
-
-                                          Navigator.of(context).pop();
-                                        },
-                                      ),
-                                      FlatButton(
-                                        child: Text(
-                                          "Cancelar",
-                                          style: TextStyle(color: Colors.black),
-                                        ),
-                                        onPressed: () {
-                                          Navigator.of(context).pop();
-                                        },
-                                      ),
-                                    ],
+                                  return LongPressCaneca(
+                                    h: hBot,
+                                    w: wBot,
+                                    index: 5,
+                                    controller: controller,
                                   );
                                 },
                               );
