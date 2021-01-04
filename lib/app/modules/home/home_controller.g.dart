@@ -7,7 +7,8 @@ part of 'home_controller.dart';
 // **************************************************************************
 
 final $HomeController = BindInject(
-  (i) => HomeController(i<IRepositoryBotijao>(), i<UserP>(), i<FirebaseAuth>()),
+  (i) => HomeController(i<IRepositoryBotijao>(), i<IRepositoryFarm>(),
+      i<IRepositoryUserP>(), i<UserP>(), i<FirebaseAuth>()),
   singleton: true,
   lazy: true,
 );
@@ -54,6 +55,17 @@ mixin _$HomeController on _HomeControllerBase, Store {
         name: '_HomeControllerBase.remove');
     try {
       return super.remove(path);
+    } finally {
+      _$_HomeControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic removeFarm(String id) {
+    final _$actionInfo = _$_HomeControllerBaseActionController.startAction(
+        name: '_HomeControllerBase.removeFarm');
+    try {
+      return super.removeFarm(id);
     } finally {
       _$_HomeControllerBaseActionController.endAction(_$actionInfo);
     }

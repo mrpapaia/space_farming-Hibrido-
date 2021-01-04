@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
+import 'package:space_farming_modular/app/modules/home/components/hexcolor.dart';
 import 'package:space_farming_modular/app/modules/home/pages/home_info_bot/home_info_bot_controller.dart';
 import 'package:space_farming_modular/app/shared/components/sizeConfig.dart';
 
@@ -18,7 +19,7 @@ class _LongPressCanecaState extends State<LongPressCaneca> {
   Widget build(BuildContext context) {
     List<String> items = ["Habilitado", "Desabilitado"];
     final sizeConfig = SizeConfig(mediaQueryData: MediaQuery.of(context));
-
+    Color cor;
     return AlertDialog(
       title: Text('caneca'),
       content: Container(
@@ -44,7 +45,7 @@ class _LongPressCanecaState extends State<LongPressCaneca> {
                 DropdownButton<String>(
                   value:
                       widget.controller.botijao.canecas[widget.index].estado ==
-                              "enebled"
+                              "enabled"
                           ? items[0]
                           : items[1],
                   icon: Icon(Icons.arrow_drop_down),
@@ -60,9 +61,11 @@ class _LongPressCanecaState extends State<LongPressCaneca> {
                     setState(() {
                       newValue == "Habilitado"
                           ? widget.controller.botijao.canecas[widget.index]
-                              .estado = "enebled"
+                              .estado = "enabled"
                           : widget.controller.botijao.canecas[widget.index]
                               .estado = "disabled";
+                      //widget.controller.botijao.canecas[widget.index].color =
+                      //  HexColor("#adadad");
                     });
                   },
                   items: items.map<DropdownMenuItem<String>>((String value) {
@@ -96,7 +99,6 @@ class _LongPressCanecaState extends State<LongPressCaneca> {
                     showDialog(
                       context: context,
                       builder: (BuildContext context) {
-                        Color cor;
                         return AlertDialog(
                           title: Text('Selecione a cor da caneca'),
                           content: SingleChildScrollView(
@@ -151,9 +153,10 @@ class _LongPressCanecaState extends State<LongPressCaneca> {
             style: TextStyle(color: Colors.black),
           ),
           onPressed: () {
-            setState(() {
-              // widget.controller.botijao.canecas[widget.index].color = cor;
-            });
+            /*  setState(() {
+              widget.controller.botijao.canecas[widget.index].color =
+                  widget.controller.botijao.canecas[widget.index].color;
+            });*/
 
             Navigator.of(context).pop();
           },

@@ -27,9 +27,7 @@ class _HomeBotCreatePageState
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width - 30;
     double _height = MediaQuery.of(context).size.height;
-    var ctrl1 = TextEditingController();
-    var ctrl2 = TextEditingController();
-    var ctrl3 = TextEditingController();
+
     List<String> items = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
 
     return Scaffold(

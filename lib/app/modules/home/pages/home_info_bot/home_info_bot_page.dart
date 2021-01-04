@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_colorpicker/flutter_colorpicker.dart';
+
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:space_farming_modular/app/modules/home/components/secondaryAppBar.dart';
 import 'package:space_farming_modular/app/modules/home/pages/home_info_bot/components/container_caneca.dart';
 import 'package:space_farming_modular/app/modules/home/pages/home_info_bot/components/longPressCaneca.dart';
 import 'package:space_farming_modular/app/modules/home/pages/home_info_bot/components/thumb.dart';
-import 'package:space_farming_modular/app/shared/components/nav_draw.dart';
+
 import 'package:space_farming_modular/app/shared/components/sizeConfig.dart';
 import 'package:space_farming_modular/app/shared/components/titleOfScreen.dart';
 import 'home_info_bot_controller.dart';

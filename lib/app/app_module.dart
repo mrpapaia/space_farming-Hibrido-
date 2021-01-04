@@ -1,4 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:space_farming_modular/app/modules/ctrl_colaboradores/ctrl_colaboradores_module.dart';
 import 'package:space_farming_modular/app/modules/ctrl_nitrogenio/ctrl_nitrogenio_module.dart';
 import 'package:space_farming_modular/app/modules/ctrl_racks/ctrl_racks_module.dart';
 
@@ -24,6 +25,7 @@ class AppModule extends MainModule {
         ModularRouter("/home", module: HomeModule()),
         ModularRouter("/ctrl", module: CtrlNitrogenioModule()),
         ModularRouter("/rack", module: CtrlRacksModule()),
+        ModularRouter("/colab", module: CtrlColaboradoresModule()),
       ];
 
   @override

@@ -21,13 +21,16 @@ class HomeController = _HomeControllerBase with _$HomeController;
 
 abstract class _HomeControllerBase with Store {
   final IRepositoryBotijao repository;
+  final IRepositoryFarm repositoryFarm;
+  final IRepositoryUserP repositoryUserP;
   final FirebaseAuth auth;
   final UserP user;
 
   @observable
   ObservableStream<List<Botijao>> listBot;
 
-  _HomeControllerBase(this.repository, this.user, this.auth) {
+  _HomeControllerBase(this.repository, this.repositoryFarm,
+      this.repositoryUserP, this.user, this.auth) {
     getBot(user.fazenda.values.toList()[0]);
   }
 
@@ -39,5 +42,12 @@ abstract class _HomeControllerBase with Store {
   @action
   remove(String path) {
     repository.remove(path);
+  }
+
+  @action
+  removeFarm(String id) {
+    repositoryFarm.remove(id);
+    user.fazenda.removeWhere((key, value) => value == id);
+    repositoryUserP.update(this.user);
   }
 }

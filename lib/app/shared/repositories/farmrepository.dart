@@ -28,8 +28,7 @@ class FarmRepository implements IRepositoryFarm {
 
   @override
   Future<bool> remove(String id) {
-    // TODO: implement remove
-    throw UnimplementedError();
+    firestore.doc("farms/" + id).delete();
   }
 
   @override

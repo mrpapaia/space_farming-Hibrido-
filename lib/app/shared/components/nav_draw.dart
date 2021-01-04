@@ -81,7 +81,24 @@ class NavigationDrawer extends StatelessWidget {
                           size: _width * 0.1,
                         ),
                         title: Text("Colaboradores"),
-                        onTap: () {},
+                        onTap: () {
+                          Modular.to.pushNamed('/colab', arguments: [
+                            controller.user.fazenda.keys.toList()[index],
+                            controller.user.fazenda.values.toList()[index]
+                          ]);
+                        },
+                      ),
+                      ListTile(
+                        leading: Icon(
+                          Icons.delete,
+                          color: Colors.red,
+                          size: _width * 0.1,
+                        ),
+                        title: Text("Excluir"),
+                        onTap: () {
+                          controller.removeFarm(
+                              controller.user.fazenda.values.toList()[index]);
+                        },
                       ),
                     ],
                   );
@@ -94,7 +111,10 @@ class NavigationDrawer extends StatelessWidget {
                   size: _width * 0.1,
                 ),
                 title: Text("Adicionar Fazenda"),
-                onTap: () {},
+                onTap: () {
+                  Modular.to
+                      .pushNamed('/home/addFarm', arguments: [controller.user]);
+                },
               ),
               ListTile(
                 leading: Icon(

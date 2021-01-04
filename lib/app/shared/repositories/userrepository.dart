@@ -27,14 +27,27 @@ class UserPRepository implements IRepositoryUserP {
   }
 
   @override
+  Stream<List<UserP>> listColab(String key, String value) {
+    return firestore
+        .collection('users')
+        .where("fazenda.${key}", isEqualTo: value)
+        .snapshots()
+        .map((query) {
+      return query.docs.map((doc) {
+        print('oi');
+        return UserP.fromDoc(doc);
+      }).toList();
+    });
+  }
+
+  @override
   Future<bool> remove(UserP id) {
     // TODO: implement remove
     throw UnimplementedError();
   }
 
   @override
-  Future<bool> update(UserP obj) {
-    // TODO: implement update
-    throw UnimplementedError();
+  Future<bool> update(UserP user) {
+    user.ref.update(user.toMap());
   }
 }

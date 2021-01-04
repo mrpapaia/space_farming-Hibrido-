@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:space_farming_modular/app/shared/models/farm.dart';
 
 abstract class IRepositoryFarm {

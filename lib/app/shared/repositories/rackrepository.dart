@@ -13,21 +13,17 @@ class RackRepository implements IRepositoryRack {
   @override
   Future<void> add(Rack rack) async {
     return firestore
-        .doc(doc.path)
-        .set(rack.toMap())
+        .collection(doc.path + "/racks/")
+        .add(rack.toMap())
         .then((value) => print("rack adicionado com suecsso"))
         .catchError((error) => print("Failed to add botijao: $error"));
   }
 
   @override
-  Stream<List<Rack>> list() {
-    return firestore
-        .doc(this.doc.path)
-        .collection("racks")
-        .snapshots()
-        .map((query) {
-      return query.docs.map((doc) {
-        return Rack.fromDoc(doc);
+  Stream<List<Rack>> list(DocumentReference caneca) {
+    return caneca.collection("racks").snapshots().map((query) {
+      return query.docs.map((doc1) {
+        return Rack.fromDoc(doc1);
       }).toList();
     });
   }

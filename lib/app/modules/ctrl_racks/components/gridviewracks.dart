@@ -294,8 +294,9 @@ class _GridViewRacksState extends State<GridViewRacks> {
                                     ],
                                   ),
                                   onTap: () {
-                                    //print(widget.listBotijao[index]);
-                                    Modular.to.pop();
+                                    Modular.to.pushNamed('/rack/add',
+                                        arguments: [widget.listRack[index]]);
+                                    //Modular.to.pop();
                                   },
                                 ),
                                 Divider(),

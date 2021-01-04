@@ -7,7 +7,8 @@ part of 'home_add_farm_controller.dart';
 // **************************************************************************
 
 final $HomeAddFarmController = BindInject(
-  (i) => HomeAddFarmController(),
+  (i) => HomeAddFarmController(
+      i<IRepositoryFarm>(), i<IRepositoryUserP>(), i<UserP>()),
   singleton: true,
   lazy: true,
 );
@@ -19,18 +20,19 @@ final $HomeAddFarmController = BindInject(
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$HomeAddFarmController on _HomeAddFarmControllerBase, Store {
-  final _$valueAtom = Atom(name: '_HomeAddFarmControllerBase.value');
+  final _$nomeFazendaAtom =
+      Atom(name: '_HomeAddFarmControllerBase.nomeFazenda');
 
   @override
-  int get value {
-    _$valueAtom.reportRead();
-    return super.value;
+  String get nomeFazenda {
+    _$nomeFazendaAtom.reportRead();
+    return super.nomeFazenda;
   }
 
   @override
-  set value(int value) {
-    _$valueAtom.reportWrite(value, super.value, () {
-      super.value = value;
+  set nomeFazenda(String value) {
+    _$nomeFazendaAtom.reportWrite(value, super.nomeFazenda, () {
+      super.nomeFazenda = value;
     });
   }
 
@@ -38,11 +40,22 @@ mixin _$HomeAddFarmController on _HomeAddFarmControllerBase, Store {
       ActionController(name: '_HomeAddFarmControllerBase');
 
   @override
-  void increment() {
+  dynamic getNomeFazenda(String value) {
     final _$actionInfo = _$_HomeAddFarmControllerBaseActionController
-        .startAction(name: '_HomeAddFarmControllerBase.increment');
+        .startAction(name: '_HomeAddFarmControllerBase.getNomeFazenda');
     try {
-      return super.increment();
+      return super.getNomeFazenda(value);
+    } finally {
+      _$_HomeAddFarmControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void addFarm() {
+    final _$actionInfo = _$_HomeAddFarmControllerBaseActionController
+        .startAction(name: '_HomeAddFarmControllerBase.addFarm');
+    try {
+      return super.addFarm();
     } finally {
       _$_HomeAddFarmControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -51,7 +64,7 @@ mixin _$HomeAddFarmController on _HomeAddFarmControllerBase, Store {
   @override
   String toString() {
     return '''
-value: ${value}
+nomeFazenda: ${nomeFazenda}
     ''';
   }
 }

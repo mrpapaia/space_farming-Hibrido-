@@ -23,7 +23,7 @@ class Rack {
       'idTouro': idTouro,
       'tipo': tipo,
       'volume': volume,
-      'doseUP': doseUp,
+      'doseUp': doseUp,
       'doseDown': doseDown,
     };
   }

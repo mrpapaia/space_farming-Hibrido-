@@ -9,12 +9,14 @@ class UserP {
   String tel;
   String email;
   Map<String, String> fazenda;
+  DocumentReference ref;
   UserP({
     this.nome,
     this.cpf,
     this.tel,
     this.email,
     this.fazenda,
+    this.ref,
   });
 
   UserP copyWith({
@@ -23,6 +25,7 @@ class UserP {
     String tel,
     String email,
     Map<String, String> fazenda,
+    DocumentReference ref,
   }) {
     return UserP(
       nome: nome ?? this.nome,
@@ -30,6 +33,7 @@ class UserP {
       tel: tel ?? this.tel,
       email: email ?? this.email,
       fazenda: fazenda ?? this.fazenda,
+      ref: ref ?? this.ref,
     );
   }
 
@@ -50,6 +54,7 @@ class UserP {
       tel: doc.data()['tel'],
       email: doc.data()['email'],
       fazenda: Map<String, String>.from(doc['fazenda']),
+      ref: doc.reference,
     );
   }
 

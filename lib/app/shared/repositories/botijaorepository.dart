@@ -59,7 +59,6 @@ class BotijaoRepository implements IRepositoryBotijao {
 
   @override
   Future<void> updateBot(Botijao bot) {
-    print(bot);
     return firestore
         .doc(bot.ref.path)
         .set(bot.toMap())
@@ -76,7 +75,6 @@ class BotijaoRepository implements IRepositoryBotijao {
         .map((query) {
       return query.docs.map((doc) {
         //doc.reference.collection('canecas').snapshots().listen(getCanecas);
-
         return Botijao.fromDoc(
             doc, getCanecas(doc.reference.collection('canecas').get()));
       }).toList();
