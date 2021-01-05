@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
@@ -38,8 +39,8 @@ abstract class _MedirNivelControllerBase with Store {
   @action
   getData(String data) => data = this.data.toString();
   @action
-  update(String id, UserP user) {
-    repositoryBotijao.updateVol(new Botijao(idBot: id, volAtual: volAtual));
+  update(DocumentReference ref, UserP user) {
+    repositoryBotijao.updateVol(new Botijao(ref: ref, volAtual: volAtual));
     repositoryHist.add(
         new HistoricoNivel(respon: user.nome, qtdAtual: volAtual, data: data));
   }

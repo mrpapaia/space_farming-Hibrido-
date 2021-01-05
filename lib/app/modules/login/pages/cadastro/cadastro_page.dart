@@ -25,12 +25,9 @@ class _CadastroPageState
     return Scaffold(
         resizeToAvoidBottomInset: false,
         backgroundColor: Color.fromRGBO(229, 231, 236, 1.0),
-        appBar: PreferredSize(
-            preferredSize: Size(
-              double.infinity,
-              80,
-            ),
-            child: SecAppBar()),
+        appBar: SecAppBar(
+          preferredSize: Size.fromHeight(70.0),
+        ),
         body: SingleChildScrollView(
           child: Column(
             children: [

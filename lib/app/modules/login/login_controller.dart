@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 
 import 'package:mobx/mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -45,7 +46,7 @@ abstract class _LoginControllerBase with Store {
   }
 
   @action
-  String valideteEmail(String email) {
+  String valideteEmail() {
     if (email == null || email.isEmpty) {
       return "E-mail é um campo obrigatorio";
     } else if (!email.contains("@") && !email.contains(".com")) {
@@ -65,20 +66,31 @@ abstract class _LoginControllerBase with Store {
   }
 
   @action
-  Future<UserCredential> login(FirebaseAuth auth) async {
+  Future<UserCredential> login(FirebaseAuth auth, BuildContext ctx) async {
+    UserCredential user;
     try {
-      UserCredential user = await auth.signInWithEmailAndPassword(
-          email: this.email, password: this.passwd);
-      if (user != null) {
-        getUser(email);
-
-        return user;
+      if (valideteEmail() == null) {
+        if (validetePasswd() == null) {
+          user = await auth.signInWithEmailAndPassword(
+              email: this.email, password: this.passwd);
+          if (user != null) {
+            getUser(email);
+            return user;
+          }
+        } else {
+          Scaffold.of(ctx)
+              .showSnackBar(SnackBar(content: Text(validetePasswd())));
+        }
+      } else {
+        Scaffold.of(ctx).showSnackBar(SnackBar(content: Text(valideteEmail())));
       }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        print('No user found for that email.');
+        Scaffold.of(ctx)
+            .showSnackBar(SnackBar(content: Text("E-mail não cadastrado")));
       } else if (e.code == 'wrong-password') {
-        print('Wrong password provided for that user.');
+        Scaffold.of(ctx)
+            .showSnackBar(SnackBar(content: Text("Senha incorreta!!")));
       }
       return null;
     }

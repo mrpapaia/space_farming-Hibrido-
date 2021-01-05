@@ -34,14 +34,13 @@ class UserPRepository implements IRepositoryUserP {
         .snapshots()
         .map((query) {
       return query.docs.map((doc) {
-        print('oi');
         return UserP.fromDoc(doc);
       }).toList();
     });
   }
 
   @override
-  Future<bool> remove(UserP id) {
+  Future<bool> remove(UserP user) {
     // TODO: implement remove
     throw UnimplementedError();
   }

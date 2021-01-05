@@ -52,6 +52,18 @@ mixin _$CtrlColaboradoresController on _CtrlColaboradoresControllerBase, Store {
   }
 
   @override
+  void remove(UserP user) {
+    final _$actionInfo = _$_CtrlColaboradoresControllerBaseActionController
+        .startAction(name: '_CtrlColaboradoresControllerBase.remove');
+    try {
+      return super.remove(user);
+    } finally {
+      _$_CtrlColaboradoresControllerBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 listColab: ${listColab}

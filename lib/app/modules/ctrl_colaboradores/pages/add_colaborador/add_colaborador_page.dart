@@ -6,19 +6,19 @@ import 'package:space_farming_modular/app/shared/components/cardEditText.dart';
 import 'package:space_farming_modular/app/shared/components/my_icons_icons.dart';
 import 'package:space_farming_modular/app/shared/components/sizeConfig.dart';
 import 'package:space_farming_modular/app/shared/components/titleOfScreen.dart';
-import 'home_add_farm_controller.dart';
+import 'add_colaborador_controller.dart';
 
-class HomeAddFarmPage extends StatefulWidget {
+class AddColaboradorPage extends StatefulWidget {
   final String title;
-  const HomeAddFarmPage({Key key, this.title = "HomeAddFarm"})
+  const AddColaboradorPage({Key key, this.title = "AddColaborador"})
       : super(key: key);
 
   @override
-  _HomeAddFarmPageState createState() => _HomeAddFarmPageState();
+  _AddColaboradorPageState createState() => _AddColaboradorPageState();
 }
 
-class _HomeAddFarmPageState
-    extends ModularState<HomeAddFarmPage, HomeAddFarmController> {
+class _AddColaboradorPageState
+    extends ModularState<AddColaboradorPage, AddColaboradorController> {
   //use 'controller' variable to access controller
 
   @override
@@ -35,14 +35,15 @@ class _HomeAddFarmPageState
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SizedBox(
             height: sizeConfig.dynamicScaleSize(size: 20),
           ),
           TitleOfScreen(
-            title: 'Adicionar fazenda',
+            title: 'Adicionar Colaborador',
             font: "Revalia",
-            fontSize: sizeConfig.dynamicScaleSize(size: 30),
+            fontSize: sizeConfig.dynamicScaleSize(size: 25),
           ),
           SizedBox(
             height: sizeConfig.dynamicScaleSize(size: 30),
@@ -50,7 +51,7 @@ class _HomeAddFarmPageState
           CardEditText(
             child: TextField(
               controller: null,
-              onChanged: controller.getNomeFazenda,
+              onChanged: null,
               obscureText: false,
               keyboardType: TextInputType.text,
               cursorColor: Colors.red,
@@ -68,7 +69,7 @@ class _HomeAddFarmPageState
                     style: BorderStyle.solid,
                   ),
                 ),
-                prefixIcon: Icon(MyIcons.farm,
+                prefixIcon: Icon(MyIcons.employee,
                     color: Colors.red,
                     size: sizeConfig.dynamicScaleSize(size: 35)),
                 hintStyle: TextStyle(
@@ -76,7 +77,7 @@ class _HomeAddFarmPageState
                   fontSize: sizeConfig.dynamicScaleSize(size: 18),
                   color: Color.fromRGBO(113, 111, 137, 1.0),
                 ),
-                labelText: "Nome da Fazenda",
+                labelText: "E-mail do colaborador",
                 labelStyle: TextStyle(),
               ),
             ),
@@ -93,7 +94,7 @@ class _HomeAddFarmPageState
                 ButtonCustom(
                   text: "Confirmar",
                   onclick: () {
-                    controller.addFarm();
+                    // controller.addFarm();
                     Navigator.pop(context);
                   },
                   width: _width * 0.5,

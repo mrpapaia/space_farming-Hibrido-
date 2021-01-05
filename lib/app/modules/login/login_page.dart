@@ -149,7 +149,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                       text: "Login",
                       width: 309.0,
                       onclick: () async {
-                        await controller.login(_auth);
+                        await controller.login(_auth, context);
                       },
                     ),
                     SizedBox(

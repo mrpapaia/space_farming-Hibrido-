@@ -76,11 +76,11 @@ mixin _$MedirNivelController on _MedirNivelControllerBase, Store {
   }
 
   @override
-  dynamic update(String id, UserP user) {
+  dynamic update(DocumentReference ref, UserP user) {
     final _$actionInfo = _$_MedirNivelControllerBaseActionController
         .startAction(name: '_MedirNivelControllerBase.update');
     try {
-      return super.update(id, user);
+      return super.update(ref, user);
     } finally {
       _$_MedirNivelControllerBaseActionController.endAction(_$actionInfo);
     }

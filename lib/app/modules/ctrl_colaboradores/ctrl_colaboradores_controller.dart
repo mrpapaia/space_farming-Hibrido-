@@ -26,4 +26,10 @@ abstract class _CtrlColaboradoresControllerBase with Store {
   void getColab() {
     listColab = repositoryUserP.listColab(this.key, this.value).asObservable();
   }
+
+  @action
+  void remove(UserP user) {
+    user.fazenda.remove(this.key);
+    repositoryUserP.update(user);
+  }
 }

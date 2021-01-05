@@ -102,7 +102,41 @@ class _CtrlColaboradoresPageState
                                     Icons.delete,
                                     color: Colors.white,
                                   ),
-                                  onPressed: null)
+                                  onPressed: () {
+                                    showDialog(
+                                      context: context,
+                                      builder: (BuildContext context) {
+                                        return AlertDialog(
+                                          content: Text(
+                                              "Logado com sucesso!!\nBem Vindo ${controller.listColab.data[index].nome}"),
+                                          actions: <Widget>[
+                                            FlatButton(
+                                              child: Text(
+                                                "Remover",
+                                                style: TextStyle(
+                                                    color: Colors.red),
+                                              ),
+                                              onPressed: () {
+                                                controller.remove(controller
+                                                    .listColab.data[index]);
+                                                Modular.to.pop();
+                                              },
+                                            ),
+                                            FlatButton(
+                                              child: Text(
+                                                "Cancelar",
+                                                style: TextStyle(
+                                                    color: Colors.black),
+                                              ),
+                                              onPressed: () {
+                                                Modular.to.pop();
+                                              },
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    );
+                                  })
                             ],
                           ),
                         );
@@ -116,7 +150,10 @@ class _CtrlColaboradoresPageState
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Modular.to.pushNamed('/colab/addColab',
+              arguments: [controller.key, controller.value]);
+        },
         child: Icon(Icons.add),
       ),
     );

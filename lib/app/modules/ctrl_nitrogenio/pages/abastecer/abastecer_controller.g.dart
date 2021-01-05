@@ -102,11 +102,11 @@ mixin _$AbastecerController on _AbastecerControllerBase, Store {
   }
 
   @override
-  dynamic update(String id, double vol, UserP user) {
+  dynamic update(DocumentReference ref, double vol, UserP user) {
     final _$actionInfo = _$_AbastecerControllerBaseActionController.startAction(
         name: '_AbastecerControllerBase.update');
     try {
-      return super.update(id, vol, user);
+      return super.update(ref, vol, user);
     } finally {
       _$_AbastecerControllerBaseActionController.endAction(_$actionInfo);
     }

@@ -59,7 +59,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
           TitleOfScreen(
             title: "Lista de Botijões",
             font: "Revalia",
-            fontSize: _width * 0.07,
+            fontSize: sizeConfig.dynamicScaleSize(size: 30),
           ),
           SizedBox(
             height: 5,

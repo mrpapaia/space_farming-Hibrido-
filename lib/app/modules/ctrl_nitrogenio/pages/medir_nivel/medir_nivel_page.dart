@@ -45,36 +45,12 @@ class _MedirNivelPageState
               font: "Revalia",
               fontSize: _width * 0.09,
             ),
-            /*  TitleOfScreen(
-              title: "Responsavel",
-              font: "Robot",
-              fontSize: 32,
-            ),*/
             SizedBox(
               height: 10,
             ),
-            /* ContainerBase(
-              componets: <Widget>[
-                EditText(
-                    hint: "Nome", icon: Icon(Icons.person, color: Colors.red)),
-                EditText(
-                    hint: "E-mail", icon: Icon(Icons.email, color: Colors.red)),
-                EditText(
-                    hint: "Telefone",
-                    icon: Icon(Icons.phone, color: Colors.red)),
-                SizedBox(
-                  height: 10,
-                )
-              ],
-            ),*/
             SizedBox(
               height: 10,
             ),
-            /*  TitleOfScreen(
-              title: "Nitrogênio",
-              font: "Robot",
-              fontSize: 32,
-            ),*/
             ContainerBase(
               componets: <Widget>[
                 TextField(
@@ -141,7 +117,7 @@ class _MedirNivelPageState
                   ButtonCustom(
                     text: "Confirmar",
                     onclick: () {
-                      controller.update(widget.botijao.idBot, widget.user);
+                      controller.update(widget.botijao.ref, widget.user);
                       Navigator.pop(context);
                     },
                     width: _width * 0.5,

@@ -32,175 +32,179 @@ class _HistoricoAbastecimentoComponentState
             SizedBox(
               height: 20,
             ),
-            ContainerBase(componets: [
-              Center(
-                child: Text(
-                  "Botijão ${widget.botijao.idBot}",
-                  style: TextStyle(
-                    fontFamily: "Robot",
-                    fontSize: 35,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.red,
+            ContainerBase(
+                width: MediaQuery.of(context).size.width - 30,
+                componets: [
+                  Center(
+                    child: Text(
+                      "Botijão ${widget.botijao.idBot}",
+                      style: TextStyle(
+                        fontFamily: "Robot",
+                        fontSize: 35,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.red,
+                      ),
+                    ),
                   ),
-                ),
-              ),
-            ]),
+                ]),
             SizedBox(
               height: 10,
             ),
-            ContainerBase(componets: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  TextCustom(
-                    text: "Nivel Anterior: ",
-                    fontSize: 16,
+            ContainerBase(
+                width: MediaQuery.of(context).size.width - 30,
+                componets: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      TextCustom(
+                        text: "Nivel Anterior: ",
+                        fontSize: 16,
+                      ),
+                      TextCustom(
+                        text: "${widget.list[index].qtdAtual}",
+                        fontSize: 16,
+                      ),
+                      TextCustom(
+                        text: " | ",
+                        fontSize: 18,
+                      ),
+                      TextCustom(
+                        text: "Nivel Adicionado: ",
+                        fontSize: 16,
+                      ),
+                      TextCustom(
+                        text: "${widget.list[index].qtdAdd}",
+                        fontSize: 16,
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Divider(
+                    height: 10,
+                    thickness: 1,
+                    color: Color.fromRGBO(113, 111, 138, 1.0),
                   ),
                   TextCustom(
-                    text: "${widget.list[index].qtdAtual}",
-                    fontSize: 16,
-                  ),
-                  TextCustom(
-                    text: " | ",
+                    text: "Nome do Responsavel: ",
                     fontSize: 18,
                   ),
-                  TextCustom(
-                    text: "Nivel Adicionado: ",
-                    fontSize: 16,
+                  SizedBox(
+                    height: 5,
                   ),
                   TextCustom(
-                    text: "${widget.list[index].qtdAdd}",
-                    fontSize: 16,
+                    text: "${widget.list[index].respon}",
+                    fontSize: 14,
                   ),
-                ],
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              Divider(
-                height: 10,
-                thickness: 1,
-                color: Color.fromRGBO(113, 111, 138, 1.0),
-              ),
-              TextCustom(
-                text: "Nome do Responsavel: ",
-                fontSize: 18,
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              TextCustom(
-                text: "${widget.list[index].respon}",
-                fontSize: 14,
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              TextCustom(
-                text: "Telefone: ",
-                fontSize: 18,
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              TextCustom(
-                text: "649292639452",
-                fontSize: 14,
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              TextCustom(
-                text: "E-mail: ",
-                fontSize: 18,
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              TextCustom(
-                text: "djoser@gmail.com",
-                fontSize: 14,
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              TextCustom(
-                text: "Data: ",
-                fontSize: 18,
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              TextCustom(
-                text:
-                    "${widget.list[index].data.day}/${widget.list[index].data.month}/${widget.list[index].data.year}",
-                fontSize: 14,
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Divider(
-                height: 10,
-                thickness: 1,
-                color: Color.fromRGBO(113, 111, 138, 1.0),
-              ),
-              TextCustom(
-                text: "Nome do Fornecedor: ",
-                fontSize: 18,
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              TextCustom(
-                text: "Diogo José da Silva Ribeiro",
-                fontSize: 14,
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              TextCustom(
-                text: "Telefone: ",
-                fontSize: 18,
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              TextCustom(
-                text: "649292639452",
-                fontSize: 14,
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              TextCustom(
-                text: "E-mail: ",
-                fontSize: 18,
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              TextCustom(
-                text: "djoser@gmail.com",
-                fontSize: 14,
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              TextCustom(
-                text: "Preço Litro: ",
-                fontSize: 18,
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              TextCustom(
-                text: "R\$${widget.list[index].preco}",
-                fontSize: 14,
-              ),
-              SizedBox(
-                height: 10,
-              ),
-            ]),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  TextCustom(
+                    text: "Telefone: ",
+                    fontSize: 18,
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  TextCustom(
+                    text: "649292639452",
+                    fontSize: 14,
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  TextCustom(
+                    text: "E-mail: ",
+                    fontSize: 18,
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  TextCustom(
+                    text: "djoser@gmail.com",
+                    fontSize: 14,
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  TextCustom(
+                    text: "Data: ",
+                    fontSize: 18,
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  TextCustom(
+                    text:
+                        "${widget.list[index].data.day}/${widget.list[index].data.month}/${widget.list[index].data.year}",
+                    fontSize: 14,
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Divider(
+                    height: 10,
+                    thickness: 1,
+                    color: Color.fromRGBO(113, 111, 138, 1.0),
+                  ),
+                  TextCustom(
+                    text: "Nome do Fornecedor: ",
+                    fontSize: 18,
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  TextCustom(
+                    text: "Diogo José da Silva Ribeiro",
+                    fontSize: 14,
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  TextCustom(
+                    text: "Telefone: ",
+                    fontSize: 18,
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  TextCustom(
+                    text: "649292639452",
+                    fontSize: 14,
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  TextCustom(
+                    text: "E-mail: ",
+                    fontSize: 18,
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  TextCustom(
+                    text: "djoser@gmail.com",
+                    fontSize: 14,
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  TextCustom(
+                    text: "Preço Litro: ",
+                    fontSize: 18,
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  TextCustom(
+                    text: "R\$${widget.list[index].preco}",
+                    fontSize: 14,
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                ]),
           ],
         );
       },

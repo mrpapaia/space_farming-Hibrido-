@@ -65,7 +65,7 @@ class NavigationDrawer extends StatelessWidget {
                               controller.user.fazenda.values.toList()[index]);
                         },
                       ),
-                      ListTile(
+                      /*   ListTile(
                         leading: Icon(
                           MyIcons.history,
                           color: Colors.red,
@@ -73,7 +73,7 @@ class NavigationDrawer extends StatelessWidget {
                         ),
                         title: Text("Hístorico"),
                         onTap: () {},
-                      ),
+                      ),*/
                       ListTile(
                         leading: Icon(
                           MyIcons.employee,

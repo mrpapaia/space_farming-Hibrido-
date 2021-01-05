@@ -68,8 +68,8 @@ mixin _$LoginController on _LoginControllerBase, Store {
   final _$loginAsyncAction = AsyncAction('_LoginControllerBase.login');
 
   @override
-  Future<UserCredential> login(FirebaseAuth auth) {
-    return _$loginAsyncAction.run(() => super.login(auth));
+  Future<UserCredential> login(FirebaseAuth auth, BuildContext ctx) {
+    return _$loginAsyncAction.run(() => super.login(auth, ctx));
   }
 
   final _$_LoginControllerBaseActionController =
@@ -109,11 +109,11 @@ mixin _$LoginController on _LoginControllerBase, Store {
   }
 
   @override
-  String valideteEmail(String email) {
+  String valideteEmail() {
     final _$actionInfo = _$_LoginControllerBaseActionController.startAction(
         name: '_LoginControllerBase.valideteEmail');
     try {
-      return super.valideteEmail(email);
+      return super.valideteEmail();
     } finally {
       _$_LoginControllerBaseActionController.endAction(_$actionInfo);
     }

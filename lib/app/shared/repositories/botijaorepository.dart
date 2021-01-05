@@ -51,8 +51,8 @@ class BotijaoRepository implements IRepositoryBotijao {
   @override
   Future<void> updateVol(Botijao obj) {
     return firestore
-        .doc("a" + "/botijoes/" + obj.idBot)
-        .update({'volAtual': obj.volAtual})
+        .doc(obj.ref.path)
+        .update({'volAtual': obj.volAtual.toString()})
         .then((value) => print("Volume atualizado"))
         .catchError((error) => print("Failed to delete botijao: $error"));
   }

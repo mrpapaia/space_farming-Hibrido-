@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -44,9 +45,9 @@ abstract class _AbastecerControllerBase with Store {
   @action
   getPreco(String preco) => this.preco = double.parse(preco);
   @action
-  update(String id, double vol, UserP user) {
+  update(DocumentReference ref, double vol, UserP user) {
     repositoryBotijao
-        .updateVol(new Botijao(idBot: id, volAtual: vol + volAtual));
+        .updateVol(new Botijao(ref: ref, volAtual: vol + volAtual));
     repositoryHist.add(new HistoricoAbastecimento(
         respon: user.nome,
         qtdAtual: vol,

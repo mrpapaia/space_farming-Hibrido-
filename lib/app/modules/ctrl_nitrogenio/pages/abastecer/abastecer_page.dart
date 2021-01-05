@@ -34,7 +34,6 @@ class _AbastecerPageState
       appBar: SecAppBar(
         preferredSize: Size.fromHeight(70.0),
       ),
-     
       backgroundColor: Color.fromRGBO(229, 231, 236, 1.0),
       body: SingleChildScrollView(
         child: Column(
@@ -48,32 +47,6 @@ class _AbastecerPageState
             SizedBox(
               height: 10,
             ),
-            /*
-            TitleOfScreen(
-              title: "Fornecedor",
-              font: "Robot",
-              fontSize: 32,
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            ContainerBase(componets: <Widget>[
-              EditText(
-                  hint: "Nome", icon: Icon(Icons.person, color: Colors.red)),
-              EditText(
-                  hint: "Telefone", icon: Icon(Icons.phone, color: Colors.red)),
-              EditText(
-                hint: "Endereço",
-                icon: Icon(Icons.attach_money, color: Colors.red),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-            ]),
-            SizedBox(
-              height: 10,
-            ),*/
-
             SizedBox(
               height: 10,
             ),
@@ -163,7 +136,7 @@ class _AbastecerPageState
                   ButtonCustom(
                     text: "Confirmar",
                     onclick: () {
-                      controller.update(widget.botijao.idBot,
+                      controller.update(widget.botijao.ref,
                           widget.botijao.volAtual, widget.user);
                       Navigator.pop(context);
                     },
