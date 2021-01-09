@@ -32,7 +32,7 @@ abstract class _HomeAddFarmControllerBase with Store {
     repositoryFarm
         .add(new Farm(nome: this.nomeFazenda, email: this.userP.email))
         .then((value) {
-      newUser.fazenda.putIfAbsent(this.nomeFazenda, () => value);
+      newUser.fazenda.putIfAbsent(value, () => this.nomeFazenda);
       repositoryUser.update(newUser);
     });
   }

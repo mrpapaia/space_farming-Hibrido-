@@ -7,8 +7,8 @@ part of 'historico_controller.dart';
 // **************************************************************************
 
 final $HistoricoController = BindInject(
-  (i) => HistoricoController(
-      i<IRepositoryHistoricoNivel>(), i<IRepositoryHistoricoAbastecimento>()),
+  (i) => HistoricoController(i<IRepositoryHistoricoNivel>(),
+      i<IRepositoryHistoricoAbastecimento>(), i<Botijao>()),
   singleton: true,
   lazy: true,
 );

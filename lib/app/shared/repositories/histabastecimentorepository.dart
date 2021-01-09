@@ -5,12 +5,12 @@ import 'package:space_farming_modular/app/shared/repositories/interfaces/ireposi
 class HistoricoAbastecimentoRepository
     implements IRepositoryHistoricoAbastecimento {
   FirebaseFirestore firestore;
-  DocumentReference doc;
-  HistoricoAbastecimentoRepository(this.firestore, this.doc);
+
+  HistoricoAbastecimentoRepository(this.firestore);
   @override
-  Future<void> add(HistoricoAbastecimento histNivel) {
+  Future<void> add(DocumentReference doc, HistoricoAbastecimento histNivel) {
     return firestore
-        .doc(this.doc.path)
+        .doc(doc.path)
         .collection("recarga")
         .add(histNivel.toMap())
         .then((value) => print("SUcesso"))
@@ -18,13 +18,14 @@ class HistoricoAbastecimentoRepository
   }
 
   @override
-  Stream<List<HistoricoAbastecimento>> list() {
+  Stream<List<HistoricoAbastecimento>> list(DocumentReference doc) {
     return firestore
-        .doc(this.doc.path)
+        .doc(doc.path)
         .collection("recarga")
         .snapshots()
         .map((query) {
       return query.docs.map((doc) {
+        print(HistoricoAbastecimento.fromDoc(doc));
         return HistoricoAbastecimento.fromDoc(doc);
       }).toList();
     });

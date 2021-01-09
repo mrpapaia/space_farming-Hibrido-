@@ -5,13 +5,13 @@ import 'package:space_farming_modular/app/shared/repositories/interfaces/ireposi
 
 class HistoricoNivelRepository implements IRepositoryHistoricoNivel {
   FirebaseFirestore firestore;
-  DocumentReference doc;
-  HistoricoNivelRepository(this.firestore, this.doc);
+
+  HistoricoNivelRepository(this.firestore);
 
   @override
-  Stream<List<HistoricoNivel>> list() {
+  Stream<List<HistoricoNivel>> list(DocumentReference doc) {
     return firestore
-        .doc(this.doc.path)
+        .doc(doc.path)
         .collection("existente")
         .snapshots()
         .map((query) {
@@ -22,9 +22,9 @@ class HistoricoNivelRepository implements IRepositoryHistoricoNivel {
   }
 
   @override
-  Future<void> add(HistoricoNivel histNivel) {
+  Future<void> add(DocumentReference doc, HistoricoNivel histNivel) {
     return firestore
-        .doc(this.doc.path)
+        .doc(doc.path)
         .collection("existente")
         .add(histNivel.toMap())
         .then((value) => print("SUcesso"))

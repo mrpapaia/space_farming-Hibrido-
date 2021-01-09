@@ -15,9 +15,11 @@ import 'historico_controller.dart';
 
 class HistoricoPage extends StatefulWidget {
   final String title;
-  DocumentReference doc;
-  Botijao bot;
-  HistoricoPage({Key key, this.title, this.doc, this.bot}) : super(key: key);
+
+  HistoricoPage({
+    Key key,
+    this.title,
+  }) : super(key: key);
 
   @override
   _HistoricoPageState createState() => _HistoricoPageState();
@@ -54,7 +56,7 @@ class _HistoricoPageState
                     }
                     return HistoricoNivelComponent(
                       list: controller.listHistNivel.data,
-                      botijao: widget.bot,
+                      botijao: controller.bot,
                     );
                   }),
                   Observer(builder: (BuildContext context) {
@@ -62,7 +64,7 @@ class _HistoricoPageState
                       if (controller.listHistAbastecimento.data != null) {
                         return HistoricoAbastecimentoComponent(
                           list: controller.listHistAbastecimento.data,
-                          botijao: widget.bot,
+                          botijao: controller.bot,
                         );
                       } else {
                         return CircularProgressIndicator();

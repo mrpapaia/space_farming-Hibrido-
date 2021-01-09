@@ -14,28 +14,31 @@ class CtrlRacksController = _CtrlRacksControllerBase with _$CtrlRacksController;
 
 abstract class _CtrlRacksControllerBase with Store {
   final IRepositoryRack repository;
-  @observable
-  ObservableStream<List<Rack>> listRacks;
+
   final Caneca caneca;
   final UserP user;
+  List<Rack> listRacks;
   @observable
-  ObservableStream<List<Rack>> listRack;
+  // ObservableStream<List<Rack>> listRacks;
   _CtrlRacksControllerBase(this.repository, this.caneca, this.user) {
-    getRacks();
+    listRacks = caneca.racks;
+    //getRacks();
   }
 
   @action
   getRacks() {
-    this.listRacks = repository.list(this.caneca.id).asObservable();
+    //this.listRacks = repository.list(this.caneca.id).asObservable();
   }
 
   @action
   remove(Rack rack) {
     repository.remove(rack.ref.path);
+    caneca.racks.remove(rack);
   }
 
   @action
   addRack(Rack rack) {
+    caneca.racks.add(rack);
     repository.add(rack);
   }
 }

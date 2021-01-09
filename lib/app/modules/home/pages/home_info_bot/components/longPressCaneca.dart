@@ -64,8 +64,6 @@ class _LongPressCanecaState extends State<LongPressCaneca> {
                               .estado = "enabled"
                           : widget.controller.botijao.canecas[widget.index]
                               .estado = "disabled";
-                      //widget.controller.botijao.canecas[widget.index].color =
-                      //  HexColor("#adadad");
                     });
                   },
                   items: items.map<DropdownMenuItem<String>>((String value) {
@@ -94,7 +92,12 @@ class _LongPressCanecaState extends State<LongPressCaneca> {
                   width: sizeConfig.dynamicScaleSize(size: 10),
                 ),
                 RaisedButton(
-                  color: widget.controller.botijao.canecas[widget.index].color,
+                  color: widget.controller.botijao.canecas[widget.index]
+                              .estado ==
+                          "disabled"
+                      ? widget.controller.botijao.canecas[widget.index].color =
+                          HexColor("#adadad")
+                      : widget.controller.botijao.canecas[widget.index].color,
                   onPressed: () {
                     showDialog(
                       context: context,
@@ -153,10 +156,8 @@ class _LongPressCanecaState extends State<LongPressCaneca> {
             style: TextStyle(color: Colors.black),
           ),
           onPressed: () {
-            /*  setState(() {
-              widget.controller.botijao.canecas[widget.index].color =
-                  widget.controller.botijao.canecas[widget.index].color;
-            });*/
+            widget.controller
+                .updateCaneca(widget.controller.botijao.canecas[widget.index]);
 
             Navigator.of(context).pop();
           },

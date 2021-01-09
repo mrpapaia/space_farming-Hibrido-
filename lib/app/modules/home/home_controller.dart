@@ -31,7 +31,7 @@ abstract class _HomeControllerBase with Store {
 
   _HomeControllerBase(this.repository, this.repositoryFarm,
       this.repositoryUserP, this.user, this.auth) {
-    getBot(user.fazenda.values.toList()[0]);
+    getBot(user.fazenda.keys.toList()[0]);
   }
 
   @action
@@ -47,7 +47,7 @@ abstract class _HomeControllerBase with Store {
   @action
   removeFarm(String id) {
     repositoryFarm.remove(id);
-    user.fazenda.removeWhere((key, value) => value == id);
+    user.fazenda.removeWhere((key, value) => key == id);
     repositoryUserP.update(this.user);
   }
 }

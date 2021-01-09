@@ -28,6 +28,11 @@ class _HomeInfoBotPageState
   Color currentColor = Colors.limeAccent;
 
   String toHex(Color color) => "#" + color.value.toRadixString(16).substring(2);
+  void startTimer() {
+    Future.delayed(const Duration(milliseconds: 10), () {
+      setState(() {});
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +41,7 @@ class _HomeInfoBotPageState
     double hBot = _height > 700 ? 0.07 : 0.08;
     double wBot = _height > 700 ? 0.155 : 0.15;
     final sizeConfig = SizeConfig(mediaQueryData: MediaQuery.of(context));
+    startTimer();
 
     return Scaffold(
       appBar: SecAppBar(
@@ -588,6 +594,52 @@ class _HomeInfoBotPageState
                     value: controller.botijao.volAtual,
                     min: 0,
                     max: 51,
+                    onChangeEnd: (value) {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Text('Alteração de nível'),
+                            content: Container(
+                              height: hBot,
+                              width: wBot,
+                            ),
+                            actions: <Widget>[
+                              FlatButton(
+                                child: Text(
+                                  "Abastecimento",
+                                  style: TextStyle(color: Colors.black),
+                                ),
+                                onPressed: () {
+                                  controller.abastecer();
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                              FlatButton(
+                                child: Text(
+                                  "Medição",
+                                  style: TextStyle(color: Colors.black),
+                                ),
+                                onPressed: () {
+                                  controller.medirNivel();
+
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                              FlatButton(
+                                child: Text(
+                                  "Cancelar",
+                                  style: TextStyle(color: Colors.black),
+                                ),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    },
                     onChanged: (value) {
                       setState(
                         () {

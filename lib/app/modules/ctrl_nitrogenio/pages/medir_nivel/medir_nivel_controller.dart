@@ -19,6 +19,8 @@ abstract class _MedirNivelControllerBase with Store {
   final IRepositoryHistoricoNivel repositoryHist;
   final IRepositoryBotijao repositoryBotijao;
   final txt = TextEditingController();
+  final UserP user;
+  final Botijao botijao;
   @observable
   double volAtual;
   @observable
@@ -26,6 +28,8 @@ abstract class _MedirNivelControllerBase with Store {
   _MedirNivelControllerBase(
     this.repositoryHist,
     this.repositoryBotijao,
+    this.botijao,
+    this.user,
   ) {
     txt.text = data.day.toString() +
         "/" +
@@ -39,9 +43,10 @@ abstract class _MedirNivelControllerBase with Store {
   @action
   getData(String data) => data = this.data.toString();
   @action
-  update(DocumentReference ref, UserP user) {
-    repositoryBotijao.updateVol(new Botijao(ref: ref, volAtual: volAtual));
-    repositoryHist.add(
+  update() {
+    repositoryBotijao
+        .updateVol(new Botijao(ref: botijao.ref, volAtual: volAtual));
+    repositoryHist.add(botijao.ref,
         new HistoricoNivel(respon: user.nome, qtdAtual: volAtual, data: data));
   }
 }

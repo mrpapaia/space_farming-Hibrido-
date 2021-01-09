@@ -47,18 +47,24 @@ class _CtrlRacksPageState
           ),
           Observer(builder: (BuildContext context) {
             try {
-              if (controller.listRack.data != null) {
+              if (controller.listRacks != null) {
                 return Container(
-                    height: MediaQuery.of(context).size.height * 0.7,
-                    child: GridViewRacks(
-                      listRack: controller.listRacks.data,
-                      controller: controller,
-                    ));
+                  height: MediaQuery.of(context).size.height * 0.7,
+                  child: GridViewRacks(
+                    listRack: controller.listRacks,
+                    controller: controller,
+                  ),
+                );
               } else {
                 return Text("asd");
               }
             } catch (NoSuchMethodError) {
-              return CircularProgressIndicator();
+              return Column(
+                children: [
+                  Text("qq"),
+                  CircularProgressIndicator(),
+                ],
+              );
             }
           }),
         ],

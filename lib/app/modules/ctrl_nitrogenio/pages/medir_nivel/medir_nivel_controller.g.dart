@@ -7,8 +7,8 @@ part of 'medir_nivel_controller.dart';
 // **************************************************************************
 
 final $MedirNivelController = BindInject(
-  (i) => MedirNivelController(
-      i<IRepositoryHistoricoNivel>(), i<IRepositoryBotijao>()),
+  (i) => MedirNivelController(i<IRepositoryHistoricoNivel>(),
+      i<IRepositoryBotijao>(), i<Botijao>(), i<UserP>()),
   singleton: true,
   lazy: true,
 );
@@ -76,11 +76,11 @@ mixin _$MedirNivelController on _MedirNivelControllerBase, Store {
   }
 
   @override
-  dynamic update(DocumentReference ref, UserP user) {
+  dynamic update() {
     final _$actionInfo = _$_MedirNivelControllerBaseActionController
         .startAction(name: '_MedirNivelControllerBase.update');
     try {
-      return super.update(ref, user);
+      return super.update();
     } finally {
       _$_MedirNivelControllerBaseActionController.endAction(_$actionInfo);
     }

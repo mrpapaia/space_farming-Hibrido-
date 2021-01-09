@@ -7,8 +7,8 @@ part of 'abastecer_controller.dart';
 // **************************************************************************
 
 final $AbastecerController = BindInject(
-  (i) => AbastecerController(
-      i<IRepositoryHistoricoAbastecimento>(), i<IRepositoryBotijao>()),
+  (i) => AbastecerController(i<IRepositoryHistoricoAbastecimento>(),
+      i<IRepositoryBotijao>(), i<Botijao>(), i<UserP>()),
   singleton: true,
   lazy: true,
 );
@@ -102,11 +102,11 @@ mixin _$AbastecerController on _AbastecerControllerBase, Store {
   }
 
   @override
-  dynamic update(DocumentReference ref, double vol, UserP user) {
+  dynamic update() {
     final _$actionInfo = _$_AbastecerControllerBaseActionController.startAction(
         name: '_AbastecerControllerBase.update');
     try {
-      return super.update(ref, vol, user);
+      return super.update();
     } finally {
       _$_AbastecerControllerBaseActionController.endAction(_$actionInfo);
     }

@@ -16,6 +16,7 @@ abstract class _HistoricoControllerBase with Store {
   final IRepositoryHistoricoNivel repositoryHistNivel;
   final IRepositoryHistoricoAbastecimento repositoryHistAbastecimento;
 
+  final Botijao bot;
   @observable
   ObservableStream<List<HistoricoNivel>> listHistNivel;
 
@@ -23,18 +24,19 @@ abstract class _HistoricoControllerBase with Store {
   ObservableStream<List<HistoricoAbastecimento>> listHistAbastecimento;
 
   _HistoricoControllerBase(
-      this.repositoryHistNivel, this.repositoryHistAbastecimento) {
+      this.repositoryHistNivel, this.repositoryHistAbastecimento, this.bot) {
     getHistoricoAbastecimento();
     getHistoricoNivel();
   }
 
   @action
   getHistoricoNivel() {
-    listHistNivel = repositoryHistNivel.list().asObservable();
+    listHistNivel = repositoryHistNivel.list(bot.ref).asObservable();
   }
 
   @action
   getHistoricoAbastecimento() {
-    listHistAbastecimento = repositoryHistAbastecimento.list().asObservable();
+    listHistAbastecimento =
+        repositoryHistAbastecimento.list(bot.ref).asObservable();
   }
 }

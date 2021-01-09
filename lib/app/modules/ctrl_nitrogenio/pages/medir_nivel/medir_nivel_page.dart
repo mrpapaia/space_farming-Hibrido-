@@ -13,10 +13,10 @@ import 'medir_nivel_controller.dart';
 
 class MedirNivelPage extends StatefulWidget {
   final String title;
-  MedirNivelPage({Key key, this.title = "MedirNivel", this.user, this.botijao})
-      : super(key: key);
-  UserP user;
-  Botijao botijao;
+  MedirNivelPage({
+    Key key,
+    this.title = "MedirNivel",
+  }) : super(key: key);
 
   @override
   _MedirNivelPageState createState() => _MedirNivelPageState();
@@ -117,7 +117,7 @@ class _MedirNivelPageState
                   ButtonCustom(
                     text: "Confirmar",
                     onclick: () {
-                      controller.update(widget.botijao.ref, widget.user);
+                      controller.update();
                       Navigator.pop(context);
                     },
                     width: _width * 0.5,

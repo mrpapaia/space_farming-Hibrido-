@@ -13,10 +13,11 @@ import 'abastecer_controller.dart';
 
 class AbastecerPage extends StatefulWidget {
   final String title;
-  AbastecerPage({Key key, this.title = "Abastecer", this.user, this.botijao})
-      : super(key: key);
-  UserP user;
-  Botijao botijao;
+  AbastecerPage({
+    Key key,
+    this.title = "Abastecer",
+  }) : super(key: key);
+
   @override
   _AbastecerPageState createState() => _AbastecerPageState();
 }
@@ -136,8 +137,7 @@ class _AbastecerPageState
                   ButtonCustom(
                     text: "Confirmar",
                     onclick: () {
-                      controller.update(widget.botijao.ref,
-                          widget.botijao.volAtual, widget.user);
+                      controller.update();
                       Navigator.pop(context);
                     },
                     width: _width * 0.5,

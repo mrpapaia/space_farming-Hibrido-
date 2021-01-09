@@ -8,11 +8,17 @@ import 'package:space_farming_modular/app/modules/home/pages/home_info_bot/home_
 import 'package:space_farming_modular/app/modules/home/pages/home_info_bot/home_info_bot_page.dart';
 
 import 'package:space_farming_modular/app/shared/repositories/botijaorepository.dart';
+import 'package:space_farming_modular/app/shared/repositories/canecasrepository.dart';
 
 import 'package:space_farming_modular/app/shared/repositories/farmrepository.dart';
+import 'package:space_farming_modular/app/shared/repositories/histabastecimentorepository.dart';
+import 'package:space_farming_modular/app/shared/repositories/histnivelrepository.dart';
 import 'package:space_farming_modular/app/shared/repositories/interfaces/irepositorybotijao.dart';
+import 'package:space_farming_modular/app/shared/repositories/interfaces/irepositorycanecas.dart';
 
 import 'package:space_farming_modular/app/shared/repositories/interfaces/irepositoryfarm.dart';
+import 'package:space_farming_modular/app/shared/repositories/interfaces/irepositoryhistabastecimento.dart';
+import 'package:space_farming_modular/app/shared/repositories/interfaces/irepositoryhistnivel.dart';
 import 'package:space_farming_modular/app/shared/repositories/interfaces/irepositoryuser.dart';
 import 'package:space_farming_modular/app/shared/repositories/userrepository.dart';
 
@@ -31,7 +37,12 @@ class HomeModule extends ChildModule {
       ),
       Bind(
         (i) => HomeInfoBotController(
-            user: i.args.data[0], botijao: i.args.data[1]),
+            repositoryBotijao: i.get(),
+            repositoryHistoricoAbastecimento: i.get(),
+            repositoryHistoricoNivel: i.get(),
+            repositoryCanecas: i.get(),
+            user: i.args.data[0],
+            botijao: i.args.data[1]),
       ),
       Bind(
         (i) => HomeAddFarmController(i.get(), i.get(), i.args.data[0]),
@@ -44,6 +55,15 @@ class HomeModule extends ChildModule {
       ),
       Bind<IRepositoryFarm>(
         (i) => FarmRepository(FirebaseFirestore.instance),
+      ),
+      Bind<IRepositoryCanecas>(
+        (i) => CanecasRepository(FirebaseFirestore.instance),
+      ),
+      Bind<IRepositoryHistoricoAbastecimento>(
+        (i) => HistoricoAbastecimentoRepository(FirebaseFirestore.instance),
+      ),
+      Bind<IRepositoryHistoricoNivel>(
+        (i) => HistoricoNivelRepository(FirebaseFirestore.instance),
       ),
       Bind(
         (i) => HomeBotCreateController(

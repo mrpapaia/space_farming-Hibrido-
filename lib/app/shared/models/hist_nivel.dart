@@ -36,7 +36,7 @@ class HistoricoNivel {
     return HistoricoNivel(
       respon: doc.data()['respon'],
       qtdAtual: doc.data()['qtdAtual'],
-      data: doc.data()['data'].toDate(),
+      // data: doc.data()['data'].toDate(),
     );
   }
 

@@ -21,18 +21,18 @@ class CtrlNitrogenioModule extends ChildModule {
   @override
   List<Bind> get binds {
     return [
-      Bind((i) => MedirNivelController(i.get(), i.get())),
-      Bind((i) => AbastecerController(i.get(), i.get())),
-      Bind((i) => HistoricoController(i.get(), i.get())),
+      Bind((i) => MedirNivelController(
+          i.get(), i.get(), i.args.data[0], i.args.data[1])),
+      Bind((i) => AbastecerController(
+          i.get(), i.get(), i.args.data[0], i.args.data[1])),
+      Bind((i) => HistoricoController(i.get(), i.get(), i.args.data[0])),
       Bind<IRepositoryBotijao>(
           (i) => BotijaoRepository(FirebaseFirestore.instance)),
       Bind<IRepositoryHistoricoNivel>(
-        (i) => HistoricoNivelRepository(
-            FirebaseFirestore.instance, i.args.data[0].ref),
+        (i) => HistoricoNivelRepository(FirebaseFirestore.instance),
       ),
       Bind<IRepositoryHistoricoAbastecimento>(
-        (i) => HistoricoAbastecimentoRepository(
-            FirebaseFirestore.instance, i.args.data[0].ref),
+        (i) => HistoricoAbastecimentoRepository(FirebaseFirestore.instance),
       ),
       $CtrlNitrogenioController,
     ];
@@ -45,25 +45,14 @@ class CtrlNitrogenioModule extends ChildModule {
                   botijao: args.data[0],
                   user: args.data[1],
                 )),
-        ModularRouter("/medirNivel",
-            child: (_, args) => MedirNivelPage(
-                  botijao: args.data[0],
-                  user: args.data[1],
-                )),
-        ModularRouter("/abastecer",
-            child: (_, args) => AbastecerPage(
-                  botijao: args.data[0],
-                  user: args.data[1],
-                )),
+        ModularRouter("/medirNivel", child: (_, args) => MedirNivelPage()),
+        ModularRouter("/abastecer", child: (_, args) => AbastecerPage()),
         ModularRouter("/historico",
             child: (
               _,
               args,
             ) =>
-                HistoricoPage(
-                  doc: args.data[0].ref,
-                  bot: args.data[0],
-                )),
+                HistoricoPage()),
       ];
 
   static Inject get to => Inject<CtrlNitrogenioModule>.of();

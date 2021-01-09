@@ -107,7 +107,7 @@ class _CtrlNitrogenioPageState
                 text: "Hístorico",
                 onclick: () {
                   Modular.to.pushNamed('/ctrl/historico',
-                      arguments: [widget.botijao, null]);
+                      arguments: [widget.botijao]);
                 },
                 width: _width * 0.9,
               ),

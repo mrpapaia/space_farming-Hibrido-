@@ -38,8 +38,8 @@ class CanecasRepository implements IRepositoryCanecas {
   }
 
   @override
-  Future<bool> update(Caneca obj) {
-    // TODO: implement update
-    throw UnimplementedError();
+  Future<bool> update(Caneca caneca) {
+    print(caneca);
+    caneca.id.update(caneca.toMap());
   }
 }

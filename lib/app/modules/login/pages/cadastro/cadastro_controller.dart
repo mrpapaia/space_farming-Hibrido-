@@ -55,7 +55,7 @@ abstract class _CadastroControllerBase with Store {
                 nome: this.nome,
                 cpf: this.cpf,
                 email: this.email,
-                fazenda: {this.nomeFazenda: value},
+                fazenda: {value: this.nomeFazenda},
                 tel: this.telefone)));
         return true;
       }

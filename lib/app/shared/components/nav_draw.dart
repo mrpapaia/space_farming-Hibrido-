@@ -44,7 +44,7 @@ class NavigationDrawer extends StatelessWidget {
                 children:
                     List.generate(controller.user.fazenda.length, (index) {
                   return ExpansionTile(
-                    title: Text(controller.user.fazenda.keys.toList()[index]),
+                    title: Text(controller.user.fazenda.values.toList()[index]),
                     leading: Icon(
                       MyIcons.farm,
                       color: Colors.red,
@@ -59,10 +59,10 @@ class NavigationDrawer extends StatelessWidget {
                         ),
                         title: Text("Botijões"),
                         onTap: () {
-                          path = controller.user.fazenda.values.toList()[index];
+                          path = controller.user.fazenda.keys.toList()[index];
 
                           controller.getBot(
-                              controller.user.fazenda.values.toList()[index]);
+                              controller.user.fazenda.keys.toList()[index]);
                         },
                       ),
                       /*   ListTile(
@@ -83,8 +83,8 @@ class NavigationDrawer extends StatelessWidget {
                         title: Text("Colaboradores"),
                         onTap: () {
                           Modular.to.pushNamed('/colab', arguments: [
-                            controller.user.fazenda.keys.toList()[index],
-                            controller.user.fazenda.values.toList()[index]
+                            controller.user.fazenda.values.toList()[index],
+                            controller.user.fazenda.keys.toList()[index]
                           ]);
                         },
                       ),
@@ -97,7 +97,7 @@ class NavigationDrawer extends StatelessWidget {
                         title: Text("Excluir"),
                         onTap: () {
                           controller.removeFarm(
-                              controller.user.fazenda.values.toList()[index]);
+                              controller.user.fazenda.keys.toList()[index]);
                         },
                       ),
                     ],

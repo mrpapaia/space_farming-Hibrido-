@@ -34,10 +34,10 @@ class HistoricoAbastecimento {
 
   Map<String, dynamic> toMap() {
     return {
-      'respon': respon,
-      'qtdAnt': qtdAtual,
-      'qtdAdd': qtdAdd,
-      'preco': preco,
+      'respon': respon.toString(),
+      'qtdAnt': qtdAtual.toString(),
+      'qtdAdd': qtdAdd.toString(),
+      'preco': preco.toString(),
       'data': Timestamp.fromDate(data),
     };
   }
@@ -45,9 +45,9 @@ class HistoricoAbastecimento {
   factory HistoricoAbastecimento.fromDoc(DocumentSnapshot doc) {
     return HistoricoAbastecimento(
       respon: doc.data()['respon'],
-      qtdAtual: doc.data()['qtdAnt'],
-      qtdAdd: doc.data()['qtdAdd'],
-      preco: doc.data()['preco'],
+      qtdAtual: double.parse(doc.data()['qtdAnt']),
+      qtdAdd: double.parse(doc.data()['qtdAdd']),
+      preco: double.parse(doc.data()['preco']),
       data: doc.data()['data'].toDate(),
     );
   }

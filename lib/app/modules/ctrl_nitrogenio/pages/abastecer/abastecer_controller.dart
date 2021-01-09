@@ -17,6 +17,9 @@ abstract class _AbastecerControllerBase with Store {
   final IRepositoryHistoricoAbastecimento repositoryHist;
   final IRepositoryBotijao repositoryBotijao;
   final txt = TextEditingController();
+
+  final Botijao botijao;
+  final UserP user;
   @observable
   double volAtual;
 
@@ -29,6 +32,8 @@ abstract class _AbastecerControllerBase with Store {
   _AbastecerControllerBase(
     this.repositoryHist,
     this.repositoryBotijao,
+    this.botijao,
+    this.user,
   ) {
     txt.text = data.day.toString() +
         "/" +
@@ -45,14 +50,16 @@ abstract class _AbastecerControllerBase with Store {
   @action
   getPreco(String preco) => this.preco = double.parse(preco);
   @action
-  update(DocumentReference ref, double vol, UserP user) {
-    repositoryBotijao
-        .updateVol(new Botijao(ref: ref, volAtual: vol + volAtual));
-    repositoryHist.add(new HistoricoAbastecimento(
-        respon: user.nome,
-        qtdAtual: vol,
-        qtdAdd: volAtual,
-        data: data,
-        preco: preco));
+  update() {
+    repositoryBotijao.updateVol(
+        new Botijao(ref: botijao.ref, volAtual: botijao.volAtual + volAtual));
+    repositoryHist.add(
+        botijao.ref,
+        new HistoricoAbastecimento(
+            respon: user.nome,
+            qtdAtual: botijao.volAtual,
+            qtdAdd: volAtual,
+            data: data,
+            preco: preco));
   }
 }
