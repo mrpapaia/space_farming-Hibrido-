@@ -54,7 +54,7 @@ class _GridViewRacksState extends State<GridViewRacks> {
                         "${widget.listRack[index].idTouro}",
                         style: TextStyle(
                             fontFamily: 'Revalia',
-                            fontSize: 14,
+                            fontSize: sizeConfig.dynamicScaleSize(size: 14),
                             color: Colors.white),
                       ),
                     ),
@@ -72,7 +72,9 @@ class _GridViewRacksState extends State<GridViewRacks> {
                     children: [
                       Text(
                         "${widget.listRack[index].doseUp}",
-                        style: TextStyle(fontSize: 20, fontFamily: 'Revalia'),
+                        style: TextStyle(
+                            fontSize: sizeConfig.dynamicScaleSize(size: 20),
+                            fontFamily: 'Revalia'),
                       ),
                       Icon(
                         Icons.arrow_upward,
@@ -94,8 +96,9 @@ class _GridViewRacksState extends State<GridViewRacks> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text("${widget.listRack[index].doseDown}",
-                          style:
-                              TextStyle(fontSize: 20, fontFamily: 'Revalia')),
+                          style: TextStyle(
+                              fontSize: sizeConfig.dynamicScaleSize(size: 20),
+                              fontFamily: 'Revalia')),
                       Icon(
                         Icons.arrow_downward,
                         color: Colors.red,
@@ -107,18 +110,18 @@ class _GridViewRacksState extends State<GridViewRacks> {
                   ),
                   Container(
                     margin: EdgeInsets.only(top: 5.0),
-                    padding: EdgeInsets.all(2.5),
+                    padding: EdgeInsets.all(3),
                     child: Center(
                       child: Text(
                         "${widget.listRack[index].tipo}",
                         style: TextStyle(
                             fontFamily: 'Revalia',
-                            fontSize: 14,
+                            fontSize: sizeConfig.dynamicScaleSize(size: 14),
                             color: Colors.white),
                       ),
                     ),
-                    width: 150,
-                    height: 20,
+                    width: sizeConfig.dynamicScaleSize(size: 150),
+                    height: sizeConfig.dynamicScaleSize(size: 22),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(7),
                       color: Colors.red,
@@ -155,213 +158,220 @@ class _GridViewRacksState extends State<GridViewRacks> {
                     return AlertDialog(
                       backgroundColor: Color.fromRGBO(229, 231, 236, 1.0),
                       contentPadding: EdgeInsets.zero,
+
                       elevation: 0.0,
                       //title: Center(child: Text("Botijao")),
-                      content: Column(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Container(
-                            width: sizeConfig.dynamicScaleSize(size: 400),
-                            padding: EdgeInsets.all(8.0),
-                            decoration: BoxDecoration(
-                              color: Color.fromRGBO(229, 231, 236, 1.0),
-                              borderRadius: const BorderRadius.all(
-                                Radius.circular(10.0),
-                              ),
-                            ),
-                            child: Column(
-                              children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Icon(Icons.info, color: Colors.grey[700]),
-                                    SizedBox(
-                                      width:
-                                          sizeConfig.dynamicScaleSize(size: 25),
-                                    ),
-                                    Text(
-                                      "Informações do Rack",
-                                      style: TextStyle(
-                                          fontFamily: 'Revalia',
-                                          fontSize: sizeConfig.dynamicScaleSize(
-                                              size: 13),
-                                          color: Colors.grey[700]),
-                                    ),
-                                  ],
-                                ),
-                                Divider(),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    SizedBox(
-                                      width:
-                                          sizeConfig.dynamicScaleSize(size: 50),
-                                    ),
-                                    Text("Touro"),
-                                    SizedBox(
-                                      width: sizeConfig.dynamicScaleSize(
-                                          size: 135),
-                                    ),
-                                    Text("${widget.listRack[index].idTouro}"),
-                                  ],
-                                ),
-                                Divider(),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    SizedBox(
-                                      width:
-                                          sizeConfig.dynamicScaleSize(size: 50),
-                                    ),
-                                    Text("Total"),
-                                    SizedBox(
-                                      width: sizeConfig.dynamicScaleSize(
-                                          size: 150),
-                                    ),
-                                    Text("${total}"),
-                                  ],
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    SizedBox(
-                                      width:
-                                          sizeConfig.dynamicScaleSize(size: 50),
-                                    ),
-                                    Text("Convencional"),
-                                    SizedBox(
-                                      width:
-                                          sizeConfig.dynamicScaleSize(size: 90),
-                                    ),
-                                    Text("${totalConvencianado}"),
-                                  ],
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    SizedBox(
-                                      width:
-                                          sizeConfig.dynamicScaleSize(size: 50),
-                                    ),
-                                    Text("Sexado"),
-                                    SizedBox(
-                                      width: sizeConfig.dynamicScaleSize(
-                                          size: 135),
-                                    ),
-                                    Text("${totalSexado}"),
-                                  ],
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    SizedBox(
-                                      width:
-                                          sizeConfig.dynamicScaleSize(size: 50),
-                                    ),
-                                    Text("Embrião"),
-                                    SizedBox(
-                                      width: sizeConfig.dynamicScaleSize(
-                                          size: 135),
-                                    ),
-                                    Text("${totalEmbriao}"),
-                                  ],
-                                ),
-                                Divider(),
-                                InkWell(
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      SizedBox(
-                                        width: sizeConfig.dynamicScaleSize(
-                                            size: 70),
-                                      ),
-                                      Icon(Icons.edit, color: Colors.green),
-                                      SizedBox(
-                                        width: sizeConfig.dynamicScaleSize(
-                                            size: 25),
-                                      ),
-                                      Text(
-                                        "Editar",
-                                        style: TextStyle(
-                                            fontFamily: 'Revalia',
-                                            fontSize: sizeConfig
-                                                .dynamicScaleSize(size: 13),
-                                            color: Colors.green),
-                                      ),
-                                    ],
-                                  ),
-                                  onTap: () {
-                                    Modular.to.pushNamed('/rack/add',
-                                        arguments: [widget.listRack[index]]);
-                                    //Modular.to.pop();
-                                  },
-                                ),
-                                Divider(),
-                                InkWell(
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      SizedBox(
-                                        width: sizeConfig.dynamicScaleSize(
-                                            size: 70),
-                                      ),
-                                      Icon(Icons.delete_forever,
-                                          color: Colors.red),
-                                      SizedBox(
-                                        width: sizeConfig.dynamicScaleSize(
-                                            size: 25),
-                                      ),
-                                      Text(
-                                        "Excluir",
-                                        style: TextStyle(
-                                            fontFamily: 'Revalia',
-                                            fontSize: sizeConfig
-                                                .dynamicScaleSize(size: 13),
-                                            color: Colors.red),
-                                      ),
-                                    ],
-                                  ),
-                                  onTap: () {
-                                    Modular.to.pop();
-                                    widget.listRack.remove(index);
-                                    widget.controller
-                                        .remove(widget.listRack[index]);
-                                  },
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          InkWell(
-                            child: Container(
+                      content: Container(
+                        height: sizeConfig.dynamicScaleSize(size: 300),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Container(
+                              width: sizeConfig.dynamicScaleSize(size: 400),
                               padding: EdgeInsets.all(8.0),
                               decoration: BoxDecoration(
-                                  color: Color.fromRGBO(229, 231, 236, 1.0),
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10.0))),
-                              child: Center(
-                                  child: Text(
-                                "Cancelar",
-                                style: TextStyle(
-                                    fontFamily: 'Revalia',
-                                    fontWeight: FontWeight.bold,
-                                    fontSize:
-                                        sizeConfig.dynamicScaleSize(size: 13),
-                                    color: Colors.black),
-                              )),
+                                color: Color.fromRGBO(229, 231, 236, 1.0),
+                                borderRadius: const BorderRadius.all(
+                                  Radius.circular(10.0),
+                                ),
+                              ),
+                              child: Column(
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Icon(Icons.info, color: Colors.grey[700]),
+                                      SizedBox(
+                                        width: sizeConfig.dynamicScaleSize(
+                                            size: 25),
+                                      ),
+                                      Text(
+                                        "Informações da dose",
+                                        style: TextStyle(
+                                            fontFamily: 'Revalia',
+                                            fontSize: sizeConfig
+                                                .dynamicScaleSize(size: 13),
+                                            color: Colors.grey[700]),
+                                      ),
+                                    ],
+                                  ),
+                                  Divider(),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      SizedBox(
+                                        width: sizeConfig.dynamicScaleSize(
+                                            size: 50),
+                                      ),
+                                      Text("Touro"),
+                                      SizedBox(
+                                        width: sizeConfig.dynamicScaleSize(
+                                            size: 135),
+                                      ),
+                                      Text("${widget.listRack[index].idTouro}"),
+                                    ],
+                                  ),
+                                  Divider(),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      SizedBox(
+                                        width: sizeConfig.dynamicScaleSize(
+                                            size: 50),
+                                      ),
+                                      Text("Total"),
+                                      SizedBox(
+                                        width: sizeConfig.dynamicScaleSize(
+                                            size: 150),
+                                      ),
+                                      Text("${total}"),
+                                    ],
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      SizedBox(
+                                        width: sizeConfig.dynamicScaleSize(
+                                            size: 50),
+                                      ),
+                                      Text("Convencional"),
+                                      SizedBox(
+                                        width: sizeConfig.dynamicScaleSize(
+                                            size: 90),
+                                      ),
+                                      Text("${totalConvencianado}"),
+                                    ],
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      SizedBox(
+                                        width: sizeConfig.dynamicScaleSize(
+                                            size: 50),
+                                      ),
+                                      Text("Sexado"),
+                                      SizedBox(
+                                        width: sizeConfig.dynamicScaleSize(
+                                            size: 135),
+                                      ),
+                                      Text("${totalSexado}"),
+                                    ],
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      SizedBox(
+                                        width: sizeConfig.dynamicScaleSize(
+                                            size: 50),
+                                      ),
+                                      Text("Embrião"),
+                                      SizedBox(
+                                        width: sizeConfig.dynamicScaleSize(
+                                            size: 135),
+                                      ),
+                                      Text("${totalEmbriao}"),
+                                    ],
+                                  ),
+                                  Divider(),
+                                  InkWell(
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        SizedBox(
+                                          width: sizeConfig.dynamicScaleSize(
+                                              size: 70),
+                                        ),
+                                        Icon(Icons.edit, color: Colors.green),
+                                        SizedBox(
+                                          width: sizeConfig.dynamicScaleSize(
+                                              size: 25),
+                                        ),
+                                        Text(
+                                          "Editar",
+                                          style: TextStyle(
+                                              fontFamily: 'Revalia',
+                                              fontSize: sizeConfig
+                                                  .dynamicScaleSize(size: 13),
+                                              color: Colors.green),
+                                        ),
+                                      ],
+                                    ),
+                                    onTap: () {
+                                      Modular.to.pushNamed('/rack/addRack',
+                                          arguments: [widget.listRack[index]]);
+                                      //Modular.to.pop();
+                                    },
+                                  ),
+                                  Divider(),
+                                  InkWell(
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        SizedBox(
+                                          width: sizeConfig.dynamicScaleSize(
+                                              size: 70),
+                                        ),
+                                        Icon(Icons.delete_forever,
+                                            color: Colors.red),
+                                        SizedBox(
+                                          width: sizeConfig.dynamicScaleSize(
+                                              size: 25),
+                                        ),
+                                        Text(
+                                          "Excluir",
+                                          style: TextStyle(
+                                              fontFamily: 'Revalia',
+                                              fontSize: sizeConfig
+                                                  .dynamicScaleSize(size: 13),
+                                              color: Colors.red),
+                                        ),
+                                      ],
+                                    ),
+                                    onTap: () {
+                                      Modular.to.pop();
+                                      widget.listRack.remove(index);
+                                      widget.controller
+                                          .remove(widget.listRack[index]);
+                                    },
+                                  ),
+                                ],
+                              ),
                             ),
-                            onTap: () {
-                              Modular.to.pop();
-                            },
-                          ),
-                        ],
+                            SizedBox(
+                              height: 10,
+                            ),
+                            InkWell(
+                              child: Container(
+                                padding: EdgeInsets.all(8.0),
+                                decoration: BoxDecoration(
+                                    color: Color.fromRGBO(229, 231, 236, 1.0),
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(10.0))),
+                                child: Center(
+                                    child: Text(
+                                  "Cancelar",
+                                  style: TextStyle(
+                                      fontFamily: 'Revalia',
+                                      fontWeight: FontWeight.bold,
+                                      fontSize:
+                                          sizeConfig.dynamicScaleSize(size: 13),
+                                      color: Colors.black),
+                                )),
+                              ),
+                              onTap: () {
+                                Modular.to.pop();
+                              },
+                            ),
+                          ],
+                        ),
                       ),
                     );
                   });

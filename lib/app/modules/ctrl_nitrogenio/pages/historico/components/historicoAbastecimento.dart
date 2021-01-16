@@ -61,7 +61,8 @@ class _HistoricoAbastecimentoComponentState
                         fontSize: 16,
                       ),
                       TextCustom(
-                        text: "${widget.list[index].qtdAtual}",
+                        text:
+                            "${widget.list[index].qtdAtual.toStringAsFixed(2)}",
                         fontSize: 16,
                       ),
                       TextCustom(
@@ -73,7 +74,7 @@ class _HistoricoAbastecimentoComponentState
                         fontSize: 16,
                       ),
                       TextCustom(
-                        text: "${widget.list[index].qtdAdd}",
+                        text: "${widget.list[index].qtdAdd.toStringAsFixed(2)}",
                         fontSize: 16,
                       ),
                     ],
@@ -101,34 +102,6 @@ class _HistoricoAbastecimentoComponentState
                     height: 5,
                   ),
                   TextCustom(
-                    text: "Telefone: ",
-                    fontSize: 18,
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  TextCustom(
-                    text: "649292639452",
-                    fontSize: 14,
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  TextCustom(
-                    text: "E-mail: ",
-                    fontSize: 18,
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  TextCustom(
-                    text: "djoser@gmail.com",
-                    fontSize: 14,
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  TextCustom(
                     text: "Data: ",
                     fontSize: 18,
                   ),
@@ -147,45 +120,6 @@ class _HistoricoAbastecimentoComponentState
                     height: 10,
                     thickness: 1,
                     color: Color.fromRGBO(113, 111, 138, 1.0),
-                  ),
-                  TextCustom(
-                    text: "Nome do Fornecedor: ",
-                    fontSize: 18,
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  TextCustom(
-                    text: "Diogo José da Silva Ribeiro",
-                    fontSize: 14,
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  TextCustom(
-                    text: "Telefone: ",
-                    fontSize: 18,
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  TextCustom(
-                    text: "649292639452",
-                    fontSize: 14,
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  TextCustom(
-                    text: "E-mail: ",
-                    fontSize: 18,
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  TextCustom(
-                    text: "djoser@gmail.com",
-                    fontSize: 14,
                   ),
                   SizedBox(
                     height: 5,

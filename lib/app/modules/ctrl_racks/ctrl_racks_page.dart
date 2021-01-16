@@ -5,6 +5,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:space_farming_modular/app/modules/ctrl_racks/components/gridviewracks.dart';
 import 'package:space_farming_modular/app/modules/home/components/secondaryAppBar.dart';
+import 'package:space_farming_modular/app/shared/components/sizeConfig.dart';
 
 import 'package:space_farming_modular/app/shared/components/titleOfScreen.dart';
 import 'package:space_farming_modular/app/shared/models/rack.dart';
@@ -30,7 +31,7 @@ class _CtrlRacksPageState
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
-
+    final sizeConfig = SizeConfig(mediaQueryData: MediaQuery.of(context));
     return Scaffold(
       // resizeToAvoidBottomInset: false,
       backgroundColor: Color.fromRGBO(229, 231, 236, 1.0),
@@ -43,25 +44,30 @@ class _CtrlRacksPageState
           TitleOfScreen(
             title: "Lista de Racks",
             font: "Revalia",
-            fontSize: 24,
+            fontSize: sizeConfig.dynamicScaleSize(size: 24),
           ),
           Observer(builder: (BuildContext context) {
             try {
-              if (controller.listRacks != null) {
+              if (controller.listRacks.data != null) {
                 return Container(
-                  height: MediaQuery.of(context).size.height * 0.7,
+                  height: sizeConfig.dynamicScaleSize(size: _height - 134),
                   child: GridViewRacks(
-                    listRack: controller.listRacks,
+                    listRack: controller.listRacks.data,
                     controller: controller,
                   ),
                 );
               } else {
-                return Text("asd");
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CircularProgressIndicator(),
+                  ],
+                );
               }
             } catch (NoSuchMethodError) {
               return Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("qq"),
                   CircularProgressIndicator(),
                 ],
               );

@@ -672,10 +672,42 @@ class _GridViewListState extends State<GridViewList> {
                                   ],
                                 ),
                                 onTap: () {
-                                  Modular.to.pop();
-                                  widget.controller.remove(
-                                      widget.listBotijao[index].ref.path);
-                                  widget.listBotijao.remove(index);
+                                  showDialog(
+                                      context: context,
+                                      builder: (BuildContext context) {
+                                        return AlertDialog(
+                                          content: Text(
+                                              "CUIDADO!!\nVocê esta excluindo o botijão ${widget.listBotijao[index].idBot}\nDeseja proseguir?"),
+                                          actions: <Widget>[
+                                            FlatButton(
+                                              child: Text(
+                                                "Sim",
+                                                style: TextStyle(
+                                                    color: Colors.red),
+                                              ),
+                                              onPressed: () {
+                                                widget.controller.remove(widget
+                                                    .listBotijao[index]
+                                                    .ref
+                                                    .path);
+                                                widget.listBotijao
+                                                    .remove(index);
+                                                Modular.to.pop();
+                                              },
+                                            ),
+                                            FlatButton(
+                                              child: Text(
+                                                "Não",
+                                                style: TextStyle(
+                                                    color: Colors.red),
+                                              ),
+                                              onPressed: () {
+                                                Modular.to.pop();
+                                              },
+                                            ),
+                                          ],
+                                        );
+                                      });
                                 },
                               ),
                             ],

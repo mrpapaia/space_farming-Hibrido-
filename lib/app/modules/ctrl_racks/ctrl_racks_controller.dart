@@ -17,17 +17,18 @@ abstract class _CtrlRacksControllerBase with Store {
 
   final Caneca caneca;
   final UserP user;
-  List<Rack> listRacks;
+  //List<Rack> listRacks;
+
   @observable
-  // ObservableStream<List<Rack>> listRacks;
+  ObservableStream<List<Rack>> listRacks;
   _CtrlRacksControllerBase(this.repository, this.caneca, this.user) {
-    listRacks = caneca.racks;
-    //getRacks();
+    //listRacks = caneca.racks;
+    getRacks();
   }
 
   @action
   getRacks() {
-    //this.listRacks = repository.list(this.caneca.id).asObservable();
+    this.listRacks = repository.list(this.caneca.id).asObservable();
   }
 
   @action

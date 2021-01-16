@@ -21,13 +21,13 @@ class RackRepository implements IRepositoryRack {
 
   @override
   Stream<List<Rack>> list(DocumentReference caneca) {
+    print(caneca.path);
     return firestore
         .doc(caneca.path)
         .collection("racks")
         .snapshots()
         .map((query) {
       return query.docs.map((docR) {
-        print("aqui");
         return Rack.fromDoc(docR);
       }).toList();
     });

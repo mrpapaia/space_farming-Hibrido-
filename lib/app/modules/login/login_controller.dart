@@ -68,6 +68,7 @@ abstract class _LoginControllerBase with Store {
   @action
   Future<UserCredential> login(FirebaseAuth auth, BuildContext ctx) async {
     UserCredential user;
+
     try {
       if (valideteEmail() == null) {
         if (validetePasswd() == null) {

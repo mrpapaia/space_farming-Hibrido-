@@ -79,7 +79,7 @@ abstract class _HomeBotCreateControllerBase with Store {
 
   @action
   addBot() {
-    repository.add(path, botijao);
+    repository.add(path, botijao).then((value) => print("sucesso!"));
   }
 
   @action

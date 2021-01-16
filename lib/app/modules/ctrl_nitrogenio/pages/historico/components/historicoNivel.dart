@@ -49,7 +49,8 @@ class _HistoricoNivelState extends State<HistoricoNivelComponent> {
                 componets: [
                   Center(
                     child: TextCustom(
-                      text: "Nivel ${widget.list[index].qtdAtual}",
+                      text:
+                          "Nivel ${widget.list[index].qtdAtual.toStringAsFixed(2)}",
                       fontSize: 18,
                     ),
                   ),
@@ -65,34 +66,6 @@ class _HistoricoNivelState extends State<HistoricoNivelComponent> {
                   ),
                   TextCustom(
                     text: "${widget.list[index].respon}",
-                    fontSize: 14,
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  TextCustom(
-                    text: "Telefone: ",
-                    fontSize: 18,
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  TextCustom(
-                    text: "649292639452",
-                    fontSize: 14,
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  TextCustom(
-                    text: "E-mail: ",
-                    fontSize: 18,
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  TextCustom(
-                    text: "djoser@gmail.com",
                     fontSize: 14,
                   ),
                   SizedBox(

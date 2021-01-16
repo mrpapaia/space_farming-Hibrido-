@@ -599,16 +599,52 @@ class _HomeInfoBotPageState
                         context: context,
                         builder: (BuildContext context) {
                           return AlertDialog(
-                            title: Text('Alteração de nível'),
+                            backgroundColor: Color.fromRGBO(229, 231, 236, 1.0),
+                            title: Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'Alteração de nível',
+                                      style: TextStyle(
+                                          fontSize: sizeConfig.dynamicScaleSize(
+                                              size: 25),
+                                          fontWeight: FontWeight.bold,
+                                          fontFamily: "Roboto"),
+                                    ),
+                                    Icon(
+                                      Icons.battery_alert,
+                                      color: Colors.red,
+                                    ),
+                                  ],
+                                ),
+                                Text(
+                                  "\nFoi detectada uma mudança de nível do botijão ${controller.botijao.idBot}!\n" +
+                                      "Por favor informe se a mudança foi um abastecimento ou uma medição",
+                                  style: TextStyle(
+                                      fontSize:
+                                          sizeConfig.dynamicScaleSize(size: 18),
+                                      fontWeight: FontWeight.normal,
+                                      fontFamily: "Roboto"),
+                                ),
+                              ],
+                            ),
                             content: Container(
                               height: hBot,
                               width: wBot,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(12.0),
+                                  color: Color.fromRGBO(229, 231, 236, 1.0)),
                             ),
                             actions: <Widget>[
                               FlatButton(
                                 child: Text(
                                   "Abastecimento",
-                                  style: TextStyle(color: Colors.black),
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontFamily: "Roboto",
+                                      fontWeight: FontWeight.bold),
                                 ),
                                 onPressed: () {
                                   controller.abastecer();
@@ -618,7 +654,10 @@ class _HomeInfoBotPageState
                               FlatButton(
                                 child: Text(
                                   "Medição",
-                                  style: TextStyle(color: Colors.black),
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontFamily: "Roboto",
+                                      fontWeight: FontWeight.bold),
                                 ),
                                 onPressed: () {
                                   controller.medirNivel();
@@ -629,7 +668,10 @@ class _HomeInfoBotPageState
                               FlatButton(
                                 child: Text(
                                   "Cancelar",
-                                  style: TextStyle(color: Colors.black),
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontFamily: "Roboto",
+                                      fontWeight: FontWeight.bold),
                                 ),
                                 onPressed: () {
                                   Navigator.of(context).pop();

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:space_farming_modular/app/shared/components/my_icons_icons.dart';
+import 'package:space_farming_modular/app/shared/components/sizeConfig.dart';
 import '../../../../shared/components/button.dart';
 import '../../../../shared/components/containerBase.dart';
 import '../../../../shared/components/titleOfScreen.dart';
@@ -22,6 +24,7 @@ class _CadastroPageState
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width - 30;
     double _height = MediaQuery.of(context).size.height;
+    final sizeConfig = SizeConfig(mediaQueryData: MediaQuery.of(context));
     return Scaffold(
         resizeToAvoidBottomInset: false,
         backgroundColor: Color.fromRGBO(229, 231, 236, 1.0),
@@ -31,20 +34,23 @@ class _CadastroPageState
         body: SingleChildScrollView(
           child: Column(
             children: [
+              SizedBox(
+                height: sizeConfig.dynamicScaleSize(size: 10),
+              ),
               TitleOfScreen(
                 title: "Cadastro",
                 font: "Revalia",
-                fontSize: _width * 0.09,
+                fontSize: sizeConfig.dynamicScaleSize(size: 30),
               ),
               Column(
                 children: [
                   SizedBox(
-                    height: _height * 0.025,
+                    height: sizeConfig.dynamicScaleSize(size: 10),
                   ),
                   Center(
                     child: ContainerBase(
-                      height: _height * 0.22,
-                      width: _width,
+                      height: sizeConfig.dynamicScaleSize(size: 150),
+                      width: sizeConfig.dynamicScaleSize(size: _width),
                       componets: [
                         TextField(
                           onChanged: controller.getEmail,
@@ -53,7 +59,7 @@ class _CadastroPageState
                           cursorColor: Colors.red,
                           style: TextStyle(
                             fontFamily: 'Robot',
-                            fontSize: _width * 0.045,
+                            fontSize: sizeConfig.dynamicScaleSize(size: 18),
                             color: Color.fromRGBO(113, 111, 137, 1.0),
                           ),
                           decoration: InputDecoration(
@@ -63,7 +69,7 @@ class _CadastroPageState
                             ),
                             hintStyle: TextStyle(
                               fontFamily: 'Robot',
-                              fontSize: _width * 0.045,
+                              fontSize: sizeConfig.dynamicScaleSize(size: 18),
                               color: Color.fromRGBO(113, 111, 137, 1.0),
                             ),
                             labelText: "E-mail",
@@ -77,7 +83,7 @@ class _CadastroPageState
                           cursorColor: Colors.red,
                           style: TextStyle(
                             fontFamily: 'Robot',
-                            fontSize: _width * 0.045,
+                            fontSize: sizeConfig.dynamicScaleSize(size: 18),
                             color: Color.fromRGBO(113, 111, 137, 1.0),
                           ),
                           decoration: InputDecoration(
@@ -87,7 +93,7 @@ class _CadastroPageState
                             ),
                             hintStyle: TextStyle(
                               fontFamily: 'Robot',
-                              fontSize: _width * 0.045,
+                              fontSize: sizeConfig.dynamicScaleSize(size: 18),
                               color: Color.fromRGBO(113, 111, 137, 1.0),
                             ),
                             labelText: "Senha",
@@ -98,12 +104,12 @@ class _CadastroPageState
                     ),
                   ),
                   SizedBox(
-                    height: _height * 0.02,
+                    height: sizeConfig.dynamicScaleSize(size: 10),
                   ),
                   Center(
                     child: ContainerBase(
-                      width: _width,
-                      height: _height * 0.4,
+                      width: sizeConfig.dynamicScaleSize(size: _width),
+                      height: sizeConfig.dynamicScaleSize(size: 270),
                       componets: [
                         TextField(
                           onChanged: controller.getFazenda,
@@ -112,17 +118,17 @@ class _CadastroPageState
                           cursorColor: Colors.red,
                           style: TextStyle(
                             fontFamily: 'Robot',
-                            fontSize: _width * 0.045,
+                            fontSize: sizeConfig.dynamicScaleSize(size: 18),
                             color: Color.fromRGBO(113, 111, 137, 1.0),
                           ),
                           decoration: InputDecoration(
                             icon: Icon(
-                              Icons.mail,
+                              MyIcons.farm,
                               color: Colors.red,
                             ),
                             hintStyle: TextStyle(
                               fontFamily: 'Robot',
-                              fontSize: _width * 0.045,
+                              fontSize: sizeConfig.dynamicScaleSize(size: 18),
                               color: Color.fromRGBO(113, 111, 137, 1.0),
                             ),
                             labelText: "Nome da Fazenda",
@@ -136,17 +142,17 @@ class _CadastroPageState
                           cursorColor: Colors.red,
                           style: TextStyle(
                             fontFamily: 'Robot',
-                            fontSize: _width * 0.045,
+                            fontSize: sizeConfig.dynamicScaleSize(size: 18),
                             color: Color.fromRGBO(113, 111, 137, 1.0),
                           ),
                           decoration: InputDecoration(
                             icon: Icon(
-                              Icons.lock,
+                              MyIcons.user,
                               color: Colors.red,
                             ),
                             hintStyle: TextStyle(
                               fontFamily: 'Robot',
-                              fontSize: _width * 0.045,
+                              fontSize: sizeConfig.dynamicScaleSize(size: 18),
                               color: Color.fromRGBO(113, 111, 137, 1.0),
                             ),
                             labelText: "Nome",
@@ -156,21 +162,21 @@ class _CadastroPageState
                         TextField(
                           onChanged: controller.getCpf,
                           obscureText: false,
-                          keyboardType: TextInputType.emailAddress,
+                          keyboardType: TextInputType.text,
                           cursorColor: Colors.red,
                           style: TextStyle(
                             fontFamily: 'Robot',
-                            fontSize: _width * 0.045,
+                            fontSize: sizeConfig.dynamicScaleSize(size: 18),
                             color: Color.fromRGBO(113, 111, 137, 1.0),
                           ),
                           decoration: InputDecoration(
                             icon: Icon(
-                              Icons.mail,
+                              Icons.credit_card,
                               color: Colors.red,
                             ),
                             hintStyle: TextStyle(
                               fontFamily: 'Robot',
-                              fontSize: _width * 0.045,
+                              fontSize: sizeConfig.dynamicScaleSize(size: 18),
                               color: Color.fromRGBO(113, 111, 137, 1.0),
                             ),
                             labelText: "CPF/CNPJ",
@@ -184,17 +190,17 @@ class _CadastroPageState
                           cursorColor: Colors.red,
                           style: TextStyle(
                             fontFamily: 'Robot',
-                            fontSize: _width * 0.05,
+                            fontSize: sizeConfig.dynamicScaleSize(size: 18),
                             color: Color.fromRGBO(113, 111, 137, 1.0),
                           ),
                           decoration: InputDecoration(
                             icon: Icon(
-                              Icons.mail,
+                              Icons.phone,
                               color: Colors.red,
                             ),
                             hintStyle: TextStyle(
                               fontFamily: 'Robot',
-                              fontSize: _width * 0.05,
+                              fontSize: sizeConfig.dynamicScaleSize(size: 18),
                               color: Color.fromRGBO(113, 111, 137, 1.0),
                             ),
                             labelText: "Telefone",
@@ -205,14 +211,13 @@ class _CadastroPageState
                     ),
                   ),
                   SizedBox(
-                    height: _height * 0.02,
+                    height: sizeConfig.dynamicScaleSize(size: 10),
                   ),
                   ButtonCustom(
                     text: "Cadastrar",
-                    width: 309.0,
+                    width: sizeConfig.dynamicScaleSize(size: _width),
                     onclick: () async {
                       await controller.singIn();
-                      print("foi");
                     },
                   ),
                 ],

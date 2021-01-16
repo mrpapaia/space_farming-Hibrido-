@@ -29,7 +29,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends ModularState<HomePage, HomeController> {
   List<Botijao> botijoes = List();
   var flag = false;
-  String path;
+
   void startTimer() {
     Future.delayed(const Duration(milliseconds: 10), () {
       setState(() {});
@@ -65,7 +65,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
             height: 5,
           ),
           Container(
-            height: sizeConfig.dynamicScaleSize(size: 585),
+            height: sizeConfig.dynamicScaleSize(size: _height - 144),
             child: Observer(
               builder: (BuildContext context) {
                 try {
@@ -103,7 +103,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Modular.to.pushNamed('/home/add',
-              arguments: [path, Botijao(numcanecas: 2, qtdDose: 1)]);
+              arguments: [controller.path, Botijao(numcanecas: 2, qtdDose: 1)]);
         },
         child: Icon(Icons.add),
       ),

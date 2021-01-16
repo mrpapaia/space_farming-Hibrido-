@@ -15,8 +15,9 @@ class BotijaoRepository implements IRepositoryBotijao {
   BotijaoRepository(this.firestore);
 
   @override
-  Future<void> add(String path, Botijao botijao) {
+  Future<bool> add(String path, Botijao botijao) {
     String pathF = "farms/" + path + '/botijoes';
+    print(pathF);
     return firestore
         .collection(pathF)
         .doc(botijao.idBot)

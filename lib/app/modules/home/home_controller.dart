@@ -28,7 +28,7 @@ abstract class _HomeControllerBase with Store {
 
   @observable
   ObservableStream<List<Botijao>> listBot;
-
+  String path;
   _HomeControllerBase(this.repository, this.repositoryFarm,
       this.repositoryUserP, this.user, this.auth) {
     getBot(user.fazenda.keys.toList()[0]);
@@ -37,6 +37,7 @@ abstract class _HomeControllerBase with Store {
   @action
   getBot(String path) {
     listBot = repository.list(path).asObservable();
+    this.path = path;
   }
 
   @action

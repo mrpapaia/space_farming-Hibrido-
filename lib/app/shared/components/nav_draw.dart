@@ -96,8 +96,37 @@ class NavigationDrawer extends StatelessWidget {
                         ),
                         title: Text("Excluir"),
                         onTap: () {
-                          controller.removeFarm(
-                              controller.user.fazenda.keys.toList()[index]);
+                          showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  content: Text(
+                                      "CUIDADO!!\nVocê esta excluindo a fazenda ${controller.user.fazenda.values.toList()[index]}\nDeseja proseguir?"),
+                                  actions: <Widget>[
+                                    FlatButton(
+                                      child: Text(
+                                        "Sim",
+                                        style: TextStyle(color: Colors.red),
+                                      ),
+                                      onPressed: () {
+                                        controller.removeFarm(controller
+                                            .user.fazenda.keys
+                                            .toList()[index]);
+                                        Modular.to.pop();
+                                      },
+                                    ),
+                                    FlatButton(
+                                      child: Text(
+                                        "Não",
+                                        style: TextStyle(color: Colors.red),
+                                      ),
+                                      onPressed: () {
+                                        Modular.to.pop();
+                                      },
+                                    ),
+                                  ],
+                                );
+                              });
                         },
                       ),
                     ],

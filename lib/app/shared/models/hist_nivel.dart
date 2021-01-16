@@ -27,7 +27,7 @@ class HistoricoNivel {
   Map<String, dynamic> toMap() {
     return {
       'respon': respon,
-      'qtdAtual': qtdAtual,
+      'qtdAtual': qtdAtual.toString(),
       'data': Timestamp.fromDate(data),
     };
   }
@@ -35,8 +35,8 @@ class HistoricoNivel {
   factory HistoricoNivel.fromDoc(DocumentSnapshot doc) {
     return HistoricoNivel(
       respon: doc.data()['respon'],
-      qtdAtual: doc.data()['qtdAtual'],
-      // data: doc.data()['data'].toDate(),
+      qtdAtual: double.parse(doc.data()['qtdAtual']),
+      data: doc.data()['data'].toDate(),
     );
   }
 
