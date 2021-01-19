@@ -337,10 +337,13 @@ class _GridViewRacksState extends State<GridViewRacks> {
                                     ),
                                     onTap: () {
                                       Modular.to.pop();
+
                                       showDialog(
                                           context: context,
                                           builder: (BuildContext context) {
                                             return AlertDialog(
+                                              backgroundColor: Color.fromRGBO(
+                                                  229, 231, 236, 1.0),
                                               content: Container(
                                                 height:
                                                     sizeConfig.dynamicScaleSize(

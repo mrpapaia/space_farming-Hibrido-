@@ -218,6 +218,7 @@ class _CadastroPageState
                     width: sizeConfig.dynamicScaleSize(size: _width),
                     onclick: () async {
                       await controller.singIn();
+                      Modular.to.pop();
                     },
                   ),
                 ],

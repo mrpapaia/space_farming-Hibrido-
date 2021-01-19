@@ -143,14 +143,14 @@ class _AbastecerPageState
                       controller.update();
                       Navigator.pop(context);
                     },
-                    width: sizeConfig.dynamicScaleSize(size: 150),
+                    width: sizeConfig.dynamicScaleSize(size: 175),
                   ),
                   ButtonCustom(
                     text: "Cancelar",
                     onclick: () {
                       Navigator.pop(context);
                     },
-                    width: sizeConfig.dynamicScaleSize(size: 150),
+                    width: sizeConfig.dynamicScaleSize(size: 175),
                   ),
                 ],
               ),

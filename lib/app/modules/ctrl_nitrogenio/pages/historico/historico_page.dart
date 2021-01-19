@@ -52,25 +52,35 @@ class _HistoricoPageState
                 children: [
                   Observer(builder: (BuildContext context) {
                     if (controller.listHistNivel.data == null) {
-                      return CircularProgressIndicator();
+                      return Center(child: CircularProgressIndicator());
+                      ;
+                    } else {
+                      if (controller.listHistNivel.data.length == 0) {
+                        return Center(child: Text("Vazio!"));
+                      } else {
+                        return HistoricoNivelComponent(
+                          list: controller.listHistNivel.data,
+                          botijao: controller.bot,
+                        );
+                      }
                     }
-                    return HistoricoNivelComponent(
-                      list: controller.listHistNivel.data,
-                      botijao: controller.bot,
-                    );
                   }),
                   Observer(builder: (BuildContext context) {
                     try {
                       if (controller.listHistAbastecimento.data != null) {
-                        return HistoricoAbastecimentoComponent(
-                          list: controller.listHistAbastecimento.data,
-                          botijao: controller.bot,
-                        );
+                        if (controller.listHistAbastecimento.data.length == 0) {
+                          return Center(child: Text("Vazio!"));
+                        } else {
+                          return HistoricoAbastecimentoComponent(
+                            list: controller.listHistAbastecimento.data,
+                            botijao: controller.bot,
+                          );
+                        }
                       } else {
-                        return CircularProgressIndicator();
+                        return Center(child: CircularProgressIndicator());
                       }
                     } catch (NoSuchMethodError) {
-                      return CircularProgressIndicator();
+                      return Center(child: CircularProgressIndicator());
                     }
                   }),
                 ],

@@ -42,7 +42,6 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
     startTimer();
-
     return Scaffold(
       backgroundColor: Color.fromRGBO(229, 231, 236, 1.0),
       resizeToAvoidBottomInset: false,
@@ -69,7 +68,11 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
             child: Observer(
               builder: (BuildContext context) {
                 try {
-                  if (controller.listBot.data[0].canecas[0] != null) {
+                  if (controller.listBot.data.length == 0) {
+                    return Center(
+                      child: Text("Vazio"),
+                    );
+                  } else if (controller.listBot.data[0].canecas[0] != null) {
                     botijoes = controller.listBot.data;
                     return GridViewList(
                       listBotijao: botijoes,

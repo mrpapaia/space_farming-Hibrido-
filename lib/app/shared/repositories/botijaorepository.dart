@@ -86,6 +86,7 @@ class BotijaoRepository implements IRepositoryBotijao {
 
   List<Caneca> getCanecas(Future<QuerySnapshot> snapshot) {
     List<Caneca> canecas = [];
+
     snapshot.then((value) {
       for (var doc in value.docs) {
         canecas.add(Caneca.fromDoc(

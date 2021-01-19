@@ -19,7 +19,7 @@ class SizeConfig {
       final scaleFactor = scaleFactorMini ?? 0.8;
       return size * scaleFactor;
     }
-
+    print(mediaQueryData.size.shortestSide);
     return size;
   }
 

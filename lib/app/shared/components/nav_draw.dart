@@ -102,6 +102,8 @@ class NavigationDrawer extends StatelessWidget {
                               context: context,
                               builder: (BuildContext context) {
                                 return AlertDialog(
+                                  backgroundColor:
+                                      Color.fromRGBO(229, 231, 236, 1.0),
                                   content: Container(
                                     height:
                                         sizeConfig.dynamicScaleSize(size: 150),
@@ -166,7 +168,9 @@ class NavigationDrawer extends StatelessWidget {
                                     FlatButton(
                                       child: Text(
                                         "Sim",
-                                        style: TextStyle(color: Colors.red),
+                                        style: TextStyle(
+                                            color: Colors.red,
+                                            fontWeight: FontWeight.bold),
                                       ),
                                       onPressed: () {
                                         controller.removeFarm(controller
@@ -178,7 +182,9 @@ class NavigationDrawer extends StatelessWidget {
                                     FlatButton(
                                       child: Text(
                                         "Não",
-                                        style: TextStyle(color: Colors.red),
+                                        style: TextStyle(
+                                            color: Colors.red,
+                                            fontWeight: FontWeight.bold),
                                       ),
                                       onPressed: () {
                                         Modular.to.pop();

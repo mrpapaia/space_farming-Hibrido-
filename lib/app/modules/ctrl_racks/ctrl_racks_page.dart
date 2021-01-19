@@ -55,13 +55,17 @@ class _CtrlRacksPageState
           Observer(builder: (BuildContext context) {
             try {
               if (controller.listRacks.data != null) {
-                return Container(
-                  height: sizeConfig.dynamicScaleSize(size: _height - 180),
-                  child: GridViewRacks(
-                    listRack: controller.listRacks.data,
-                    controller: controller,
-                  ),
-                );
+                if (controller.listRacks.data.length == 0) {
+                  return Center(child: Text("Vazio!"));
+                } else {
+                  return Container(
+                    height: sizeConfig.dynamicScaleSize(size: _height - 180),
+                    child: GridViewRacks(
+                      listRack: controller.listRacks.data,
+                      controller: controller,
+                    ),
+                  );
+                }
               } else {
                 return Column(
                   mainAxisAlignment: MainAxisAlignment.center,
