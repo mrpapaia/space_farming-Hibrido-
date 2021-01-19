@@ -35,7 +35,7 @@ class _CadastroPageState
           child: Column(
             children: [
               SizedBox(
-                height: sizeConfig.dynamicScaleSize(size: 10),
+                height: sizeConfig.dynamicScaleSize(size: 20),
               ),
               TitleOfScreen(
                 title: "Cadastro",

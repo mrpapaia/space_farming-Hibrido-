@@ -67,7 +67,10 @@ class HomeModule extends ChildModule {
       ),
       Bind(
         (i) => HomeBotCreateController(
-            repository: i.get(), path: i.args.data[0], botijao: i.args.data[1]),
+            repository: i.get(),
+            path: i.args.data[0],
+            botijao: i.args.data[1],
+            edit: i.args.data[2]),
       ),
     ];
   }

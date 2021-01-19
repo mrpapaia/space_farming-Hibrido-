@@ -43,15 +43,18 @@ class _RackAddPageState extends ModularState<RackAddPage, RackAddController> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
+          SizedBox(
+            height: sizeConfig.dynamicScaleSize(size: 10),
+          ),
           TitleOfScreen(
             title: controller.rack.idTouro != null
                 ? "Editar Rack"
                 : 'Adicionar Rack',
             font: "Revalia",
-            fontSize: _width * 0.09,
+            fontSize: sizeConfig.dynamicScaleSize(size: 30),
           ),
           SizedBox(
-            height: _height * 0.04,
+            height: sizeConfig.dynamicScaleSize(size: 10),
           ),
           CardEditText(
             child: TextField(

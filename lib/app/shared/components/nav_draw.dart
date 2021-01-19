@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:space_farming_modular/app/modules/home/home_controller.dart';
+import 'package:space_farming_modular/app/shared/components/sizeConfig.dart';
 import 'package:space_farming_modular/app/shared/models/user.dart';
 import 'my_icons_icons.dart';
 
@@ -14,7 +15,8 @@ class NavigationDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
-    double _height = MediaQuery.of(context).size.height;
+
+    final sizeConfig = SizeConfig(mediaQueryData: MediaQuery.of(context));
 
     return Drawer(
       child: Container(
@@ -100,8 +102,66 @@ class NavigationDrawer extends StatelessWidget {
                               context: context,
                               builder: (BuildContext context) {
                                 return AlertDialog(
-                                  content: Text(
-                                      "CUIDADO!!\nVocê esta excluindo a fazenda ${controller.user.fazenda.values.toList()[index]}\nDeseja proseguir?"),
+                                  content: Container(
+                                    height:
+                                        sizeConfig.dynamicScaleSize(size: 150),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Icon(
+                                              Icons.warning,
+                                              color: Colors.red,
+                                              size: sizeConfig.dynamicScaleSize(
+                                                  size: 50),
+                                            ),
+                                            SizedBox(
+                                              width: sizeConfig
+                                                  .dynamicScaleSize(size: 10),
+                                            ),
+                                            Text(
+                                              "Cuidado!!",
+                                              style: TextStyle(
+                                                  fontFamily: 'Revalia',
+                                                  fontSize: sizeConfig
+                                                      .dynamicScaleSize(
+                                                          size: 25),
+                                                  color: Colors.red),
+                                            ),
+                                          ],
+                                        ),
+                                        RichText(
+                                          text: TextSpan(
+                                            style: TextStyle(
+                                              fontSize: sizeConfig
+                                                  .dynamicScaleSize(size: 16),
+                                              color: Colors.black,
+                                            ),
+                                            children: <TextSpan>[
+                                              TextSpan(
+                                                  text:
+                                                      '\nVocẽ está excluindo a fazenda '),
+                                              TextSpan(
+                                                  text:
+                                                      '${controller.user.fazenda.values.toList()[index]}',
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.bold)),
+                                              TextSpan(text: '.\n\n'),
+                                              TextSpan(
+                                                  text: 'Deseja proseguir?'),
+                                            ],
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
                                   actions: <Widget>[
                                     FlatButton(
                                       child: Text(

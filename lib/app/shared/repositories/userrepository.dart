@@ -49,4 +49,18 @@ class UserPRepository implements IRepositoryUserP {
   Future<bool> update(UserP user) {
     user.ref.update(user.toMap());
   }
+
+  updateC(String email, String key, String value) {
+    print(key);
+    print(value);
+    firestore
+        .collection('users')
+        .where("email", isEqualTo: email)
+        .get()
+        .then((query) {
+      query.docs.forEach((element) {
+        firestore.doc("users/" + element.id).update({"fazenda.${value}": key});
+      });
+    });
+  }
 }

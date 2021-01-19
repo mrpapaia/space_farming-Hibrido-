@@ -23,131 +23,203 @@ class _CtrlColaboradoresPageState
   Widget build(BuildContext context) {
     final sizeConfig = SizeConfig(mediaQueryData: MediaQuery.of(context));
     return Scaffold(
+      resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomPadding: false,
       backgroundColor: Color.fromRGBO(229, 231, 236, 1.0),
       appBar: SecAppBar(
         preferredSize: Size.fromHeight(70.0),
       ),
-      body: Column(
-        children: [
-          SizedBox(
-            height: sizeConfig.dynamicScaleSize(size: 15),
-          ),
-          TitleOfScreen(
-            title: "Colaboradores",
-            font: "Revalia",
-            fontSize: sizeConfig.dynamicScaleSize(size: 30),
-          ),
-          SizedBox(
-            height: sizeConfig.dynamicScaleSize(size: 25),
-          ),
-          Observer(builder: (BuildContext contex) {
-            try {
-              if (controller.listColab.data[0] != null) {
-                return Container(
-                  height: sizeConfig.dynamicScaleSize(size: 585),
-                  width: MediaQuery.of(context).size.width - 30,
-                  child: ListView.builder(
-                      itemCount: controller.listColab.data.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return Container(
-                          height: sizeConfig.dynamicScaleSize(size: 50),
-                          decoration: BoxDecoration(
-                              color: Colors.red,
-                              borderRadius: BorderRadius.circular(12)),
-                          child: Row(
-                            children: [
-                              SizedBox(
-                                width: sizeConfig.dynamicScaleSize(size: 50),
-                              ),
-                              CircleAvatar(
-                                backgroundColor: Colors.white,
-                                child: Text(
-                                  controller.listColab.data[index].nome[0]
-                                      .toUpperCase(),
-                                  style: TextStyle(
-                                    fontSize:
-                                        sizeConfig.dynamicScaleSize(size: 18),
+      body: Container(
+        height: sizeConfig.dynamicScaleSize(size: 800),
+        child: Column(
+          children: [
+            SizedBox(
+              height: sizeConfig.dynamicScaleSize(size: 15),
+            ),
+            TitleOfScreen(
+              title: "Colaboradores",
+              font: "Revalia",
+              fontSize: sizeConfig.dynamicScaleSize(size: 30),
+            ),
+            SizedBox(
+              height: sizeConfig.dynamicScaleSize(size: 25),
+            ),
+            Observer(builder: (BuildContext contex) {
+              try {
+                if (controller.listColab.data[0] != null) {
+                  return Container(
+                    height: sizeConfig.dynamicScaleSize(size: 585),
+                    width: MediaQuery.of(context).size.width - 30,
+                    child: ListView.builder(
+                        itemCount: controller.listColab.data.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Container(
+                            height: sizeConfig.dynamicScaleSize(size: 50),
+                            margin: EdgeInsets.only(
+                                bottom: sizeConfig.dynamicScaleSize(size: 10)),
+                            decoration: BoxDecoration(
+                                color: Colors.red,
+                                borderRadius: BorderRadius.circular(12)),
+                            child: Row(
+                              children: [
+                                SizedBox(
+                                  width: sizeConfig.dynamicScaleSize(size: 50),
+                                ),
+                                CircleAvatar(
+                                  backgroundColor: Colors.white,
+                                  child: Text(
+                                    controller.listColab.data[index].nome[0]
+                                        .toUpperCase(),
+                                    style: TextStyle(
+                                      fontSize:
+                                          sizeConfig.dynamicScaleSize(size: 18),
+                                    ),
                                   ),
                                 ),
-                              ),
-                              SizedBox(
-                                width: sizeConfig.dynamicScaleSize(size: 18),
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    controller.listColab.data[index].nome,
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize:
-                                          sizeConfig.dynamicScaleSize(size: 18),
+                                SizedBox(
+                                  width: sizeConfig.dynamicScaleSize(size: 18),
+                                ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      controller.listColab.data[index].nome,
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: sizeConfig.dynamicScaleSize(
+                                            size: 18),
+                                      ),
                                     ),
-                                  ),
-                                  Text(
-                                    controller.listColab.data[index].email,
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize:
-                                          sizeConfig.dynamicScaleSize(size: 18),
+                                    Text(
+                                      controller.listColab.data[index].email,
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: sizeConfig.dynamicScaleSize(
+                                            size: 18),
+                                      ),
                                     ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                width: sizeConfig.dynamicScaleSize(size: 50),
-                              ),
-                              IconButton(
-                                  icon: Icon(
-                                    Icons.delete,
-                                    color: Colors.white,
-                                  ),
-                                  onPressed: () {
-                                    showDialog(
-                                      context: context,
-                                      builder: (BuildContext context) {
-                                        return AlertDialog(
-                                          content: Text(
-                                              "Logado com sucesso!!\nBem Vindo ${controller.listColab.data[index].nome}"),
-                                          actions: <Widget>[
-                                            FlatButton(
-                                              child: Text(
-                                                "Remover",
-                                                style: TextStyle(
-                                                    color: Colors.red),
+                                  ],
+                                ),
+                                SizedBox(
+                                  width: sizeConfig.dynamicScaleSize(size: 50),
+                                ),
+                                IconButton(
+                                    icon: Icon(
+                                      Icons.delete,
+                                      color: Colors.white,
+                                    ),
+                                    onPressed: () {
+                                      showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return AlertDialog(
+                                            content: Container(
+                                              height: sizeConfig
+                                                  .dynamicScaleSize(size: 150),
+                                              child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      Icon(
+                                                        Icons.warning,
+                                                        color: Colors.red,
+                                                        size: sizeConfig
+                                                            .dynamicScaleSize(
+                                                                size: 50),
+                                                      ),
+                                                      SizedBox(
+                                                        width: sizeConfig
+                                                            .dynamicScaleSize(
+                                                                size: 10),
+                                                      ),
+                                                      Text(
+                                                        "Cuidado!!",
+                                                        style: TextStyle(
+                                                            fontFamily:
+                                                                'Revalia',
+                                                            fontSize: sizeConfig
+                                                                .dynamicScaleSize(
+                                                                    size: 25),
+                                                            color: Colors.red),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  RichText(
+                                                    text: TextSpan(
+                                                      style: TextStyle(
+                                                        fontSize: sizeConfig
+                                                            .dynamicScaleSize(
+                                                                size: 16),
+                                                        color: Colors.black,
+                                                      ),
+                                                      children: <TextSpan>[
+                                                        TextSpan(
+                                                            text:
+                                                                '\nVocẽ está excluindo o colaborador '),
+                                                        TextSpan(
+                                                            text:
+                                                                '${controller.listColab.data[index].nome}',
+                                                            style: TextStyle(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold)),
+                                                        TextSpan(text: '.\n\n'),
+                                                        TextSpan(
+                                                            text:
+                                                                'Deseja proseguir?'),
+                                                      ],
+                                                    ),
+                                                  )
+                                                ],
                                               ),
-                                              onPressed: () {
-                                                controller.remove(controller
-                                                    .listColab.data[index]);
-                                                Modular.to.pop();
-                                              },
                                             ),
-                                            FlatButton(
-                                              child: Text(
-                                                "Cancelar",
-                                                style: TextStyle(
-                                                    color: Colors.black),
+                                            actions: <Widget>[
+                                              FlatButton(
+                                                child: Text(
+                                                  "Sim",
+                                                  style: TextStyle(
+                                                      color: Colors.red),
+                                                ),
+                                                onPressed: () {
+                                                  controller.remove(controller
+                                                      .listColab.data[index]);
+                                                  Modular.to.pop();
+                                                },
                                               ),
-                                              onPressed: () {
-                                                Modular.to.pop();
-                                              },
-                                            ),
-                                          ],
-                                        );
-                                      },
-                                    );
-                                  })
-                            ],
-                          ),
-                        );
-                      }),
-                );
+                                              FlatButton(
+                                                child: Text(
+                                                  "Não",
+                                                  style: TextStyle(
+                                                      color: Colors.black),
+                                                ),
+                                                onPressed: () {
+                                                  Modular.to.pop();
+                                                },
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
+                                    })
+                              ],
+                            ),
+                          );
+                        }),
+                  );
+                }
+              } catch (NoSuchMethodError) {
+                return CircularProgressIndicator();
               }
-            } catch (NoSuchMethodError) {
-              return CircularProgressIndicator();
-            }
-          }),
-        ],
+            }),
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {

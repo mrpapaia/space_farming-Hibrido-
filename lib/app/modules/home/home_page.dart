@@ -31,7 +31,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
   var flag = false;
 
   void startTimer() {
-    Future.delayed(const Duration(milliseconds: 10), () {
+    Future.delayed(const Duration(milliseconds: 1000), () {
       setState(() {});
     });
   }
@@ -65,7 +65,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
             height: 5,
           ),
           Container(
-            height: sizeConfig.dynamicScaleSize(size: _height - 144),
+            height: sizeConfig.dynamicScaleSize(size: _height * 0.793),
             child: Observer(
               builder: (BuildContext context) {
                 try {
@@ -102,8 +102,11 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Modular.to.pushNamed('/home/add',
-              arguments: [controller.path, Botijao(numcanecas: 2, qtdDose: 1)]);
+          Modular.to.pushNamed('/home/add', arguments: [
+            controller.path,
+            Botijao(numcanecas: 2, qtdDose: 1),
+            false
+          ]);
         },
         child: Icon(Icons.add),
       ),

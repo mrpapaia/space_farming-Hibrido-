@@ -4,6 +4,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:space_farming_modular/app/modules/home/components/secondaryAppBar.dart';
 import 'package:space_farming_modular/app/shared/components/button.dart';
 import 'package:space_farming_modular/app/shared/components/nav_draw.dart';
+import 'package:space_farming_modular/app/shared/components/sizeConfig.dart';
 import 'package:space_farming_modular/app/shared/components/titleOfScreen.dart';
 import 'package:space_farming_modular/app/shared/models/botijao.dart';
 import 'package:space_farming_modular/app/shared/models/user.dart';
@@ -29,7 +30,7 @@ class _CtrlNitrogenioPageState
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width - 30;
-
+    final sizeConfig = SizeConfig(mediaQueryData: MediaQuery.of(context));
     double _height = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: SecAppBar(
@@ -39,13 +40,16 @@ class _CtrlNitrogenioPageState
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
+          SizedBox(
+            height: sizeConfig.dynamicScaleSize(size: 10),
+          ),
           TitleOfScreen(
             title: "Nível Atual",
             font: "Revalia",
-            fontSize: _width * 0.1,
+            fontSize: sizeConfig.dynamicScaleSize(size: 30),
           ),
           SizedBox(
-            height: _height * 0.05,
+            height: sizeConfig.dynamicScaleSize(size: 10),
           ),
           Center(
             child: Container(

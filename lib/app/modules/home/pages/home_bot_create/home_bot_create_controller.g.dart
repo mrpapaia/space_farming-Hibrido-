@@ -10,7 +10,8 @@ final $HomeBotCreateController = BindInject(
   (i) => HomeBotCreateController(
       repository: i<IRepositoryBotijao>(),
       path: i<String>(),
-      botijao: i<Botijao>()),
+      botijao: i<Botijao>(),
+      edit: i<bool>()),
   singleton: true,
   lazy: true,
 );
@@ -67,18 +68,18 @@ mixin _$HomeBotCreateController on _HomeBotCreateControllerBase, Store {
     });
   }
 
-  final _$editAtom = Atom(name: '_HomeBotCreateControllerBase.edit');
+  final _$ctrl4Atom = Atom(name: '_HomeBotCreateControllerBase.ctrl4');
 
   @override
-  bool get edit {
-    _$editAtom.reportRead();
-    return super.edit;
+  TextEditingController get ctrl4 {
+    _$ctrl4Atom.reportRead();
+    return super.ctrl4;
   }
 
   @override
-  set edit(bool value) {
-    _$editAtom.reportWrite(value, super.edit, () {
-      super.edit = value;
+  set ctrl4(TextEditingController value) {
+    _$ctrl4Atom.reportWrite(value, super.ctrl4, () {
+      super.ctrl4 = value;
     });
   }
 
@@ -152,7 +153,7 @@ mixin _$HomeBotCreateController on _HomeBotCreateControllerBase, Store {
   }
 
   @override
-  dynamic addBot() {
+  bool addBot() {
     final _$actionInfo = _$_HomeBotCreateControllerBaseActionController
         .startAction(name: '_HomeBotCreateControllerBase.addBot');
     try {
@@ -179,7 +180,7 @@ mixin _$HomeBotCreateController on _HomeBotCreateControllerBase, Store {
 ctrl1: ${ctrl1},
 ctrl2: ${ctrl2},
 ctrl3: ${ctrl3},
-edit: ${edit}
+ctrl4: ${ctrl4}
     ''';
   }
 }

@@ -9,6 +9,7 @@ import 'package:space_farming_modular/app/shared/components/cardEditText.dart';
 
 import 'package:space_farming_modular/app/shared/components/my_icons_icons.dart';
 import 'package:space_farming_modular/app/shared/components/nav_draw.dart';
+import 'package:space_farming_modular/app/shared/components/sizeConfig.dart';
 import 'package:space_farming_modular/app/shared/components/titleOfScreen.dart';
 import 'package:space_farming_modular/app/shared/models/botijao.dart';
 import 'home_bot_create_controller.dart';
@@ -27,8 +28,8 @@ class _HomeBotCreatePageState
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width - 30;
     double _height = MediaQuery.of(context).size.height;
-
-    List<String> items = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
+    final sizeConfig = SizeConfig(mediaQueryData: MediaQuery.of(context));
+    List<String> items = ["2", "6", "8", "10"];
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -41,11 +42,9 @@ class _HomeBotCreatePageState
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           TitleOfScreen(
-            title: controller.botijao.idBot != null
-                ? "Editar Botijão"
-                : 'Cadastrar Botijão',
+            title: controller.edit ? "Editar Botijão" : 'Cadastrar Botijão',
             font: "Revalia",
-            fontSize: _width * 0.09,
+            fontSize: sizeConfig.dynamicScaleSize(size: 30),
           ),
           SizedBox(
             height: _height * 0.04,
@@ -227,59 +226,39 @@ class _HomeBotCreatePageState
           SizedBox(
             height: _height * 0.01,
           ),
-          Container(
-            height: _height * 0.08,
-            margin: EdgeInsets.only(top: 10),
+          CardEditText(
+            child: TextField(
+              controller: controller.ctrl4,
+              onChanged: controller.getDoses,
+              obscureText: false,
+              keyboardType: TextInputType.number,
+              cursorColor: Colors.red,
+              style: TextStyle(
+                fontFamily: 'Robot',
+                fontSize: _width * 0.05,
+                color: Color.fromRGBO(113, 111, 137, 1.0),
+              ),
+              decoration: InputDecoration(
+                contentPadding: EdgeInsets.all(16),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: BorderSide(
+                    width: 0,
+                    style: BorderStyle.solid,
+                  ),
+                ),
+                prefixIcon:
+                    Icon(MyIcons.dose, color: Colors.red, size: _width * 0.125),
+                hintStyle: TextStyle(
+                  fontFamily: 'Robot',
+                  fontSize: _width * 0.05,
+                  color: Color.fromRGBO(113, 111, 137, 1.0),
+                ),
+                labelText: "Quantidade de doses",
+                labelStyle: TextStyle(),
+              ),
+            ),
             width: _width,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.2),
-                  spreadRadius: 0,
-                  offset: Offset(0, 5),
-                ),
-              ],
-            ),
-            child: Row(
-              children: [
-                Container(
-                  child: Text(
-                    "Quantidade de Racks por Caneca",
-                    style: TextStyle(
-                        fontFamily: 'Robot',
-                        fontSize: 18,
-                        color: Color.fromRGBO(113, 111, 137, 1.0)),
-                  ),
-                  margin:
-                      EdgeInsets.only(top: 0, left: 10, bottom: 0, right: 10),
-                ),
-                DropdownButton<String>(
-                  value: controller.botijao.qtdDose.toString(),
-                  icon: Icon(Icons.arrow_drop_down),
-                  iconSize: 24,
-                  elevation: 16,
-                  style: TextStyle(color: Colors.deepPurple),
-                  underline: Container(
-                    height: 2,
-                    width: 10,
-                    color: Colors.red,
-                  ),
-                  onChanged: (String newValue) {
-                    setState(() {
-                      controller.botijao.qtdDose = int.parse(newValue);
-                    });
-                  },
-                  items: items.map<DropdownMenuItem<String>>((String value) {
-                    return DropdownMenuItem<String>(
-                      value: value,
-                      child: Text(value),
-                    );
-                  }).toList(),
-                )
-              ],
-            ),
           ),
           Container(
             margin: EdgeInsets.only(top: 60),

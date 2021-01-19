@@ -337,9 +337,108 @@ class _GridViewRacksState extends State<GridViewRacks> {
                                     ),
                                     onTap: () {
                                       Modular.to.pop();
-                                      widget.listRack.remove(index);
-                                      widget.controller
-                                          .remove(widget.listRack[index]);
+                                      showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) {
+                                            return AlertDialog(
+                                              content: Container(
+                                                height:
+                                                    sizeConfig.dynamicScaleSize(
+                                                        size: 150),
+                                                child: Column(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.start,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                      children: [
+                                                        Icon(
+                                                          Icons.warning,
+                                                          color: Colors.red,
+                                                          size: sizeConfig
+                                                              .dynamicScaleSize(
+                                                                  size: 50),
+                                                        ),
+                                                        SizedBox(
+                                                          width: sizeConfig
+                                                              .dynamicScaleSize(
+                                                                  size: 10),
+                                                        ),
+                                                        Text(
+                                                          "Cuidado!!",
+                                                          style: TextStyle(
+                                                              fontFamily:
+                                                                  'Revalia',
+                                                              fontSize: sizeConfig
+                                                                  .dynamicScaleSize(
+                                                                      size: 25),
+                                                              color:
+                                                                  Colors.red),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    RichText(
+                                                      text: TextSpan(
+                                                        style: TextStyle(
+                                                          fontSize: sizeConfig
+                                                              .dynamicScaleSize(
+                                                                  size: 16),
+                                                          color: Colors.black,
+                                                        ),
+                                                        children: <TextSpan>[
+                                                          TextSpan(
+                                                              text:
+                                                                  '\nVocẽ está excluindo o rack '),
+                                                          TextSpan(
+                                                              text:
+                                                                  '${widget.listRack[index].idTouro}',
+                                                              style: TextStyle(
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold)),
+                                                          TextSpan(
+                                                              text: '.\n\n'),
+                                                          TextSpan(
+                                                              text:
+                                                                  'Deseja proseguir?'),
+                                                        ],
+                                                      ),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                              actions: <Widget>[
+                                                FlatButton(
+                                                  child: Text(
+                                                    "Sim",
+                                                    style: TextStyle(
+                                                        color: Colors.red),
+                                                  ),
+                                                  onPressed: () {
+                                                    widget.listRack
+                                                        .remove(index);
+                                                    widget.controller.remove(
+                                                        widget.listRack[index]);
+                                                    Modular.to.pop();
+                                                  },
+                                                ),
+                                                FlatButton(
+                                                  child: Text(
+                                                    "Não",
+                                                    style: TextStyle(
+                                                        color: Colors.red),
+                                                  ),
+                                                  onPressed: () {
+                                                    Modular.to.pop();
+                                                  },
+                                                ),
+                                              ],
+                                            );
+                                          });
                                     },
                                   ),
                                 ],

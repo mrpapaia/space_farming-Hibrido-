@@ -44,10 +44,10 @@ class _HistoricoPageState
             TitleOfScreen(
               title: "Histórico do Botijão",
               font: "Revalia",
-              fontSize: 24,
+              fontSize: sizeConfig.dynamicScaleSize(size: 30),
             ),
             Container(
-              height: MediaQuery.of(context).size.height - 200,
+              height: sizeConfig.dynamicScaleSize(size: 600),
               child: TabBarView(
                 children: [
                   Observer(builder: (BuildContext context) {
@@ -82,21 +82,21 @@ class _HistoricoPageState
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              width: MediaQuery.of(context).size.width - 30,
-              height: 50,
+              width: sizeConfig.dynamicScaleSize(size: 350),
+              height: sizeConfig.dynamicScaleSize(size: 50),
               color: Colors.white,
               child: TabBar(
                 tabs: [
                   Text(
                     "Nivel",
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: sizeConfig.dynamicScaleSize(size: 20),
                     ),
                   ),
                   Text(
                     "Abastecimento",
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: sizeConfig.dynamicScaleSize(size: 20),
                     ),
                   ),
                 ],

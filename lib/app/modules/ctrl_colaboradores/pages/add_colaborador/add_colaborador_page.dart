@@ -51,7 +51,7 @@ class _AddColaboradorPageState
           CardEditText(
             child: TextField(
               controller: null,
-              onChanged: null,
+              onChanged: controller.getEmail,
               obscureText: false,
               keyboardType: TextInputType.text,
               cursorColor: Colors.red,
@@ -94,8 +94,8 @@ class _AddColaboradorPageState
                 ButtonCustom(
                   text: "Confirmar",
                   onclick: () {
-                    // controller.addFarm();
-                    Navigator.pop(context);
+                    controller.setColab();
+                    Modular.to.pop();
                   },
                   width: _width * 0.5,
                 ),

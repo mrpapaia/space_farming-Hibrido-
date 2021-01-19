@@ -24,6 +24,17 @@ mixin _$AddColaboradorController on _AddColaboradorControllerBase, Store {
       ActionController(name: '_AddColaboradorControllerBase');
 
   @override
+  dynamic getEmail(String value) {
+    final _$actionInfo = _$_AddColaboradorControllerBaseActionController
+        .startAction(name: '_AddColaboradorControllerBase.getEmail');
+    try {
+      return super.getEmail(value);
+    } finally {
+      _$_AddColaboradorControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setColab() {
     final _$actionInfo = _$_AddColaboradorControllerBaseActionController
         .startAction(name: '_AddColaboradorControllerBase.setColab');

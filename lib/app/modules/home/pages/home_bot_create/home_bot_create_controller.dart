@@ -15,23 +15,23 @@ abstract class _HomeBotCreateControllerBase with Store {
   final Botijao botijao;
   final String path;
 
+  final bool edit;
   @observable
   var ctrl1 = TextEditingController();
   @observable
   var ctrl2 = TextEditingController();
   @observable
   var ctrl3 = TextEditingController();
-
   @observable
-  bool edit = false;
-  _HomeBotCreateControllerBase({this.repository, this.path, this.botijao}) {
-    if (botijao.idBot != null) {
-      edit = true;
+  var ctrl4 = TextEditingController();
+
+  _HomeBotCreateControllerBase(
+      {this.repository, this.path, this.botijao, this.edit}) {
+    if (edit) {
       ctrl1.text = botijao.idBot;
       ctrl2.text = botijao.volTotal.toString();
       ctrl3.text = botijao.volAtual.toString();
-    } else {
-      edit = false;
+      ctrl4.text = botijao.qtdDose.toString();
     }
   }
 
@@ -70,6 +70,10 @@ abstract class _HomeBotCreateControllerBase with Store {
   @action
   getDoses(String dose) {
     botijao.qtdDose = int.parse(dose);
+    ctrl4.value = TextEditingValue(
+      text: dose,
+      selection: TextSelection.collapsed(offset: dose.length),
+    );
   }
 
   @action
@@ -78,8 +82,8 @@ abstract class _HomeBotCreateControllerBase with Store {
   }
 
   @action
-  addBot() {
-    repository.add(path, botijao).then((value) => print("sucesso!"));
+  bool addBot() {
+    repository.add(path, botijao).then((value) => print(value));
   }
 
   @action

@@ -17,8 +17,8 @@ class BotijaoRepository implements IRepositoryBotijao {
   @override
   Future<bool> add(String path, Botijao botijao) {
     String pathF = "farms/" + path + '/botijoes';
-    print(pathF);
-    return firestore
+    bool aux = false;
+    firestore
         .collection(pathF)
         .doc(botijao.idBot)
         .set(botijao.toMap())
@@ -32,7 +32,9 @@ class BotijaoRepository implements IRepositoryBotijao {
             .then((value) => print("Caneca adicionado com suecsso"))
             .catchError((error) => print("Failed to add botijao: $error"));
       }
+      aux = true;
     }).catchError((error) => print("Failed to add botijao: $error"));
+    return Future.value(aux);
   }
 
   @override

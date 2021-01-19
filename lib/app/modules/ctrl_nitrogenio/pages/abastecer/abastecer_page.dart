@@ -6,6 +6,7 @@ import 'package:space_farming_modular/app/shared/components/containerBase.dart';
 import 'package:space_farming_modular/app/shared/components/cardEditText.dart';
 import 'package:space_farming_modular/app/shared/components/my_icons_icons.dart';
 import 'package:space_farming_modular/app/shared/components/nav_draw.dart';
+import 'package:space_farming_modular/app/shared/components/sizeConfig.dart';
 import 'package:space_farming_modular/app/shared/components/titleOfScreen.dart';
 import 'package:space_farming_modular/app/shared/models/botijao.dart';
 import 'package:space_farming_modular/app/shared/models/user.dart';
@@ -30,6 +31,8 @@ class _AbastecerPageState
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width - 30;
     double _height = MediaQuery.of(context).size.height;
+    final sizeConfig = SizeConfig(mediaQueryData: MediaQuery.of(context));
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: SecAppBar(
@@ -40,16 +43,16 @@ class _AbastecerPageState
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
+            SizedBox(
+              height: sizeConfig.dynamicScaleSize(size: 10),
+            ),
             TitleOfScreen(
               title: "Abastecer",
               font: "Revalia",
-              fontSize: _width * 0.09,
+              fontSize: sizeConfig.dynamicScaleSize(size: 30),
             ),
             SizedBox(
-              height: 10,
-            ),
-            SizedBox(
-              height: 10,
+              height: sizeConfig.dynamicScaleSize(size: 20),
             ),
             ContainerBase(
               width: _width,
@@ -61,7 +64,7 @@ class _AbastecerPageState
                   cursorColor: Colors.red,
                   style: TextStyle(
                     fontFamily: 'Robot',
-                    fontSize: 18,
+                    fontSize: sizeConfig.dynamicScaleSize(size: 18),
                     color: Color.fromRGBO(113, 111, 137, 1.0),
                   ),
                   decoration: InputDecoration(
@@ -69,7 +72,7 @@ class _AbastecerPageState
                         color: Colors.red, size: _width * 0.1),
                     hintStyle: TextStyle(
                       fontFamily: 'Robot',
-                      fontSize: 18,
+                      fontSize: sizeConfig.dynamicScaleSize(size: 18),
                       color: Color.fromRGBO(113, 111, 137, 1.0),
                     ),
                     labelText: "Nível",
@@ -84,7 +87,7 @@ class _AbastecerPageState
                   cursorColor: Colors.red,
                   style: TextStyle(
                     fontFamily: 'Robot',
-                    fontSize: 18,
+                    fontSize: sizeConfig.dynamicScaleSize(size: 18),
                     color: Color.fromRGBO(113, 111, 137, 1.0),
                   ),
                   decoration: InputDecoration(
@@ -92,7 +95,7 @@ class _AbastecerPageState
                         color: Colors.red, size: _width * 0.1),
                     hintStyle: TextStyle(
                       fontFamily: 'Robot',
-                      fontSize: 18,
+                      fontSize: sizeConfig.dynamicScaleSize(size: 18),
                       color: Color.fromRGBO(113, 111, 137, 1.0),
                     ),
                     labelText: "Data",
@@ -106,7 +109,7 @@ class _AbastecerPageState
                   cursorColor: Colors.red,
                   style: TextStyle(
                     fontFamily: 'Robot',
-                    fontSize: 18,
+                    fontSize: sizeConfig.dynamicScaleSize(size: 18),
                     color: Color.fromRGBO(113, 111, 137, 1.0),
                   ),
                   decoration: InputDecoration(
@@ -114,7 +117,7 @@ class _AbastecerPageState
                         color: Colors.red, size: _width * 0.1),
                     hintStyle: TextStyle(
                       fontFamily: 'Robot',
-                      fontSize: 18,
+                      fontSize: sizeConfig.dynamicScaleSize(size: 18),
                       color: Color.fromRGBO(113, 111, 137, 1.0),
                     ),
                     labelText: "Preço",
@@ -122,12 +125,12 @@ class _AbastecerPageState
                   ),
                 ),
                 SizedBox(
-                  height: 10,
+                  height: sizeConfig.dynamicScaleSize(size: 10),
                 )
               ],
             ),
             SizedBox(
-              height: 10,
+              height: sizeConfig.dynamicScaleSize(size: 10),
             ),
             Container(
               margin: EdgeInsets.only(top: 20),
@@ -140,14 +143,14 @@ class _AbastecerPageState
                       controller.update();
                       Navigator.pop(context);
                     },
-                    width: _width * 0.5,
+                    width: sizeConfig.dynamicScaleSize(size: 150),
                   ),
                   ButtonCustom(
                     text: "Cancelar",
                     onclick: () {
                       Navigator.pop(context);
                     },
-                    width: _width * 0.5,
+                    width: sizeConfig.dynamicScaleSize(size: 150),
                   ),
                 ],
               ),

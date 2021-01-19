@@ -24,12 +24,13 @@ abstract class _CtrlColaboradoresControllerBase with Store {
 
   @action
   void getColab() {
-    listColab = repositoryUserP.listColab(this.key, this.value).asObservable();
+    listColab = repositoryUserP.listColab(this.value, this.key).asObservable();
   }
 
   @action
   void remove(UserP user) {
-    user.fazenda.remove(this.key);
+    user.fazenda.remove(this.value);
+
     repositoryUserP.update(user);
   }
 }

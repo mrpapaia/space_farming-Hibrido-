@@ -4,7 +4,7 @@ import 'package:space_farming_modular/app/shared/models/botijao.dart';
 import 'package:space_farming_modular/app/shared/models/farm.dart';
 
 abstract class IRepositoryBotijao {
-  Future<void> add(String path, Botijao botijao);
+  Future<bool> add(String path, Botijao botijao);
   Future<void> remove(String id);
   Future<void> updateVol(Botijao obj);
   Future<void> updateBot(Botijao obj);

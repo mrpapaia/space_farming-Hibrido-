@@ -150,7 +150,7 @@ class _HomeInfoBotPageState
                       },
                     ),
                   ),
-                  controller.botijao.numcanecas >= 8
+                  controller.botijao.numcanecas >= 10
                       ? Positioned(
                           child: InkWell(
                             child: ContainerCaneca(
@@ -187,7 +187,7 @@ class _HomeInfoBotPageState
                           width: 0,
                           height: 0,
                         ),
-                  controller.botijao.numcanecas >= 10
+                  controller.botijao.numcanecas >= 8
                       ? Positioned(
                           child: InkWell(
                             child: ContainerCaneca(
@@ -262,7 +262,7 @@ class _HomeInfoBotPageState
                           width: 0,
                           height: 0,
                         ),
-                  controller.botijao.numcanecas >= 10
+                  controller.botijao.numcanecas >= 8
                       ? Positioned(
                           child: InkWell(
                             child: ContainerCaneca(
@@ -332,7 +332,7 @@ class _HomeInfoBotPageState
                     top: sizeConfig.dynamicScaleSize(size: 140),
                     left: sizeConfig.dynamicScaleSize(size: 25),
                   ),
-                  controller.botijao.numcanecas >= 4
+                  controller.botijao.numcanecas >= 6
                       ? Positioned(
                           child: InkWell(
                             child: ContainerCaneca(
@@ -370,7 +370,7 @@ class _HomeInfoBotPageState
                           width: 0,
                           height: 0,
                         ),
-                  controller.botijao.numcanecas >= 8
+                  controller.botijao.numcanecas >= 10
                       ? Positioned(
                           child: InkWell(
                             child: ContainerCaneca(
@@ -483,7 +483,7 @@ class _HomeInfoBotPageState
                           width: 0,
                           height: 0,
                         ),
-                  controller.botijao.numcanecas >= 4
+                  controller.botijao.numcanecas >= 6
                       ? Positioned(
                           child: InkWell(
                             child: ContainerCaneca(

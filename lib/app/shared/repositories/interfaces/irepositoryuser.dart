@@ -6,4 +6,5 @@ abstract class IRepositoryUserP {
   Future<void> update(UserP user);
   Stream<List<UserP>> list(String email);
   Stream<List<UserP>> listColab(String key, String value);
+  updateC(String email, String key, String value);
 }

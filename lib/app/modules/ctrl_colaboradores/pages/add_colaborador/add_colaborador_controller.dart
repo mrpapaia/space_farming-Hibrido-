@@ -12,9 +12,16 @@ abstract class _AddColaboradorControllerBase with Store {
   final IRepositoryUserP repositoryUserP;
   final String key;
   final String value;
-
+  String email;
   _AddColaboradorControllerBase(this.repositoryUserP, this.key, this.value);
+  @action
+  getEmail(String value) {
+    email = value;
+    print(email);
+  }
 
   @action
-  void setColab() {}
+  void setColab() {
+    repositoryUserP.updateC(email, key, value);
+  }
 }

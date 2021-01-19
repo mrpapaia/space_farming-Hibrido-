@@ -41,16 +41,22 @@ class _CtrlRacksPageState
 
       body: Column(
         children: [
+          SizedBox(
+            height: sizeConfig.dynamicScaleSize(size: 10),
+          ),
           TitleOfScreen(
             title: "Lista de Racks",
             font: "Revalia",
-            fontSize: sizeConfig.dynamicScaleSize(size: 24),
+            fontSize: sizeConfig.dynamicScaleSize(size: 30),
+          ),
+          SizedBox(
+            height: sizeConfig.dynamicScaleSize(size: 10),
           ),
           Observer(builder: (BuildContext context) {
             try {
               if (controller.listRacks.data != null) {
                 return Container(
-                  height: sizeConfig.dynamicScaleSize(size: _height - 134),
+                  height: sizeConfig.dynamicScaleSize(size: _height - 180),
                   child: GridViewRacks(
                     listRack: controller.listRacks.data,
                     controller: controller,

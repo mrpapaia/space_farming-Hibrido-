@@ -641,7 +641,7 @@ class _GridViewListState extends State<GridViewList> {
                                   Modular.to.pushNamed('/home/add', arguments: [
                                     // widget.controller.listBot
                                     widget.listBotijao[index].ref.path,
-                                    widget.listBotijao[index]
+                                    widget.listBotijao[index], true
                                   ]);
                                 },
                               ),
@@ -672,12 +672,77 @@ class _GridViewListState extends State<GridViewList> {
                                   ],
                                 ),
                                 onTap: () {
+                                  Modular.to.pop();
                                   showDialog(
                                       context: context,
                                       builder: (BuildContext context) {
                                         return AlertDialog(
-                                          content: Text(
-                                              "CUIDADO!!\nVocê esta excluindo o botijão ${widget.listBotijao[index].idBot}\nDeseja proseguir?"),
+                                          content: Container(
+                                            height: sizeConfig.dynamicScaleSize(
+                                                size: 150),
+                                            width: widget.width,
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    Icon(
+                                                      Icons.warning,
+                                                      color: Colors.red,
+                                                      size: sizeConfig
+                                                          .dynamicScaleSize(
+                                                              size: 50),
+                                                    ),
+                                                    SizedBox(
+                                                      width: sizeConfig
+                                                          .dynamicScaleSize(
+                                                              size: 10),
+                                                    ),
+                                                    Text(
+                                                      "Cuidado!!",
+                                                      style: TextStyle(
+                                                          fontFamily: 'Revalia',
+                                                          fontSize: sizeConfig
+                                                              .dynamicScaleSize(
+                                                                  size: 25),
+                                                          color: Colors.red),
+                                                    ),
+                                                  ],
+                                                ),
+                                                RichText(
+                                                  text: TextSpan(
+                                                    style: TextStyle(
+                                                      fontSize: sizeConfig
+                                                          .dynamicScaleSize(
+                                                              size: 16),
+                                                      color: Colors.black,
+                                                    ),
+                                                    children: <TextSpan>[
+                                                      TextSpan(
+                                                          text:
+                                                              '\nVocẽ está excluindo o botijão '),
+                                                      TextSpan(
+                                                          text:
+                                                              '${widget.listBotijao[index].idBot}',
+                                                          style: TextStyle(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold)),
+                                                      TextSpan(text: '.\n\n'),
+                                                      TextSpan(
+                                                          text:
+                                                              'Deseja proseguir?'),
+                                                    ],
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
                                           actions: <Widget>[
                                             FlatButton(
                                               child: Text(

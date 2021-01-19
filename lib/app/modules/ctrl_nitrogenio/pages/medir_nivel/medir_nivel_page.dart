@@ -6,6 +6,7 @@ import 'package:space_farming_modular/app/shared/components/containerBase.dart';
 import 'package:space_farming_modular/app/shared/components/cardEditText.dart';
 import 'package:space_farming_modular/app/shared/components/my_icons_icons.dart';
 import 'package:space_farming_modular/app/shared/components/nav_draw.dart';
+import 'package:space_farming_modular/app/shared/components/sizeConfig.dart';
 import 'package:space_farming_modular/app/shared/components/titleOfScreen.dart';
 import 'package:space_farming_modular/app/shared/models/botijao.dart';
 import 'package:space_farming_modular/app/shared/models/user.dart';
@@ -30,6 +31,7 @@ class _MedirNivelPageState
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width - 30;
     double _height = MediaQuery.of(context).size.height;
+    final sizeConfig = SizeConfig(mediaQueryData: MediaQuery.of(context));
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: SecAppBar(
@@ -40,18 +42,20 @@ class _MedirNivelPageState
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
+            SizedBox(
+              height: sizeConfig.dynamicScaleSize(size: 20),
+            ),
             TitleOfScreen(
               title: "Medir Nível",
               font: "Revalia",
-              fontSize: _width * 0.09,
+              fontSize: sizeConfig.dynamicScaleSize(size: 30),
             ),
             SizedBox(
-              height: 10,
-            ),
-            SizedBox(
-              height: 10,
+              height: sizeConfig.dynamicScaleSize(size: 20),
             ),
             ContainerBase(
+              width: sizeConfig.dynamicScaleSize(
+                  size: sizeConfig.dynamicScaleSize(size: 350)),
               componets: <Widget>[
                 TextField(
                   onChanged: controller.getVol,
@@ -60,18 +64,18 @@ class _MedirNivelPageState
                   cursorColor: Colors.red,
                   style: TextStyle(
                     fontFamily: 'Robot',
-                    fontSize: _width * 0.05,
+                    fontSize: sizeConfig.dynamicScaleSize(size: 18),
                     color: Color.fromRGBO(113, 111, 137, 1.0),
                   ),
                   decoration: InputDecoration(
                     icon: Icon(
                       MyIcons.volume,
                       color: Colors.red,
-                      size: _width * 0.1,
+                      size: sizeConfig.dynamicScaleSize(size: 35),
                     ),
                     hintStyle: TextStyle(
                       fontFamily: 'Robot',
-                      fontSize: _width * 0.05,
+                      fontSize: sizeConfig.dynamicScaleSize(size: 18),
                       color: Color.fromRGBO(113, 111, 137, 1.0),
                     ),
                     labelText: "Nível",
@@ -86,15 +90,16 @@ class _MedirNivelPageState
                   cursorColor: Colors.red,
                   style: TextStyle(
                     fontFamily: 'Robot',
-                    fontSize: _width * 0.05,
+                    fontSize: sizeConfig.dynamicScaleSize(size: 18),
                     color: Color.fromRGBO(113, 111, 137, 1.0),
                   ),
                   decoration: InputDecoration(
                     icon: Icon(MyIcons.date,
-                        color: Colors.red, size: _width * 0.1),
+                        color: Colors.red,
+                        size: sizeConfig.dynamicScaleSize(size: 35)),
                     hintStyle: TextStyle(
                       fontFamily: 'Robot',
-                      fontSize: _width * 0.05,
+                      fontSize: sizeConfig.dynamicScaleSize(size: 18),
                       color: Color.fromRGBO(113, 111, 137, 1.0),
                     ),
                     labelText: "Data",
@@ -102,12 +107,12 @@ class _MedirNivelPageState
                   ),
                 ),
                 SizedBox(
-                  height: 10,
+                  height: sizeConfig.dynamicScaleSize(size: 10),
                 )
               ],
             ),
             SizedBox(
-              height: _height * 0.05,
+              height: sizeConfig.dynamicScaleSize(size: 10),
             ),
             Container(
               margin: EdgeInsets.only(top: 10),
@@ -120,14 +125,14 @@ class _MedirNivelPageState
                       controller.update();
                       Navigator.pop(context);
                     },
-                    width: _width * 0.5,
+                    width: sizeConfig.dynamicScaleSize(size: 150),
                   ),
                   ButtonCustom(
                     text: "Cancelar",
                     onclick: () {
                       Navigator.pop(context);
                     },
-                    width: _width * 0.5,
+                    width: sizeConfig.dynamicScaleSize(size: 150),
                   ),
                 ],
               ),
