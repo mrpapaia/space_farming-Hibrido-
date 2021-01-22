@@ -23,15 +23,32 @@ class SecAppBar extends StatelessWidget implements PreferredSizeWidget {
               children: [
                 Image(
                   image: AssetImage('lib/app/shared/graphics/logo.png'),
-                  width: sizeConfig.dynamicScaleSize(size: 70),
-                  height: sizeConfig.dynamicScaleSize(size: 67),
+                  width: sizeConfig.dynamicScaleSize(
+                      size: 70,
+                      scaleFactorMini: 0.75,
+                      scaleFactorTablet: 0,
+                      scaleFactorNormal: 1),
+                  height: sizeConfig.dynamicScaleSize(
+                      size: 67,
+                      scaleFactorMini: 0.75,
+                      scaleFactorTablet: 0,
+                      scaleFactorNormal: 1),
                 ),
-                SizedBox(width: sizeConfig.dynamicScaleSize(size: 200)),
+                SizedBox(
+                    width: sizeConfig.dynamicScaleSize(
+                        size: 200,
+                        scaleFactorMini: 0.75,
+                        scaleFactorTablet: 0,
+                        scaleFactorNormal: 1)),
                 IconButton(
                   icon: Icon(
                     Icons.arrow_back,
                     color: Colors.red,
-                    size: sizeConfig.dynamicScaleSize(size: 30),
+                    size: sizeConfig.dynamicScaleSize(
+                        size: 30,
+                        scaleFactorMini: 0.75,
+                        scaleFactorTablet: 0,
+                        scaleFactorNormal: 1),
                   ),
                   onPressed: () {
                     Modular.to.pop(context);
@@ -41,7 +58,11 @@ class SecAppBar extends StatelessWidget implements PreferredSizeWidget {
             ),
             Container(
               width: _width,
-              height: sizeConfig.dynamicScaleSize(size: 3),
+              height: sizeConfig.dynamicScaleSize(
+                  size: 3,
+                  scaleFactorMini: 0.75,
+                  scaleFactorTablet: 0,
+                  scaleFactorNormal: 1),
               color: Colors.white,
             ),
           ],

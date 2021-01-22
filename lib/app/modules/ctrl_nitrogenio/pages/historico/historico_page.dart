@@ -36,7 +36,11 @@ class _HistoricoPageState
       length: 2,
       child: Scaffold(
         appBar: SecAppBar(
-          preferredSize: Size.fromHeight(70.0),
+          preferredSize: Size.fromHeight(sizeConfig.dynamicScaleSize(
+              size: 70,
+              scaleFactorMini: 0.8,
+              scaleFactorTablet: 0,
+              scaleFactorNormal: 1)),
         ),
         backgroundColor: Color.fromRGBO(229, 231, 236, 1.0),
         body: Column(
@@ -44,10 +48,18 @@ class _HistoricoPageState
             TitleOfScreen(
               title: "Histórico do Botijão",
               font: "Revalia",
-              fontSize: sizeConfig.dynamicScaleSize(size: 30),
+              fontSize: sizeConfig.dynamicScaleSize(
+                  size: 30,
+                  scaleFactorMini: 0.75,
+                  scaleFactorTablet: 0,
+                  scaleFactorNormal: 1),
             ),
             Container(
-              height: sizeConfig.dynamicScaleSize(size: 600),
+              height: sizeConfig.dynamicScaleSize(
+                  size: 600,
+                  scaleFactorMini: 0.7,
+                  scaleFactorTablet: 0,
+                  scaleFactorNormal: 1),
               child: TabBarView(
                 children: [
                   Observer(builder: (BuildContext context) {
@@ -92,21 +104,37 @@ class _HistoricoPageState
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              width: sizeConfig.dynamicScaleSize(size: 350),
-              height: sizeConfig.dynamicScaleSize(size: 50),
+              width: sizeConfig.dynamicScaleSize(
+                  size: 350,
+                  scaleFactorMini: 0.75,
+                  scaleFactorTablet: 0,
+                  scaleFactorNormal: 1),
+              height: sizeConfig.dynamicScaleSize(
+                  size: 50,
+                  scaleFactorMini: 0.75,
+                  scaleFactorTablet: 0,
+                  scaleFactorNormal: 1),
               color: Colors.white,
               child: TabBar(
                 tabs: [
                   Text(
                     "Nivel",
                     style: TextStyle(
-                      fontSize: sizeConfig.dynamicScaleSize(size: 20),
+                      fontSize: sizeConfig.dynamicScaleSize(
+                          size: 20,
+                          scaleFactorMini: 0.72,
+                          scaleFactorTablet: 0,
+                          scaleFactorNormal: 1),
                     ),
                   ),
                   Text(
                     "Abastecimento",
                     style: TextStyle(
-                      fontSize: sizeConfig.dynamicScaleSize(size: 20),
+                      fontSize: sizeConfig.dynamicScaleSize(
+                          size: 20,
+                          scaleFactorMini: 0.72,
+                          scaleFactorTablet: 0,
+                          scaleFactorNormal: 1),
                     ),
                   ),
                 ],

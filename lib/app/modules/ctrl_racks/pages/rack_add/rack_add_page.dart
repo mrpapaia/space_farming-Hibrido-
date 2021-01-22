@@ -44,17 +44,29 @@ class _RackAddPageState extends ModularState<RackAddPage, RackAddController> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           SizedBox(
-            height: sizeConfig.dynamicScaleSize(size: 10),
+            height: sizeConfig.dynamicScaleSize(
+                size: 10,
+                scaleFactorMini: 0.725,
+                scaleFactorTablet: 0,
+                scaleFactorNormal: 0.8),
           ),
           TitleOfScreen(
             title: controller.rack.idTouro != null
                 ? "Editar Rack"
                 : 'Adicionar Rack',
             font: "Revalia",
-            fontSize: sizeConfig.dynamicScaleSize(size: 30),
+            fontSize: sizeConfig.dynamicScaleSize(
+                size: 30,
+                scaleFactorMini: 0.725,
+                scaleFactorTablet: 0,
+                scaleFactorNormal: 0.8),
           ),
           SizedBox(
-            height: sizeConfig.dynamicScaleSize(size: 10),
+            height: sizeConfig.dynamicScaleSize(
+                size: 10,
+                scaleFactorMini: 0.725,
+                scaleFactorTablet: 0,
+                scaleFactorNormal: 0.8),
           ),
           CardEditText(
             child: TextField(
@@ -65,7 +77,11 @@ class _RackAddPageState extends ModularState<RackAddPage, RackAddController> {
               cursorColor: Colors.red,
               style: TextStyle(
                 fontFamily: 'Robot',
-                fontSize: sizeConfig.dynamicScaleSize(size: 18),
+                fontSize: sizeConfig.dynamicScaleSize(
+                    size: 18,
+                    scaleFactorMini: 0.725,
+                    scaleFactorTablet: 0,
+                    scaleFactorNormal: 0.8),
                 color: Color.fromRGBO(113, 111, 137, 1.0),
               ),
               decoration: InputDecoration(
@@ -79,20 +95,36 @@ class _RackAddPageState extends ModularState<RackAddPage, RackAddController> {
                 ),
                 prefixIcon: Icon(MyIcons.cow,
                     color: Colors.red,
-                    size: sizeConfig.dynamicScaleSize(size: 35)),
+                    size: sizeConfig.dynamicScaleSize(
+                        size: 35,
+                        scaleFactorMini: 0.725,
+                        scaleFactorTablet: 0,
+                        scaleFactorNormal: 0.8)),
                 hintStyle: TextStyle(
                   fontFamily: 'Robot',
-                  fontSize: sizeConfig.dynamicScaleSize(size: 18),
+                  fontSize: sizeConfig.dynamicScaleSize(
+                      size: 18,
+                      scaleFactorMini: 0.725,
+                      scaleFactorTablet: 0,
+                      scaleFactorNormal: 0.8),
                   color: Color.fromRGBO(113, 111, 137, 1.0),
                 ),
                 labelText: "Identificação do Touro",
                 labelStyle: TextStyle(),
               ),
             ),
-            width: _width,
+            width: sizeConfig.dynamicScaleSize(
+                size: _width,
+                scaleFactorMini: 1,
+                scaleFactorTablet: 0,
+                scaleFactorNormal: 1),
           ),
           SizedBox(
-            height: _height * 0.015,
+            height: sizeConfig.dynamicScaleSize(
+                size: 10,
+                scaleFactorMini: 0725,
+                scaleFactorTablet: 0,
+                scaleFactorNormal: 1),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -107,7 +139,11 @@ class _RackAddPageState extends ModularState<RackAddPage, RackAddController> {
                   cursorColor: Colors.red,
                   style: TextStyle(
                     fontFamily: 'Robot',
-                    fontSize: sizeConfig.dynamicScaleSize(size: 18),
+                    fontSize: sizeConfig.dynamicScaleSize(
+                        size: 18,
+                        scaleFactorMini: 0.725,
+                        scaleFactorTablet: 0,
+                        scaleFactorNormal: 0.8),
                     color: Color.fromRGBO(113, 111, 137, 1.0),
                   ),
                   decoration: InputDecoration(
@@ -121,20 +157,36 @@ class _RackAddPageState extends ModularState<RackAddPage, RackAddController> {
                     ),
                     prefixIcon: Icon(MyIcons.dose,
                         color: Colors.red,
-                        size: sizeConfig.dynamicScaleSize(size: 35)),
+                        size: sizeConfig.dynamicScaleSize(
+                            size: 35,
+                            scaleFactorMini: 0.725,
+                            scaleFactorTablet: 0,
+                            scaleFactorNormal: 0.8)),
                     hintStyle: TextStyle(
                       fontFamily: 'Robot',
-                      fontSize: sizeConfig.dynamicScaleSize(size: 18),
+                      fontSize: sizeConfig.dynamicScaleSize(
+                          size: 18,
+                          scaleFactorMini: 0.725,
+                          scaleFactorTablet: 0,
+                          scaleFactorNormal: 0.8),
                       color: Color.fromRGBO(113, 111, 137, 1.0),
                     ),
                     labelText: "Cima",
                     labelStyle: TextStyle(),
                   ),
                 ),
-                width: sizeConfig.dynamicScaleSize(size: 170),
+                width: sizeConfig.dynamicScaleSize(
+                    size: 225,
+                    scaleFactorMini: 0.725,
+                    scaleFactorTablet: 0,
+                    scaleFactorNormal: 0.8),
               ),
               SizedBox(
-                width: sizeConfig.dynamicScaleSize(size: 25),
+                width: sizeConfig.dynamicScaleSize(
+                    size: 10,
+                    scaleFactorMini: 0.725,
+                    scaleFactorTablet: 0,
+                    scaleFactorNormal: 0.8),
               ),
               CardEditText(
                 child: TextField(
@@ -145,7 +197,11 @@ class _RackAddPageState extends ModularState<RackAddPage, RackAddController> {
                   cursorColor: Colors.red,
                   style: TextStyle(
                     fontFamily: 'Robot',
-                    fontSize: sizeConfig.dynamicScaleSize(size: 18),
+                    fontSize: sizeConfig.dynamicScaleSize(
+                        size: 18,
+                        scaleFactorMini: 0.725,
+                        scaleFactorTablet: 0,
+                        scaleFactorNormal: 0.8),
                     color: Color.fromRGBO(113, 111, 137, 1.0),
                   ),
                   decoration: InputDecoration(
@@ -159,25 +215,50 @@ class _RackAddPageState extends ModularState<RackAddPage, RackAddController> {
                     ),
                     prefixIcon: Icon(MyIcons.dose,
                         color: Colors.red,
-                        size: sizeConfig.dynamicScaleSize(size: 35)),
+                        size: sizeConfig.dynamicScaleSize(
+                            size: 35,
+                            scaleFactorMini: 0.725,
+                            scaleFactorTablet: 0,
+                            scaleFactorNormal: 0.8)),
                     hintStyle: TextStyle(
                       fontFamily: 'Robot',
-                      fontSize: sizeConfig.dynamicScaleSize(size: 18),
+                      fontSize: sizeConfig.dynamicScaleSize(
+                          size: 18,
+                          scaleFactorMini: 0.725,
+                          scaleFactorTablet: 0,
+                          scaleFactorNormal: 0.8),
                       color: Color.fromRGBO(113, 111, 137, 1.0),
                     ),
                     labelText: "Baixo",
                     labelStyle: TextStyle(),
                   ),
                 ),
-                width: sizeConfig.dynamicScaleSize(size: 170),
+                width: sizeConfig.dynamicScaleSize(
+                    size: 225,
+                    scaleFactorMini: 0.725,
+                    scaleFactorTablet: 0,
+                    scaleFactorNormal: 0.8),
               ),
             ],
           ),
           Container(
-            height: sizeConfig.dynamicScaleSize(size: 60),
+            height: sizeConfig.dynamicScaleSize(
+                size: 60,
+                scaleFactorMini: 0.725,
+                scaleFactorTablet: 0,
+                scaleFactorNormal: 0.8),
             margin: EdgeInsets.only(
-                top: 10, right: sizeConfig.dynamicScaleSize(size: 55)),
-            width: sizeConfig.dynamicScaleSize(size: 300),
+                top: 10,
+                right: sizeConfig.dynamicScaleSize(
+                    size: 150,
+                    scaleFactorMini: 0.725,
+                    scaleFactorTablet: 0,
+                    scaleFactorNormal: 0.8)),
+            width: sizeConfig.dynamicScaleSize(
+                size: 300,
+                scaleFactorMini: 0.725,
+                scaleFactorTablet: 0,
+                scaleFactorNormal: 0.8),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
               color: Colors.white,
@@ -196,7 +277,11 @@ class _RackAddPageState extends ModularState<RackAddPage, RackAddController> {
                     "Tipo do semên:",
                     style: TextStyle(
                         fontFamily: 'Robot',
-                        fontSize: sizeConfig.dynamicScaleSize(size: 18),
+                        fontSize: sizeConfig.dynamicScaleSize(
+                            size: 18,
+                            scaleFactorMini: 0.725,
+                            scaleFactorTablet: 0,
+                            scaleFactorNormal: 0.8),
                         color: Color.fromRGBO(113, 111, 137, 1.0)),
                   ),
                   margin:
@@ -229,13 +314,30 @@ class _RackAddPageState extends ModularState<RackAddPage, RackAddController> {
             ),
           ),
           SizedBox(
-            width: _width * 0.1,
+            width: sizeConfig.dynamicScaleSize(
+                size: 10,
+                scaleFactorMini: 0.725,
+                scaleFactorTablet: 0,
+                scaleFactorNormal: 0.8),
           ),
           Container(
-            height: sizeConfig.dynamicScaleSize(size: 60),
+            height: sizeConfig.dynamicScaleSize(
+                size: 60,
+                scaleFactorMini: 0.725,
+                scaleFactorTablet: 0,
+                scaleFactorNormal: 0.8),
             margin: EdgeInsets.only(
-                top: 10, right: sizeConfig.dynamicScaleSize(size: 200)),
-            width: sizeConfig.dynamicScaleSize(size: 150),
+                top: 10,
+                right: sizeConfig.dynamicScaleSize(
+                    size: 250,
+                    scaleFactorMini: 0.725,
+                    scaleFactorTablet: 0,
+                    scaleFactorNormal: 0.8)),
+            width: sizeConfig.dynamicScaleSize(
+                size: 200,
+                scaleFactorMini: 0.725,
+                scaleFactorTablet: 0,
+                scaleFactorNormal: 0.8),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
               color: Colors.white,
@@ -254,7 +356,11 @@ class _RackAddPageState extends ModularState<RackAddPage, RackAddController> {
                     "Volume:",
                     style: TextStyle(
                         fontFamily: 'Robot',
-                        fontSize: sizeConfig.dynamicScaleSize(size: 18),
+                        fontSize: sizeConfig.dynamicScaleSize(
+                            size: 18,
+                            scaleFactorMini: 0.725,
+                            scaleFactorTablet: 0,
+                            scaleFactorNormal: 0.8),
                         color: Color.fromRGBO(113, 111, 137, 1.0)),
                   ),
                   margin:

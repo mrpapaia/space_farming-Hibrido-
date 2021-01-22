@@ -23,24 +23,41 @@ class _LongPressCanecaState extends State<LongPressCaneca> {
     return AlertDialog(
       title: Text('caneca'),
       content: Container(
-        height: sizeConfig.dynamicScaleSize(size: 100),
+        height: sizeConfig.dynamicScaleSize(
+            size: 100,
+            scaleFactorMini: 1,
+            scaleFactorTablet: 0,
+            scaleFactorNormal: 1),
         child: Column(
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 SizedBox(
-                  width: sizeConfig.dynamicScaleSize(size: 15),
+                  width: sizeConfig.dynamicScaleSize(
+                      size: 15,
+                      scaleFactorMini: 0.725,
+                      scaleFactorTablet: 0,
+                      scaleFactorNormal: 1),
                 ),
                 Text(
                   "Estado:",
                   style: TextStyle(
                       fontFamily: 'Revalia',
-                      fontSize: sizeConfig.dynamicScaleSize(size: 13),
+                      fontWeight: FontWeight.bold,
+                      fontSize: sizeConfig.dynamicScaleSize(
+                          size: 18,
+                          scaleFactorMini: 0.725,
+                          scaleFactorTablet: 0,
+                          scaleFactorNormal: 1),
                       color: Colors.grey[700]),
                 ),
                 SizedBox(
-                  width: sizeConfig.dynamicScaleSize(size: 10),
+                  width: sizeConfig.dynamicScaleSize(
+                      size: 10,
+                      scaleFactorMini: 0.725,
+                      scaleFactorTablet: 0,
+                      scaleFactorNormal: 1),
                 ),
                 DropdownButton<String>(
                   value:
@@ -79,17 +96,30 @@ class _LongPressCanecaState extends State<LongPressCaneca> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 SizedBox(
-                  width: sizeConfig.dynamicScaleSize(size: 15),
+                  width: sizeConfig.dynamicScaleSize(
+                      size: 15,
+                      scaleFactorMini: 0.725,
+                      scaleFactorTablet: 0,
+                      scaleFactorNormal: 1),
                 ),
                 Text(
-                  "Cor",
+                  "Cor:",
                   style: TextStyle(
                       fontFamily: 'Revalia',
-                      fontSize: sizeConfig.dynamicScaleSize(size: 13),
+                      fontWeight: FontWeight.bold,
+                      fontSize: sizeConfig.dynamicScaleSize(
+                          size: 18,
+                          scaleFactorMini: 0.725,
+                          scaleFactorTablet: 0,
+                          scaleFactorNormal: 1),
                       color: Colors.grey[700]),
                 ),
                 SizedBox(
-                  width: sizeConfig.dynamicScaleSize(size: 10),
+                  width: sizeConfig.dynamicScaleSize(
+                      size: 10,
+                      scaleFactorMini: 0.725,
+                      scaleFactorTablet: 0,
+                      scaleFactorNormal: 1),
                 ),
                 RaisedButton(
                   color: widget.controller.botijao.canecas[widget.index]

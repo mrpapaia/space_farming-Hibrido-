@@ -9,23 +9,45 @@ class SizeConfig {
       SizeConfig(mediaQueryData: MediaQuery.of(context));
 
   double dynamicScaleSize(
-      {double size, double scaleFactorTablet, double scaleFactorMini}) {
+      {double size,
+      double scaleFactorTablet,
+      double scaleFactorMini,
+      double scaleFactorNormal}) {
+    if (isMini()) {
+      final scaleFactor = scaleFactorMini ?? 0.8;
+      return size * scaleFactor;
+    }
+
+    if (isNormal()) {
+      final scaleFactor = scaleFactorNormal ?? 0.8;
+      return size * scaleFactor;
+    }
+
+    if (isNormal1()) {
+      final scaleFactor = (scaleFactorNormal - 0.011) ?? 0.8;
+      return size * scaleFactor;
+    }
     if (isTablet()) {
       final scaleFactor = scaleFactorTablet ?? 2;
       return size * scaleFactor;
     }
 
-    if (isMini()) {
-      final scaleFactor = scaleFactorMini ?? 0.8;
-      return size * scaleFactor;
-    }
-    print(mediaQueryData.size.shortestSide);
     return size;
   }
 
   bool isTablet() {
     final shortestSide = mediaQueryData.size.shortestSide;
     return shortestSide > 600;
+  }
+
+  bool isNormal() {
+    final shortestSide = mediaQueryData.size.shortestSide;
+    return shortestSide <= 400;
+  }
+
+  bool isNormal1() {
+    final shortestSide = mediaQueryData.size.shortestSide;
+    return shortestSide > 410;
   }
 
   bool isMini() {

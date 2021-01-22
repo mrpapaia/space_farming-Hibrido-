@@ -42,15 +42,20 @@ class _CtrlRacksPageState
       body: Column(
         children: [
           SizedBox(
-            height: sizeConfig.dynamicScaleSize(size: 10),
+            height: sizeConfig.dynamicScaleSize(
+                size: 10,
+                scaleFactorMini: 0.725,
+                scaleFactorTablet: 0,
+                scaleFactorNormal: 0.81),
           ),
           TitleOfScreen(
             title: "Lista de Racks",
             font: "Revalia",
-            fontSize: sizeConfig.dynamicScaleSize(size: 30),
-          ),
-          SizedBox(
-            height: sizeConfig.dynamicScaleSize(size: 10),
+            fontSize: sizeConfig.dynamicScaleSize(
+                size: 35,
+                scaleFactorMini: 0.725,
+                scaleFactorTablet: 0,
+                scaleFactorNormal: 0.81),
           ),
           Observer(builder: (BuildContext context) {
             try {
@@ -59,7 +64,11 @@ class _CtrlRacksPageState
                   return Center(child: Text("Vazio!"));
                 } else {
                   return Container(
-                    height: sizeConfig.dynamicScaleSize(size: _height - 180),
+                    height: sizeConfig.dynamicScaleSize(
+                        size: _height,
+                        scaleFactorMini: 0.725,
+                        scaleFactorTablet: 0,
+                        scaleFactorNormal: 0.8),
                     child: GridViewRacks(
                       listRack: controller.listRacks.data,
                       controller: controller,

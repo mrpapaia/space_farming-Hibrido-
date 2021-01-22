@@ -48,23 +48,36 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
       resizeToAvoidBottomPadding: false,
       drawer: NavigationDrawer(controller: controller),
       appBar: HomeAppBar(
-        preferredSize: Size.fromHeight(70.0),
+        preferredSize: Size.fromHeight(sizeConfig.dynamicScaleSize(
+            size: 70,
+            scaleFactorMini: 0.8,
+            scaleFactorTablet: 0,
+            scaleFactorNormal: 1)),
       ),
       body: Column(
         children: [
-          SizedBox(
-            height: 5,
-          ),
           TitleOfScreen(
             title: "Lista de Botijões",
             font: "Revalia",
-            fontSize: sizeConfig.dynamicScaleSize(size: 30),
+            fontSize: sizeConfig.dynamicScaleSize(
+                size: 30,
+                scaleFactorMini: 0.725,
+                scaleFactorTablet: 0,
+                scaleFactorNormal: 1),
           ),
           SizedBox(
-            height: 5,
+            height: sizeConfig.dynamicScaleSize(
+                size: 5,
+                scaleFactorMini: 0.725,
+                scaleFactorTablet: 0,
+                scaleFactorNormal: 1),
           ),
           Container(
-            height: sizeConfig.dynamicScaleSize(size: _height * 0.793),
+            height: sizeConfig.dynamicScaleSize(
+                size: _height,
+                scaleFactorMini: 0.78,
+                scaleFactorTablet: 0,
+                scaleFactorNormal: 0.8125),
             child: Observer(
               builder: (BuildContext context) {
                 try {
@@ -90,7 +103,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                   return Column(
                     children: [
                       Center(
-                        child: Text("Aguerde1..."),
+                        child: Text("Aguarde..."),
                       ),
                       Center(
                         child: CircularProgressIndicator(),

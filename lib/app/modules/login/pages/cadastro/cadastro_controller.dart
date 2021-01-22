@@ -43,8 +43,7 @@ abstract class _CadastroControllerBase with Store {
   @action
   void getTelefone(String telefone) => this.telefone = telefone;
 
-  Future<void> singIn() async {
-    var auth = FirebaseAuth.instance;
+  Future<bool> singIn(FirebaseAuth auth) async {
     try {
       UserCredential user = await auth.createUserWithEmailAndPassword(
           email: this.email, password: this.passwd);
@@ -58,7 +57,6 @@ abstract class _CadastroControllerBase with Store {
                 fazenda: {value: this.nomeFazenda},
                 tel: this.telefone)));
 
-        auth.signOut();
         return true;
       }
     } on FirebaseAuthException catch (e) {

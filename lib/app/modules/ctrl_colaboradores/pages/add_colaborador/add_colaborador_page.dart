@@ -37,16 +37,21 @@ class _AddColaboradorPageState
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SizedBox(
-            height: sizeConfig.dynamicScaleSize(size: 20),
-          ),
           TitleOfScreen(
             title: 'Adicionar Colaborador',
             font: "Revalia",
-            fontSize: sizeConfig.dynamicScaleSize(size: 25),
+            fontSize: sizeConfig.dynamicScaleSize(
+                size: 25,
+                scaleFactorMini: 0.725,
+                scaleFactorTablet: 0,
+                scaleFactorNormal: 1),
           ),
           SizedBox(
-            height: sizeConfig.dynamicScaleSize(size: 30),
+            height: sizeConfig.dynamicScaleSize(
+                size: 30,
+                scaleFactorMini: 0.725,
+                scaleFactorTablet: 0,
+                scaleFactorNormal: 1),
           ),
           CardEditText(
             child: TextField(
@@ -71,23 +76,38 @@ class _AddColaboradorPageState
                 ),
                 prefixIcon: Icon(MyIcons.employee,
                     color: Colors.red,
-                    size: sizeConfig.dynamicScaleSize(size: 35)),
+                    size: sizeConfig.dynamicScaleSize(
+                        size: 35,
+                        scaleFactorMini: 0.725,
+                        scaleFactorTablet: 0,
+                        scaleFactorNormal: 1)),
                 hintStyle: TextStyle(
                   fontFamily: 'Robot',
-                  fontSize: sizeConfig.dynamicScaleSize(size: 18),
+                  fontSize: sizeConfig.dynamicScaleSize(
+                      size: 18,
+                      scaleFactorMini: 0.725,
+                      scaleFactorTablet: 0,
+                      scaleFactorNormal: 1),
                   color: Color.fromRGBO(113, 111, 137, 1.0),
                 ),
                 labelText: "E-mail do colaborador",
                 labelStyle: TextStyle(),
               ),
             ),
-            width: _width,
+            width: sizeConfig.dynamicScaleSize(
+                size: _width,
+                scaleFactorMini: 1,
+                scaleFactorTablet: 0,
+                scaleFactorNormal: 1),
           ),
           SizedBox(
-            height: _height * 0.015,
+            height: sizeConfig.dynamicScaleSize(
+                size: 10,
+                scaleFactorMini: 0.725,
+                scaleFactorTablet: 0,
+                scaleFactorNormal: 1),
           ),
           Container(
-            margin: EdgeInsets.only(top: 60),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -97,14 +117,22 @@ class _AddColaboradorPageState
                     controller.setColab();
                     Modular.to.pop();
                   },
-                  width: _width * 0.5,
+                  width: sizeConfig.dynamicScaleSize(
+                      size: _width / 2,
+                      scaleFactorMini: 1,
+                      scaleFactorTablet: 0,
+                      scaleFactorNormal: 1),
                 ),
                 ButtonCustom(
                   text: "Cancelar",
                   onclick: () {
                     Navigator.pop(context);
                   },
-                  width: _width * 0.5,
+                  width: sizeConfig.dynamicScaleSize(
+                      size: _width / 2,
+                      scaleFactorMini: 1,
+                      scaleFactorTablet: 0,
+                      scaleFactorNormal: 1),
                 ),
               ],
             ),

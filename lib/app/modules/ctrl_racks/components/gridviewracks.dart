@@ -54,18 +54,30 @@ class _GridViewRacksState extends State<GridViewRacks> {
                         "${widget.listRack[index].idTouro}",
                         style: TextStyle(
                             fontFamily: 'Revalia',
-                            fontSize: sizeConfig.dynamicScaleSize(size: 14),
+                            fontSize: sizeConfig.dynamicScaleSize(
+                                size: 14,
+                                scaleFactorMini: 0.725,
+                                scaleFactorTablet: 0,
+                                scaleFactorNormal: 1),
                             color: Colors.white),
                       ),
                     ),
-                    width: 100,
+                    width: sizeConfig.dynamicScaleSize(
+                        size: 150,
+                        scaleFactorMini: 0.725,
+                        scaleFactorTablet: 0,
+                        scaleFactorNormal: 0.8),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(7),
                       color: Colors.red,
                     ),
                   ),
                   SizedBox(
-                    height: 20,
+                    height: sizeConfig.dynamicScaleSize(
+                        size: 20,
+                        scaleFactorMini: 0.725,
+                        scaleFactorTablet: 0,
+                        scaleFactorNormal: 0.8),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -73,7 +85,11 @@ class _GridViewRacksState extends State<GridViewRacks> {
                       Text(
                         "${widget.listRack[index].doseUp}",
                         style: TextStyle(
-                            fontSize: sizeConfig.dynamicScaleSize(size: 20),
+                            fontSize: sizeConfig.dynamicScaleSize(
+                                size: 20,
+                                scaleFactorMini: 0.725,
+                                scaleFactorTablet: 0,
+                                scaleFactorNormal: 0.8),
                             fontFamily: 'Revalia'),
                       ),
                       Icon(
@@ -97,7 +113,11 @@ class _GridViewRacksState extends State<GridViewRacks> {
                     children: [
                       Text("${widget.listRack[index].doseDown}",
                           style: TextStyle(
-                              fontSize: sizeConfig.dynamicScaleSize(size: 20),
+                              fontSize: sizeConfig.dynamicScaleSize(
+                                  size: 20,
+                                  scaleFactorMini: 0.725,
+                                  scaleFactorTablet: 0,
+                                  scaleFactorNormal: 0.8),
                               fontFamily: 'Revalia')),
                       Icon(
                         Icons.arrow_downward,
@@ -116,12 +136,24 @@ class _GridViewRacksState extends State<GridViewRacks> {
                         "${widget.listRack[index].tipo}",
                         style: TextStyle(
                             fontFamily: 'Revalia',
-                            fontSize: sizeConfig.dynamicScaleSize(size: 14),
+                            fontSize: sizeConfig.dynamicScaleSize(
+                                size: 14,
+                                scaleFactorMini: 0.725,
+                                scaleFactorTablet: 0,
+                                scaleFactorNormal: 1),
                             color: Colors.white),
                       ),
                     ),
-                    width: sizeConfig.dynamicScaleSize(size: 150),
-                    height: sizeConfig.dynamicScaleSize(size: 22),
+                    width: sizeConfig.dynamicScaleSize(
+                        size: 200,
+                        scaleFactorMini: 0.725,
+                        scaleFactorTablet: 0,
+                        scaleFactorNormal: 0.8),
+                    height: sizeConfig.dynamicScaleSize(
+                        size: 30,
+                        scaleFactorMini: 0.725,
+                        scaleFactorTablet: 0,
+                        scaleFactorNormal: 0.8),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(7),
                       color: Colors.red,
@@ -162,12 +194,20 @@ class _GridViewRacksState extends State<GridViewRacks> {
                       elevation: 0.0,
                       //title: Center(child: Text("Botijao")),
                       content: Container(
-                        height: sizeConfig.dynamicScaleSize(size: 300),
+                        height: sizeConfig.dynamicScaleSize(
+                            size: 545,
+                            scaleFactorMini: 0.725,
+                            scaleFactorTablet: 0,
+                            scaleFactorNormal: 0.8),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             Container(
-                              width: sizeConfig.dynamicScaleSize(size: 400),
+                              width: sizeConfig.dynamicScaleSize(
+                                  size: 400,
+                                  scaleFactorMini: 0.725,
+                                  scaleFactorTablet: 0,
+                                  scaleFactorNormal: 0.8),
                               padding: EdgeInsets.all(8.0),
                               decoration: BoxDecoration(
                                 color: Color.fromRGBO(229, 231, 236, 1.0),
@@ -178,125 +218,186 @@ class _GridViewRacksState extends State<GridViewRacks> {
                               child: Column(
                                 children: [
                                   Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
                                     children: [
                                       Icon(Icons.info, color: Colors.grey[700]),
                                       SizedBox(
                                         width: sizeConfig.dynamicScaleSize(
-                                            size: 25),
+                                            size: 25,
+                                            scaleFactorMini: 0.725,
+                                            scaleFactorTablet: 0,
+                                            scaleFactorNormal: 0.8),
                                       ),
                                       Text(
                                         "Informações da dose",
                                         style: TextStyle(
+                                            fontWeight: FontWeight.bold,
                                             fontFamily: 'Revalia',
-                                            fontSize: sizeConfig
-                                                .dynamicScaleSize(size: 13),
+                                            fontSize:
+                                                sizeConfig.dynamicScaleSize(
+                                                    size: 18,
+                                                    scaleFactorMini: 0.725,
+                                                    scaleFactorTablet: 0,
+                                                    scaleFactorNormal: 0.8),
                                             color: Colors.grey[700]),
                                       ),
                                     ],
                                   ),
-                                  Divider(),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
+                                  Divider(color: Colors.white),
+                                  Column(
                                     children: [
-                                      SizedBox(
-                                        width: sizeConfig.dynamicScaleSize(
-                                            size: 50),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        children: [
+                                          Text(
+                                            "Touro",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          Text(
+                                              "${widget.listRack[index].idTouro}",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold))
+                                        ],
                                       ),
-                                      Text("Touro"),
-                                      SizedBox(
-                                        width: sizeConfig.dynamicScaleSize(
-                                            size: 135),
+                                      Divider(
+                                        color: Colors.white,
                                       ),
-                                      Text("${widget.listRack[index].idTouro}"),
+                                      Text("No rack",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold)),
+                                      Divider(
+                                        color: Colors.white,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        children: [
+                                          Text("Tipo",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold)),
+                                          Text("${widget.listRack[index].tipo}",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold))
+                                        ],
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
+                                        children: [
+                                          Text("Cima ",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold)),
+                                          Text(
+                                              "${widget.listRack[index].doseUp}",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold))
+                                        ],
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
+                                        children: [
+                                          Text("Baixo ",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold)),
+                                          Text(
+                                              "${widget.listRack[index].doseDown}",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold))
+                                        ],
+                                      ),
+                                      Divider(
+                                        color: Colors.white,
+                                      ),
+                                      Text("Na Caneca",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold)),
+                                      Divider(
+                                        color: Colors.white,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
+                                        children: [
+                                          Text("Total ",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold)),
+                                          Text("${total}",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold))
+                                        ],
+                                      ),
+                                      Divider(
+                                        color: Colors.white,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
+                                        children: [
+                                          Text("Embrião ",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold)),
+                                          Text("${totalEmbriao}",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold))
+                                        ],
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
+                                        children: [
+                                          Text("Convencional",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold)),
+                                          Text("${totalConvencianado}",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold))
+                                        ],
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
+                                        children: [
+                                          Text("Sexado ",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold)),
+                                          Text("${totalSexado}",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold))
+                                        ],
+                                      ),
                                     ],
                                   ),
-                                  Divider(),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      SizedBox(
-                                        width: sizeConfig.dynamicScaleSize(
-                                            size: 50),
-                                      ),
-                                      Text("Total"),
-                                      SizedBox(
-                                        width: sizeConfig.dynamicScaleSize(
-                                            size: 150),
-                                      ),
-                                      Text("${total}"),
-                                    ],
-                                  ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      SizedBox(
-                                        width: sizeConfig.dynamicScaleSize(
-                                            size: 50),
-                                      ),
-                                      Text("Convencional"),
-                                      SizedBox(
-                                        width: sizeConfig.dynamicScaleSize(
-                                            size: 90),
-                                      ),
-                                      Text("${totalConvencianado}"),
-                                    ],
-                                  ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      SizedBox(
-                                        width: sizeConfig.dynamicScaleSize(
-                                            size: 50),
-                                      ),
-                                      Text("Sexado"),
-                                      SizedBox(
-                                        width: sizeConfig.dynamicScaleSize(
-                                            size: 135),
-                                      ),
-                                      Text("${totalSexado}"),
-                                    ],
-                                  ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      SizedBox(
-                                        width: sizeConfig.dynamicScaleSize(
-                                            size: 50),
-                                      ),
-                                      Text("Embrião"),
-                                      SizedBox(
-                                        width: sizeConfig.dynamicScaleSize(
-                                            size: 135),
-                                      ),
-                                      Text("${totalEmbriao}"),
-                                    ],
-                                  ),
-                                  Divider(),
                                   InkWell(
                                     child: Row(
                                       mainAxisAlignment:
-                                          MainAxisAlignment.start,
+                                          MainAxisAlignment.center,
                                       crossAxisAlignment:
                                           CrossAxisAlignment.center,
                                       children: [
-                                        SizedBox(
-                                          width: sizeConfig.dynamicScaleSize(
-                                              size: 70),
-                                        ),
                                         Icon(Icons.edit, color: Colors.green),
                                         SizedBox(
                                           width: sizeConfig.dynamicScaleSize(
-                                              size: 25),
+                                              size: 25,
+                                              scaleFactorMini: 0.725,
+                                              scaleFactorTablet: 0,
+                                              scaleFactorNormal: 0.8),
                                         ),
                                         Text(
                                           "Editar",
                                           style: TextStyle(
+                                              fontWeight: FontWeight.bold,
                                               fontFamily: 'Revalia',
-                                              fontSize: sizeConfig
-                                                  .dynamicScaleSize(size: 13),
+                                              fontSize:
+                                                  sizeConfig.dynamicScaleSize(
+                                                      size: 18,
+                                                      scaleFactorMini: 0.725,
+                                                      scaleFactorTablet: 0,
+                                                      scaleFactorNormal: 0.8),
                                               color: Colors.green),
                                         ),
                                       ],
@@ -311,26 +412,30 @@ class _GridViewRacksState extends State<GridViewRacks> {
                                   InkWell(
                                     child: Row(
                                       mainAxisAlignment:
-                                          MainAxisAlignment.start,
+                                          MainAxisAlignment.center,
                                       crossAxisAlignment:
                                           CrossAxisAlignment.center,
                                       children: [
-                                        SizedBox(
-                                          width: sizeConfig.dynamicScaleSize(
-                                              size: 70),
-                                        ),
                                         Icon(Icons.delete_forever,
                                             color: Colors.red),
                                         SizedBox(
                                           width: sizeConfig.dynamicScaleSize(
-                                              size: 25),
+                                              size: 25,
+                                              scaleFactorMini: 0.725,
+                                              scaleFactorTablet: 0,
+                                              scaleFactorNormal: 0.8),
                                         ),
                                         Text(
                                           "Excluir",
                                           style: TextStyle(
+                                              fontWeight: FontWeight.bold,
                                               fontFamily: 'Revalia',
-                                              fontSize: sizeConfig
-                                                  .dynamicScaleSize(size: 13),
+                                              fontSize:
+                                                  sizeConfig.dynamicScaleSize(
+                                                      size: 18,
+                                                      scaleFactorMini: 0.725,
+                                                      scaleFactorTablet: 0,
+                                                      scaleFactorNormal: 0.8),
                                               color: Colors.red),
                                         ),
                                       ],
@@ -347,7 +452,10 @@ class _GridViewRacksState extends State<GridViewRacks> {
                                               content: Container(
                                                 height:
                                                     sizeConfig.dynamicScaleSize(
-                                                        size: 150),
+                                                        size: 150,
+                                                        scaleFactorMini: 0.725,
+                                                        scaleFactorTablet: 0,
+                                                        scaleFactorNormal: 0.8),
                                                 child: Column(
                                                   mainAxisAlignment:
                                                       MainAxisAlignment.start,
@@ -364,12 +472,23 @@ class _GridViewRacksState extends State<GridViewRacks> {
                                                           color: Colors.red,
                                                           size: sizeConfig
                                                               .dynamicScaleSize(
-                                                                  size: 50),
+                                                                  size: 50,
+                                                                  scaleFactorMini:
+                                                                      0.725,
+                                                                  scaleFactorTablet:
+                                                                      0,
+                                                                  scaleFactorNormal:
+                                                                      0.8),
                                                         ),
                                                         SizedBox(
-                                                          width: sizeConfig
-                                                              .dynamicScaleSize(
-                                                                  size: 10),
+                                                          width: sizeConfig.dynamicScaleSize(
+                                                              size: 10,
+                                                              scaleFactorMini:
+                                                                  0.725,
+                                                              scaleFactorTablet:
+                                                                  0,
+                                                              scaleFactorNormal:
+                                                                  0.8),
                                                         ),
                                                         Text(
                                                           "Cuidado!!",
@@ -378,7 +497,13 @@ class _GridViewRacksState extends State<GridViewRacks> {
                                                                   'Revalia',
                                                               fontSize: sizeConfig
                                                                   .dynamicScaleSize(
-                                                                      size: 25),
+                                                                      size: 25,
+                                                                      scaleFactorMini:
+                                                                          0.725,
+                                                                      scaleFactorTablet:
+                                                                          0,
+                                                                      scaleFactorNormal:
+                                                                          0.8),
                                                               color:
                                                                   Colors.red),
                                                         ),
@@ -389,7 +514,13 @@ class _GridViewRacksState extends State<GridViewRacks> {
                                                         style: TextStyle(
                                                           fontSize: sizeConfig
                                                               .dynamicScaleSize(
-                                                                  size: 16),
+                                                                  size: 16,
+                                                                  scaleFactorMini:
+                                                                      0.725,
+                                                                  scaleFactorTablet:
+                                                                      0,
+                                                                  scaleFactorNormal:
+                                                                      0.8),
                                                           color: Colors.black,
                                                         ),
                                                         children: <TextSpan>[
@@ -463,8 +594,11 @@ class _GridViewRacksState extends State<GridViewRacks> {
                                   style: TextStyle(
                                       fontFamily: 'Revalia',
                                       fontWeight: FontWeight.bold,
-                                      fontSize:
-                                          sizeConfig.dynamicScaleSize(size: 13),
+                                      fontSize: sizeConfig.dynamicScaleSize(
+                                          size: 18,
+                                          scaleFactorMini: 0.725,
+                                          scaleFactorTablet: 0,
+                                          scaleFactorNormal: 0.8),
                                       color: Colors.black),
                                 )),
                               ),

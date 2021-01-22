@@ -49,7 +49,11 @@ class _GridViewListState extends State<GridViewList> {
           try {
             return InkWell(
               child: Container(
-                width: sizeConfig.dynamicScaleSize(size: 100),
+                width: sizeConfig.dynamicScaleSize(
+                    size: 100,
+                    scaleFactorMini: 0.725,
+                    scaleFactorTablet: 0,
+                    scaleFactorNormal: 0.81),
                 margin: EdgeInsets.only(top: 5, left: 10, bottom: 5, right: 10),
                 padding: EdgeInsets.all(5.0),
                 decoration: BoxDecoration(
@@ -70,8 +74,16 @@ class _GridViewListState extends State<GridViewList> {
                         children: [
                           Center(
                             child: Container(
-                              width: sizeConfig.dynamicScaleSize(size: 150),
-                              height: sizeConfig.dynamicScaleSize(size: 150),
+                              width: sizeConfig.dynamicScaleSize(
+                                  size: 150,
+                                  scaleFactorMini: 0.8,
+                                  scaleFactorTablet: 0,
+                                  scaleFactorNormal: 1),
+                              height: sizeConfig.dynamicScaleSize(
+                                  size: 150,
+                                  scaleFactorMini: 0.8,
+                                  scaleFactorTablet: 0,
+                                  scaleFactorNormal: 1),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(200),
                                 border: Border.all(
@@ -95,15 +107,26 @@ class _GridViewListState extends State<GridViewList> {
                                   "${widget.listBotijao[index].volAtual.toStringAsFixed(2)}",
                                   style: TextStyle(
                                     fontFamily: 'Robot',
-                                    fontSize:
-                                        sizeConfig.dynamicScaleSize(size: 15),
+                                    fontSize: sizeConfig.dynamicScaleSize(
+                                        size: 16,
+                                        scaleFactorMini: 0.7,
+                                        scaleFactorTablet: 0,
+                                        scaleFactorNormal: 0.81),
                                     fontWeight: FontWeight.bold,
                                     color: Colors.red,
                                   ),
                                 ),
                               ),
-                              width: sizeConfig.dynamicScaleSize(size: 50),
-                              height: sizeConfig.dynamicScaleSize(size: 45),
+                              width: sizeConfig.dynamicScaleSize(
+                                  size: 50,
+                                  scaleFactorMini: 0.82,
+                                  scaleFactorTablet: 0,
+                                  scaleFactorNormal: 1),
+                              height: sizeConfig.dynamicScaleSize(
+                                  size: 50,
+                                  scaleFactorMini: 0.75,
+                                  scaleFactorTablet: 0,
+                                  scaleFactorNormal: 1),
                               decoration: BoxDecoration(
                                 border: Border.all(
                                     color: Color.fromRGBO(126, 116, 116, 1.0),
@@ -112,8 +135,16 @@ class _GridViewListState extends State<GridViewList> {
                                 color: Color.fromRGBO(229, 231, 236, 1.0),
                               ),
                             ),
-                            top: sizeConfig.dynamicScaleSize(size: 50),
-                            left: sizeConfig.dynamicScaleSize(size: 60),
+                            top: sizeConfig.dynamicScaleSize(
+                                size: 50,
+                                scaleFactorMini: 0.8,
+                                scaleFactorTablet: 0,
+                                scaleFactorNormal: 1),
+                            left: sizeConfig.dynamicScaleSize(
+                                size: 60,
+                                scaleFactorMini: 0.75,
+                                scaleFactorTablet: 0,
+                                scaleFactorNormal: 1),
                           ),
                           widget.listBotijao[index].numcanecas >= 6
                               ? Positioned(
@@ -130,8 +161,16 @@ class _GridViewListState extends State<GridViewList> {
                                     h: hIcon,
                                     w: wIcon,
                                   ),
-                                  bottom: sizeConfig.dynamicScaleSize(size: 10),
-                                  left: sizeConfig.dynamicScaleSize(size: 57),
+                                  bottom: sizeConfig.dynamicScaleSize(
+                                      size: 10,
+                                      scaleFactorMini: 0.75,
+                                      scaleFactorTablet: 0,
+                                      scaleFactorNormal: 1),
+                                  left: sizeConfig.dynamicScaleSize(
+                                      size: 56,
+                                      scaleFactorMini: 0.75,
+                                      scaleFactorTablet: 0,
+                                      scaleFactorNormal: 1),
                                 )
                               : SizedBox(
                                   width: 0,
@@ -152,8 +191,16 @@ class _GridViewListState extends State<GridViewList> {
                                     h: hIcon,
                                     w: wIcon,
                                   ),
-                                  bottom: sizeConfig.dynamicScaleSize(size: 10),
-                                  right: sizeConfig.dynamicScaleSize(size: 57),
+                                  bottom: sizeConfig.dynamicScaleSize(
+                                      size: 10,
+                                      scaleFactorMini: 0.75,
+                                      scaleFactorTablet: 0,
+                                      scaleFactorNormal: 1),
+                                  right: sizeConfig.dynamicScaleSize(
+                                      size: 57,
+                                      scaleFactorMini: 0.75,
+                                      scaleFactorTablet: 0,
+                                      scaleFactorNormal: 1),
                                 )
                               : SizedBox(
                                   width: 0,
@@ -174,8 +221,16 @@ class _GridViewListState extends State<GridViewList> {
                                     h: hIcon,
                                     w: wIcon,
                                   ),
-                                  bottom: sizeConfig.dynamicScaleSize(size: 30),
-                                  right: sizeConfig.dynamicScaleSize(size: 30),
+                                  bottom: sizeConfig.dynamicScaleSize(
+                                      size: 30,
+                                      scaleFactorMini: 0.75,
+                                      scaleFactorTablet: 0,
+                                      scaleFactorNormal: 1),
+                                  right: sizeConfig.dynamicScaleSize(
+                                      size: 30,
+                                      scaleFactorMini: 0.75,
+                                      scaleFactorTablet: 0,
+                                      scaleFactorNormal: 1),
                                 )
                               : SizedBox(
                                   width: 0,
@@ -196,8 +251,16 @@ class _GridViewListState extends State<GridViewList> {
                                     h: hIcon,
                                     w: wIcon,
                                   ),
-                                  top: sizeConfig.dynamicScaleSize(size: 30),
-                                  right: sizeConfig.dynamicScaleSize(size: 30),
+                                  top: sizeConfig.dynamicScaleSize(
+                                      size: 30,
+                                      scaleFactorMini: 0.75,
+                                      scaleFactorTablet: 0,
+                                      scaleFactorNormal: 1),
+                                  right: sizeConfig.dynamicScaleSize(
+                                      size: 30,
+                                      scaleFactorMini: 0.75,
+                                      scaleFactorTablet: 0,
+                                      scaleFactorNormal: 1),
                                 )
                               : SizedBox(
                                   width: 0,
@@ -218,8 +281,16 @@ class _GridViewListState extends State<GridViewList> {
                                     h: hIcon,
                                     w: wIcon,
                                   ),
-                                  top: sizeConfig.dynamicScaleSize(size: 10),
-                                  right: sizeConfig.dynamicScaleSize(size: 57),
+                                  top: sizeConfig.dynamicScaleSize(
+                                      size: 10,
+                                      scaleFactorMini: 0.75,
+                                      scaleFactorTablet: 0,
+                                      scaleFactorNormal: 1),
+                                  right: sizeConfig.dynamicScaleSize(
+                                      size: 57,
+                                      scaleFactorMini: 0.75,
+                                      scaleFactorTablet: 0,
+                                      scaleFactorNormal: 1),
                                 )
                               : SizedBox(
                                   width: 0,
@@ -240,8 +311,16 @@ class _GridViewListState extends State<GridViewList> {
                                     h: hIcon,
                                     w: wIcon,
                                   ),
-                                  top: sizeConfig.dynamicScaleSize(size: 10),
-                                  left: sizeConfig.dynamicScaleSize(size: 57),
+                                  top: sizeConfig.dynamicScaleSize(
+                                      size: 10,
+                                      scaleFactorMini: 0.75,
+                                      scaleFactorTablet: 0,
+                                      scaleFactorNormal: 1),
+                                  left: sizeConfig.dynamicScaleSize(
+                                      size: 57,
+                                      scaleFactorMini: 0.75,
+                                      scaleFactorTablet: 0,
+                                      scaleFactorNormal: 1),
                                 )
                               : SizedBox(
                                   width: 0,
@@ -262,8 +341,16 @@ class _GridViewListState extends State<GridViewList> {
                                     h: hIcon,
                                     w: wIcon,
                                   ),
-                                  top: sizeConfig.dynamicScaleSize(size: 30),
-                                  left: sizeConfig.dynamicScaleSize(size: 30),
+                                  top: sizeConfig.dynamicScaleSize(
+                                      size: 30,
+                                      scaleFactorMini: 0.75,
+                                      scaleFactorTablet: 0,
+                                      scaleFactorNormal: 1),
+                                  left: sizeConfig.dynamicScaleSize(
+                                      size: 30,
+                                      scaleFactorMini: 0.75,
+                                      scaleFactorTablet: 0,
+                                      scaleFactorNormal: 1),
                                 )
                               : SizedBox(
                                   width: 0,
@@ -281,8 +368,16 @@ class _GridViewListState extends State<GridViewList> {
                               h: hIcon,
                               w: wIcon,
                             ),
-                            top: sizeConfig.dynamicScaleSize(size: 60),
-                            left: sizeConfig.dynamicScaleSize(size: 20),
+                            top: sizeConfig.dynamicScaleSize(
+                                size: 60,
+                                scaleFactorMini: 0.75,
+                                scaleFactorTablet: 0,
+                                scaleFactorNormal: 1),
+                            left: sizeConfig.dynamicScaleSize(
+                                size: 20,
+                                scaleFactorMini: 0.75,
+                                scaleFactorTablet: 0,
+                                scaleFactorNormal: 1),
                           ),
                           Positioned(
                             child: ContainerCaneca(
@@ -296,8 +391,16 @@ class _GridViewListState extends State<GridViewList> {
                               h: hIcon,
                               w: wIcon,
                             ),
-                            top: sizeConfig.dynamicScaleSize(size: 60),
-                            right: sizeConfig.dynamicScaleSize(size: 20),
+                            top: sizeConfig.dynamicScaleSize(
+                                size: 60,
+                                scaleFactorMini: 0.75,
+                                scaleFactorTablet: 0,
+                                scaleFactorNormal: 1),
+                            right: sizeConfig.dynamicScaleSize(
+                                size: 20,
+                                scaleFactorMini: 0.75,
+                                scaleFactorTablet: 0,
+                                scaleFactorNormal: 1),
                           ),
                           widget.listBotijao[index].numcanecas >= 10
                               ? Positioned(
@@ -314,8 +417,16 @@ class _GridViewListState extends State<GridViewList> {
                                     h: hIcon,
                                     w: wIcon,
                                   ),
-                                  bottom: sizeConfig.dynamicScaleSize(size: 30),
-                                  left: sizeConfig.dynamicScaleSize(size: 30),
+                                  bottom: sizeConfig.dynamicScaleSize(
+                                      size: 30,
+                                      scaleFactorMini: 0.75,
+                                      scaleFactorTablet: 0,
+                                      scaleFactorNormal: 1),
+                                  left: sizeConfig.dynamicScaleSize(
+                                      size: 30,
+                                      scaleFactorMini: 0.75,
+                                      scaleFactorTablet: 0,
+                                      scaleFactorNormal: 1),
                                 )
                               : SizedBox(
                                   width: 0,
@@ -335,12 +446,24 @@ class _GridViewListState extends State<GridViewList> {
                           "${widget.listBotijao[index].idBot}",
                           style: TextStyle(
                               fontFamily: 'Revalia',
-                              fontSize: sizeConfig.dynamicScaleSize(size: 13),
+                              fontSize: sizeConfig.dynamicScaleSize(
+                                  size: 14,
+                                  scaleFactorMini: 0.725,
+                                  scaleFactorTablet: 0,
+                                  scaleFactorNormal: 1),
                               color: Colors.white),
                         ),
                       ),
-                      height: sizeConfig.dynamicScaleSize(size: 21),
-                      width: sizeConfig.dynamicScaleSize(size: 300),
+                      height: sizeConfig.dynamicScaleSize(
+                          size: 21,
+                          scaleFactorMini: 0.8,
+                          scaleFactorTablet: 0,
+                          scaleFactorNormal: 1),
+                      width: sizeConfig.dynamicScaleSize(
+                          size: 300,
+                          scaleFactorMini: 0.8,
+                          scaleFactorTablet: 0,
+                          scaleFactorNormal: 1),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(7),
                         color: Colors.red,
@@ -372,7 +495,11 @@ class _GridViewListState extends State<GridViewList> {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Container(
-                            width: sizeConfig.dynamicScaleSize(size: 400),
+                            width: sizeConfig.dynamicScaleSize(
+                                size: 400,
+                                scaleFactorMini: 0.725,
+                                scaleFactorTablet: 0,
+                                scaleFactorNormal: 0.81),
                             padding: EdgeInsets.all(8.0),
                             decoration: BoxDecoration(
                               color: Color.fromRGBO(229, 231, 236, 1.0),
@@ -387,11 +514,16 @@ class _GridViewListState extends State<GridViewList> {
                                   style: TextStyle(
                                       fontFamily: 'Revalia',
                                       fontWeight: FontWeight.bold,
-                                      fontSize:
-                                          sizeConfig.dynamicScaleSize(size: 20),
+                                      fontSize: sizeConfig.dynamicScaleSize(
+                                          size: 20,
+                                          scaleFactorMini: 0.8,
+                                          scaleFactorTablet: 0,
+                                          scaleFactorNormal: 1),
                                       color: Colors.black),
                                 ),
-                                Divider(),
+                                Divider(
+                                  color: Colors.white,
+                                ),
                                 InkWell(
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.start,
@@ -405,14 +537,22 @@ class _GridViewListState extends State<GridViewList> {
                                       Icon(Icons.info, color: Colors.grey[700]),
                                       SizedBox(
                                         width: sizeConfig.dynamicScaleSize(
-                                            size: 25),
+                                            size: 25,
+                                            scaleFactorMini: 0.8,
+                                            scaleFactorTablet: 0,
+                                            scaleFactorNormal: 1),
                                       ),
                                       Text(
                                         "Informações",
                                         style: TextStyle(
                                             fontFamily: 'Revalia',
-                                            fontSize: sizeConfig
-                                                .dynamicScaleSize(size: 13),
+                                            fontWeight: FontWeight.bold,
+                                            fontSize:
+                                                sizeConfig.dynamicScaleSize(
+                                                    size: 13,
+                                                    scaleFactorMini: 0.8,
+                                                    scaleFactorTablet: 0,
+                                                    scaleFactorNormal: 1),
                                             color: Colors.grey[700]),
                                       ),
                                     ],
@@ -426,9 +566,11 @@ class _GridViewListState extends State<GridViewList> {
                                       ]);
                                 },*/
                                 ),
-                                Divider(),
+                                Divider(
+                                  color: Colors.white,
+                                ),
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     SizedBox(
                                       width:
@@ -438,8 +580,12 @@ class _GridViewListState extends State<GridViewList> {
                                       "Nivel Atual:",
                                       style: TextStyle(
                                           fontFamily: 'Revalia',
+                                          fontWeight: FontWeight.bold,
                                           fontSize: sizeConfig.dynamicScaleSize(
-                                              size: 13),
+                                              size: 13,
+                                              scaleFactorMini: 0.8,
+                                              scaleFactorTablet: 0,
+                                              scaleFactorNormal: 1),
                                           color: Colors.grey[700]),
                                     ),
                                     SizedBox(
@@ -450,25 +596,33 @@ class _GridViewListState extends State<GridViewList> {
                                       "${widget.listBotijao[index].volAtual.toStringAsFixed(2)}",
                                       style: TextStyle(
                                           fontFamily: 'Revalia',
+                                          fontWeight: FontWeight.bold,
                                           fontSize: sizeConfig.dynamicScaleSize(
-                                              size: 13),
+                                              size: 13,
+                                              scaleFactorMini: 0.8,
+                                              scaleFactorTablet: 0,
+                                              scaleFactorNormal: 1),
                                           color: Colors.grey[700]),
                                     ),
                                   ],
                                 ),
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     SizedBox(
                                       width:
                                           sizeConfig.dynamicScaleSize(size: 15),
                                     ),
                                     Text(
-                                      "Quantidade de canecas:",
+                                      "Qtd. max. de canecas :",
                                       style: TextStyle(
                                           fontFamily: 'Revalia',
+                                          fontWeight: FontWeight.bold,
                                           fontSize: sizeConfig.dynamicScaleSize(
-                                              size: 13),
+                                              size: 13,
+                                              scaleFactorMini: 0.8,
+                                              scaleFactorTablet: 0,
+                                              scaleFactorNormal: 1),
                                           color: Colors.grey[700]),
                                     ),
                                     SizedBox(
@@ -479,25 +633,33 @@ class _GridViewListState extends State<GridViewList> {
                                       "${widget.listBotijao[index].numcanecas}",
                                       style: TextStyle(
                                           fontFamily: 'Revalia',
+                                          fontWeight: FontWeight.bold,
                                           fontSize: sizeConfig.dynamicScaleSize(
-                                              size: 13),
+                                              size: 13,
+                                              scaleFactorMini: 0.8,
+                                              scaleFactorTablet: 0,
+                                              scaleFactorNormal: 1),
                                           color: Colors.grey[700]),
                                     ),
                                   ],
                                 ),
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     SizedBox(
                                       width:
                                           sizeConfig.dynamicScaleSize(size: 15),
                                     ),
                                     Text(
-                                      "Quantidade de canecas atual:",
+                                      "Qtd. atual de canecas:",
                                       style: TextStyle(
                                           fontFamily: 'Revalia',
+                                          fontWeight: FontWeight.bold,
                                           fontSize: sizeConfig.dynamicScaleSize(
-                                              size: 13),
+                                              size: 13,
+                                              scaleFactorMini: 0.8,
+                                              scaleFactorTablet: 0,
+                                              scaleFactorNormal: 1),
                                           color: Colors.grey[700]),
                                     ),
                                     SizedBox(
@@ -507,14 +669,20 @@ class _GridViewListState extends State<GridViewList> {
                                     Text(
                                       "${qtdEnabled}",
                                       style: TextStyle(
+                                          fontWeight: FontWeight.bold,
                                           fontFamily: 'Revalia',
                                           fontSize: sizeConfig.dynamicScaleSize(
-                                              size: 13),
+                                              size: 13,
+                                              scaleFactorMini: 0.8,
+                                              scaleFactorTablet: 0,
+                                              scaleFactorNormal: 1),
                                           color: Colors.grey[700]),
                                     ),
                                   ],
                                 ),
-                                Divider(),
+                                Divider(
+                                  color: Colors.white,
+                                ),
                                 InkWell(
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.start,
@@ -523,19 +691,29 @@ class _GridViewListState extends State<GridViewList> {
                                     children: [
                                       SizedBox(
                                         width: sizeConfig.dynamicScaleSize(
-                                            size: 70),
+                                            size: 70,
+                                            scaleFactorMini: 0.8,
+                                            scaleFactorTablet: 0,
+                                            scaleFactorNormal: 1),
                                       ),
                                       Icon(MyIcons.volume, color: Colors.blue),
                                       SizedBox(
                                         width: sizeConfig.dynamicScaleSize(
-                                            size: 25),
+                                            size: 25,
+                                            scaleFactorMini: 0.8,
+                                            scaleFactorTablet: 0,
+                                            scaleFactorNormal: 1),
                                       ),
                                       Text(
                                         "Medir Nível",
                                         style: TextStyle(
                                             fontFamily: 'Revalia',
-                                            fontSize: sizeConfig
-                                                .dynamicScaleSize(size: 13),
+                                            fontSize:
+                                                sizeConfig.dynamicScaleSize(
+                                                    size: 13,
+                                                    scaleFactorMini: 0.8,
+                                                    scaleFactorTablet: 0,
+                                                    scaleFactorNormal: 1),
                                             color: Colors.blue),
                                       ),
                                     ],
@@ -549,7 +727,9 @@ class _GridViewListState extends State<GridViewList> {
                                         ]);
                                   },
                                 ),
-                                Divider(),
+                                Divider(
+                                  color: Colors.white,
+                                ),
                                 InkWell(
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.start,
@@ -558,19 +738,30 @@ class _GridViewListState extends State<GridViewList> {
                                     children: [
                                       SizedBox(
                                         width: sizeConfig.dynamicScaleSize(
-                                            size: 70),
+                                            size: 70,
+                                            scaleFactorMini: 0.8,
+                                            scaleFactorTablet: 0,
+                                            scaleFactorNormal: 1),
                                       ),
                                       Icon(MyIcons.volume, color: Colors.blue),
                                       SizedBox(
                                         width: sizeConfig.dynamicScaleSize(
-                                            size: 25),
+                                            size: 25,
+                                            scaleFactorMini: 0.8,
+                                            scaleFactorTablet: 0,
+                                            scaleFactorNormal: 1),
                                       ),
                                       Text(
                                         "Abastecer",
                                         style: TextStyle(
                                             fontFamily: 'Revalia',
-                                            fontSize: sizeConfig
-                                                .dynamicScaleSize(size: 13),
+                                            fontWeight: FontWeight.bold,
+                                            fontSize:
+                                                sizeConfig.dynamicScaleSize(
+                                                    size: 13,
+                                                    scaleFactorMini: 0.8,
+                                                    scaleFactorTablet: 0,
+                                                    scaleFactorNormal: 1),
                                             color: Colors.blue),
                                       ),
                                     ],
@@ -584,7 +775,9 @@ class _GridViewListState extends State<GridViewList> {
                                         ]);
                                   },
                                 ),
-                                Divider(),
+                                Divider(
+                                  color: Colors.white,
+                                ),
                                 InkWell(
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.start,
@@ -593,19 +786,30 @@ class _GridViewListState extends State<GridViewList> {
                                     children: [
                                       SizedBox(
                                         width: sizeConfig.dynamicScaleSize(
-                                            size: 70),
+                                            size: 70,
+                                            scaleFactorMini: 0.8,
+                                            scaleFactorTablet: 0,
+                                            scaleFactorNormal: 1),
                                       ),
                                       Icon(MyIcons.history, color: Colors.blue),
                                       SizedBox(
                                         width: sizeConfig.dynamicScaleSize(
-                                            size: 25),
+                                            size: 25,
+                                            scaleFactorMini: 0.8,
+                                            scaleFactorTablet: 0,
+                                            scaleFactorNormal: 1),
                                       ),
                                       Text(
                                         "Histórico",
                                         style: TextStyle(
                                             fontFamily: 'Revalia',
-                                            fontSize: sizeConfig
-                                                .dynamicScaleSize(size: 13),
+                                            fontWeight: FontWeight.bold,
+                                            fontSize:
+                                                sizeConfig.dynamicScaleSize(
+                                                    size: 13,
+                                                    scaleFactorMini: 0.8,
+                                                    scaleFactorTablet: 0,
+                                                    scaleFactorNormal: 1),
                                             color: Colors.blue),
                                       ),
                                     ],
@@ -616,7 +820,9 @@ class _GridViewListState extends State<GridViewList> {
                                         arguments: [widget.listBotijao[index]]);
                                   },
                                 ),
-                                Divider(),
+                                Divider(
+                                  color: Colors.white,
+                                ),
                                 InkWell(
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.start,
@@ -625,19 +831,30 @@ class _GridViewListState extends State<GridViewList> {
                                     children: [
                                       SizedBox(
                                         width: sizeConfig.dynamicScaleSize(
-                                            size: 70),
+                                            size: 70,
+                                            scaleFactorMini: 0.8,
+                                            scaleFactorTablet: 0,
+                                            scaleFactorNormal: 1),
                                       ),
                                       Icon(Icons.edit, color: Colors.green),
                                       SizedBox(
                                         width: sizeConfig.dynamicScaleSize(
-                                            size: 25),
+                                            size: 25,
+                                            scaleFactorMini: 0.8,
+                                            scaleFactorTablet: 0,
+                                            scaleFactorNormal: 1),
                                       ),
                                       Text(
                                         "Editar",
                                         style: TextStyle(
                                             fontFamily: 'Revalia',
-                                            fontSize: sizeConfig
-                                                .dynamicScaleSize(size: 13),
+                                            fontWeight: FontWeight.bold,
+                                            fontSize:
+                                                sizeConfig.dynamicScaleSize(
+                                                    size: 13,
+                                                    scaleFactorMini: 0.8,
+                                                    scaleFactorTablet: 0,
+                                                    scaleFactorNormal: 1),
                                             color: Colors.green),
                                       ),
                                     ],
@@ -653,7 +870,9 @@ class _GridViewListState extends State<GridViewList> {
                                         ]);
                                   },
                                 ),
-                                Divider(),
+                                Divider(
+                                  color: Colors.white,
+                                ),
                                 InkWell(
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.start,
@@ -662,20 +881,31 @@ class _GridViewListState extends State<GridViewList> {
                                     children: [
                                       SizedBox(
                                         width: sizeConfig.dynamicScaleSize(
-                                            size: 70),
+                                            size: 70,
+                                            scaleFactorMini: 0.8,
+                                            scaleFactorTablet: 0,
+                                            scaleFactorNormal: 1),
                                       ),
                                       Icon(Icons.delete_forever,
                                           color: Colors.red),
                                       SizedBox(
                                         width: sizeConfig.dynamicScaleSize(
-                                            size: 25),
+                                            size: 25,
+                                            scaleFactorMini: 0.8,
+                                            scaleFactorTablet: 0,
+                                            scaleFactorNormal: 1),
                                       ),
                                       Text(
                                         "Excluir",
                                         style: TextStyle(
                                             fontFamily: 'Revalia',
-                                            fontSize: sizeConfig
-                                                .dynamicScaleSize(size: 13),
+                                            fontWeight: FontWeight.bold,
+                                            fontSize:
+                                                sizeConfig.dynamicScaleSize(
+                                                    size: 13,
+                                                    scaleFactorMini: 0.8,
+                                                    scaleFactorTablet: 0,
+                                                    scaleFactorNormal: 1),
                                             color: Colors.red),
                                       ),
                                     ],
@@ -689,8 +919,12 @@ class _GridViewListState extends State<GridViewList> {
                                             backgroundColor: Color.fromRGBO(
                                                 229, 231, 236, 1.0),
                                             content: Container(
-                                              height: sizeConfig
-                                                  .dynamicScaleSize(size: 150),
+                                              height:
+                                                  sizeConfig.dynamicScaleSize(
+                                                      size: 150,
+                                                      scaleFactorMini: 0.8,
+                                                      scaleFactorTablet: 0,
+                                                      scaleFactorNormal: 1),
                                               width: widget.width,
                                               child: Column(
                                                 mainAxisAlignment:
@@ -708,12 +942,24 @@ class _GridViewListState extends State<GridViewList> {
                                                         color: Colors.red,
                                                         size: sizeConfig
                                                             .dynamicScaleSize(
-                                                                size: 50),
+                                                                size: 50,
+                                                                scaleFactorMini:
+                                                                    0.8,
+                                                                scaleFactorTablet:
+                                                                    0,
+                                                                scaleFactorNormal:
+                                                                    1),
                                                       ),
                                                       SizedBox(
                                                         width: sizeConfig
                                                             .dynamicScaleSize(
-                                                                size: 10),
+                                                                size: 10,
+                                                                scaleFactorMini:
+                                                                    0.8,
+                                                                scaleFactorTablet:
+                                                                    0,
+                                                                scaleFactorNormal:
+                                                                    1),
                                                       ),
                                                       Text(
                                                         "Cuidado!!",
@@ -722,7 +968,13 @@ class _GridViewListState extends State<GridViewList> {
                                                                 'Revalia',
                                                             fontSize: sizeConfig
                                                                 .dynamicScaleSize(
-                                                                    size: 25),
+                                                                    size: 25,
+                                                                    scaleFactorMini:
+                                                                        0.8,
+                                                                    scaleFactorTablet:
+                                                                        0,
+                                                                    scaleFactorNormal:
+                                                                        1),
                                                             color: Colors.red),
                                                       ),
                                                     ],
@@ -732,7 +984,13 @@ class _GridViewListState extends State<GridViewList> {
                                                       style: TextStyle(
                                                         fontSize: sizeConfig
                                                             .dynamicScaleSize(
-                                                                size: 16),
+                                                                size: 16,
+                                                                scaleFactorMini:
+                                                                    0.8,
+                                                                scaleFactorTablet:
+                                                                    0,
+                                                                scaleFactorNormal:
+                                                                    1),
                                                         color: Colors.black,
                                                       ),
                                                       children: <TextSpan>[
@@ -810,8 +1068,11 @@ class _GridViewListState extends State<GridViewList> {
                                 style: TextStyle(
                                     fontFamily: 'Revalia',
                                     fontWeight: FontWeight.bold,
-                                    fontSize:
-                                        sizeConfig.dynamicScaleSize(size: 13),
+                                    fontSize: sizeConfig.dynamicScaleSize(
+                                        size: 13,
+                                        scaleFactorMini: 0.8,
+                                        scaleFactorTablet: 0,
+                                        scaleFactorNormal: 1),
                                     color: Colors.black),
                               )),
                             ),

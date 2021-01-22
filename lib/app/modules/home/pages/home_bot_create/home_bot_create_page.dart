@@ -44,10 +44,18 @@ class _HomeBotCreatePageState
           TitleOfScreen(
             title: controller.edit ? "Editar Botijão" : 'Cadastrar Botijão',
             font: "Revalia",
-            fontSize: sizeConfig.dynamicScaleSize(size: 30),
+            fontSize: sizeConfig.dynamicScaleSize(
+                size: 30,
+                scaleFactorMini: 0.725,
+                scaleFactorTablet: 0,
+                scaleFactorNormal: 1),
           ),
           SizedBox(
-            height: _height * 0.04,
+            height: sizeConfig.dynamicScaleSize(
+                size: 30,
+                scaleFactorMini: 0.725,
+                scaleFactorTablet: 0,
+                scaleFactorNormal: 1),
           ),
           CardEditText(
             child: TextField(
@@ -58,7 +66,11 @@ class _HomeBotCreatePageState
               cursorColor: Colors.red,
               style: TextStyle(
                 fontFamily: 'Robot',
-                fontSize: _width * 0.05,
+                fontSize: sizeConfig.dynamicScaleSize(
+                    size: 18,
+                    scaleFactorMini: 0.725,
+                    scaleFactorTablet: 0,
+                    scaleFactorNormal: 1),
                 color: Color.fromRGBO(113, 111, 137, 1.0),
               ),
               decoration: InputDecoration(
@@ -74,17 +86,29 @@ class _HomeBotCreatePageState
                     color: Colors.red, size: _width * 0.125),
                 hintStyle: TextStyle(
                   fontFamily: 'Robot',
-                  fontSize: _width * 0.05,
+                  fontSize: sizeConfig.dynamicScaleSize(
+                      size: 18,
+                      scaleFactorMini: 0.725,
+                      scaleFactorTablet: 0,
+                      scaleFactorNormal: 1),
                   color: Color.fromRGBO(113, 111, 137, 1.0),
                 ),
                 labelText: "Identificação do botijão",
                 labelStyle: TextStyle(),
               ),
             ),
-            width: _width,
+            width: sizeConfig.dynamicScaleSize(
+                size: _width,
+                scaleFactorMini: 1,
+                scaleFactorTablet: 0,
+                scaleFactorNormal: 1),
           ),
           SizedBox(
-            height: _height * 0.015,
+            height: sizeConfig.dynamicScaleSize(
+                size: 10,
+                scaleFactorMini: 0.725,
+                scaleFactorTablet: 0,
+                scaleFactorNormal: 1),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -122,10 +146,18 @@ class _HomeBotCreatePageState
                     labelStyle: TextStyle(),
                   ),
                 ),
-                width: _width * 0.50,
+                width: sizeConfig.dynamicScaleSize(
+                    size: _width / 2,
+                    scaleFactorMini: 1,
+                    scaleFactorTablet: 0,
+                    scaleFactorNormal: 1),
               ),
               SizedBox(
-                width: _width * 0.01,
+                width: sizeConfig.dynamicScaleSize(
+                    size: 10,
+                    scaleFactorMini: 0.725,
+                    scaleFactorTablet: 0,
+                    scaleFactorNormal: 1),
               ),
               CardEditText(
                 child: TextField(
@@ -159,15 +191,27 @@ class _HomeBotCreatePageState
                     labelStyle: TextStyle(),
                   ),
                 ),
-                width: _width * 0.50,
+                width: sizeConfig.dynamicScaleSize(
+                    size: _width / 2,
+                    scaleFactorMini: 1,
+                    scaleFactorTablet: 0,
+                    scaleFactorNormal: 1),
               ),
             ],
           ),
           SizedBox(
-            height: _height * 0.01,
+            height: sizeConfig.dynamicScaleSize(
+                size: 10,
+                scaleFactorMini: 0.725,
+                scaleFactorTablet: 0,
+                scaleFactorNormal: 1),
           ),
           Container(
-            height: _height * 0.08,
+            height: sizeConfig.dynamicScaleSize(
+                size: 50,
+                scaleFactorMini: 1,
+                scaleFactorTablet: 0,
+                scaleFactorNormal: 1),
             margin: EdgeInsets.only(top: 10),
             width: _width,
             decoration: BoxDecoration(
@@ -195,7 +239,11 @@ class _HomeBotCreatePageState
                       EdgeInsets.only(top: 0, left: 10, bottom: 0, right: 10),
                 ),
                 SizedBox(
-                  height: _height * 0.01,
+                  height: sizeConfig.dynamicScaleSize(
+                      size: 10,
+                      scaleFactorMini: 0.725,
+                      scaleFactorTablet: 0,
+                      scaleFactorNormal: 1),
                 ),
                 DropdownButton<String>(
                   value: controller.botijao.numcanecas.toString(),
@@ -224,7 +272,11 @@ class _HomeBotCreatePageState
             ),
           ),
           SizedBox(
-            height: _height * 0.01,
+            height: sizeConfig.dynamicScaleSize(
+                size: 10,
+                scaleFactorMini: 0.725,
+                scaleFactorTablet: 0,
+                scaleFactorNormal: 1),
           ),
           CardEditText(
             child: TextField(
@@ -258,7 +310,11 @@ class _HomeBotCreatePageState
                 labelStyle: TextStyle(),
               ),
             ),
-            width: _width,
+            width: sizeConfig.dynamicScaleSize(
+                size: _width,
+                scaleFactorMini: 1,
+                scaleFactorTablet: 0,
+                scaleFactorNormal: 1),
           ),
           Container(
             margin: EdgeInsets.only(top: 60),
@@ -276,14 +332,22 @@ class _HomeBotCreatePageState
                       Navigator.pop(context);
                     }
                   },
-                  width: _width * 0.5,
+                  width: sizeConfig.dynamicScaleSize(
+                      size: _width / 2,
+                      scaleFactorMini: 1,
+                      scaleFactorTablet: 0,
+                      scaleFactorNormal: 1),
                 ),
                 ButtonCustom(
                   text: "Cancelar",
                   onclick: () {
                     Navigator.pop(context);
                   },
-                  width: _width * 0.5,
+                  width: sizeConfig.dynamicScaleSize(
+                      size: _width / 2,
+                      scaleFactorMini: 1,
+                      scaleFactorTablet: 0,
+                      scaleFactorNormal: 1),
                 ),
               ],
             ),

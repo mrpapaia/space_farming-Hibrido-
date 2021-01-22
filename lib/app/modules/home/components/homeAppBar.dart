@@ -19,7 +19,11 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
         color: Color.fromRGBO(229, 231, 236, 1.0),
         margin: EdgeInsets.only(top: statusbarHeight),
         child: Container(
-          width: sizeConfig.dynamicScaleSize(size: 150),
+          width: sizeConfig.dynamicScaleSize(
+              size: 150,
+              scaleFactorMini: 0.725,
+              scaleFactorTablet: 0,
+              scaleFactorNormal: 0.81),
           margin: EdgeInsets.only(top: 5, left: 5, right: 5, bottom: 5),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
@@ -42,7 +46,11 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                   icon: Icon(
                     Icons.menu,
                     color: Colors.red,
-                    size: sizeConfig.dynamicScaleSize(size: 40),
+                    size: sizeConfig.dynamicScaleSize(
+                        size: 40,
+                        scaleFactorMini: 0.725,
+                        scaleFactorTablet: 0,
+                        scaleFactorNormal: 0.9),
                   ),
                   onPressed: () {
                     Scaffold.of(context).openDrawer();
@@ -50,13 +58,21 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                 ),
               ),
               SizedBox(
-                width: sizeConfig.dynamicScaleSize(size: 50),
+                width: sizeConfig.dynamicScaleSize(
+                    size: 50,
+                    scaleFactorMini: 0.725,
+                    scaleFactorTablet: 0,
+                    scaleFactorNormal: 0.81),
               ),
               Text(
                 "Space Farming",
                 style: TextStyle(
                   color: Colors.red,
-                  fontSize: sizeConfig.dynamicScaleSize(size: 30),
+                  fontSize: sizeConfig.dynamicScaleSize(
+                      size: 18,
+                      scaleFactorMini: 1.2,
+                      scaleFactorTablet: 0,
+                      scaleFactorNormal: 1.5),
                 ),
               ), /*
               Padding(

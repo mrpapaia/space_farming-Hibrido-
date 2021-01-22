@@ -37,15 +37,27 @@ class _HomeAddFarmPageState
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           SizedBox(
-            height: sizeConfig.dynamicScaleSize(size: 20),
+            height: sizeConfig.dynamicScaleSize(
+                size: 20,
+                scaleFactorMini: 0.75,
+                scaleFactorTablet: 0,
+                scaleFactorNormal: 1),
           ),
           TitleOfScreen(
             title: 'Adicionar fazenda',
             font: "Revalia",
-            fontSize: sizeConfig.dynamicScaleSize(size: 30),
+            fontSize: sizeConfig.dynamicScaleSize(
+                size: 30,
+                scaleFactorMini: 0.75,
+                scaleFactorTablet: 0,
+                scaleFactorNormal: 1),
           ),
           SizedBox(
-            height: sizeConfig.dynamicScaleSize(size: 30),
+            height: sizeConfig.dynamicScaleSize(
+                size: 30,
+                scaleFactorMini: 0.75,
+                scaleFactorTablet: 0,
+                scaleFactorNormal: 1),
           ),
           CardEditText(
             child: TextField(
@@ -56,7 +68,11 @@ class _HomeAddFarmPageState
               cursorColor: Colors.red,
               style: TextStyle(
                 fontFamily: 'Robot',
-                fontSize: sizeConfig.dynamicScaleSize(size: 18),
+                fontSize: sizeConfig.dynamicScaleSize(
+                    size: 18,
+                    scaleFactorMini: 0.75,
+                    scaleFactorTablet: 0,
+                    scaleFactorNormal: 1),
                 color: Color.fromRGBO(113, 111, 137, 1.0),
               ),
               decoration: InputDecoration(
@@ -70,23 +86,38 @@ class _HomeAddFarmPageState
                 ),
                 prefixIcon: Icon(MyIcons.farm,
                     color: Colors.red,
-                    size: sizeConfig.dynamicScaleSize(size: 35)),
+                    size: sizeConfig.dynamicScaleSize(
+                        size: 35,
+                        scaleFactorMini: 0.75,
+                        scaleFactorTablet: 0,
+                        scaleFactorNormal: 1)),
                 hintStyle: TextStyle(
                   fontFamily: 'Robot',
-                  fontSize: sizeConfig.dynamicScaleSize(size: 18),
+                  fontSize: sizeConfig.dynamicScaleSize(
+                      size: 18,
+                      scaleFactorMini: 0.75,
+                      scaleFactorTablet: 0,
+                      scaleFactorNormal: 1),
                   color: Color.fromRGBO(113, 111, 137, 1.0),
                 ),
                 labelText: "Nome da Fazenda",
                 labelStyle: TextStyle(),
               ),
             ),
-            width: _width,
+            width: sizeConfig.dynamicScaleSize(
+                size: _width,
+                scaleFactorMini: 1,
+                scaleFactorTablet: 0,
+                scaleFactorNormal: 1),
           ),
           SizedBox(
-            height: _height * 0.015,
+            height: sizeConfig.dynamicScaleSize(
+                size: 20,
+                scaleFactorMini: 0.75,
+                scaleFactorTablet: 0,
+                scaleFactorNormal: 1),
           ),
           Container(
-            margin: EdgeInsets.only(top: 60),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -96,14 +127,22 @@ class _HomeAddFarmPageState
                     controller.addFarm();
                     Navigator.pop(context);
                   },
-                  width: _width * 0.5,
+                  width: sizeConfig.dynamicScaleSize(
+                      size: _width / 2,
+                      scaleFactorMini: 1,
+                      scaleFactorTablet: 0,
+                      scaleFactorNormal: 1),
                 ),
                 ButtonCustom(
                   text: "Cancelar",
                   onclick: () {
                     Navigator.pop(context);
                   },
-                  width: _width * 0.5,
+                  width: sizeConfig.dynamicScaleSize(
+                      size: _width / 2,
+                      scaleFactorMini: 1,
+                      scaleFactorTablet: 0,
+                      scaleFactorNormal: 1),
                 ),
               ],
             ),

@@ -20,16 +20,38 @@ class ContainerCaneca extends StatelessWidget {
 
     return Container(
       width: flag
-          ? sizeConfig.dynamicScaleSize(size: 25)
-          : sizeConfig.dynamicScaleSize(size: 50),
+          ? sizeConfig.dynamicScaleSize(
+              size: 25,
+              scaleFactorMini: 0.8,
+              scaleFactorTablet: 0,
+              scaleFactorNormal: 1)
+          : sizeConfig.dynamicScaleSize(
+              size: 50,
+              scaleFactorMini: 0.8,
+              scaleFactorTablet: 0,
+              scaleFactorNormal: 1),
       height: flag
-          ? sizeConfig.dynamicScaleSize(size: 25)
-          : sizeConfig.dynamicScaleSize(size: 50),
+          ? sizeConfig.dynamicScaleSize(
+              size: 25,
+              scaleFactorMini: 0.8,
+              scaleFactorTablet: 0,
+              scaleFactorNormal: 1)
+          : sizeConfig.dynamicScaleSize(
+              size: 50,
+              scaleFactorMini: 0.8,
+              scaleFactorTablet: 0,
+              scaleFactorNormal: 1),
       child: Center(
         child: Text(
           id,
-          style:
-              TextStyle(fontFamily: 'Robot', fontSize: 18, color: Colors.white),
+          style: TextStyle(
+              fontFamily: 'Robot',
+              fontSize: sizeConfig.dynamicScaleSize(
+                  size: 18,
+                  scaleFactorMini: 0.8,
+                  scaleFactorTablet: 0,
+                  scaleFactorNormal: 1),
+              color: Colors.white),
         ),
       ),
       decoration: BoxDecoration(

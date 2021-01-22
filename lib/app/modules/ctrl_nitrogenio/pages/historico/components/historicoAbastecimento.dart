@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:space_farming_modular/app/shared/components/containerBase.dart';
+import 'package:space_farming_modular/app/shared/components/sizeConfig.dart';
 import 'package:space_farming_modular/app/shared/components/textCustom.dart';
 import 'package:space_farming_modular/app/shared/models/botijao.dart';
 import 'package:space_farming_modular/app/shared/models/hist_abastecimento.dart';
@@ -24,23 +25,37 @@ class _HistoricoAbastecimentoComponentState
     extends State<HistoricoAbastecimentoComponent> {
   @override
   Widget build(BuildContext context) {
+    final sizeConfig = SizeConfig(mediaQueryData: MediaQuery.of(context));
+    var _width = MediaQuery.of(context).size.width - 30;
     return ListView.builder(
       itemCount: widget.list.length,
       itemBuilder: (context, index) {
         return Column(
           children: [
             SizedBox(
-              height: 20,
+              height: sizeConfig.dynamicScaleSize(
+                  size: 20,
+                  scaleFactorMini: 0.75,
+                  scaleFactorTablet: 0,
+                  scaleFactorNormal: 1),
             ),
             ContainerBase(
-                width: MediaQuery.of(context).size.width - 30,
+                width: sizeConfig.dynamicScaleSize(
+                    size: _width,
+                    scaleFactorMini: 0.75,
+                    scaleFactorTablet: 0,
+                    scaleFactorNormal: 1),
                 componets: [
                   Center(
                     child: Text(
                       "Botijão ${widget.botijao.idBot}",
                       style: TextStyle(
                         fontFamily: "Robot",
-                        fontSize: 35,
+                        fontSize: sizeConfig.dynamicScaleSize(
+                            size: 35,
+                            scaleFactorMini: 0.75,
+                            scaleFactorTablet: 0,
+                            scaleFactorNormal: 1),
                         fontWeight: FontWeight.bold,
                         color: Colors.red,
                       ),
@@ -48,17 +63,29 @@ class _HistoricoAbastecimentoComponentState
                   ),
                 ]),
             SizedBox(
-              height: 10,
+              height: sizeConfig.dynamicScaleSize(
+                  size: 10,
+                  scaleFactorMini: 0.75,
+                  scaleFactorTablet: 0,
+                  scaleFactorNormal: 1),
             ),
             ContainerBase(
-                width: MediaQuery.of(context).size.width - 30,
+                width: sizeConfig.dynamicScaleSize(
+                    size: _width,
+                    scaleFactorMini: 1,
+                    scaleFactorTablet: 0,
+                    scaleFactorNormal: 1),
                 componets: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       TextCustom(
-                        text: "Nivel Anterior: ",
-                        fontSize: 16,
+                        text: "Anterior: ",
+                        fontSize: sizeConfig.dynamicScaleSize(
+                            size: 16,
+                            scaleFactorMini: 1,
+                            scaleFactorTablet: 0,
+                            scaleFactorNormal: 1),
                       ),
                       TextCustom(
                         text:
@@ -67,76 +94,150 @@ class _HistoricoAbastecimentoComponentState
                       ),
                       TextCustom(
                         text: " | ",
-                        fontSize: 18,
+                        fontSize: sizeConfig.dynamicScaleSize(
+                            size: 18,
+                            scaleFactorMini: 1,
+                            scaleFactorTablet: 0,
+                            scaleFactorNormal: 1),
                       ),
                       TextCustom(
-                        text: "Nivel Adicionado: ",
-                        fontSize: 16,
-                      ),
+                          text: "Adicionado: ",
+                          fontSize: sizeConfig.dynamicScaleSize(
+                              size: 16,
+                              scaleFactorMini: 1,
+                              scaleFactorTablet: 0,
+                              scaleFactorNormal: 1)),
                       TextCustom(
                         text: "${widget.list[index].qtdAdd.toStringAsFixed(2)}",
-                        fontSize: 16,
+                        fontSize: sizeConfig.dynamicScaleSize(
+                            size: 16,
+                            scaleFactorMini: 1,
+                            scaleFactorTablet: 0,
+                            scaleFactorNormal: 1),
                       ),
                     ],
                   ),
                   SizedBox(
-                    height: 5,
-                  ),
+                      height: sizeConfig.dynamicScaleSize(
+                          size: 5,
+                          scaleFactorMini: 0.75,
+                          scaleFactorTablet: 0,
+                          scaleFactorNormal: 1)),
                   Divider(
-                    height: 10,
+                    height: sizeConfig.dynamicScaleSize(
+                        size: 10,
+                        scaleFactorMini: 0.75,
+                        scaleFactorTablet: 0,
+                        scaleFactorNormal: 1),
                     thickness: 1,
                     color: Color.fromRGBO(113, 111, 138, 1.0),
                   ),
                   TextCustom(
                     text: "Nome do Responsavel: ",
-                    fontSize: 18,
+                    fontSize: sizeConfig.dynamicScaleSize(
+                        size: 18,
+                        scaleFactorMini: 1,
+                        scaleFactorTablet: 0,
+                        scaleFactorNormal: 1),
                   ),
                   SizedBox(
-                    height: 5,
+                    height: sizeConfig.dynamicScaleSize(
+                        size: 5,
+                        scaleFactorMini: 0.75,
+                        scaleFactorTablet: 0,
+                        scaleFactorNormal: 1),
                   ),
                   TextCustom(
                     text: "${widget.list[index].respon}",
-                    fontSize: 14,
+                    fontSize: sizeConfig.dynamicScaleSize(
+                        size: 14,
+                        scaleFactorMini: 0.75,
+                        scaleFactorTablet: 0,
+                        scaleFactorNormal: 1),
                   ),
                   SizedBox(
-                    height: 5,
+                    height: sizeConfig.dynamicScaleSize(
+                        size: 5,
+                        scaleFactorMini: 0.75,
+                        scaleFactorTablet: 0,
+                        scaleFactorNormal: 1),
                   ),
                   TextCustom(
                     text: "Data: ",
-                    fontSize: 18,
+                    fontSize: sizeConfig.dynamicScaleSize(
+                        size: 16,
+                        scaleFactorMini: 1,
+                        scaleFactorTablet: 0,
+                        scaleFactorNormal: 1),
                   ),
                   SizedBox(
-                    height: 5,
+                    height: sizeConfig.dynamicScaleSize(
+                        size: 5,
+                        scaleFactorMini: 0.75,
+                        scaleFactorTablet: 0,
+                        scaleFactorNormal: 1),
                   ),
                   TextCustom(
                     text:
                         "${widget.list[index].data.day}/${widget.list[index].data.month}/${widget.list[index].data.year}",
-                    fontSize: 14,
+                    fontSize: sizeConfig.dynamicScaleSize(
+                        size: 14,
+                        scaleFactorMini: 1,
+                        scaleFactorTablet: 0,
+                        scaleFactorNormal: 1),
                   ),
                   SizedBox(
-                    height: 10,
+                    height: sizeConfig.dynamicScaleSize(
+                        size: 10,
+                        scaleFactorMini: 0.75,
+                        scaleFactorTablet: 0,
+                        scaleFactorNormal: 1),
                   ),
                   Divider(
-                    height: 10,
+                    height: sizeConfig.dynamicScaleSize(
+                        size: 10,
+                        scaleFactorMini: 0.75,
+                        scaleFactorTablet: 0,
+                        scaleFactorNormal: 1),
                     thickness: 1,
                     color: Color.fromRGBO(113, 111, 138, 1.0),
                   ),
                   SizedBox(
-                    height: 5,
+                    height: sizeConfig.dynamicScaleSize(
+                        size: 5,
+                        scaleFactorMini: 0.75,
+                        scaleFactorTablet: 0,
+                        scaleFactorNormal: 1),
                   ),
                   TextCustom(
                     text: "Preço Litro: ",
-                    fontSize: 18,
+                    fontSize: sizeConfig.dynamicScaleSize(
+                        size: 18,
+                        scaleFactorMini: 1,
+                        scaleFactorTablet: 0,
+                        scaleFactorNormal: 1),
                   ),
                   SizedBox(
-                    height: 5,
+                    height: sizeConfig.dynamicScaleSize(
+                        size: 5,
+                        scaleFactorMini: 0.75,
+                        scaleFactorTablet: 0,
+                        scaleFactorNormal: 1),
                   ),
                   TextCustom(
                     text: "R\$${widget.list[index].preco}",
-                    fontSize: 14,
+                    fontSize: sizeConfig.dynamicScaleSize(
+                        size: 14,
+                        scaleFactorMini: 1,
+                        scaleFactorTablet: 0,
+                        scaleFactorNormal: 1),
                   ),
                   SizedBox(
-                    height: 10,
+                    height: sizeConfig.dynamicScaleSize(
+                        size: 5,
+                        scaleFactorMini: 0.75,
+                        scaleFactorTablet: 0,
+                        scaleFactorNormal: 1),
                   ),
                 ]),
           ],

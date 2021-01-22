@@ -6,6 +6,7 @@ import 'package:space_farming_modular/app/shared/components/button.dart';
 
 import 'package:space_farming_modular/app/shared/components/cardEditText.dart';
 import 'package:space_farming_modular/app/shared/components/my_icons_icons.dart';
+import 'package:space_farming_modular/app/shared/components/sizeConfig.dart';
 import '../../shared/models/user.dart';
 import 'login_controller.dart';
 
@@ -28,6 +29,8 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width - 30;
     double _height = MediaQuery.of(context).size.height;
+    final sizeConfig = SizeConfig(mediaQueryData: MediaQuery.of(context));
+    print(MediaQuery.of(context).size.shortestSide);
     if (_auth.currentUser != null) {
       controller.getUser(_auth.currentUser.email);
     }
@@ -40,8 +43,16 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
             margin: EdgeInsets.only(top: 50),
             child: Image(
               image: AssetImage('lib/app/shared/graphics/logo.png'),
-              width: 309,
-              height: 178,
+              width: sizeConfig.dynamicScaleSize(
+                  size: 309,
+                  scaleFactorMini: 0.725,
+                  scaleFactorTablet: 0,
+                  scaleFactorNormal: 1),
+              height: sizeConfig.dynamicScaleSize(
+                  size: 178,
+                  scaleFactorMini: 0.725,
+                  scaleFactorTablet: 0,
+                  scaleFactorNormal: 1),
             ),
           ),
           Observer(
@@ -70,7 +81,11 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                 return Column(
                   children: [
                     SizedBox(
-                      height: _height * 0.015,
+                      height: sizeConfig.dynamicScaleSize(
+                          size: 10,
+                          scaleFactorMini: 0.725,
+                          scaleFactorTablet: 0,
+                          scaleFactorNormal: 1),
                     ),
                     Center(
                       child: CardEditText(
@@ -82,7 +97,11 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                           cursorColor: Colors.red,
                           style: TextStyle(
                             fontFamily: 'Robot',
-                            fontSize: _width * 0.05,
+                            fontSize: sizeConfig.dynamicScaleSize(
+                                size: 18,
+                                scaleFactorMini: 0.725,
+                                scaleFactorTablet: 0,
+                                scaleFactorNormal: 1),
                             color: Color.fromRGBO(113, 111, 137, 1.0),
                           ),
                           decoration: InputDecoration(
@@ -94,22 +113,41 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                                 style: BorderStyle.solid,
                               ),
                             ),
-                            prefixIcon: Icon(MyIcons.user,
-                                color: Colors.red, size: _width * 0.125),
+                            prefixIcon: Icon(
+                              MyIcons.user,
+                              color: Colors.red,
+                              size: sizeConfig.dynamicScaleSize(
+                                  size: 50,
+                                  scaleFactorMini: 0.725,
+                                  scaleFactorTablet: 0,
+                                  scaleFactorNormal: 1),
+                            ),
                             hintStyle: TextStyle(
                               fontFamily: 'Robot',
-                              fontSize: _width * 0.05,
+                              fontSize: sizeConfig.dynamicScaleSize(
+                                  size: 18,
+                                  scaleFactorMini: 0.725,
+                                  scaleFactorTablet: 0,
+                                  scaleFactorNormal: 1),
                               color: Color.fromRGBO(113, 111, 137, 1.0),
                             ),
                             labelText: "E-mail",
                             labelStyle: TextStyle(),
                           ),
                         ),
-                        width: _width,
+                        width: sizeConfig.dynamicScaleSize(
+                            size: _width,
+                            scaleFactorMini: 1,
+                            scaleFactorTablet: 0,
+                            scaleFactorNormal: 1),
                       ),
                     ),
                     SizedBox(
-                      height: _height * 0.015,
+                      height: sizeConfig.dynamicScaleSize(
+                          size: 10,
+                          scaleFactorMini: 0.725,
+                          scaleFactorTablet: 0,
+                          scaleFactorNormal: 1),
                     ),
                     CardEditText(
                       child: TextField(
@@ -120,7 +158,11 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                         cursorColor: Colors.red,
                         style: TextStyle(
                           fontFamily: 'Robot',
-                          fontSize: _width * 0.05,
+                          fontSize: sizeConfig.dynamicScaleSize(
+                              size: 18,
+                              scaleFactorMini: 0.725,
+                              scaleFactorTablet: 0,
+                              scaleFactorNormal: 1),
                           color: Color.fromRGBO(113, 111, 137, 1.0),
                         ),
                         decoration: InputDecoration(
@@ -132,34 +174,70 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                               style: BorderStyle.solid,
                             ),
                           ),
-                          prefixIcon: Icon(MyIcons.password,
-                              color: Colors.red, size: _width * 0.12),
+                          prefixIcon: Icon(
+                            MyIcons.password,
+                            color: Colors.red,
+                            size: sizeConfig.dynamicScaleSize(
+                                size: 50,
+                                scaleFactorMini: 0.725,
+                                scaleFactorTablet: 0,
+                                scaleFactorNormal: 1),
+                          ),
                           hintStyle: TextStyle(
                             fontFamily: 'Robot',
-                            fontSize: _width * 0.05,
+                            fontSize: sizeConfig.dynamicScaleSize(
+                                size: 18,
+                                scaleFactorMini: 0.725,
+                                scaleFactorTablet: 0,
+                                scaleFactorNormal: 1),
                             color: Color.fromRGBO(113, 111, 137, 1.0),
                           ),
                           labelText: "Senha",
                           labelStyle: TextStyle(),
                         ),
                       ),
-                      width: _width,
+                      width: sizeConfig.dynamicScaleSize(
+                          size: _width,
+                          scaleFactorMini: 1,
+                          scaleFactorTablet: 0,
+                          scaleFactorNormal: 1),
                     ),
                     SizedBox(
-                      height: _height * 0.015,
+                      height: sizeConfig.dynamicScaleSize(
+                          size: 10,
+                          scaleFactorMini: 0.725,
+                          scaleFactorTablet: 0,
+                          scaleFactorNormal: 1),
                     ),
                     ButtonCustom(
                       text: "Login",
-                      width: 309.0,
+                      width: sizeConfig.dynamicScaleSize(
+                          size: _width,
+                          scaleFactorMini: 0.8,
+                          scaleFactorTablet: 0,
+                          scaleFactorNormal: 0.8),
                       onclick: () async {
                         await controller.login(_auth, context);
                       },
                     ),
                     SizedBox(
-                      height: 10,
+                      height: sizeConfig.dynamicScaleSize(
+                          size: 10,
+                          scaleFactorMini: 0.725,
+                          scaleFactorTablet: 0,
+                          scaleFactorNormal: 1),
                     ),
                     InkWell(
-                      child: Text("Não possui conta?"),
+                      child: Text(
+                        "Não possui conta?",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: sizeConfig.dynamicScaleSize(
+                                size: 16,
+                                scaleFactorMini: 0.725,
+                                scaleFactorTablet: 0,
+                                scaleFactorNormal: 1)),
+                      ),
                       onTap: () {
                         Modular.to.pushNamed('/login/cadastro');
                       },

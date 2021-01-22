@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:space_farming_modular/app/shared/components/sizeConfig.dart';
 
 class TitleOfScreen extends StatefulWidget {
   TitleOfScreen({Key key, this.title, this.font, this.fontSize})
@@ -14,6 +15,7 @@ class TitleOfScreen extends StatefulWidget {
 class _TitleOfScreenState extends State<TitleOfScreen> {
   @override
   Widget build(BuildContext context) {
+    final sizeConfig = SizeConfig(mediaQueryData: MediaQuery.of(context));
     return Stack(
       children: <Widget>[
         Center(
@@ -57,8 +59,12 @@ class _TitleOfScreenState extends State<TitleOfScreen> {
           ),
         ),
         SizedBox(
-          height: 40,
-        )
+          height: sizeConfig.dynamicScaleSize(
+              size: 40,
+              scaleFactorMini: 0.725,
+              scaleFactorTablet: 0,
+              scaleFactorNormal: 1),
+        ),
       ],
     );
   }

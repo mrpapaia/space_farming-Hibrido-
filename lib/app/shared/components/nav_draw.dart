@@ -31,7 +31,11 @@ class NavigationDrawer extends StatelessWidget {
                   child: Text(
                     controller.user.email[0].toUpperCase(),
                     style: TextStyle(
-                      fontSize: _width * 0.09,
+                      fontSize: sizeConfig.dynamicScaleSize(
+                          size: 24,
+                          scaleFactorMini: 0.75,
+                          scaleFactorTablet: 0,
+                          scaleFactorNormal: 1),
                     ),
                   ),
                 ),
@@ -41,7 +45,11 @@ class NavigationDrawer extends StatelessWidget {
                 leading: Icon(
                   MyIcons.farms,
                   color: Colors.red,
-                  size: _width * 0.1,
+                  size: sizeConfig.dynamicScaleSize(
+                      size: 50,
+                      scaleFactorMini: 0.75,
+                      scaleFactorTablet: 0,
+                      scaleFactorNormal: 1),
                 ),
                 children:
                     List.generate(controller.user.fazenda.length, (index) {
@@ -50,14 +58,22 @@ class NavigationDrawer extends StatelessWidget {
                     leading: Icon(
                       MyIcons.farm,
                       color: Colors.red,
-                      size: _width * 0.1,
+                      size: sizeConfig.dynamicScaleSize(
+                          size: 40,
+                          scaleFactorMini: 0.75,
+                          scaleFactorTablet: 0,
+                          scaleFactorNormal: 1),
                     ),
                     children: [
                       ListTile(
                         leading: Icon(
                           MyIcons.bottle,
                           color: Colors.red,
-                          size: _width * 0.1,
+                          size: sizeConfig.dynamicScaleSize(
+                              size: 30,
+                              scaleFactorMini: 0.75,
+                              scaleFactorTablet: 0,
+                              scaleFactorNormal: 1),
                         ),
                         title: Text("Botijões"),
                         onTap: () {
@@ -80,7 +96,11 @@ class NavigationDrawer extends StatelessWidget {
                         leading: Icon(
                           MyIcons.employee,
                           color: Colors.red,
-                          size: _width * 0.1,
+                          size: sizeConfig.dynamicScaleSize(
+                              size: 30,
+                              scaleFactorMini: 0.75,
+                              scaleFactorTablet: 0,
+                              scaleFactorNormal: 1),
                         ),
                         title: Text("Colaboradores"),
                         onTap: () {
@@ -94,7 +114,11 @@ class NavigationDrawer extends StatelessWidget {
                         leading: Icon(
                           Icons.delete,
                           color: Colors.red,
-                          size: _width * 0.1,
+                          size: sizeConfig.dynamicScaleSize(
+                              size: 30,
+                              scaleFactorMini: 0.75,
+                              scaleFactorTablet: 0,
+                              scaleFactorNormal: 1),
                         ),
                         title: Text("Excluir"),
                         onTap: () {
@@ -105,8 +129,11 @@ class NavigationDrawer extends StatelessWidget {
                                   backgroundColor:
                                       Color.fromRGBO(229, 231, 236, 1.0),
                                   content: Container(
-                                    height:
-                                        sizeConfig.dynamicScaleSize(size: 150),
+                                    height: sizeConfig.dynamicScaleSize(
+                                        size: 150,
+                                        scaleFactorMini: 0.75,
+                                        scaleFactorTablet: 0,
+                                        scaleFactorNormal: 1),
                                     child: Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.start,
@@ -121,11 +148,18 @@ class NavigationDrawer extends StatelessWidget {
                                               Icons.warning,
                                               color: Colors.red,
                                               size: sizeConfig.dynamicScaleSize(
-                                                  size: 50),
+                                                  size: 50,
+                                                  scaleFactorMini: 0.75,
+                                                  scaleFactorTablet: 0,
+                                                  scaleFactorNormal: 1),
                                             ),
                                             SizedBox(
-                                              width: sizeConfig
-                                                  .dynamicScaleSize(size: 10),
+                                              width:
+                                                  sizeConfig.dynamicScaleSize(
+                                                      size: 10,
+                                                      scaleFactorMini: 0.75,
+                                                      scaleFactorTablet: 0,
+                                                      scaleFactorNormal: 1),
                                             ),
                                             Text(
                                               "Cuidado!!",
@@ -133,7 +167,10 @@ class NavigationDrawer extends StatelessWidget {
                                                   fontFamily: 'Revalia',
                                                   fontSize: sizeConfig
                                                       .dynamicScaleSize(
-                                                          size: 25),
+                                                          size: 25,
+                                                          scaleFactorMini: 0.75,
+                                                          scaleFactorTablet: 0,
+                                                          scaleFactorNormal: 1),
                                                   color: Colors.red),
                                             ),
                                           ],
@@ -141,8 +178,12 @@ class NavigationDrawer extends StatelessWidget {
                                         RichText(
                                           text: TextSpan(
                                             style: TextStyle(
-                                              fontSize: sizeConfig
-                                                  .dynamicScaleSize(size: 16),
+                                              fontSize:
+                                                  sizeConfig.dynamicScaleSize(
+                                                      size: 16,
+                                                      scaleFactorMini: 0.75,
+                                                      scaleFactorTablet: 0,
+                                                      scaleFactorNormal: 1),
                                               color: Colors.black,
                                             ),
                                             children: <TextSpan>[
@@ -203,7 +244,11 @@ class NavigationDrawer extends StatelessWidget {
                 leading: Icon(
                   Icons.add_location,
                   color: Colors.red,
-                  size: _width * 0.1,
+                  size: sizeConfig.dynamicScaleSize(
+                      size: 40,
+                      scaleFactorMini: 0.75,
+                      scaleFactorTablet: 0,
+                      scaleFactorNormal: 1),
                 ),
                 title: Text("Adicionar Fazenda"),
                 onTap: () {
@@ -215,7 +260,11 @@ class NavigationDrawer extends StatelessWidget {
                 leading: Icon(
                   MyIcons.exit,
                   color: Colors.red,
-                  size: _width * 0.1,
+                  size: sizeConfig.dynamicScaleSize(
+                      size: 40,
+                      scaleFactorMini: 0.75,
+                      scaleFactorTablet: 0,
+                      scaleFactorNormal: 1),
                 ),
                 title: Text("Sair"),
                 onTap: () async {

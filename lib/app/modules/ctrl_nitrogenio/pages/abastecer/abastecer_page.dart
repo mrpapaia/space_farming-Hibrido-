@@ -44,16 +44,25 @@ class _AbastecerPageState
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             SizedBox(
-              height: sizeConfig.dynamicScaleSize(size: 10),
-            ),
+                height: sizeConfig.dynamicScaleSize(
+                    size: 10,
+                    scaleFactorMini: 0.75,
+                    scaleFactorTablet: 0,
+                    scaleFactorNormal: 1)),
             TitleOfScreen(
-              title: "Abastecer",
-              font: "Revalia",
-              fontSize: sizeConfig.dynamicScaleSize(size: 30),
-            ),
+                title: "Abastecer",
+                font: "Revalia",
+                fontSize: sizeConfig.dynamicScaleSize(
+                    size: 30,
+                    scaleFactorMini: 0.75,
+                    scaleFactorTablet: 0,
+                    scaleFactorNormal: 1)),
             SizedBox(
-              height: sizeConfig.dynamicScaleSize(size: 20),
-            ),
+                height: sizeConfig.dynamicScaleSize(
+                    size: 20,
+                    scaleFactorMini: 0.75,
+                    scaleFactorTablet: 0,
+                    scaleFactorNormal: 1)),
             ContainerBase(
               width: _width,
               componets: <Widget>[
@@ -64,15 +73,28 @@ class _AbastecerPageState
                   cursorColor: Colors.red,
                   style: TextStyle(
                     fontFamily: 'Robot',
-                    fontSize: sizeConfig.dynamicScaleSize(size: 18),
+                    fontSize: sizeConfig.dynamicScaleSize(
+                        size: 18,
+                        scaleFactorMini: 0.75,
+                        scaleFactorTablet: 0,
+                        scaleFactorNormal: 1),
                     color: Color.fromRGBO(113, 111, 137, 1.0),
                   ),
                   decoration: InputDecoration(
                     icon: Icon(MyIcons.volume,
-                        color: Colors.red, size: _width * 0.1),
+                        color: Colors.red,
+                        size: sizeConfig.dynamicScaleSize(
+                            size: 50,
+                            scaleFactorMini: 0.75,
+                            scaleFactorTablet: 0,
+                            scaleFactorNormal: 1)),
                     hintStyle: TextStyle(
                       fontFamily: 'Robot',
-                      fontSize: sizeConfig.dynamicScaleSize(size: 18),
+                      fontSize: sizeConfig.dynamicScaleSize(
+                          size: 18,
+                          scaleFactorMini: 0.75,
+                          scaleFactorTablet: 0,
+                          scaleFactorNormal: 1),
                       color: Color.fromRGBO(113, 111, 137, 1.0),
                     ),
                     labelText: "Nível",
@@ -87,12 +109,21 @@ class _AbastecerPageState
                   cursorColor: Colors.red,
                   style: TextStyle(
                     fontFamily: 'Robot',
-                    fontSize: sizeConfig.dynamicScaleSize(size: 18),
+                    fontSize: sizeConfig.dynamicScaleSize(
+                        size: 18,
+                        scaleFactorMini: 0.75,
+                        scaleFactorTablet: 0,
+                        scaleFactorNormal: 1),
                     color: Color.fromRGBO(113, 111, 137, 1.0),
                   ),
                   decoration: InputDecoration(
                     icon: Icon(MyIcons.date,
-                        color: Colors.red, size: _width * 0.1),
+                        color: Colors.red,
+                        size: sizeConfig.dynamicScaleSize(
+                            size: 50,
+                            scaleFactorMini: 0.75,
+                            scaleFactorTablet: 0,
+                            scaleFactorNormal: 1)),
                     hintStyle: TextStyle(
                       fontFamily: 'Robot',
                       fontSize: sizeConfig.dynamicScaleSize(size: 18),
@@ -114,7 +145,12 @@ class _AbastecerPageState
                   ),
                   decoration: InputDecoration(
                     icon: Icon(MyIcons.price,
-                        color: Colors.red, size: _width * 0.1),
+                        color: Colors.red,
+                        size: sizeConfig.dynamicScaleSize(
+                            size: 50,
+                            scaleFactorMini: 0.75,
+                            scaleFactorTablet: 0,
+                            scaleFactorNormal: 1)),
                     hintStyle: TextStyle(
                       fontFamily: 'Robot',
                       fontSize: sizeConfig.dynamicScaleSize(size: 18),
@@ -125,13 +161,19 @@ class _AbastecerPageState
                   ),
                 ),
                 SizedBox(
-                  height: sizeConfig.dynamicScaleSize(size: 10),
-                )
+                    height: sizeConfig.dynamicScaleSize(
+                        size: 10,
+                        scaleFactorMini: 0.75,
+                        scaleFactorTablet: 0,
+                        scaleFactorNormal: 1))
               ],
             ),
             SizedBox(
-              height: sizeConfig.dynamicScaleSize(size: 10),
-            ),
+                height: sizeConfig.dynamicScaleSize(
+                    size: 10,
+                    scaleFactorMini: 0.75,
+                    scaleFactorTablet: 0,
+                    scaleFactorNormal: 1)),
             Container(
               margin: EdgeInsets.only(top: 20),
               child: Row(
@@ -143,15 +185,22 @@ class _AbastecerPageState
                       controller.update();
                       Navigator.pop(context);
                     },
-                    width: sizeConfig.dynamicScaleSize(size: 175),
+                    width: sizeConfig.dynamicScaleSize(
+                        size: 175,
+                        scaleFactorMini: 0.75,
+                        scaleFactorTablet: 0,
+                        scaleFactorNormal: 1),
                   ),
                   ButtonCustom(
-                    text: "Cancelar",
-                    onclick: () {
-                      Navigator.pop(context);
-                    },
-                    width: sizeConfig.dynamicScaleSize(size: 175),
-                  ),
+                      text: "Cancelar",
+                      onclick: () {
+                        Navigator.pop(context);
+                      },
+                      width: sizeConfig.dynamicScaleSize(
+                          size: 175,
+                          scaleFactorMini: 0.75,
+                          scaleFactorTablet: 0,
+                          scaleFactorNormal: 1)),
                 ],
               ),
             ),

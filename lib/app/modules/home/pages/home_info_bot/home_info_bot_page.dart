@@ -45,14 +45,22 @@ class _HomeInfoBotPageState
 
     return Scaffold(
       appBar: SecAppBar(
-        preferredSize: Size.fromHeight(70.0),
+        preferredSize: Size.fromHeight(sizeConfig.dynamicScaleSize(
+            size: 70,
+            scaleFactorMini: 0.8,
+            scaleFactorTablet: 0,
+            scaleFactorNormal: 1)),
       ),
       backgroundColor: Color.fromRGBO(229, 231, 236, 1.0),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           SizedBox(
-            height: sizeConfig.dynamicScaleSize(size: 10),
+            height: sizeConfig.dynamicScaleSize(
+                size: 10,
+                scaleFactorMini: 0.725,
+                scaleFactorTablet: 0,
+                scaleFactorNormal: 1),
           ),
           Center(
             child: Container(
@@ -61,13 +69,21 @@ class _HomeInfoBotPageState
                   "Botijão ${controller.botijao.idBot}",
                   style: TextStyle(
                     fontFamily: "Robot",
-                    fontSize: sizeConfig.dynamicScaleSize(size: 35),
+                    fontSize: sizeConfig.dynamicScaleSize(
+                        size: 35,
+                        scaleFactorMini: 0.725,
+                        scaleFactorTablet: 0,
+                        scaleFactorNormal: 1),
                     fontWeight: FontWeight.bold,
                     color: Colors.red,
                   ),
                 ),
               ),
-              width: sizeConfig.dynamicScaleSize(size: 370),
+              width: sizeConfig.dynamicScaleSize(
+                  size: 370,
+                  scaleFactorMini: 0.725,
+                  scaleFactorTablet: 0,
+                  scaleFactorNormal: 1),
               padding: EdgeInsets.all(5.0),
               decoration: BoxDecoration(
                 border: Border.all(
@@ -85,7 +101,11 @@ class _HomeInfoBotPageState
             ),
           ),
           SizedBox(
-            height: sizeConfig.dynamicScaleSize(size: 30),
+            height: sizeConfig.dynamicScaleSize(
+                size: 10,
+                scaleFactorMini: 0.725,
+                scaleFactorTablet: 0,
+                scaleFactorNormal: 1),
           ),
           Container(
             child: Center(
@@ -93,8 +113,16 @@ class _HomeInfoBotPageState
                 children: [
                   Center(
                     child: Container(
-                      width: sizeConfig.dynamicScaleSize(size: 370),
-                      height: sizeConfig.dynamicScaleSize(size: 370),
+                      width: sizeConfig.dynamicScaleSize(
+                          size: 370,
+                          scaleFactorMini: 0.725,
+                          scaleFactorTablet: 0,
+                          scaleFactorNormal: 1),
+                      height: sizeConfig.dynamicScaleSize(
+                          size: 370,
+                          scaleFactorMini: 0.725,
+                          scaleFactorTablet: 0,
+                          scaleFactorNormal: 1),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(200),
                         border: Border.all(
@@ -120,14 +148,26 @@ class _HomeInfoBotPageState
                             "${controller.botijao.volAtual.toStringAsFixed(2)}",
                             style: TextStyle(
                               fontFamily: 'Robot',
-                              fontSize: sizeConfig.dynamicScaleSize(size: 25),
+                              fontSize: sizeConfig.dynamicScaleSize(
+                                  size: 25,
+                                  scaleFactorMini: 0.725,
+                                  scaleFactorTablet: 0,
+                                  scaleFactorNormal: 1),
                               fontWeight: FontWeight.bold,
                               color: Colors.red,
                             ),
                           ),
                         ),
-                        width: sizeConfig.dynamicScaleSize(size: 100),
-                        height: sizeConfig.dynamicScaleSize(size: 100),
+                        width: sizeConfig.dynamicScaleSize(
+                            size: 100,
+                            scaleFactorMini: 0.725,
+                            scaleFactorTablet: 0,
+                            scaleFactorNormal: 1),
+                        height: sizeConfig.dynamicScaleSize(
+                            size: 100,
+                            scaleFactorMini: 0.725,
+                            scaleFactorTablet: 0,
+                            scaleFactorNormal: 1),
                         decoration: BoxDecoration(
                           border: Border.all(
                             color: Color.fromRGBO(126, 116, 116, 1.0),
@@ -180,8 +220,16 @@ class _HomeInfoBotPageState
                               );
                             },
                           ),
-                          bottom: sizeConfig.dynamicScaleSize(size: 70),
-                          left: sizeConfig.dynamicScaleSize(size: 50),
+                          bottom: sizeConfig.dynamicScaleSize(
+                              size: 70,
+                              scaleFactorMini: 0.725,
+                              scaleFactorTablet: 0,
+                              scaleFactorNormal: 1),
+                          left: sizeConfig.dynamicScaleSize(
+                              size: 50,
+                              scaleFactorMini: 0.725,
+                              scaleFactorTablet: 0,
+                              scaleFactorNormal: 1),
                         )
                       : SizedBox(
                           width: 0,
@@ -217,8 +265,16 @@ class _HomeInfoBotPageState
                               );
                             },
                           ),
-                          bottom: sizeConfig.dynamicScaleSize(size: 70),
-                          right: sizeConfig.dynamicScaleSize(size: 50),
+                          bottom: sizeConfig.dynamicScaleSize(
+                              size: 70,
+                              scaleFactorMini: 0.725,
+                              scaleFactorTablet: 0,
+                              scaleFactorNormal: 1),
+                          right: sizeConfig.dynamicScaleSize(
+                              size: 50,
+                              scaleFactorMini: 0.725,
+                              scaleFactorTablet: 0,
+                              scaleFactorNormal: 1),
                         )
                       : SizedBox(
                           width: 0,
@@ -255,8 +311,16 @@ class _HomeInfoBotPageState
                               );
                             },
                           ),
-                          top: sizeConfig.dynamicScaleSize(size: 25),
-                          left: sizeConfig.dynamicScaleSize(size: 110),
+                          top: sizeConfig.dynamicScaleSize(
+                              size: 25,
+                              scaleFactorMini: 0.725,
+                              scaleFactorTablet: 0,
+                              scaleFactorNormal: 1),
+                          left: sizeConfig.dynamicScaleSize(
+                              size: 110,
+                              scaleFactorMini: 0.725,
+                              scaleFactorTablet: 0,
+                              scaleFactorNormal: 1),
                         )
                       : SizedBox(
                           width: 0,
@@ -292,8 +356,16 @@ class _HomeInfoBotPageState
                               );
                             },
                           ),
-                          top: sizeConfig.dynamicScaleSize(size: 70),
-                          left: sizeConfig.dynamicScaleSize(size: 50),
+                          top: sizeConfig.dynamicScaleSize(
+                              size: 70,
+                              scaleFactorMini: 0.725,
+                              scaleFactorTablet: 0,
+                              scaleFactorNormal: 1),
+                          left: sizeConfig.dynamicScaleSize(
+                              size: 50,
+                              scaleFactorMini: 0.725,
+                              scaleFactorTablet: 0,
+                              scaleFactorNormal: 1),
                         )
                       : SizedBox(
                           width: 0,
@@ -329,8 +401,16 @@ class _HomeInfoBotPageState
                         );
                       },
                     ),
-                    top: sizeConfig.dynamicScaleSize(size: 140),
-                    left: sizeConfig.dynamicScaleSize(size: 25),
+                    top: sizeConfig.dynamicScaleSize(
+                        size: 140,
+                        scaleFactorMini: 0.725,
+                        scaleFactorTablet: 0,
+                        scaleFactorNormal: 1),
+                    left: sizeConfig.dynamicScaleSize(
+                        size: 25,
+                        scaleFactorMini: 0.725,
+                        scaleFactorTablet: 0,
+                        scaleFactorNormal: 1),
                   ),
                   controller.botijao.numcanecas >= 6
                       ? Positioned(
@@ -363,8 +443,16 @@ class _HomeInfoBotPageState
                               );
                             },
                           ),
-                          top: sizeConfig.dynamicScaleSize(size: 25),
-                          right: sizeConfig.dynamicScaleSize(size: 110),
+                          top: sizeConfig.dynamicScaleSize(
+                              size: 25,
+                              scaleFactorMini: 0.725,
+                              scaleFactorTablet: 0,
+                              scaleFactorNormal: 1),
+                          right: sizeConfig.dynamicScaleSize(
+                              size: 110,
+                              scaleFactorMini: 0.725,
+                              scaleFactorTablet: 0,
+                              scaleFactorNormal: 1),
                         )
                       : SizedBox(
                           width: 0,
@@ -401,8 +489,16 @@ class _HomeInfoBotPageState
                               );
                             },
                           ),
-                          top: sizeConfig.dynamicScaleSize(size: 70),
-                          right: sizeConfig.dynamicScaleSize(size: 50),
+                          top: sizeConfig.dynamicScaleSize(
+                              size: 70,
+                              scaleFactorMini: 0.725,
+                              scaleFactorTablet: 0,
+                              scaleFactorNormal: 1),
+                          right: sizeConfig.dynamicScaleSize(
+                              size: 50,
+                              scaleFactorMini: 0.725,
+                              scaleFactorTablet: 0,
+                              scaleFactorNormal: 1),
                         )
                       : SizedBox(
                           width: 0,
@@ -438,8 +534,16 @@ class _HomeInfoBotPageState
                               );
                             },
                           ),
-                          top: sizeConfig.dynamicScaleSize(size: 140),
-                          right: sizeConfig.dynamicScaleSize(size: 25),
+                          top: sizeConfig.dynamicScaleSize(
+                              size: 140,
+                              scaleFactorMini: 0.725,
+                              scaleFactorTablet: 0,
+                              scaleFactorNormal: 1),
+                          right: sizeConfig.dynamicScaleSize(
+                              size: 25,
+                              scaleFactorMini: 0.725,
+                              scaleFactorTablet: 0,
+                              scaleFactorNormal: 1),
                         )
                       : SizedBox(
                           width: 0,
@@ -476,8 +580,16 @@ class _HomeInfoBotPageState
                               );
                             },
                           ),
-                          bottom: sizeConfig.dynamicScaleSize(size: 25),
-                          right: sizeConfig.dynamicScaleSize(size: 110),
+                          bottom: sizeConfig.dynamicScaleSize(
+                              size: 25,
+                              scaleFactorMini: 0.725,
+                              scaleFactorTablet: 0,
+                              scaleFactorNormal: 1),
+                          right: sizeConfig.dynamicScaleSize(
+                              size: 110,
+                              scaleFactorMini: 0.725,
+                              scaleFactorTablet: 0,
+                              scaleFactorNormal: 1),
                         )
                       : SizedBox(
                           width: 0,
@@ -514,8 +626,16 @@ class _HomeInfoBotPageState
                               );
                             },
                           ),
-                          bottom: sizeConfig.dynamicScaleSize(size: 25),
-                          left: sizeConfig.dynamicScaleSize(size: 110),
+                          bottom: sizeConfig.dynamicScaleSize(
+                              size: 25,
+                              scaleFactorMini: 0.725,
+                              scaleFactorTablet: 0,
+                              scaleFactorNormal: 1),
+                          left: sizeConfig.dynamicScaleSize(
+                              size: 110,
+                              scaleFactorMini: 0.725,
+                              scaleFactorTablet: 0,
+                              scaleFactorNormal: 1),
                         )
                       : SizedBox(
                           width: 0,
@@ -524,8 +644,16 @@ class _HomeInfoBotPageState
                 ],
               ),
             ),
-            width: sizeConfig.dynamicScaleSize(size: 370),
-            height: sizeConfig.dynamicScaleSize(size: 350),
+            width: sizeConfig.dynamicScaleSize(
+                size: 370,
+                scaleFactorMini: 0.725,
+                scaleFactorTablet: 0,
+                scaleFactorNormal: 1),
+            height: sizeConfig.dynamicScaleSize(
+                size: 350,
+                scaleFactorMini: 0.725,
+                scaleFactorTablet: 0,
+                scaleFactorNormal: 1),
             padding: EdgeInsets.all(5.0),
             decoration: BoxDecoration(
               border: Border.all(
@@ -542,26 +670,50 @@ class _HomeInfoBotPageState
             ),
           ),
           SizedBox(
-            height: _height > 700 ? _height * 0.05 : _height * 0.03,
+            height: sizeConfig.dynamicScaleSize(
+                size: 10,
+                scaleFactorMini: 0.725,
+                scaleFactorTablet: 0,
+                scaleFactorNormal: 1),
           ),
           TitleOfScreen(
             title: "Régua",
             font: "Revalia",
-            fontSize: _width * 0.09,
+            fontSize: sizeConfig.dynamicScaleSize(
+                size: 30,
+                scaleFactorMini: 0.725,
+                scaleFactorTablet: 0,
+                scaleFactorNormal: 1),
           ),
           SizedBox(
-            height: _height > 700 ? _height * 0.04 : _height * 0.03,
+            height: sizeConfig.dynamicScaleSize(
+                size: 8,
+                scaleFactorMini: 0.725,
+                scaleFactorTablet: 0,
+                scaleFactorNormal: 1),
           ),
           Container(
-            width: sizeConfig.dynamicScaleSize(size: 370),
+            width: sizeConfig.dynamicScaleSize(
+                size: 370,
+                scaleFactorMini: 0.725,
+                scaleFactorTablet: 0,
+                scaleFactorNormal: 1),
             child: Stack(
               children: [
                 Positioned(
                   top: 1,
                   left: 22,
                   child: Container(
-                    width: sizeConfig.dynamicScaleSize(size: 310),
-                    height: 50,
+                    width: sizeConfig.dynamicScaleSize(
+                        size: 310,
+                        scaleFactorMini: 0.67,
+                        scaleFactorTablet: 0,
+                        scaleFactorNormal: 1),
+                    height: sizeConfig.dynamicScaleSize(
+                        size: 50,
+                        scaleFactorMini: 1,
+                        scaleFactorTablet: 0,
+                        scaleFactorNormal: 1),
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         image: AssetImage("lib/app/shared/graphics/regua.png"),
@@ -601,7 +753,11 @@ class _HomeInfoBotPageState
                           return AlertDialog(
                             backgroundColor: Color.fromRGBO(229, 231, 236, 1.0),
                             content: Container(
-                              height: sizeConfig.dynamicScaleSize(size: 150),
+                              height: sizeConfig.dynamicScaleSize(
+                                  size: 150,
+                                  scaleFactorMini: 0.725,
+                                  scaleFactorTablet: 0,
+                                  scaleFactorNormal: 1),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -613,18 +769,28 @@ class _HomeInfoBotPageState
                                         Icons.warning,
                                         color: Colors.red,
                                         size: sizeConfig.dynamicScaleSize(
-                                            size: 50),
+                                            size: 50,
+                                            scaleFactorMini: 0.725,
+                                            scaleFactorTablet: 0,
+                                            scaleFactorNormal: 1),
                                       ),
                                       SizedBox(
                                         width: sizeConfig.dynamicScaleSize(
-                                            size: 10),
+                                            size: 10,
+                                            scaleFactorMini: 0.725,
+                                            scaleFactorTablet: 0,
+                                            scaleFactorNormal: 1),
                                       ),
                                       Text(
                                         "Cuidado!!",
                                         style: TextStyle(
                                             fontFamily: 'Revalia',
-                                            fontSize: sizeConfig
-                                                .dynamicScaleSize(size: 25),
+                                            fontSize:
+                                                sizeConfig.dynamicScaleSize(
+                                                    size: 25,
+                                                    scaleFactorMini: 0.725,
+                                                    scaleFactorTablet: 0,
+                                                    scaleFactorNormal: 1),
                                             color: Colors.red),
                                       ),
                                     ],
@@ -633,11 +799,14 @@ class _HomeInfoBotPageState
                                     text: TextSpan(
                                       style: TextStyle(
                                         fontSize: sizeConfig.dynamicScaleSize(
-                                            size: 16),
+                                            size: 16,
+                                            scaleFactorMini: 0.725,
+                                            scaleFactorTablet: 0,
+                                            scaleFactorNormal: 1),
                                         color: Colors.black,
                                       ),
                                       children: <TextSpan>[
-                                        TextSpan(text: '\nNivle do botijão'),
+                                        TextSpan(text: '\nNível do botijão'),
                                         TextSpan(
                                             text:
                                                 ' ${controller.botijao.idBot}',
@@ -658,6 +827,11 @@ class _HomeInfoBotPageState
                                 child: Text(
                                   "Abastecimento",
                                   style: TextStyle(
+                                      fontSize: sizeConfig.dynamicScaleSize(
+                                          size: 14,
+                                          scaleFactorMini: 0.65,
+                                          scaleFactorTablet: 0,
+                                          scaleFactorNormal: 1),
                                       color: Colors.red,
                                       fontFamily: "Roboto",
                                       fontWeight: FontWeight.bold),
@@ -671,6 +845,11 @@ class _HomeInfoBotPageState
                                 child: Text(
                                   "Medição",
                                   style: TextStyle(
+                                      fontSize: sizeConfig.dynamicScaleSize(
+                                          size: 14,
+                                          scaleFactorMini: 0.65,
+                                          scaleFactorTablet: 0,
+                                          scaleFactorNormal: 1),
                                       color: Colors.red,
                                       fontFamily: "Roboto",
                                       fontWeight: FontWeight.bold),
@@ -685,6 +864,11 @@ class _HomeInfoBotPageState
                                 child: Text(
                                   "Cancelar",
                                   style: TextStyle(
+                                      fontSize: sizeConfig.dynamicScaleSize(
+                                          size: 14,
+                                          scaleFactorMini: 0.65,
+                                          scaleFactorTablet: 0,
+                                          scaleFactorNormal: 1),
                                       color: Colors.black,
                                       fontFamily: "Roboto",
                                       fontWeight: FontWeight.bold),
@@ -695,7 +879,7 @@ class _HomeInfoBotPageState
                                         controller.volAnterior;
                                   });
 
-                                  Navigator.of(context).pop();
+                                  Modular.to.pop();
                                 },
                               ),
                             ],

@@ -34,22 +34,38 @@ class _CtrlNitrogenioPageState
     double _height = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: SecAppBar(
-        preferredSize: Size.fromHeight(70.0),
+        preferredSize: Size.fromHeight(sizeConfig.dynamicScaleSize(
+            size: 70,
+            scaleFactorMini: 0.8,
+            scaleFactorTablet: 0,
+            scaleFactorNormal: 1)),
       ),
       backgroundColor: Color.fromRGBO(229, 231, 236, 1.0),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           SizedBox(
-            height: sizeConfig.dynamicScaleSize(size: 10),
+            height: sizeConfig.dynamicScaleSize(
+                size: 10,
+                scaleFactorMini: 0.725,
+                scaleFactorTablet: 0,
+                scaleFactorNormal: 1),
           ),
           TitleOfScreen(
             title: "Nível Atual",
             font: "Revalia",
-            fontSize: sizeConfig.dynamicScaleSize(size: 30),
+            fontSize: sizeConfig.dynamicScaleSize(
+                size: 40,
+                scaleFactorMini: 0.725,
+                scaleFactorTablet: 0,
+                scaleFactorNormal: 1),
           ),
           SizedBox(
-            height: sizeConfig.dynamicScaleSize(size: 10),
+            height: sizeConfig.dynamicScaleSize(
+                size: 20,
+                scaleFactorMini: 1,
+                scaleFactorTablet: 0,
+                scaleFactorNormal: 1),
           ),
           Center(
             child: Container(
@@ -58,13 +74,21 @@ class _CtrlNitrogenioPageState
                   "${widget.botijao.volAtual.toStringAsFixed(2)}",
                   style: TextStyle(
                     fontFamily: 'Robot',
-                    fontSize: _width * 0.3,
+                    fontSize: sizeConfig.dynamicScaleSize(
+                        size: 100,
+                        scaleFactorMini: 0.725,
+                        scaleFactorTablet: 0,
+                        scaleFactorNormal: 1),
                     fontWeight: FontWeight.bold,
                     color: Colors.red,
                   ),
                 ),
               ),
-              width: _width - 30,
+              width: sizeConfig.dynamicScaleSize(
+                  size: _width,
+                  scaleFactorMini: 1,
+                  scaleFactorTablet: 0,
+                  scaleFactorNormal: 1),
               padding: EdgeInsets.all(5.0),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
@@ -83,7 +107,11 @@ class _CtrlNitrogenioPageState
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               SizedBox(
-                height: _height * 0.05,
+                height: sizeConfig.dynamicScaleSize(
+                    size: 10,
+                    scaleFactorMini: 0.725,
+                    scaleFactorTablet: 0,
+                    scaleFactorNormal: 1),
               ),
               ButtonCustom(
                 text: "Medir Nivel",
@@ -91,10 +119,18 @@ class _CtrlNitrogenioPageState
                   Modular.to.pushNamed('/ctrl/medirNivel',
                       arguments: [widget.botijao, widget.user]);
                 },
-                width: _width * 0.9,
+                width: sizeConfig.dynamicScaleSize(
+                    size: _width - 30,
+                    scaleFactorMini: 1,
+                    scaleFactorTablet: 0,
+                    scaleFactorNormal: 1),
               ),
               SizedBox(
-                height: _height * 0.01,
+                height: sizeConfig.dynamicScaleSize(
+                    size: 10,
+                    scaleFactorMini: 1,
+                    scaleFactorTablet: 0,
+                    scaleFactorNormal: 1),
               ),
               ButtonCustom(
                 text: "Abastecer",
@@ -102,10 +138,18 @@ class _CtrlNitrogenioPageState
                   Modular.to.pushNamed('/ctrl/abastecer',
                       arguments: [widget.botijao, widget.user]);
                 },
-                width: _width * 0.9,
+                width: sizeConfig.dynamicScaleSize(
+                    size: _width - 30,
+                    scaleFactorMini: 1,
+                    scaleFactorTablet: 0,
+                    scaleFactorNormal: 1),
               ),
               SizedBox(
-                height: _height * 0.01,
+                height: sizeConfig.dynamicScaleSize(
+                    size: 10,
+                    scaleFactorMini: 1,
+                    scaleFactorTablet: 0,
+                    scaleFactorNormal: 1),
               ),
               ButtonCustom(
                 text: "Hístorico",
@@ -113,7 +157,11 @@ class _CtrlNitrogenioPageState
                   Modular.to.pushNamed('/ctrl/historico',
                       arguments: [widget.botijao]);
                 },
-                width: _width * 0.9,
+                width: sizeConfig.dynamicScaleSize(
+                    size: _width - 30,
+                    scaleFactorMini: 1,
+                    scaleFactorTablet: 0,
+                    scaleFactorNormal: 1),
               ),
             ],
           )

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:mobx/mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:space_farming_modular/app/shared/components/sizeConfig.dart';
 
 import 'package:space_farming_modular/app/shared/models/user.dart';
 
@@ -68,7 +69,7 @@ abstract class _LoginControllerBase with Store {
   @action
   Future<UserCredential> login(FirebaseAuth auth, BuildContext ctx) async {
     UserCredential user;
-
+    final sizeConfig = SizeConfig(mediaQueryData: MediaQuery.of(ctx));
     try {
       if (valideteEmail() == null) {
         if (validetePasswd() == null) {
@@ -90,8 +91,39 @@ abstract class _LoginControllerBase with Store {
         Scaffold.of(ctx)
             .showSnackBar(SnackBar(content: Text("E-mail não cadastrado")));
       } else if (e.code == 'wrong-password') {
-        Scaffold.of(ctx)
-            .showSnackBar(SnackBar(content: Text("Senha incorreta!!")));
+        Scaffold.of(ctx).showSnackBar(
+          SnackBar(
+            content: Container(
+              //color: Colors.white,
+              decoration: BoxDecoration(
+                  color: Color.fromRGBO(229, 231, 236, 1.0),
+                  border: Border.all(width: 2.0, color: Colors.red),
+                  borderRadius: BorderRadius.circular(20)),
+              margin: EdgeInsets.only(
+                  bottom: sizeConfig.dynamicScaleSize(
+                      size: 250,
+                      scaleFactorMini: 0.8,
+                      scaleFactorTablet: 0,
+                      scaleFactorNormal: 1)),
+              child: Center(
+                child: Text(
+                  'Senha incorreta!',
+                  style: TextStyle(
+                      color: Colors.red,
+                      fontSize: sizeConfig.dynamicScaleSize(
+                          size: 20,
+                          scaleFactorMini: 0.8,
+                          scaleFactorTablet: 0,
+                          scaleFactorNormal: 1),
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
+            backgroundColor: Colors.transparent,
+            elevation: 1000,
+            behavior: SnackBarBehavior.floating,
+          ),
+        );
       }
       return null;
     }

@@ -22,6 +22,7 @@ class _CtrlColaboradoresPageState
   @override
   Widget build(BuildContext context) {
     final sizeConfig = SizeConfig(mediaQueryData: MediaQuery.of(context));
+    var _width = MediaQuery.of(context).size.width - 30;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       resizeToAvoidBottomPadding: false,
@@ -30,40 +31,69 @@ class _CtrlColaboradoresPageState
         preferredSize: Size.fromHeight(70.0),
       ),
       body: Container(
-        height: sizeConfig.dynamicScaleSize(size: 800),
+        height: sizeConfig.dynamicScaleSize(
+            size: 750,
+            scaleFactorMini: 0.725,
+            scaleFactorTablet: 0,
+            scaleFactorNormal: 1),
         child: Column(
           children: [
-            SizedBox(
-              height: sizeConfig.dynamicScaleSize(size: 15),
-            ),
             TitleOfScreen(
               title: "Colaboradores",
               font: "Revalia",
-              fontSize: sizeConfig.dynamicScaleSize(size: 30),
+              fontSize: sizeConfig.dynamicScaleSize(
+                  size: 30,
+                  scaleFactorMini: 0.75,
+                  scaleFactorTablet: 0,
+                  scaleFactorNormal: 1),
             ),
             SizedBox(
-              height: sizeConfig.dynamicScaleSize(size: 25),
+              height: sizeConfig.dynamicScaleSize(
+                  size: 25,
+                  scaleFactorMini: 0.725,
+                  scaleFactorTablet: 0,
+                  scaleFactorNormal: 1),
             ),
             Observer(builder: (BuildContext contex) {
               try {
                 if (controller.listColab.data[0] != null) {
                   return Container(
-                    height: sizeConfig.dynamicScaleSize(size: 585),
-                    width: MediaQuery.of(context).size.width - 30,
+                    height: sizeConfig.dynamicScaleSize(
+                        size: 585,
+                        scaleFactorMini: 0.67,
+                        scaleFactorTablet: 0,
+                        scaleFactorNormal: 1),
+                    width: sizeConfig.dynamicScaleSize(
+                        size: _width,
+                        scaleFactorMini: 1,
+                        scaleFactorTablet: 0,
+                        scaleFactorNormal: 1),
                     child: ListView.builder(
                         itemCount: controller.listColab.data.length,
                         itemBuilder: (BuildContext context, int index) {
                           return Container(
-                            height: sizeConfig.dynamicScaleSize(size: 50),
+                            height: sizeConfig.dynamicScaleSize(
+                                size: 50,
+                                scaleFactorMini: 0.725,
+                                scaleFactorTablet: 0,
+                                scaleFactorNormal: 1),
                             margin: EdgeInsets.only(
-                                bottom: sizeConfig.dynamicScaleSize(size: 10)),
+                                bottom: sizeConfig.dynamicScaleSize(
+                                    size: 10,
+                                    scaleFactorMini: 0.725,
+                                    scaleFactorTablet: 0,
+                                    scaleFactorNormal: 1)),
                             decoration: BoxDecoration(
                                 color: Colors.red,
                                 borderRadius: BorderRadius.circular(12)),
                             child: Row(
                               children: [
                                 SizedBox(
-                                  width: sizeConfig.dynamicScaleSize(size: 50),
+                                  width: sizeConfig.dynamicScaleSize(
+                                      size: 50,
+                                      scaleFactorMini: 0.725,
+                                      scaleFactorTablet: 0,
+                                      scaleFactorNormal: 1),
                                 ),
                                 CircleAvatar(
                                   backgroundColor: Colors.white,
@@ -71,13 +101,20 @@ class _CtrlColaboradoresPageState
                                     controller.listColab.data[index].nome[0]
                                         .toUpperCase(),
                                     style: TextStyle(
-                                      fontSize:
-                                          sizeConfig.dynamicScaleSize(size: 18),
+                                      fontSize: sizeConfig.dynamicScaleSize(
+                                          size: 18,
+                                          scaleFactorMini: 0.725,
+                                          scaleFactorTablet: 0,
+                                          scaleFactorNormal: 1),
                                     ),
                                   ),
                                 ),
                                 SizedBox(
-                                  width: sizeConfig.dynamicScaleSize(size: 18),
+                                  width: sizeConfig.dynamicScaleSize(
+                                      size: 18,
+                                      scaleFactorMini: 0.725,
+                                      scaleFactorTablet: 0,
+                                      scaleFactorNormal: 1),
                                 ),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -87,7 +124,10 @@ class _CtrlColaboradoresPageState
                                       style: TextStyle(
                                         color: Colors.white,
                                         fontSize: sizeConfig.dynamicScaleSize(
-                                            size: 18),
+                                            size: 18,
+                                            scaleFactorMini: 0.725,
+                                            scaleFactorTablet: 0,
+                                            scaleFactorNormal: 1),
                                       ),
                                     ),
                                     Text(
@@ -95,13 +135,20 @@ class _CtrlColaboradoresPageState
                                       style: TextStyle(
                                         color: Colors.white,
                                         fontSize: sizeConfig.dynamicScaleSize(
-                                            size: 18),
+                                            size: 18,
+                                            scaleFactorMini: 0.725,
+                                            scaleFactorTablet: 0,
+                                            scaleFactorNormal: 1),
                                       ),
                                     ),
                                   ],
                                 ),
                                 SizedBox(
-                                  width: sizeConfig.dynamicScaleSize(size: 50),
+                                  width: sizeConfig.dynamicScaleSize(
+                                      size: 50,
+                                      scaleFactorMini: 0.725,
+                                      scaleFactorTablet: 0,
+                                      scaleFactorNormal: 1),
                                 ),
                                 IconButton(
                                     icon: Icon(
@@ -114,8 +161,12 @@ class _CtrlColaboradoresPageState
                                         builder: (BuildContext context) {
                                           return AlertDialog(
                                             content: Container(
-                                              height: sizeConfig
-                                                  .dynamicScaleSize(size: 150),
+                                              height:
+                                                  sizeConfig.dynamicScaleSize(
+                                                      size: 150,
+                                                      scaleFactorMini: 0.725,
+                                                      scaleFactorTablet: 0,
+                                                      scaleFactorNormal: 1),
                                               child: Column(
                                                 mainAxisAlignment:
                                                     MainAxisAlignment.start,
@@ -132,12 +183,24 @@ class _CtrlColaboradoresPageState
                                                         color: Colors.red,
                                                         size: sizeConfig
                                                             .dynamicScaleSize(
-                                                                size: 50),
+                                                                size: 50,
+                                                                scaleFactorMini:
+                                                                    0.725,
+                                                                scaleFactorTablet:
+                                                                    0,
+                                                                scaleFactorNormal:
+                                                                    1),
                                                       ),
                                                       SizedBox(
                                                         width: sizeConfig
                                                             .dynamicScaleSize(
-                                                                size: 10),
+                                                                size: 10,
+                                                                scaleFactorMini:
+                                                                    0.725,
+                                                                scaleFactorTablet:
+                                                                    0,
+                                                                scaleFactorNormal:
+                                                                    1),
                                                       ),
                                                       Text(
                                                         "Cuidado!!",
@@ -146,7 +209,13 @@ class _CtrlColaboradoresPageState
                                                                 'Revalia',
                                                             fontSize: sizeConfig
                                                                 .dynamicScaleSize(
-                                                                    size: 25),
+                                                                    size: 25,
+                                                                    scaleFactorMini:
+                                                                        0.725,
+                                                                    scaleFactorTablet:
+                                                                        0,
+                                                                    scaleFactorNormal:
+                                                                        1),
                                                             color: Colors.red),
                                                       ),
                                                     ],
@@ -156,7 +225,13 @@ class _CtrlColaboradoresPageState
                                                       style: TextStyle(
                                                         fontSize: sizeConfig
                                                             .dynamicScaleSize(
-                                                                size: 16),
+                                                                size: 16,
+                                                                scaleFactorMini:
+                                                                    0.725,
+                                                                scaleFactorTablet:
+                                                                    0,
+                                                                scaleFactorNormal:
+                                                                    1),
                                                         color: Colors.black,
                                                       ),
                                                       children: <TextSpan>[
