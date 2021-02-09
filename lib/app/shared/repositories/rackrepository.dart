@@ -39,8 +39,11 @@ class RackRepository implements IRepositoryRack {
   }
 
   @override
-  Future<void> update(Rack obj) {
-    // TODO: implement update
-    throw UnimplementedError();
+  Future<void> update(Rack rack) {
+    return firestore
+        .doc(rack.ref.path)
+        .set(rack.toMap())
+        .then((value) => print("Rack atualizado"))
+        .catchError((error) => print("Failed to delete Rack: $error"));
   }
 }

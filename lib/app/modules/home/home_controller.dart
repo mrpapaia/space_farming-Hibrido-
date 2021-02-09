@@ -25,6 +25,7 @@ abstract class _HomeControllerBase with Store {
   final IRepositoryUserP repositoryUserP;
   final FirebaseAuth auth;
   final UserP user;
+  String farmName;
 
   @observable
   ObservableStream<List<Botijao>> listBot;
@@ -32,6 +33,7 @@ abstract class _HomeControllerBase with Store {
   _HomeControllerBase(this.repository, this.repositoryFarm,
       this.repositoryUserP, this.user, this.auth) {
     getBot(user.fazenda.keys.toList()[0]);
+    farmName = user.fazenda.values.toList()[0];
   }
 
   @action
@@ -50,5 +52,10 @@ abstract class _HomeControllerBase with Store {
     repositoryFarm.remove(id);
     user.fazenda.removeWhere((key, value) => key == id);
     repositoryUserP.update(this.user);
+  }
+
+  @action
+  getFarmName(String value) {
+    farmName = value;
   }
 }

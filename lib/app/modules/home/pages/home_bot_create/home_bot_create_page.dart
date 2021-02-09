@@ -326,11 +326,10 @@ class _HomeBotCreatePageState
                   onclick: () {
                     if (controller.edit) {
                       controller.updateBot();
-                      Navigator.pop(context);
                     } else {
                       controller.addBot();
-                      Navigator.pop(context);
                     }
+                    Navigator.pop(context);
                   },
                   width: sizeConfig.dynamicScaleSize(
                       size: _width / 2,

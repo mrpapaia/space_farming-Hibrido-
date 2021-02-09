@@ -7,7 +7,9 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   final Size preferredSize;
 
-  HomeAppBar({Key key, this.preferredSize}) : super(key: key);
+  final String farmName;
+
+  HomeAppBar({Key key, this.preferredSize, this.farmName}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final double statusbarHeight = MediaQuery.of(context).padding.top;
@@ -65,7 +67,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                     scaleFactorNormal: 0.81),
               ),
               Text(
-                "Space Farming",
+                farmName,
                 style: TextStyle(
                   color: Colors.red,
                   fontSize: sizeConfig.dynamicScaleSize(

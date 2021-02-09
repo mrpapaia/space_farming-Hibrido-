@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:space_farming_modular/app/modules/home/components/hexcolor.dart';
 import 'package:space_farming_modular/app/modules/home/components/secondaryAppBar.dart';
 import 'package:space_farming_modular/app/modules/home/pages/home_info_bot/components/container_caneca.dart';
 import 'package:space_farming_modular/app/modules/home/pages/home_info_bot/components/longPressCaneca.dart';
@@ -195,8 +196,12 @@ class _HomeInfoBotPageState
                           child: InkWell(
                             child: ContainerCaneca(
                               flag: false,
-                              id: controller.botijao.canecas[9].id.id,
-                              color: controller.botijao.canecas[9].color,
+                              id: controller.botijao.canecas.isEmpty
+                                  ? "10"
+                                  : controller.botijao.canecas[9].id.id,
+                              color: controller.botijao.canecas.isEmpty
+                                  ? HexColor("#adadad")
+                                  : controller.botijao.canecas[9].color,
                               h: hBot,
                               w: wBot,
                             ),
@@ -240,8 +245,12 @@ class _HomeInfoBotPageState
                           child: InkWell(
                             child: ContainerCaneca(
                               flag: false,
-                              id: controller.botijao.canecas[6].id.id,
-                              color: controller.botijao.canecas[6].color,
+                              id: controller.botijao.canecas.isEmpty
+                                  ? "7"
+                                  : controller.botijao.canecas[6].id.id,
+                              color: controller.botijao.canecas.isEmpty
+                                  ? HexColor("#adadad")
+                                  : controller.botijao.canecas[6].color,
                               h: hBot,
                               w: wBot,
                             ),
@@ -285,8 +294,12 @@ class _HomeInfoBotPageState
                           child: InkWell(
                             child: ContainerCaneca(
                               flag: false,
-                              id: controller.botijao.canecas[2].id.id,
-                              color: controller.botijao.canecas[2].color,
+                              id: controller.botijao.canecas.isEmpty
+                                  ? "3"
+                                  : controller.botijao.canecas[2].id.id,
+                              color: controller.botijao.canecas.isEmpty
+                                  ? HexColor("#adadad")
+                                  : controller.botijao.canecas[2].color,
                               h: hBot,
                               w: wBot,
                             ),
@@ -331,8 +344,12 @@ class _HomeInfoBotPageState
                           child: InkWell(
                             child: ContainerCaneca(
                               flag: false,
-                              id: controller.botijao.canecas[7].id.id,
-                              color: controller.botijao.canecas[7].color,
+                              id: controller.botijao.canecas.isEmpty
+                                  ? "8"
+                                  : controller.botijao.canecas[7].id.id,
+                              color: controller.botijao.canecas.isEmpty
+                                  ? HexColor("#adadad")
+                                  : controller.botijao.canecas[7].color,
                               h: hBot,
                               w: wBot,
                             ),
@@ -375,8 +392,12 @@ class _HomeInfoBotPageState
                     child: InkWell(
                       child: ContainerCaneca(
                         flag: false,
-                        id: controller.botijao.canecas[0].id.id,
-                        color: controller.botijao.canecas[0].color,
+                        id: controller.botijao.canecas.isEmpty
+                            ? "1"
+                            : controller.botijao.canecas[0].id.id,
+                        color: controller.botijao.canecas.isEmpty
+                            ? HexColor("#adadad")
+                            : controller.botijao.canecas[0].color,
                         h: hBot,
                         w: wBot,
                       ),
@@ -417,8 +438,12 @@ class _HomeInfoBotPageState
                           child: InkWell(
                             child: ContainerCaneca(
                               flag: false,
-                              id: controller.botijao.canecas[4].id.id,
-                              color: controller.botijao.canecas[4].color,
+                              id: controller.botijao.canecas.isEmpty
+                                  ? "5"
+                                  : controller.botijao.canecas[4].id.id,
+                              color: controller.botijao.canecas.isEmpty
+                                  ? HexColor("#adadad")
+                                  : controller.botijao.canecas[4].color,
                               h: hBot,
                               w: wBot,
                             ),
@@ -463,8 +488,12 @@ class _HomeInfoBotPageState
                           child: InkWell(
                             child: ContainerCaneca(
                               flag: false,
-                              id: controller.botijao.canecas[8].id.id,
-                              color: controller.botijao.canecas[8].color,
+                              id: controller.botijao.canecas.isEmpty
+                                  ? "9"
+                                  : controller.botijao.canecas[8].id.id,
+                              color: controller.botijao.canecas.isEmpty
+                                  ? HexColor("#adadad")
+                                  : controller.botijao.canecas[8].color,
                               h: hBot,
                               w: wBot,
                             ),
@@ -509,8 +538,12 @@ class _HomeInfoBotPageState
                           child: InkWell(
                             child: ContainerCaneca(
                               flag: false,
-                              id: controller.botijao.canecas[1].id.id,
-                              color: controller.botijao.canecas[1].color,
+                              id: controller.botijao.canecas.isEmpty
+                                  ? "2"
+                                  : controller.botijao.canecas[1].id.id,
+                              color: controller.botijao.canecas.isEmpty
+                                  ? HexColor("#adadad")
+                                  : controller.botijao.canecas[1].color,
                               h: hBot,
                               w: wBot,
                             ),
@@ -554,8 +587,12 @@ class _HomeInfoBotPageState
                           child: InkWell(
                             child: ContainerCaneca(
                               flag: false,
-                              id: controller.botijao.canecas[3].id.id,
-                              color: controller.botijao.canecas[3].color,
+                              id: controller.botijao.canecas.isEmpty
+                                  ? "4"
+                                  : controller.botijao.canecas[3].id.id,
+                              color: controller.botijao.canecas.isEmpty
+                                  ? HexColor("#adadad")
+                                  : controller.botijao.canecas[3].color,
                               h: hBot,
                               w: wBot,
                             ),
@@ -600,8 +637,12 @@ class _HomeInfoBotPageState
                           child: InkWell(
                             child: ContainerCaneca(
                               flag: false,
-                              id: controller.botijao.canecas[5].id.id,
-                              color: controller.botijao.canecas[5].color,
+                              id: controller.botijao.canecas.isEmpty
+                                  ? "6"
+                                  : controller.botijao.canecas[5].id.id,
+                              color: controller.botijao.canecas.isEmpty
+                                  ? HexColor("#adadad")
+                                  : controller.botijao.canecas[5].color,
                               h: hBot,
                               w: wBot,
                             ),

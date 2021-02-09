@@ -54,4 +54,9 @@ abstract class _RackAddControllerBase with Store {
   addRack(Rack rack) {
     repository.add(rack);
   }
+
+  @action
+  updateRack(Rack rack) {
+    repository.update(rack);
+  }
 }

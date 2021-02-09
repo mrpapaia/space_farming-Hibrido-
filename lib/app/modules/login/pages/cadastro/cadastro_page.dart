@@ -28,281 +28,283 @@ class _CadastroPageState
     final sizeConfig = SizeConfig(mediaQueryData: MediaQuery.of(context));
     var auth = FirebaseAuth.instance;
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+      // resizeToAvoidBottomInset: false,
       backgroundColor: Color.fromRGBO(229, 231, 236, 1.0),
       appBar: SecAppBar(
         preferredSize: Size.fromHeight(70.0),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          TitleOfScreen(
-            title: "Cadastro",
-            font: "Revalia",
-            fontSize: sizeConfig.dynamicScaleSize(
-                size: 35,
-                scaleFactorMini: 0.65,
-                scaleFactorTablet: 0,
-                scaleFactorNormal: 1),
-          ),
-          SizedBox(
-            height: sizeConfig.dynamicScaleSize(
-                size: 10,
-                scaleFactorMini: 0.65,
-                scaleFactorTablet: 0,
-                scaleFactorNormal: 1),
-          ),
-          Center(
-            child: ContainerBase(
-              height: sizeConfig.dynamicScaleSize(
-                  size: 150,
-                  scaleFactorMini: 0.8,
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            TitleOfScreen(
+              title: "Cadastro",
+              font: "Revalia",
+              fontSize: sizeConfig.dynamicScaleSize(
+                  size: 35,
+                  scaleFactorMini: 0.65,
                   scaleFactorTablet: 0,
                   scaleFactorNormal: 1),
+            ),
+            SizedBox(
+              height: sizeConfig.dynamicScaleSize(
+                  size: 10,
+                  scaleFactorMini: 0.65,
+                  scaleFactorTablet: 0,
+                  scaleFactorNormal: 1),
+            ),
+            Center(
+              child: ContainerBase(
+                height: sizeConfig.dynamicScaleSize(
+                    size: 150,
+                    scaleFactorMini: 0.8,
+                    scaleFactorTablet: 0,
+                    scaleFactorNormal: 1),
+                width: sizeConfig.dynamicScaleSize(
+                    size: _width,
+                    scaleFactorMini: 1,
+                    scaleFactorTablet: 0,
+                    scaleFactorNormal: 1),
+                componets: [
+                  TextField(
+                    onChanged: controller.getEmail,
+                    obscureText: false,
+                    keyboardType: TextInputType.emailAddress,
+                    cursorColor: Colors.red,
+                    style: TextStyle(
+                      fontFamily: 'Robot',
+                      fontSize: sizeConfig.dynamicScaleSize(
+                          size: 18,
+                          scaleFactorMini: 0.65,
+                          scaleFactorTablet: 0,
+                          scaleFactorNormal: 1),
+                      color: Color.fromRGBO(113, 111, 137, 1.0),
+                    ),
+                    decoration: InputDecoration(
+                      icon: Icon(
+                        Icons.mail,
+                        color: Colors.red,
+                      ),
+                      hintStyle: TextStyle(
+                        fontFamily: 'Robot',
+                        fontSize: sizeConfig.dynamicScaleSize(
+                            size: 18,
+                            scaleFactorMini: 0.65,
+                            scaleFactorTablet: 0,
+                            scaleFactorNormal: 1),
+                        color: Color.fromRGBO(113, 111, 137, 1.0),
+                      ),
+                      labelText: "E-mail",
+                      labelStyle: TextStyle(),
+                    ),
+                  ),
+                  TextField(
+                    onChanged: controller.getPasswd,
+                    obscureText: true,
+                    keyboardType: TextInputType.text,
+                    cursorColor: Colors.red,
+                    style: TextStyle(
+                      fontFamily: 'Robot',
+                      fontSize: sizeConfig.dynamicScaleSize(
+                          size: 18,
+                          scaleFactorMini: 0.65,
+                          scaleFactorTablet: 0,
+                          scaleFactorNormal: 1),
+                      color: Color.fromRGBO(113, 111, 137, 1.0),
+                    ),
+                    decoration: InputDecoration(
+                      icon: Icon(
+                        Icons.lock,
+                        color: Colors.red,
+                      ),
+                      hintStyle: TextStyle(
+                        fontFamily: 'Robot',
+                        fontSize: sizeConfig.dynamicScaleSize(
+                            size: 18,
+                            scaleFactorMini: 0.65,
+                            scaleFactorTablet: 0,
+                            scaleFactorNormal: 1),
+                        color: Color.fromRGBO(113, 111, 137, 1.0),
+                      ),
+                      labelText: "Senha",
+                      labelStyle: TextStyle(),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: sizeConfig.dynamicScaleSize(
+                  size: 5,
+                  scaleFactorMini: 0.65,
+                  scaleFactorTablet: 0,
+                  scaleFactorNormal: 1),
+            ),
+            Center(
+              child: ContainerBase(
+                width: sizeConfig.dynamicScaleSize(
+                    size: _width,
+                    scaleFactorMini: 1,
+                    scaleFactorTablet: 0,
+                    scaleFactorNormal: 1),
+                height: sizeConfig.dynamicScaleSize(
+                    size: 285,
+                    scaleFactorMini: 0.75,
+                    scaleFactorTablet: 0,
+                    scaleFactorNormal: 1),
+                componets: [
+                  TextField(
+                    onChanged: controller.getFazenda,
+                    obscureText: false,
+                    keyboardType: TextInputType.emailAddress,
+                    cursorColor: Colors.red,
+                    style: TextStyle(
+                      fontFamily: 'Robot',
+                      fontSize: sizeConfig.dynamicScaleSize(
+                          size: 18,
+                          scaleFactorMini: 0.65,
+                          scaleFactorTablet: 0,
+                          scaleFactorNormal: 1),
+                      color: Color.fromRGBO(113, 111, 137, 1.0),
+                    ),
+                    decoration: InputDecoration(
+                      icon: Icon(
+                        MyIcons.farm,
+                        color: Colors.red,
+                      ),
+                      hintStyle: TextStyle(
+                        fontFamily: 'Robot',
+                        fontSize: sizeConfig.dynamicScaleSize(
+                            size: 18,
+                            scaleFactorMini: 0.65,
+                            scaleFactorTablet: 0,
+                            scaleFactorNormal: 1),
+                        color: Color.fromRGBO(113, 111, 137, 1.0),
+                      ),
+                      labelText: "Nome da Fazenda",
+                      labelStyle: TextStyle(),
+                    ),
+                  ),
+                  TextField(
+                    onChanged: controller.getNome,
+                    obscureText: false,
+                    keyboardType: TextInputType.text,
+                    cursorColor: Colors.red,
+                    style: TextStyle(
+                      fontFamily: 'Robot',
+                      fontSize: sizeConfig.dynamicScaleSize(
+                          size: 18,
+                          scaleFactorMini: 0.65,
+                          scaleFactorTablet: 0,
+                          scaleFactorNormal: 1),
+                      color: Color.fromRGBO(113, 111, 137, 1.0),
+                    ),
+                    decoration: InputDecoration(
+                      icon: Icon(
+                        MyIcons.user,
+                        color: Colors.red,
+                      ),
+                      hintStyle: TextStyle(
+                        fontFamily: 'Robot',
+                        fontSize: sizeConfig.dynamicScaleSize(
+                            size: 18,
+                            scaleFactorMini: 0.65,
+                            scaleFactorTablet: 0,
+                            scaleFactorNormal: 1),
+                        color: Color.fromRGBO(113, 111, 137, 1.0),
+                      ),
+                      labelText: "Nome",
+                      labelStyle: TextStyle(),
+                    ),
+                  ),
+                  TextField(
+                    onChanged: controller.getCpf,
+                    obscureText: false,
+                    keyboardType: TextInputType.text,
+                    cursorColor: Colors.red,
+                    style: TextStyle(
+                      fontFamily: 'Robot',
+                      fontSize: sizeConfig.dynamicScaleSize(
+                          size: 18,
+                          scaleFactorMini: 0.65,
+                          scaleFactorTablet: 0,
+                          scaleFactorNormal: 1),
+                      color: Color.fromRGBO(113, 111, 137, 1.0),
+                    ),
+                    decoration: InputDecoration(
+                      icon: Icon(
+                        Icons.credit_card,
+                        color: Colors.red,
+                      ),
+                      hintStyle: TextStyle(
+                        fontFamily: 'Robot',
+                        fontSize: sizeConfig.dynamicScaleSize(
+                            size: 18,
+                            scaleFactorMini: 0.65,
+                            scaleFactorTablet: 0,
+                            scaleFactorNormal: 1),
+                        color: Color.fromRGBO(113, 111, 137, 1.0),
+                      ),
+                      labelText: "CPF/CNPJ",
+                      labelStyle: TextStyle(),
+                    ),
+                  ),
+                  TextField(
+                    onChanged: controller.getTelefone,
+                    obscureText: false,
+                    keyboardType: TextInputType.emailAddress,
+                    cursorColor: Colors.red,
+                    style: TextStyle(
+                      fontFamily: 'Robot',
+                      fontSize: sizeConfig.dynamicScaleSize(
+                          size: 18,
+                          scaleFactorMini: 0.65,
+                          scaleFactorTablet: 0,
+                          scaleFactorNormal: 1),
+                      color: Color.fromRGBO(113, 111, 137, 1.0),
+                    ),
+                    decoration: InputDecoration(
+                      icon: Icon(
+                        Icons.phone,
+                        color: Colors.red,
+                      ),
+                      hintStyle: TextStyle(
+                        fontFamily: 'Robot',
+                        fontSize: sizeConfig.dynamicScaleSize(
+                            size: 18,
+                            scaleFactorMini: 0.65,
+                            scaleFactorTablet: 0,
+                            scaleFactorNormal: 1),
+                        color: Color.fromRGBO(113, 111, 137, 1.0),
+                      ),
+                      labelText: "Telefone",
+                      labelStyle: TextStyle(),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: sizeConfig.dynamicScaleSize(
+                  size: 10,
+                  scaleFactorMini: 0.65,
+                  scaleFactorTablet: 0,
+                  scaleFactorNormal: 1),
+            ),
+            ButtonCustom(
+              text: "Cadastrar",
               width: sizeConfig.dynamicScaleSize(
                   size: _width,
-                  scaleFactorMini: 1,
+                  scaleFactorMini: 0.65,
                   scaleFactorTablet: 0,
                   scaleFactorNormal: 1),
-              componets: [
-                TextField(
-                  onChanged: controller.getEmail,
-                  obscureText: false,
-                  keyboardType: TextInputType.emailAddress,
-                  cursorColor: Colors.red,
-                  style: TextStyle(
-                    fontFamily: 'Robot',
-                    fontSize: sizeConfig.dynamicScaleSize(
-                        size: 18,
-                        scaleFactorMini: 0.65,
-                        scaleFactorTablet: 0,
-                        scaleFactorNormal: 1),
-                    color: Color.fromRGBO(113, 111, 137, 1.0),
-                  ),
-                  decoration: InputDecoration(
-                    icon: Icon(
-                      Icons.mail,
-                      color: Colors.red,
-                    ),
-                    hintStyle: TextStyle(
-                      fontFamily: 'Robot',
-                      fontSize: sizeConfig.dynamicScaleSize(
-                          size: 18,
-                          scaleFactorMini: 0.65,
-                          scaleFactorTablet: 0,
-                          scaleFactorNormal: 1),
-                      color: Color.fromRGBO(113, 111, 137, 1.0),
-                    ),
-                    labelText: "E-mail",
-                    labelStyle: TextStyle(),
-                  ),
-                ),
-                TextField(
-                  onChanged: controller.getPasswd,
-                  obscureText: true,
-                  keyboardType: TextInputType.text,
-                  cursorColor: Colors.red,
-                  style: TextStyle(
-                    fontFamily: 'Robot',
-                    fontSize: sizeConfig.dynamicScaleSize(
-                        size: 18,
-                        scaleFactorMini: 0.65,
-                        scaleFactorTablet: 0,
-                        scaleFactorNormal: 1),
-                    color: Color.fromRGBO(113, 111, 137, 1.0),
-                  ),
-                  decoration: InputDecoration(
-                    icon: Icon(
-                      Icons.lock,
-                      color: Colors.red,
-                    ),
-                    hintStyle: TextStyle(
-                      fontFamily: 'Robot',
-                      fontSize: sizeConfig.dynamicScaleSize(
-                          size: 18,
-                          scaleFactorMini: 0.65,
-                          scaleFactorTablet: 0,
-                          scaleFactorNormal: 1),
-                      color: Color.fromRGBO(113, 111, 137, 1.0),
-                    ),
-                    labelText: "Senha",
-                    labelStyle: TextStyle(),
-                  ),
-                ),
-              ],
+              onclick: () {
+                controller.singIn(auth).then((value) {});
+                Modular.to.pop();
+              },
             ),
-          ),
-          SizedBox(
-            height: sizeConfig.dynamicScaleSize(
-                size: 5,
-                scaleFactorMini: 0.65,
-                scaleFactorTablet: 0,
-                scaleFactorNormal: 1),
-          ),
-          Center(
-            child: ContainerBase(
-              width: sizeConfig.dynamicScaleSize(
-                  size: _width,
-                  scaleFactorMini: 1,
-                  scaleFactorTablet: 0,
-                  scaleFactorNormal: 1),
-              height: sizeConfig.dynamicScaleSize(
-                  size: 285,
-                  scaleFactorMini: 0.75,
-                  scaleFactorTablet: 0,
-                  scaleFactorNormal: 1),
-              componets: [
-                TextField(
-                  onChanged: controller.getFazenda,
-                  obscureText: false,
-                  keyboardType: TextInputType.emailAddress,
-                  cursorColor: Colors.red,
-                  style: TextStyle(
-                    fontFamily: 'Robot',
-                    fontSize: sizeConfig.dynamicScaleSize(
-                        size: 18,
-                        scaleFactorMini: 0.65,
-                        scaleFactorTablet: 0,
-                        scaleFactorNormal: 1),
-                    color: Color.fromRGBO(113, 111, 137, 1.0),
-                  ),
-                  decoration: InputDecoration(
-                    icon: Icon(
-                      MyIcons.farm,
-                      color: Colors.red,
-                    ),
-                    hintStyle: TextStyle(
-                      fontFamily: 'Robot',
-                      fontSize: sizeConfig.dynamicScaleSize(
-                          size: 18,
-                          scaleFactorMini: 0.65,
-                          scaleFactorTablet: 0,
-                          scaleFactorNormal: 1),
-                      color: Color.fromRGBO(113, 111, 137, 1.0),
-                    ),
-                    labelText: "Nome da Fazenda",
-                    labelStyle: TextStyle(),
-                  ),
-                ),
-                TextField(
-                  onChanged: controller.getNome,
-                  obscureText: false,
-                  keyboardType: TextInputType.text,
-                  cursorColor: Colors.red,
-                  style: TextStyle(
-                    fontFamily: 'Robot',
-                    fontSize: sizeConfig.dynamicScaleSize(
-                        size: 18,
-                        scaleFactorMini: 0.65,
-                        scaleFactorTablet: 0,
-                        scaleFactorNormal: 1),
-                    color: Color.fromRGBO(113, 111, 137, 1.0),
-                  ),
-                  decoration: InputDecoration(
-                    icon: Icon(
-                      MyIcons.user,
-                      color: Colors.red,
-                    ),
-                    hintStyle: TextStyle(
-                      fontFamily: 'Robot',
-                      fontSize: sizeConfig.dynamicScaleSize(
-                          size: 18,
-                          scaleFactorMini: 0.65,
-                          scaleFactorTablet: 0,
-                          scaleFactorNormal: 1),
-                      color: Color.fromRGBO(113, 111, 137, 1.0),
-                    ),
-                    labelText: "Nome",
-                    labelStyle: TextStyle(),
-                  ),
-                ),
-                TextField(
-                  onChanged: controller.getCpf,
-                  obscureText: false,
-                  keyboardType: TextInputType.text,
-                  cursorColor: Colors.red,
-                  style: TextStyle(
-                    fontFamily: 'Robot',
-                    fontSize: sizeConfig.dynamicScaleSize(
-                        size: 18,
-                        scaleFactorMini: 0.65,
-                        scaleFactorTablet: 0,
-                        scaleFactorNormal: 1),
-                    color: Color.fromRGBO(113, 111, 137, 1.0),
-                  ),
-                  decoration: InputDecoration(
-                    icon: Icon(
-                      Icons.credit_card,
-                      color: Colors.red,
-                    ),
-                    hintStyle: TextStyle(
-                      fontFamily: 'Robot',
-                      fontSize: sizeConfig.dynamicScaleSize(
-                          size: 18,
-                          scaleFactorMini: 0.65,
-                          scaleFactorTablet: 0,
-                          scaleFactorNormal: 1),
-                      color: Color.fromRGBO(113, 111, 137, 1.0),
-                    ),
-                    labelText: "CPF/CNPJ",
-                    labelStyle: TextStyle(),
-                  ),
-                ),
-                TextField(
-                  onChanged: controller.getTelefone,
-                  obscureText: false,
-                  keyboardType: TextInputType.emailAddress,
-                  cursorColor: Colors.red,
-                  style: TextStyle(
-                    fontFamily: 'Robot',
-                    fontSize: sizeConfig.dynamicScaleSize(
-                        size: 18,
-                        scaleFactorMini: 0.65,
-                        scaleFactorTablet: 0,
-                        scaleFactorNormal: 1),
-                    color: Color.fromRGBO(113, 111, 137, 1.0),
-                  ),
-                  decoration: InputDecoration(
-                    icon: Icon(
-                      Icons.phone,
-                      color: Colors.red,
-                    ),
-                    hintStyle: TextStyle(
-                      fontFamily: 'Robot',
-                      fontSize: sizeConfig.dynamicScaleSize(
-                          size: 18,
-                          scaleFactorMini: 0.65,
-                          scaleFactorTablet: 0,
-                          scaleFactorNormal: 1),
-                      color: Color.fromRGBO(113, 111, 137, 1.0),
-                    ),
-                    labelText: "Telefone",
-                    labelStyle: TextStyle(),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          SizedBox(
-            height: sizeConfig.dynamicScaleSize(
-                size: 10,
-                scaleFactorMini: 0.65,
-                scaleFactorTablet: 0,
-                scaleFactorNormal: 1),
-          ),
-          ButtonCustom(
-            text: "Cadastrar",
-            width: sizeConfig.dynamicScaleSize(
-                size: _width,
-                scaleFactorMini: 0.65,
-                scaleFactorTablet: 0,
-                scaleFactorNormal: 1),
-            onclick: () {
-              controller.singIn(auth).then((value) {});
-              Modular.to.pop();
-            },
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

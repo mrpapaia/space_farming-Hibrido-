@@ -400,7 +400,12 @@ class _RackAddPageState extends ModularState<RackAddPage, RackAddController> {
                 ButtonCustom(
                   text: "Confirmar",
                   onclick: () {
-                    controller.addRack(controller.rack);
+                    if (controller.edit) {
+                      controller.updateRack(controller.rack);
+                    } else {
+                      controller.addRack(controller.rack);
+                    }
+
                     Navigator.pop(context);
                   },
                   width: _width * 0.5,

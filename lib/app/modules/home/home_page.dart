@@ -44,10 +44,9 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
     startTimer();
     return Scaffold(
       backgroundColor: Color.fromRGBO(229, 231, 236, 1.0),
-      resizeToAvoidBottomInset: false,
-      resizeToAvoidBottomPadding: false,
       drawer: NavigationDrawer(controller: controller),
       appBar: HomeAppBar(
+        farmName: "Space Farming",
         preferredSize: Size.fromHeight(sizeConfig.dynamicScaleSize(
             size: 70,
             scaleFactorMini: 0.8,
@@ -85,7 +84,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                     return Center(
                       child: Text("Vazio"),
                     );
-                  } else if (controller.listBot.data[0].canecas[0] != null) {
+                  } else if (controller.listBot.data[0] != null) {
                     botijoes = controller.listBot.data;
                     return GridViewList(
                       listBotijao: botijoes,

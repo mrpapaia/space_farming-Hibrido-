@@ -60,8 +60,10 @@ class _LongPressCanecaState extends State<LongPressCaneca> {
                       scaleFactorNormal: 1),
                 ),
                 DropdownButton<String>(
-                  value:
-                      widget.controller.botijao.canecas[widget.index].estado ==
+                  value: widget.controller.botijao.canecas.isEmpty
+                      ? items[1]
+                      : widget.controller.botijao.canecas[widget.index]
+                                  .estado ==
                               "enabled"
                           ? items[0]
                           : items[1],
@@ -122,12 +124,15 @@ class _LongPressCanecaState extends State<LongPressCaneca> {
                       scaleFactorNormal: 1),
                 ),
                 RaisedButton(
-                  color: widget.controller.botijao.canecas[widget.index]
-                              .estado ==
-                          "disabled"
-                      ? widget.controller.botijao.canecas[widget.index].color =
-                          HexColor("#adadad")
-                      : widget.controller.botijao.canecas[widget.index].color,
+                  color: widget.controller.botijao.canecas.isEmpty
+                      ? HexColor("#adadad")
+                      : widget.controller.botijao.canecas[widget.index]
+                                  .estado ==
+                              "disabled"
+                          ? widget.controller.botijao.canecas[widget.index]
+                              .color = HexColor("#adadad")
+                          : widget
+                              .controller.botijao.canecas[widget.index].color,
                   onPressed: () {
                     showDialog(
                       context: context,

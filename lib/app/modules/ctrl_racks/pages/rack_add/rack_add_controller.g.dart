@@ -127,6 +127,17 @@ mixin _$RackAddController on _RackAddControllerBase, Store {
   }
 
   @override
+  dynamic updateRack(Rack rack) {
+    final _$actionInfo = _$_RackAddControllerBaseActionController.startAction(
+        name: '_RackAddControllerBase.updateRack');
+    try {
+      return super.updateRack(rack);
+    } finally {
+      _$_RackAddControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 ctrl1: ${ctrl1},
