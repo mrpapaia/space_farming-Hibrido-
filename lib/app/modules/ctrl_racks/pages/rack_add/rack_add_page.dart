@@ -274,7 +274,7 @@ class _RackAddPageState extends ModularState<RackAddPage, RackAddController> {
               children: [
                 Container(
                   child: Text(
-                    "Tipo do semên:",
+                    "Tipo do Sêmen:",
                     style: TextStyle(
                         fontFamily: 'Robot',
                         fontSize: sizeConfig.dynamicScaleSize(

@@ -133,7 +133,7 @@ class _HistoricoAbastecimentoComponentState
                     color: Color.fromRGBO(113, 111, 138, 1.0),
                   ),
                   TextCustom(
-                    text: "Nome do Responsavel: ",
+                    text: "Nome do Responsável: ",
                     fontSize: sizeConfig.dynamicScaleSize(
                         size: 18,
                         scaleFactorMini: 1,

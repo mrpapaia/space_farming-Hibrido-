@@ -179,6 +179,17 @@ mixin _$CadastroController on _CadastroControllerBase, Store {
   }
 
   @override
+  bool verificar() {
+    final _$actionInfo = _$_CadastroControllerBaseActionController.startAction(
+        name: '_CadastroControllerBase.verificar');
+    try {
+      return super.verificar();
+    } finally {
+      _$_CadastroControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 email: ${email},

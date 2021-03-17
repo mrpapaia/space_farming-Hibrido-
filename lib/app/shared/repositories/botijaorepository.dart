@@ -22,18 +22,20 @@ class BotijaoRepository implements IRepositoryBotijao {
         .collection(pathF)
         .doc(botijao.idBot)
         .set(botijao.toMap())
-        .then((value) {
-      for (int i = 0; i < botijao.numcanecas; i++) {
-        firestore
-            .collection(
-                "farms/" + path + '/botijoes/' + botijao.idBot + '/canecas')
-            .doc((i + 1).toString())
-            .set(Caneca(color: HexColor("#adadad"), estado: "disabled").toMap())
-            .then((value) => print("Caneca adicionado com suecsso"))
-            .catchError((error) => print("Failed to add botijao: $error"));
-      }
-      aux = true;
-    }).catchError((error) => print("Failed to add botijao: $error"));
+        .then((value) {})
+        .catchError((error) => print("Failed to add botijao: $error"));
+    for (int i = 0; i < botijao.numcanecas; i++) {
+      firestore
+          .collection(
+              "farms/" + path + '/botijoes/' + botijao.idBot + '/canecas')
+          .doc((i + 1).toString())
+          .set(Caneca(color: HexColor("#adadad"), estado: "disabled").toMap())
+          .then((value) => print("Caneca adicionado com suecsso"))
+          .catchError((error) => print("Failed to add botijao: $error"));
+    }
+    aux = true;
+
+    print(aux);
     return Future.value(aux);
   }
 

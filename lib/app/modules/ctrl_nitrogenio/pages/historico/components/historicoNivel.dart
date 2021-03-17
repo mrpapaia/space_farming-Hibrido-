@@ -71,7 +71,7 @@ class _HistoricoNivelState extends State<HistoricoNivelComponent> {
                   Center(
                     child: TextCustom(
                       text:
-                          "Nivel ${widget.list[index].qtdAtual.toStringAsFixed(2)}",
+                          "Nível ${widget.list[index].qtdAtual.toStringAsFixed(2)}",
                       fontSize: sizeConfig.dynamicScaleSize(
                           size: 18,
                           scaleFactorMini: 1,
@@ -87,7 +87,7 @@ class _HistoricoNivelState extends State<HistoricoNivelComponent> {
                         scaleFactorNormal: 1),
                   ),
                   TextCustom(
-                    text: "Nome do Responsavel: ",
+                    text: "Nome do Responsável: ",
                     fontSize: sizeConfig.dynamicScaleSize(
                         size: 16,
                         scaleFactorMini: 1,

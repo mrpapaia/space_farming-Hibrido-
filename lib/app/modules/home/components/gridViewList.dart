@@ -625,7 +625,7 @@ class _GridViewListState extends State<GridViewList> {
                                         sizeConfig.dynamicScaleSize(size: 15),
                                   ),
                                   Text(
-                                    "Nivel Atual:",
+                                    "Nível Atual:",
                                     style: TextStyle(
                                         fontFamily: 'Revalia',
                                         fontWeight: FontWeight.bold,

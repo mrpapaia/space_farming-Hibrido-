@@ -1,12 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:space_farming_modular/app/modules/home/components/secondaryAppBar.dart';
+import 'package:space_farming_modular/app/shared/components/button.dart';
+import 'package:space_farming_modular/app/shared/components/containerBase.dart';
 import 'package:space_farming_modular/app/shared/components/my_icons_icons.dart';
 import 'package:space_farming_modular/app/shared/components/sizeConfig.dart';
-import '../../../../shared/components/button.dart';
-import '../../../../shared/components/containerBase.dart';
-import '../../../../shared/components/titleOfScreen.dart';
-import '../../../home/components/secondaryAppBar.dart';
+import 'package:space_farming_modular/app/shared/components/titleOfScreen.dart';
+
 import 'cadastro_controller.dart';
 
 class CadastroPage extends StatefulWidget {
@@ -20,14 +21,17 @@ class CadastroPage extends StatefulWidget {
 class _CadastroPageState
     extends ModularState<CadastroPage, CadastroController> {
   //use 'controller' variable to access controller
-
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width - 30;
     double _height = MediaQuery.of(context).size.height;
+
     final sizeConfig = SizeConfig(mediaQueryData: MediaQuery.of(context));
     var auth = FirebaseAuth.instance;
+
     return Scaffold(
+      key: _scaffoldKey,
       // resizeToAvoidBottomInset: false,
       backgroundColor: Color.fromRGBO(229, 231, 236, 1.0),
       appBar: SecAppBar(
@@ -298,9 +302,25 @@ class _CadastroPageState
                   scaleFactorMini: 0.65,
                   scaleFactorTablet: 0,
                   scaleFactorNormal: 1),
-              onclick: () {
-                controller.singIn(auth).then((value) {});
-                Modular.to.pop();
+              onclick: () async {
+                if (controller.verificar()) {
+                  controller.singIn(auth).then((value) {});
+                  Modular.to.pop();
+                } else {
+                  _scaffoldKey.currentState.showSnackBar(
+                    SnackBar(
+                      content: Text("CPF/CNPJ invalido"),
+                      behavior: SnackBarBehavior.floating,
+                      margin: EdgeInsets.only(
+                          bottom: MediaQuery.of(context).size.height -
+                              sizeConfig.dynamicScaleSize(
+                                  size: 75,
+                                  scaleFactorMini: 0.8,
+                                  scaleFactorTablet: 0,
+                                  scaleFactorNormal: 1)),
+                    ),
+                  );
+                }
               },
             ),
           ],

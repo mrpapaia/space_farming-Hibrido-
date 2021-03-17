@@ -80,48 +80,62 @@ abstract class _LoginControllerBase with Store {
             return user;
           }
         } else {
-          Scaffold.of(ctx)
-              .showSnackBar(SnackBar(content: Text(validetePasswd())));
+          Scaffold.of(ctx).showSnackBar(
+            SnackBar(
+              content: Text(validetePasswd()),
+              behavior: SnackBarBehavior.floating,
+              margin: EdgeInsets.only(
+                  bottom: MediaQuery.of(ctx).size.height -
+                      sizeConfig.dynamicScaleSize(
+                          size: 75,
+                          scaleFactorMini: 0.8,
+                          scaleFactorTablet: 0,
+                          scaleFactorNormal: 1)),
+            ),
+          );
         }
       } else {
-        Scaffold.of(ctx).showSnackBar(SnackBar(content: Text(valideteEmail())));
+        Scaffold.of(ctx).showSnackBar(
+          SnackBar(
+            content: Text(valideteEmail()),
+            behavior: SnackBarBehavior.floating,
+            margin: EdgeInsets.only(
+                bottom: MediaQuery.of(ctx).size.height -
+                    sizeConfig.dynamicScaleSize(
+                        size: 75,
+                        scaleFactorMini: 0.8,
+                        scaleFactorTablet: 0,
+                        scaleFactorNormal: 1)),
+          ),
+        );
       }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        Scaffold.of(ctx)
-            .showSnackBar(SnackBar(content: Text("E-mail não cadastrado")));
+        Scaffold.of(ctx).showSnackBar(
+          SnackBar(
+            content: Text("E-mail não cadastrado"),
+            behavior: SnackBarBehavior.floating,
+            margin: EdgeInsets.only(
+                bottom: MediaQuery.of(ctx).size.height -
+                    sizeConfig.dynamicScaleSize(
+                        size: 75,
+                        scaleFactorMini: 0.8,
+                        scaleFactorTablet: 0,
+                        scaleFactorNormal: 1)),
+          ),
+        );
       } else if (e.code == 'wrong-password') {
         Scaffold.of(ctx).showSnackBar(
           SnackBar(
-            content: Container(
-              //color: Colors.white,
-              decoration: BoxDecoration(
-                  color: Color.fromRGBO(229, 231, 236, 1.0),
-                  border: Border.all(width: 2.0, color: Colors.red),
-                  borderRadius: BorderRadius.circular(20)),
-              margin: EdgeInsets.only(
-                  bottom: sizeConfig.dynamicScaleSize(
-                      size: 250,
-                      scaleFactorMini: 0.8,
-                      scaleFactorTablet: 0,
-                      scaleFactorNormal: 1)),
-              child: Center(
-                child: Text(
-                  'Senha incorreta!',
-                  style: TextStyle(
-                      color: Colors.red,
-                      fontSize: sizeConfig.dynamicScaleSize(
-                          size: 20,
-                          scaleFactorMini: 0.8,
-                          scaleFactorTablet: 0,
-                          scaleFactorNormal: 1),
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-            ),
-            backgroundColor: Colors.transparent,
-            elevation: 1000,
+            content: Text("Senha Incorreta"),
             behavior: SnackBarBehavior.floating,
+            margin: EdgeInsets.only(
+                bottom: MediaQuery.of(ctx).size.height -
+                    sizeConfig.dynamicScaleSize(
+                        size: 75,
+                        scaleFactorMini: 0.8,
+                        scaleFactorTablet: 0,
+                        scaleFactorNormal: 1)),
           ),
         );
       }

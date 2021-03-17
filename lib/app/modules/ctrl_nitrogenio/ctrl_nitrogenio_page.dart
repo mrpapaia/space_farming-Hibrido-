@@ -114,7 +114,7 @@ class _CtrlNitrogenioPageState
                     scaleFactorNormal: 1),
               ),
               ButtonCustom(
-                text: "Medir Nivel",
+                text: "Medir Nível",
                 onclick: () {
                   Modular.to.pushNamed('/ctrl/medirNivel',
                       arguments: [widget.botijao, widget.user]);
@@ -152,7 +152,7 @@ class _CtrlNitrogenioPageState
                     scaleFactorNormal: 1),
               ),
               ButtonCustom(
-                text: "Hístorico",
+                text: "Histórico",
                 onclick: () {
                   Modular.to.pushNamed('/ctrl/historico',
                       arguments: [widget.botijao]);

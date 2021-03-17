@@ -118,7 +118,7 @@ class _HistoricoPageState
               child: TabBar(
                 tabs: [
                   Text(
-                    "Nivel",
+                    "Nível",
                     style: TextStyle(
                       fontSize: sizeConfig.dynamicScaleSize(
                           size: 20,
