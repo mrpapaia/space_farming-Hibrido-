@@ -30,6 +30,9 @@ abstract class _CadastroControllerBase with Store {
   @observable
   String telefone;
 
+  @observable
+  String msg;
+
   _CadastroControllerBase(this.repositoryUserP, this.repositoryFarm);
 
   @action
@@ -49,7 +52,6 @@ abstract class _CadastroControllerBase with Store {
   @action
   bool verificar() {
     if (CPF.isValid(CPF.format(cpf)) || CNPJ.isValid(CNPJ.format(cpf))) {
-      print("sadasd");
       return true;
     } else {
       return false;
@@ -87,15 +89,19 @@ abstract class _CadastroControllerBase with Store {
                   email: this.email,
                   fazenda: {value: this.nomeFazenda},
                   tel: this.telefone)));
-
+          this.msg = "Cadastrado com Sucesso";
           return true;
         }
       }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         print('The password provided is too weak.');
+        this.msg = "A senha fornecida é muito fraca.";
+        return false;
       } else if (e.code == 'email-already-in-use') {
         print('The account already exists for that email.');
+        this.msg = "A conta já existe para esse e-mail.";
+        return false;
       }
     } catch (e) {
       print(e);

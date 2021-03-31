@@ -109,6 +109,21 @@ mixin _$CadastroController on _CadastroControllerBase, Store {
     });
   }
 
+  final _$msgAtom = Atom(name: '_CadastroControllerBase.msg');
+
+  @override
+  String get msg {
+    _$msgAtom.reportRead();
+    return super.msg;
+  }
+
+  @override
+  set msg(String value) {
+    _$msgAtom.reportWrite(value, super.msg, () {
+      super.msg = value;
+    });
+  }
+
   final _$_CadastroControllerBaseActionController =
       ActionController(name: '_CadastroControllerBase');
 
@@ -197,7 +212,8 @@ passwd: ${passwd},
 nomeFazenda: ${nomeFazenda},
 nome: ${nome},
 cpf: ${cpf},
-telefone: ${telefone}
+telefone: ${telefone},
+msg: ${msg}
     ''';
   }
 }

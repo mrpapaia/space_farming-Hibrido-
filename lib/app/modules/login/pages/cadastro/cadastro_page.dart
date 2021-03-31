@@ -304,8 +304,38 @@ class _CadastroPageState
                   scaleFactorNormal: 1),
               onclick: () async {
                 if (controller.verificar()) {
-                  controller.singIn(auth).then((value) {});
-                  Modular.to.pop();
+                  controller.singIn(auth).then((value) {
+                    if (value) {
+                      _scaffoldKey.currentState.showSnackBar(
+                        SnackBar(
+                          content: Text(controller.msg),
+                          behavior: SnackBarBehavior.floating,
+                          margin: EdgeInsets.only(
+                              bottom: MediaQuery.of(context).size.height -
+                                  sizeConfig.dynamicScaleSize(
+                                      size: 75,
+                                      scaleFactorMini: 0.8,
+                                      scaleFactorTablet: 0,
+                                      scaleFactorNormal: 1)),
+                        ),
+                      );
+                      Modular.to.pop();
+                    } else {
+                      _scaffoldKey.currentState.showSnackBar(
+                        SnackBar(
+                          content: Text(controller.msg),
+                          behavior: SnackBarBehavior.floating,
+                          margin: EdgeInsets.only(
+                              bottom: MediaQuery.of(context).size.height -
+                                  sizeConfig.dynamicScaleSize(
+                                      size: 75,
+                                      scaleFactorMini: 0.8,
+                                      scaleFactorTablet: 0,
+                                      scaleFactorNormal: 1)),
+                        ),
+                      );
+                    }
+                  });
                 } else {
                   _scaffoldKey.currentState.showSnackBar(
                     SnackBar(

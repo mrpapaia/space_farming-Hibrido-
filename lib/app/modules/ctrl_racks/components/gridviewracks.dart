@@ -195,7 +195,7 @@ class _GridViewRacksState extends State<GridViewRacks> {
                       //title: Center(child: Text("Botijao")),
                       content: Container(
                         height: sizeConfig.dynamicScaleSize(
-                            size: 545,
+                            size: 560,
                             scaleFactorMini: 0.725,
                             scaleFactorTablet: 0,
                             scaleFactorNormal: 0.8),
@@ -372,6 +372,9 @@ class _GridViewRacksState extends State<GridViewRacks> {
                                       ),
                                     ],
                                   ),
+                                  Divider(
+                                    color: Colors.white,
+                                  ),
                                   InkWell(
                                     child: Row(
                                       mainAxisAlignment:
@@ -408,7 +411,9 @@ class _GridViewRacksState extends State<GridViewRacks> {
                                       //Modular.to.pop();
                                     },
                                   ),
-                                  Divider(),
+                                  Divider(
+                                    color: Colors.white,
+                                  ),
                                   InkWell(
                                     child: Row(
                                       mainAxisAlignment:
