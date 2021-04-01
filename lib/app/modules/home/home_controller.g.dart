@@ -3,17 +3,6 @@
 part of 'home_controller.dart';
 
 // **************************************************************************
-// InjectionGenerator
-// **************************************************************************
-
-final $HomeController = BindInject(
-  (i) => HomeController(i<IRepositoryBotijao>(), i<IRepositoryFarm>(),
-      i<IRepositoryUserP>(), i<UserP>(), i<FirebaseAuth>()),
-  singleton: true,
-  lazy: true,
-);
-
-// **************************************************************************
 // StoreGenerator
 // **************************************************************************
 

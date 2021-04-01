@@ -44,7 +44,6 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
     startTimer();
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      resizeToAvoidBottomPadding: false,
       backgroundColor: Color.fromRGBO(229, 231, 236, 1.0),
       drawer: NavigationDrawer(controller: controller),
       appBar: HomeAppBar(

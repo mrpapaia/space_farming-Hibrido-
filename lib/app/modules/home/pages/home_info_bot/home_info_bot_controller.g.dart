@@ -3,22 +3,6 @@
 part of 'home_info_bot_controller.dart';
 
 // **************************************************************************
-// InjectionGenerator
-// **************************************************************************
-
-final $HomeInfoBotController = BindInject(
-  (i) => HomeInfoBotController(
-      repositoryHistoricoNivel: i<IRepositoryHistoricoNivel>(),
-      repositoryHistoricoAbastecimento: i<IRepositoryHistoricoAbastecimento>(),
-      repositoryBotijao: i<IRepositoryBotijao>(),
-      repositoryCanecas: i<IRepositoryCanecas>(),
-      botijao: i<Botijao>(),
-      user: i<UserP>()),
-  singleton: true,
-  lazy: true,
-);
-
-// **************************************************************************
 // StoreGenerator
 // **************************************************************************
 

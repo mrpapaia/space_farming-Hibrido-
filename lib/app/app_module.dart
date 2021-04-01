@@ -4,6 +4,7 @@ import 'package:space_farming_modular/app/modules/ctrl_nitrogenio/ctrl_nitrogeni
 import 'package:space_farming_modular/app/modules/ctrl_racks/ctrl_racks_module.dart';
 
 import 'package:space_farming_modular/app/modules/login/login_module.dart';
+import 'package:space_farming_modular/app/modules/relatorio/relatorio_module.dart';
 
 import 'app_controller.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -15,7 +16,7 @@ class AppModule extends MainModule {
   @override
   List<Bind> get binds {
     return [
-      $AppController,
+      Bind((i) => AppController()),
     ];
   }
 
@@ -26,6 +27,7 @@ class AppModule extends MainModule {
         ModularRouter("/ctrl", module: CtrlNitrogenioModule()),
         ModularRouter("/rack", module: CtrlRacksModule()),
         ModularRouter("/colab", module: CtrlColaboradoresModule()),
+        ModularRouter("/relatorio", module: RelatorioModule()),
       ];
 
   @override

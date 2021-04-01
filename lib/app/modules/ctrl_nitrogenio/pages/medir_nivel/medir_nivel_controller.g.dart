@@ -3,17 +3,6 @@
 part of 'medir_nivel_controller.dart';
 
 // **************************************************************************
-// InjectionGenerator
-// **************************************************************************
-
-final $MedirNivelController = BindInject(
-  (i) => MedirNivelController(i<IRepositoryHistoricoNivel>(),
-      i<IRepositoryBotijao>(), i<Botijao>(), i<UserP>()),
-  singleton: true,
-  lazy: true,
-);
-
-// **************************************************************************
 // StoreGenerator
 // **************************************************************************
 
@@ -65,11 +54,11 @@ mixin _$MedirNivelController on _MedirNivelControllerBase, Store {
   }
 
   @override
-  dynamic getData(String data) {
+  dynamic getData(String dat) {
     final _$actionInfo = _$_MedirNivelControllerBaseActionController
         .startAction(name: '_MedirNivelControllerBase.getData');
     try {
-      return super.getData(data);
+      return super.getData(dat);
     } finally {
       _$_MedirNivelControllerBaseActionController.endAction(_$actionInfo);
     }

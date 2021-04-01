@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
+import 'package:intl/intl.dart';
+
 import 'package:space_farming_modular/app/shared/models/botijao.dart';
 import 'package:space_farming_modular/app/shared/models/hist_nivel.dart';
 import 'package:space_farming_modular/app/shared/models/user.dart';
@@ -41,7 +43,7 @@ abstract class _MedirNivelControllerBase with Store {
   getVol(String vol) => volAtual = double.parse(vol);
 
   @action
-  getData(String data) => data = this.data.toString();
+  getData(String dat) => data = DateFormat('d/M/yyyy').parse(dat);
   @action
   update() {
     repositoryBotijao

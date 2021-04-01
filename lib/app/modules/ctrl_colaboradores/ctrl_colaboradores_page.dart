@@ -25,7 +25,6 @@ class _CtrlColaboradoresPageState
     var _width = MediaQuery.of(context).size.width - 30;
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      resizeToAvoidBottomPadding: false,
       backgroundColor: Color.fromRGBO(229, 231, 236, 1.0),
       appBar: SecAppBar(
         preferredSize: Size.fromHeight(70.0),

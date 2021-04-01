@@ -3,17 +3,6 @@
 part of 'home_add_farm_controller.dart';
 
 // **************************************************************************
-// InjectionGenerator
-// **************************************************************************
-
-final $HomeAddFarmController = BindInject(
-  (i) => HomeAddFarmController(
-      i<IRepositoryFarm>(), i<IRepositoryUserP>(), i<UserP>()),
-  singleton: true,
-  lazy: true,
-);
-
-// **************************************************************************
 // StoreGenerator
 // **************************************************************************
 

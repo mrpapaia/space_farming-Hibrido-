@@ -3,16 +3,6 @@
 part of 'cadastro_controller.dart';
 
 // **************************************************************************
-// InjectionGenerator
-// **************************************************************************
-
-final $CadastroController = BindInject(
-  (i) => CadastroController(i<IRepositoryUserP>(), i<IRepositoryFarm>()),
-  singleton: true,
-  lazy: true,
-);
-
-// **************************************************************************
 // StoreGenerator
 // **************************************************************************
 

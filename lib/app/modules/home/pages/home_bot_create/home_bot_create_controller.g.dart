@@ -3,20 +3,6 @@
 part of 'home_bot_create_controller.dart';
 
 // **************************************************************************
-// InjectionGenerator
-// **************************************************************************
-
-final $HomeBotCreateController = BindInject(
-  (i) => HomeBotCreateController(
-      repository: i<IRepositoryBotijao>(),
-      path: i<String>(),
-      botijao: i<Botijao>(),
-      edit: i<bool>()),
-  singleton: true,
-  lazy: true,
-);
-
-// **************************************************************************
 // StoreGenerator
 // **************************************************************************
 

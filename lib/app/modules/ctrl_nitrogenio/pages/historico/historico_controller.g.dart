@@ -3,17 +3,6 @@
 part of 'historico_controller.dart';
 
 // **************************************************************************
-// InjectionGenerator
-// **************************************************************************
-
-final $HistoricoController = BindInject(
-  (i) => HistoricoController(i<IRepositoryHistoricoNivel>(),
-      i<IRepositoryHistoricoAbastecimento>(), i<Botijao>()),
-  singleton: true,
-  lazy: true,
-);
-
-// **************************************************************************
 // StoreGenerator
 // **************************************************************************
 

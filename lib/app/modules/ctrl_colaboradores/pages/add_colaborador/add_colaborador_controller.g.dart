@@ -3,17 +3,6 @@
 part of 'add_colaborador_controller.dart';
 
 // **************************************************************************
-// InjectionGenerator
-// **************************************************************************
-
-final $AddColaboradorController = BindInject(
-  (i) =>
-      AddColaboradorController(i<IRepositoryUserP>(), i<String>(), i<String>()),
-  singleton: true,
-  lazy: true,
-);
-
-// **************************************************************************
 // StoreGenerator
 // **************************************************************************
 

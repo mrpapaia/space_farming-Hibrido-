@@ -163,6 +163,18 @@ class _CtrlNitrogenioPageState
                     scaleFactorTablet: 0,
                     scaleFactorNormal: 1),
               ),
+              ButtonCustom(
+                text: "Relatorio",
+                onclick: () {
+                  Modular.to
+                      .pushNamed('/relatorio', arguments: [widget.botijao]);
+                },
+                width: sizeConfig.dynamicScaleSize(
+                    size: _width - 30,
+                    scaleFactorMini: 1,
+                    scaleFactorTablet: 0,
+                    scaleFactorNormal: 1),
+              ),
             ],
           )
         ],

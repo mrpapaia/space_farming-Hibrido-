@@ -34,7 +34,7 @@ class CtrlNitrogenioModule extends ChildModule {
       Bind<IRepositoryHistoricoAbastecimento>(
         (i) => HistoricoAbastecimentoRepository(FirebaseFirestore.instance),
       ),
-      $CtrlNitrogenioController,
+      Bind((i) => CtrlNitrogenioController())
     ];
   }
 
@@ -47,12 +47,7 @@ class CtrlNitrogenioModule extends ChildModule {
                 )),
         ModularRouter("/medirNivel", child: (_, args) => MedirNivelPage()),
         ModularRouter("/abastecer", child: (_, args) => AbastecerPage()),
-        ModularRouter("/historico",
-            child: (
-              _,
-              args,
-            ) =>
-                HistoricoPage()),
+        ModularRouter("/historico", child: (_, args) => HistoricoPage()),
       ];
 
   static Inject get to => Inject<CtrlNitrogenioModule>.of();

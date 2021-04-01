@@ -3,17 +3,6 @@
 part of 'abastecer_controller.dart';
 
 // **************************************************************************
-// InjectionGenerator
-// **************************************************************************
-
-final $AbastecerController = BindInject(
-  (i) => AbastecerController(i<IRepositoryHistoricoAbastecimento>(),
-      i<IRepositoryBotijao>(), i<Botijao>(), i<UserP>()),
-  singleton: true,
-  lazy: true,
-);
-
-// **************************************************************************
 // StoreGenerator
 // **************************************************************************
 

@@ -33,7 +33,6 @@ class _HomeBotCreatePageState
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      resizeToAvoidBottomPadding: false,
       backgroundColor: Color.fromRGBO(229, 231, 236, 1.0),
       appBar: SecAppBar(
         preferredSize: Size.fromHeight(70.0),

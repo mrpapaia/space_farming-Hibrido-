@@ -3,16 +3,6 @@
 part of 'ctrl_racks_controller.dart';
 
 // **************************************************************************
-// InjectionGenerator
-// **************************************************************************
-
-final $CtrlRacksController = BindInject(
-  (i) => CtrlRacksController(i<IRepositoryRack>(), i<Caneca>(), i<UserP>()),
-  singleton: true,
-  lazy: true,
-);
-
-// **************************************************************************
 // StoreGenerator
 // **************************************************************************
 

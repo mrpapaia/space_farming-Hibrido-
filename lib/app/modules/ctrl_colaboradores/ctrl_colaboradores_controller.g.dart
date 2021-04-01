@@ -3,17 +3,6 @@
 part of 'ctrl_colaboradores_controller.dart';
 
 // **************************************************************************
-// InjectionGenerator
-// **************************************************************************
-
-final $CtrlColaboradoresController = BindInject(
-  (i) => CtrlColaboradoresController(
-      i<IRepositoryUserP>(), i<String>(), i<String>()),
-  singleton: true,
-  lazy: true,
-);
-
-// **************************************************************************
 // StoreGenerator
 // **************************************************************************
 

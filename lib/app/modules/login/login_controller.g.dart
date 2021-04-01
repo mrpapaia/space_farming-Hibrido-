@@ -3,17 +3,6 @@
 part of 'login_controller.dart';
 
 // **************************************************************************
-// InjectionGenerator
-// **************************************************************************
-
-final $LoginController = BindInject(
-  (i) => LoginController(
-      userRepository: i<IRepositoryUserP>(), user: i<ObservableStream>()),
-  singleton: true,
-  lazy: true,
-);
-
-// **************************************************************************
 // StoreGenerator
 // **************************************************************************
 
