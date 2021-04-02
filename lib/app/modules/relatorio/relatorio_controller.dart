@@ -25,6 +25,8 @@ abstract class _RelatorioControllerBase with Store {
 
   @observable
   List<FlSpot> listSpot;
+
+  List<String> nomesLastDays = List<String>();
   _RelatorioControllerBase(
       this.repositoryHistNivel, this.repositoryHistAbastecimento, this.bot) {
     getHistoricoAbastecimento();
@@ -56,54 +58,98 @@ abstract class _RelatorioControllerBase with Store {
   }
 
   @action
-  getSpotsLast({int time = 15}) {
+  getSpotsLastDays({int time = 15}) {
+    nomesLastDays = List<String>();
+    int index = 0;
     List<HistoricoNivel> values = listHistNivel.data;
     values.sort((a, b) => a.data.compareTo(b.data));
     DateTime dataHj = DateTime.now();
     DateTime dataInicio = DateTime.now().subtract(Duration(days: time));
-    return values
-        .where((data) =>
-            data.data.isAfter(dataInicio) && data.data.isBefore(dataHj))
-        .map((spot) => FlSpot(
-              values.indexOf(spot).toDouble(),
-              spot.qtdAtual,
-            ))
-        .toList();
+    List<FlSpot> spots = values
+        .where(
+      (data) => data.data.isAfter(dataInicio) && data.data.isBefore(dataHj),
+    )
+        .map((spot) {
+      nomesLastDays
+          .add(spot.data.day.toString() + "/" + spot.data.month.toString());
+      FlSpot spotaux = FlSpot(
+        index.toDouble(),
+        spot.qtdAtual,
+      );
+      index = index + 1;
+      return spotaux;
+    }).toList();
+    print(spots);
+    return spots;
   }
 
   @action
-  getSpotsMonth(int mes) {
+  getSpotsPerMonth(int mes) {
     List<HistoricoNivel> values = listHistNivel.data;
     values.sort((a, b) => a.data.compareTo(b.data));
     List<HistoricoNivel> aux =
         values.where((data) => data.data.month == mes).toList();
-    print(aux);
+
     List<FlSpot> spots = new List<FlSpot>();
 
     spots.add(
-        new FlSpot(1, mean(aux.where((spot) => spot.data.day <= 7).toList())));
+        new FlSpot(1, _mean(aux.where((spot) => spot.data.day <= 7).toList())));
     spots.add(new FlSpot(
         2,
-        mean(aux
+        _mean(aux
             .where((spot) => spot.data.day > 7 && spot.data.day <= 14)
             .toList())));
     spots.add(new FlSpot(
         3,
-        mean(aux
+        _mean(aux
             .where((spot) => spot.data.day > 14 && spot.data.day <= 21)
             .toList())));
     spots.add(new FlSpot(
         4,
-        mean(aux
+        _mean(aux
             .where((spot) => spot.data.day > 21 && spot.data.day <= 28)
             .toList())));
     spots.add(
-        new FlSpot(5, mean(aux.where((spot) => spot.data.day > 28).toList())));
+        new FlSpot(5, _mean(aux.where((spot) => spot.data.day > 28).toList())));
 
     return spots;
   }
 
-  mean(List<HistoricoNivel> list) {
+  @action
+  getSpotsLastMonth({int time = 6}) {
+    List<HistoricoNivel> values = listHistNivel.data;
+    values.sort((a, b) => a.data.compareTo(b.data));
+
+    DateTime dataHj = DateTime.now();
+    DateTime dataInicio = DateTime.now().subtract(Duration(days: time * 30));
+    List<HistoricoNivel> aux = values
+        .where((data) =>
+            data.data.isAfter(dataInicio) && data.data.isBefore(dataHj))
+        .toList();
+    List<FlSpot> spots = new List<FlSpot>();
+    for (int i = dataInicio.month; i <= dataHj.month; i++) {
+      spots.add(new FlSpot(i.toDouble(),
+          _mean(aux.where((spot) => spot.data.month == i).toList())));
+    }
+    return spots;
+  }
+
+  @action
+  getSpotsPerYear(int year) {
+    List<HistoricoNivel> values = listHistNivel.data;
+    values.sort((a, b) => a.data.compareTo(b.data));
+    List<HistoricoNivel> aux =
+        values.where((data) => data.data.year == year).toList();
+
+    List<FlSpot> spots = new List<FlSpot>();
+    for (int i = 1; i <= 12; i++) {
+      spots.add(new FlSpot(i.toDouble(),
+          _mean(aux.where((spot) => spot.data.month == i).toList())));
+    }
+    return spots;
+  }
+
+  _mean(List<HistoricoNivel> list) {
     double sum = 0;
 
     list.forEach((element) {

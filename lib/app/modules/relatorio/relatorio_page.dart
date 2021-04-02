@@ -1,8 +1,12 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
+import 'package:space_farming_modular/app/modules/home/components/secondaryAppBar.dart';
+import 'package:space_farming_modular/app/modules/relatorio/components/grafico.dart';
+import 'package:space_farming_modular/app/shared/components/sizeConfig.dart';
 import 'relatorio_controller.dart';
 
 class RelatorioPage extends StatefulWidget {
@@ -19,52 +23,51 @@ class _RelatorioPageState
 
   @override
   Widget build(BuildContext context) {
+    final sizeConfig = SizeConfig(mediaQueryData: MediaQuery.of(context));
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: AppBar(
-        title: Text(widget.title),
+      appBar: SecAppBar(
+        preferredSize: Size.fromHeight(sizeConfig.dynamicScaleSize(
+            size: 70,
+            scaleFactorMini: 0.8,
+            scaleFactorTablet: 0,
+            scaleFactorNormal: 1)),
       ),
-      body: Container(
-        height: 500,
-        child: Column(
-          children: <Widget>[
-            Container(
-              height: 200,
-            ),
-            Observer(builder: (BuildContext context) {
-              // try {
-              if (controller.listHistNivel.data != null) {
-                print(controller.getSpotsMonth(3));
-                return Container(
-                  height: 300,
-                  width: 300,
-                  child: Center(
-                    child: LineChart(
-                      LineChartData(
-                        minY: 0,
-                        maxY: 51,
-                        lineBarsData: [
-                          /* LineChartBarData(
-                            spots: controller.getAllSpots(),
-                          ),*/
-                          LineChartBarData(
-                            spots: controller.getSpotsMonth(3),
-                          ),
-                        ],
-                      ),
+      backgroundColor: Color.fromRGBO(229, 231, 236, 1.0),
+      body: SingleChildScrollView(
+        child: Observer(builder: (BuildContext context) {
+          // try {
+          if (controller.listHistNivel.data != null) {
+            return Column(
+              children: [
+                CarouselSlider(
+                  items: [
+                    Grafico(
+                      listSpots: controller.getSpotsPerMonth(3),
+                      nomes: ["0", "1°", "2°", "3º", "4º", "5º"],
                     ),
-                  ),
-                );
-              } else {
-                return CircularProgressIndicator();
-              }
-              /* } catch (NoSuchMethodError) {
+                    Grafico(
+                        listSpots: controller.getSpotsLastDays(),
+                        nomes: controller.nomesLastDays),
+                  ],
+                  options: CarouselOptions(
+                      height: sizeConfig.dynamicScaleSize(
+                          size: 300,
+                          scaleFactorMini: 0.725,
+                          scaleFactorTablet: 0,
+                          scaleFactorNormal: 1)),
+                ),
+              ],
+            );
+          } else {
+            return CircularProgressIndicator();
+          }
+          /* } catch (NoSuchMethodError) {
               print("exeçãp");
               return CircularProgressIndicator();
             }*/
-            }),
-          ],
-        ),
+        }),
       ),
     );
   }

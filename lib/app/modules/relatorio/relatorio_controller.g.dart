@@ -95,22 +95,44 @@ mixin _$RelatorioController on _RelatorioControllerBase, Store {
   }
 
   @override
-  dynamic getSpotsLast({int time = 15}) {
+  dynamic getSpotsLastDays({int time = 15}) {
     final _$actionInfo = _$_RelatorioControllerBaseActionController.startAction(
-        name: '_RelatorioControllerBase.getSpotsLast');
+        name: '_RelatorioControllerBase.getSpotsLastDays');
     try {
-      return super.getSpotsLast(time: time);
+      return super.getSpotsLastDays(time: time);
     } finally {
       _$_RelatorioControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  dynamic getSpotsMonth(int mes) {
+  dynamic getSpotsPerMonth(int mes) {
     final _$actionInfo = _$_RelatorioControllerBaseActionController.startAction(
-        name: '_RelatorioControllerBase.getSpotsMonth');
+        name: '_RelatorioControllerBase.getSpotsPerMonth');
     try {
-      return super.getSpotsMonth(mes);
+      return super.getSpotsPerMonth(mes);
+    } finally {
+      _$_RelatorioControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic getSpotsLastMonth({int time = 6}) {
+    final _$actionInfo = _$_RelatorioControllerBaseActionController.startAction(
+        name: '_RelatorioControllerBase.getSpotsLastMonth');
+    try {
+      return super.getSpotsLastMonth(time: time);
+    } finally {
+      _$_RelatorioControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic getSpotsPerYear(int year) {
+    final _$actionInfo = _$_RelatorioControllerBaseActionController.startAction(
+        name: '_RelatorioControllerBase.getSpotsPerYear');
+    try {
+      return super.getSpotsPerYear(year);
     } finally {
       _$_RelatorioControllerBaseActionController.endAction(_$actionInfo);
     }

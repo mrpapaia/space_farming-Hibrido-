@@ -51,7 +51,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
         preferredSize: Size.fromHeight(sizeConfig.dynamicScaleSize(
             size: 70,
             scaleFactorMini: 0.8,
-            scaleFactorTablet: 0,
+            scaleFactorTablet: 1,
             scaleFactorNormal: 1)),
       ),
       body: Column(
@@ -62,21 +62,21 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
             fontSize: sizeConfig.dynamicScaleSize(
                 size: 30,
                 scaleFactorMini: 0.725,
-                scaleFactorTablet: 0,
+                scaleFactorTablet: 1,
                 scaleFactorNormal: 1),
           ),
           SizedBox(
             height: sizeConfig.dynamicScaleSize(
                 size: 5,
                 scaleFactorMini: 0.725,
-                scaleFactorTablet: 0,
+                scaleFactorTablet: 1,
                 scaleFactorNormal: 1),
           ),
           Container(
             height: sizeConfig.dynamicScaleSize(
                 size: _height,
                 scaleFactorMini: 0.78,
-                scaleFactorTablet: 0,
+                scaleFactorTablet: 1,
                 scaleFactorNormal: 0.8125),
             child: Observer(
               builder: (BuildContext context) {

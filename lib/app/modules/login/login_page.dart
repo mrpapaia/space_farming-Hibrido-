@@ -46,12 +46,12 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
               width: sizeConfig.dynamicScaleSize(
                   size: 309,
                   scaleFactorMini: 0.725,
-                  scaleFactorTablet: 0,
+                  scaleFactorTablet: 1,
                   scaleFactorNormal: 1),
               height: sizeConfig.dynamicScaleSize(
                   size: 178,
                   scaleFactorMini: 0.725,
-                  scaleFactorTablet: 0,
+                  scaleFactorTablet: 1,
                   scaleFactorNormal: 1),
             ),
           ),
@@ -84,7 +84,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                       height: sizeConfig.dynamicScaleSize(
                           size: 10,
                           scaleFactorMini: 0.725,
-                          scaleFactorTablet: 0,
+                          scaleFactorTablet: 1,
                           scaleFactorNormal: 1),
                     ),
                     Center(
@@ -100,7 +100,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                             fontSize: sizeConfig.dynamicScaleSize(
                                 size: 18,
                                 scaleFactorMini: 0.725,
-                                scaleFactorTablet: 0,
+                                scaleFactorTablet: 1,
                                 scaleFactorNormal: 1),
                             color: Color.fromRGBO(113, 111, 137, 1.0),
                           ),
@@ -119,7 +119,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                               size: sizeConfig.dynamicScaleSize(
                                   size: 50,
                                   scaleFactorMini: 0.725,
-                                  scaleFactorTablet: 0,
+                                  scaleFactorTablet: 1,
                                   scaleFactorNormal: 1),
                             ),
                             hintStyle: TextStyle(
@@ -127,7 +127,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                               fontSize: sizeConfig.dynamicScaleSize(
                                   size: 18,
                                   scaleFactorMini: 0.725,
-                                  scaleFactorTablet: 0,
+                                  scaleFactorTablet: 1,
                                   scaleFactorNormal: 1),
                               color: Color.fromRGBO(113, 111, 137, 1.0),
                             ),
@@ -138,7 +138,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                         width: sizeConfig.dynamicScaleSize(
                             size: _width,
                             scaleFactorMini: 1,
-                            scaleFactorTablet: 0,
+                            scaleFactorTablet: 1,
                             scaleFactorNormal: 1),
                       ),
                     ),
@@ -146,7 +146,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                       height: sizeConfig.dynamicScaleSize(
                           size: 10,
                           scaleFactorMini: 0.725,
-                          scaleFactorTablet: 0,
+                          scaleFactorTablet: 1,
                           scaleFactorNormal: 1),
                     ),
                     CardEditText(
@@ -161,7 +161,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                           fontSize: sizeConfig.dynamicScaleSize(
                               size: 18,
                               scaleFactorMini: 0.725,
-                              scaleFactorTablet: 0,
+                              scaleFactorTablet: 1,
                               scaleFactorNormal: 1),
                           color: Color.fromRGBO(113, 111, 137, 1.0),
                         ),
@@ -180,7 +180,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                             size: sizeConfig.dynamicScaleSize(
                                 size: 50,
                                 scaleFactorMini: 0.725,
-                                scaleFactorTablet: 0,
+                                scaleFactorTablet: 1,
                                 scaleFactorNormal: 1),
                           ),
                           hintStyle: TextStyle(
@@ -188,7 +188,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                             fontSize: sizeConfig.dynamicScaleSize(
                                 size: 18,
                                 scaleFactorMini: 0.725,
-                                scaleFactorTablet: 0,
+                                scaleFactorTablet: 1,
                                 scaleFactorNormal: 1),
                             color: Color.fromRGBO(113, 111, 137, 1.0),
                           ),
@@ -199,14 +199,14 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                       width: sizeConfig.dynamicScaleSize(
                           size: _width,
                           scaleFactorMini: 1,
-                          scaleFactorTablet: 0,
+                          scaleFactorTablet: 1,
                           scaleFactorNormal: 1),
                     ),
                     SizedBox(
                       height: sizeConfig.dynamicScaleSize(
                           size: 10,
                           scaleFactorMini: 0.725,
-                          scaleFactorTablet: 0,
+                          scaleFactorTablet: 1,
                           scaleFactorNormal: 1),
                     ),
                     ButtonCustom(
@@ -214,7 +214,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                       width: sizeConfig.dynamicScaleSize(
                           size: _width,
                           scaleFactorMini: 0.8,
-                          scaleFactorTablet: 0,
+                          scaleFactorTablet: 1,
                           scaleFactorNormal: 0.8),
                       onclick: () async {
                         await controller.login(_auth, context);
@@ -224,7 +224,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                       height: sizeConfig.dynamicScaleSize(
                           size: 10,
                           scaleFactorMini: 0.725,
-                          scaleFactorTablet: 0,
+                          scaleFactorTablet: 1,
                           scaleFactorNormal: 1),
                     ),
                     InkWell(
@@ -235,7 +235,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                             fontSize: sizeConfig.dynamicScaleSize(
                                 size: 16,
                                 scaleFactorMini: 0.725,
-                                scaleFactorTablet: 0,
+                                scaleFactorTablet: 1,
                                 scaleFactorNormal: 1)),
                       ),
                       onTap: () {
