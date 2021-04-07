@@ -36,38 +36,109 @@ class _RelatorioPageState
       ),
       backgroundColor: Color.fromRGBO(229, 231, 236, 1.0),
       body: SingleChildScrollView(
-        child: Observer(builder: (BuildContext context) {
-          // try {
-          if (controller.listHistNivel.data != null) {
-            return Column(
-              children: [
-                CarouselSlider(
-                  items: [
-                    Grafico(
-                      listSpots: controller.getSpotsPerMonth(3),
-                      nomes: ["0", "1°", "2°", "3º", "4º", "5º"],
-                    ),
-                    Grafico(
-                        listSpots: controller.getSpotsLastDays(),
-                        nomes: controller.nomesLastDays),
+        child: Column(
+          children: [
+            Container(
+              margin: EdgeInsets.all(
+                sizeConfig.dynamicScaleSize(
+                    size: 10,
+                    scaleFactorMini: 0.725,
+                    scaleFactorTablet: 0,
+                    scaleFactorNormal: 1),
+              ),
+              padding: EdgeInsets.all(sizeConfig.dynamicScaleSize(
+                  size: 20,
+                  scaleFactorMini: 0.725,
+                  scaleFactorTablet: 0,
+                  scaleFactorNormal: 1)),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(12),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.2),
+                    spreadRadius: 0,
+                    offset: Offset(5, 5),
+                  )
+                ],
+              ),
+              child: Column(
+                children: [
+                  Text("data"),
+                  Row(
+                    children: [
+                      Radio(
+                          value: 1,
+                          groupValue: controller.selectedRadio,
+                          onChanged: (val) {
+                            setState(() {
+                              controller.selectedRadio = val;
+                            });
+                          }),
+                      Text(
+                        "Ultimos Dias",
+                      ),
+                      Radio(
+                          value: 2,
+                          groupValue: controller.selectedRadio,
+                          onChanged: (val) {
+                            setState(() {
+                              controller.selectedRadio = val;
+                            });
+                          }),
+                      Text("Mês"),
+                      Radio(
+                          value: 3,
+                          groupValue: controller.selectedRadio,
+                          onChanged: (val) {
+                            setState(() {
+                              controller.selectedRadio = val;
+                            });
+                          }),
+                      Text("Ano"),
+                    ],
+                  )
+                ],
+              ),
+            ),
+            Observer(builder: (BuildContext context) {
+              // try {
+
+              if (controller.listHistNivel.data != null) {
+                controller.getSpots(days: 15);
+                return Column(
+                  children: [
+                    Observer(builder: (BuildContext context) {
+                      return Grafico(
+                        controller: controller,
+                        titulo: "Ultimos dias",
+                        listSpots: controller.x == 0
+                            ? controller.listSpotsDays
+                            : controller.x == 1
+                                ? controller.listSpotsWeek
+                                : controller.listSpotsMonth,
+                        nomes: controller.x == 0
+                            ? controller.nomesDays
+                            : controller.x == 1
+                                ? controller.nomesWeek
+                                : controller.nomesMonth,
+                        click: () {
+                          controller.teste(1);
+                        },
+                      );
+                    }),
                   ],
-                  options: CarouselOptions(
-                      height: sizeConfig.dynamicScaleSize(
-                          size: 300,
-                          scaleFactorMini: 0.725,
-                          scaleFactorTablet: 0,
-                          scaleFactorNormal: 1)),
-                ),
-              ],
-            );
-          } else {
-            return CircularProgressIndicator();
-          }
-          /* } catch (NoSuchMethodError) {
-              print("exeçãp");
-              return CircularProgressIndicator();
-            }*/
-        }),
+                );
+              } else {
+                return CircularProgressIndicator();
+              }
+              /* } catch (NoSuchMethodError) {
+                  print("exeçãp");
+                  return CircularProgressIndicator();
+                }*/
+            }),
+          ],
+        ),
       ),
     );
   }

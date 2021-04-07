@@ -24,13 +24,61 @@ abstract class _RelatorioControllerBase with Store {
   ObservableStream<List<HistoricoAbastecimento>> listHistAbastecimento;
 
   @observable
-  List<FlSpot> listSpot;
+  List<FlSpot> listSpotsDays;
 
-  List<String> nomesLastDays = List<String>();
+  @observable
+  List<FlSpot> listSpotsWeek;
+  @observable
+  List<FlSpot> listSpotsMonth;
+
+  @observable
+  List<String> nomesDays = List<String>();
+
+  @observable
+  List<String> nomesWeek;
+  @observable
+  int selectedRadio = 1;
+  List<String> months = [
+    "jan.",
+    " fev.",
+    "mar.",
+    "abr.",
+    "maio",
+    "jun.",
+    "jul.",
+    "ago.",
+    " set.",
+    " out. ",
+    "nov.",
+    "dez."
+  ];
+
+  @observable
+  List<String> nomesMonth;
+  @observable
+  int x = 0;
+
+  @observable
+  List<bool> isSelected = [false, false, false];
   _RelatorioControllerBase(
       this.repositoryHistNivel, this.repositoryHistAbastecimento, this.bot) {
     getHistoricoAbastecimento();
     getHistoricoNivel();
+  }
+
+  @action
+  teste(value) => x = value;
+
+  @action
+  setSelected(int index) {
+    for (int i = 0; i < isSelected.length; i++) {
+      if (i == index) {
+        isSelected[index] = true;
+        x = index;
+      } else {
+        isSelected[i] = false;
+      }
+    }
   }
 
   @action
@@ -45,32 +93,89 @@ abstract class _RelatorioControllerBase with Store {
   }
 
   @action
-  getAllSpots() {
+  getSpots({int days, int month, int year, DateTime inicio, DateTime fim}) {
     List<HistoricoNivel> values = listHistNivel.data;
-    values.sort((a, b) => a.data.compareTo(b.data));
-
-    return values
-        .map((data) => FlSpot(
-              values.indexOf(data).toDouble(),
-              data.qtdAtual,
-            ))
-        .toList();
-  }
-
-  @action
-  getSpotsLastDays({int time = 15}) {
-    nomesLastDays = List<String>();
+    List<HistoricoNivel> valuesAux;
+    nomesDays = List<String>();
+    nomesMonth = List<String>();
+    nomesWeek = List<String>();
+    listSpotsDays = List();
+    listSpotsMonth = List();
+    listSpotsWeek = List();
     int index = 0;
-    List<HistoricoNivel> values = listHistNivel.data;
+    double mean;
     values.sort((a, b) => a.data.compareTo(b.data));
-    DateTime dataHj = DateTime.now();
-    DateTime dataInicio = DateTime.now().subtract(Duration(days: time));
-    List<FlSpot> spots = values
-        .where(
-      (data) => data.data.isAfter(dataInicio) && data.data.isBefore(dataHj),
-    )
-        .map((spot) {
-      nomesLastDays
+    if (days != null) {
+      DateTime dataHj = DateTime.now();
+      DateTime dataInicio = DateTime.now().subtract(Duration(days: days));
+      valuesAux = values
+          .where(
+            (data) =>
+                data.data.isAfter(dataInicio) && data.data.isBefore(dataHj),
+          )
+          .toList();
+    } else if (month != null && year != null) {
+      valuesAux = values
+          .where(
+            (data) => data.data.month == month && data.data.year == year,
+          )
+          .toList();
+    } else if (month != null) {
+      valuesAux = values
+          .where(
+            (data) =>
+                data.data.month == month &&
+                data.data.year == DateTime.now().year,
+          )
+          .toList();
+    } else if (year != null) {
+      valuesAux = values
+          .where(
+            (data) => data.data.year == year,
+          )
+          .toList();
+    }
+
+    DateTime dateCrtl = valuesAux[0].data;
+    int c = 1;
+    int auxMes = 1;
+    for (int i = 0; i < c; i++) {
+      mean = _mean(valuesAux
+          .where((spot) =>
+              spot.data.isAfter(_findFirstDateOfTheWeek(dateCrtl)) &&
+              spot.data.isBefore(_findLastDateOfTheWeek(dateCrtl)))
+          .toList());
+      if (!mean.isNaN) {
+        listSpotsWeek.add(new FlSpot(i.toDouble(), mean));
+        if (_findLastDateOfTheWeek(dateCrtl).day < 7) {
+          nomesWeek.add("4º/" + dateCrtl.month.toString());
+        } else {
+          nomesWeek.add("${auxMes}º/" + dateCrtl.month.toString());
+        }
+        auxMes++;
+        if (dateCrtl.month !=
+            _findLastDateOfTheWeek(dateCrtl).add(Duration(days: 1)).month) {
+          auxMes = 1;
+        }
+
+        c++;
+      }
+      dateCrtl = _findLastDateOfTheWeek(dateCrtl).add(Duration(days: 1));
+    }
+
+    for (int i = 0; i < 12; i++) {
+      mean =
+          _mean(valuesAux.where((spot) => spot.data.month == i + 1).toList());
+
+      if (!mean.isNaN) {
+        listSpotsMonth.add(new FlSpot(i.toDouble(), mean));
+        nomesMonth.add(months[i]);
+      } else {
+        nomesMonth.add("");
+      }
+    }
+    listSpotsDays = valuesAux.map((spot) {
+      nomesDays
           .add(spot.data.day.toString() + "/" + spot.data.month.toString());
       FlSpot spotaux = FlSpot(
         index.toDouble(),
@@ -79,74 +184,6 @@ abstract class _RelatorioControllerBase with Store {
       index = index + 1;
       return spotaux;
     }).toList();
-    print(spots);
-    return spots;
-  }
-
-  @action
-  getSpotsPerMonth(int mes) {
-    List<HistoricoNivel> values = listHistNivel.data;
-    values.sort((a, b) => a.data.compareTo(b.data));
-    List<HistoricoNivel> aux =
-        values.where((data) => data.data.month == mes).toList();
-
-    List<FlSpot> spots = new List<FlSpot>();
-
-    spots.add(
-        new FlSpot(1, _mean(aux.where((spot) => spot.data.day <= 7).toList())));
-    spots.add(new FlSpot(
-        2,
-        _mean(aux
-            .where((spot) => spot.data.day > 7 && spot.data.day <= 14)
-            .toList())));
-    spots.add(new FlSpot(
-        3,
-        _mean(aux
-            .where((spot) => spot.data.day > 14 && spot.data.day <= 21)
-            .toList())));
-    spots.add(new FlSpot(
-        4,
-        _mean(aux
-            .where((spot) => spot.data.day > 21 && spot.data.day <= 28)
-            .toList())));
-    spots.add(
-        new FlSpot(5, _mean(aux.where((spot) => spot.data.day > 28).toList())));
-
-    return spots;
-  }
-
-  @action
-  getSpotsLastMonth({int time = 6}) {
-    List<HistoricoNivel> values = listHistNivel.data;
-    values.sort((a, b) => a.data.compareTo(b.data));
-
-    DateTime dataHj = DateTime.now();
-    DateTime dataInicio = DateTime.now().subtract(Duration(days: time * 30));
-    List<HistoricoNivel> aux = values
-        .where((data) =>
-            data.data.isAfter(dataInicio) && data.data.isBefore(dataHj))
-        .toList();
-    List<FlSpot> spots = new List<FlSpot>();
-    for (int i = dataInicio.month; i <= dataHj.month; i++) {
-      spots.add(new FlSpot(i.toDouble(),
-          _mean(aux.where((spot) => spot.data.month == i).toList())));
-    }
-    return spots;
-  }
-
-  @action
-  getSpotsPerYear(int year) {
-    List<HistoricoNivel> values = listHistNivel.data;
-    values.sort((a, b) => a.data.compareTo(b.data));
-    List<HistoricoNivel> aux =
-        values.where((data) => data.data.year == year).toList();
-
-    List<FlSpot> spots = new List<FlSpot>();
-    for (int i = 1; i <= 12; i++) {
-      spots.add(new FlSpot(i.toDouble(),
-          _mean(aux.where((spot) => spot.data.month == i).toList())));
-    }
-    return spots;
   }
 
   _mean(List<HistoricoNivel> list) {
@@ -157,5 +194,14 @@ abstract class _RelatorioControllerBase with Store {
     });
 
     return double.parse((sum / list.length).toStringAsPrecision(4));
+  }
+
+  DateTime _findFirstDateOfTheWeek(DateTime dateTime) {
+    return dateTime.subtract(Duration(days: dateTime.weekday - 1));
+  }
+
+  DateTime _findLastDateOfTheWeek(DateTime dateTime) {
+    return dateTime
+        .add(Duration(days: DateTime.daysPerWeek - dateTime.weekday));
   }
 }

@@ -43,23 +43,153 @@ mixin _$RelatorioController on _RelatorioControllerBase, Store {
     });
   }
 
-  final _$listSpotAtom = Atom(name: '_RelatorioControllerBase.listSpot');
+  final _$listSpotsDaysAtom =
+      Atom(name: '_RelatorioControllerBase.listSpotsDays');
 
   @override
-  List<FlSpot> get listSpot {
-    _$listSpotAtom.reportRead();
-    return super.listSpot;
+  List<FlSpot> get listSpotsDays {
+    _$listSpotsDaysAtom.reportRead();
+    return super.listSpotsDays;
   }
 
   @override
-  set listSpot(List<FlSpot> value) {
-    _$listSpotAtom.reportWrite(value, super.listSpot, () {
-      super.listSpot = value;
+  set listSpotsDays(List<FlSpot> value) {
+    _$listSpotsDaysAtom.reportWrite(value, super.listSpotsDays, () {
+      super.listSpotsDays = value;
+    });
+  }
+
+  final _$listSpotsWeekAtom =
+      Atom(name: '_RelatorioControllerBase.listSpotsWeek');
+
+  @override
+  List<FlSpot> get listSpotsWeek {
+    _$listSpotsWeekAtom.reportRead();
+    return super.listSpotsWeek;
+  }
+
+  @override
+  set listSpotsWeek(List<FlSpot> value) {
+    _$listSpotsWeekAtom.reportWrite(value, super.listSpotsWeek, () {
+      super.listSpotsWeek = value;
+    });
+  }
+
+  final _$listSpotsMonthAtom =
+      Atom(name: '_RelatorioControllerBase.listSpotsMonth');
+
+  @override
+  List<FlSpot> get listSpotsMonth {
+    _$listSpotsMonthAtom.reportRead();
+    return super.listSpotsMonth;
+  }
+
+  @override
+  set listSpotsMonth(List<FlSpot> value) {
+    _$listSpotsMonthAtom.reportWrite(value, super.listSpotsMonth, () {
+      super.listSpotsMonth = value;
+    });
+  }
+
+  final _$nomesDaysAtom = Atom(name: '_RelatorioControllerBase.nomesDays');
+
+  @override
+  List<String> get nomesDays {
+    _$nomesDaysAtom.reportRead();
+    return super.nomesDays;
+  }
+
+  @override
+  set nomesDays(List<String> value) {
+    _$nomesDaysAtom.reportWrite(value, super.nomesDays, () {
+      super.nomesDays = value;
+    });
+  }
+
+  final _$nomesWeekAtom = Atom(name: '_RelatorioControllerBase.nomesWeek');
+
+  @override
+  List<String> get nomesWeek {
+    _$nomesWeekAtom.reportRead();
+    return super.nomesWeek;
+  }
+
+  @override
+  set nomesWeek(List<String> value) {
+    _$nomesWeekAtom.reportWrite(value, super.nomesWeek, () {
+      super.nomesWeek = value;
+    });
+  }
+
+  final _$nomesMonthAtom = Atom(name: '_RelatorioControllerBase.nomesMonth');
+
+  @override
+  List<String> get nomesMonth {
+    _$nomesMonthAtom.reportRead();
+    return super.nomesMonth;
+  }
+
+  @override
+  set nomesMonth(List<String> value) {
+    _$nomesMonthAtom.reportWrite(value, super.nomesMonth, () {
+      super.nomesMonth = value;
+    });
+  }
+
+  final _$xAtom = Atom(name: '_RelatorioControllerBase.x');
+
+  @override
+  int get x {
+    _$xAtom.reportRead();
+    return super.x;
+  }
+
+  @override
+  set x(int value) {
+    _$xAtom.reportWrite(value, super.x, () {
+      super.x = value;
+    });
+  }
+
+  final _$isSelectedAtom = Atom(name: '_RelatorioControllerBase.isSelected');
+
+  @override
+  List<bool> get isSelected {
+    _$isSelectedAtom.reportRead();
+    return super.isSelected;
+  }
+
+  @override
+  set isSelected(List<bool> value) {
+    _$isSelectedAtom.reportWrite(value, super.isSelected, () {
+      super.isSelected = value;
     });
   }
 
   final _$_RelatorioControllerBaseActionController =
       ActionController(name: '_RelatorioControllerBase');
+
+  @override
+  dynamic teste(dynamic value) {
+    final _$actionInfo = _$_RelatorioControllerBaseActionController.startAction(
+        name: '_RelatorioControllerBase.teste');
+    try {
+      return super.teste(value);
+    } finally {
+      _$_RelatorioControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic setSelected(int index) {
+    final _$actionInfo = _$_RelatorioControllerBaseActionController.startAction(
+        name: '_RelatorioControllerBase.setSelected');
+    try {
+      return super.setSelected(index);
+    } finally {
+      _$_RelatorioControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
 
   @override
   dynamic getHistoricoNivel() {
@@ -84,55 +214,13 @@ mixin _$RelatorioController on _RelatorioControllerBase, Store {
   }
 
   @override
-  dynamic getAllSpots() {
+  dynamic getSpots(
+      {int days, int month, int year, DateTime inicio, DateTime fim}) {
     final _$actionInfo = _$_RelatorioControllerBaseActionController.startAction(
-        name: '_RelatorioControllerBase.getAllSpots');
+        name: '_RelatorioControllerBase.getSpots');
     try {
-      return super.getAllSpots();
-    } finally {
-      _$_RelatorioControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  dynamic getSpotsLastDays({int time = 15}) {
-    final _$actionInfo = _$_RelatorioControllerBaseActionController.startAction(
-        name: '_RelatorioControllerBase.getSpotsLastDays');
-    try {
-      return super.getSpotsLastDays(time: time);
-    } finally {
-      _$_RelatorioControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  dynamic getSpotsPerMonth(int mes) {
-    final _$actionInfo = _$_RelatorioControllerBaseActionController.startAction(
-        name: '_RelatorioControllerBase.getSpotsPerMonth');
-    try {
-      return super.getSpotsPerMonth(mes);
-    } finally {
-      _$_RelatorioControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  dynamic getSpotsLastMonth({int time = 6}) {
-    final _$actionInfo = _$_RelatorioControllerBaseActionController.startAction(
-        name: '_RelatorioControllerBase.getSpotsLastMonth');
-    try {
-      return super.getSpotsLastMonth(time: time);
-    } finally {
-      _$_RelatorioControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  dynamic getSpotsPerYear(int year) {
-    final _$actionInfo = _$_RelatorioControllerBaseActionController.startAction(
-        name: '_RelatorioControllerBase.getSpotsPerYear');
-    try {
-      return super.getSpotsPerYear(year);
+      return super.getSpots(
+          days: days, month: month, year: year, inicio: inicio, fim: fim);
     } finally {
       _$_RelatorioControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -143,7 +231,14 @@ mixin _$RelatorioController on _RelatorioControllerBase, Store {
     return '''
 listHistNivel: ${listHistNivel},
 listHistAbastecimento: ${listHistAbastecimento},
-listSpot: ${listSpot}
+listSpotsDays: ${listSpotsDays},
+listSpotsWeek: ${listSpotsWeek},
+listSpotsMonth: ${listSpotsMonth},
+nomesDays: ${nomesDays},
+nomesWeek: ${nomesWeek},
+nomesMonth: ${nomesMonth},
+x: ${x},
+isSelected: ${isSelected}
     ''';
   }
 }
