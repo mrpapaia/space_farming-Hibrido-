@@ -77,18 +77,29 @@ class _GraficoState extends State<Grafico> {
                     itemBuilder: (context) => [
                       PopupMenuItem(
                         value: 1,
-                        child: Text("Dia"),
+                        child: Text("Ultimos 15 dias"),
                       ),
                       PopupMenuItem(
                         value: 2,
-                        child: Text("Mês"),
+                        child: Text("Mês atual"),
                       ),
                       PopupMenuItem(
                         value: 3,
-                        child: Text("Ano"),
+                        child: Text("Ano atual"),
+                      ),
+                      PopupMenuItem(
+                        value: 4,
+                        child: Text("Determinar intervalo"),
                       ),
                     ],
-                    onSelected: (value) {},
+                    onSelected: (value) {
+                      if (value == 1) {
+                        widget.controller.getSpots(days: 15);
+                      } else if (value == 2) {
+                        widget.controller.getSpots(month: DateTime.now().month);
+                      } else if (value == 3) {
+                      } else if (value == 4) {}
+                    },
                   )
                 ],
               ),

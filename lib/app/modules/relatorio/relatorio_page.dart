@@ -64,6 +64,12 @@ class _RelatorioPageState
               ),
               child: Column(
                 children: [
+                  CalendarDatePicker(
+                      initialDate: DateTime.now(),
+                      firstDate: DateTime.parse("0001-01-01").toUtc(),
+                      lastDate: DateTime.parse("9999-12-31").toUtc(),
+                      onDateChanged: (aa) async {},
+                      initialCalendarMode: DatePickerMode.year),
                   Text("data"),
                   Row(
                     children: [
